@@ -1,0 +1,17 @@
+name: "psychRstats"
+title: "psychRstats: Learning Statistics for Psychology in R"
+description: |
+  psychRstats
+output_dir: "../docs"
+favicon: images/favicon.png
+navbar:
+  logo:
+    image: images/logo.png
+    href: "index.html"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Answers"
+      href: answers.html
+output: distill::distill_article
+base_url: https://jdbest.github.io/r-psych-stats
