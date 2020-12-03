@@ -1,0 +1,27 @@
+Package: psychRstats
+Type: Package
+Title: Interactive Word Games to Find Pangrams
+Date: 2020-12-07
+Version: 0.1.0
+Authors@R: 
+    person(given = "Justin",
+           family = "Dainer-Best",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-1868-0337"),
+           email = "jdainerbest@bard.edu")
+Description: Based on Bard College's Statistics for Psychology (PSY 203, Fall 
+    2020, taught by Assistant Professor of Psychology Justin Dainer-Best), these
+    vignettes and exercises are intended to be used alongside an undergraduate 
+    course in statistics, or an understanding of statistics based on such a course. 
+    It includes a series of vignettes and exercises which build on one another 
+    to develop skills while also exploring basic statistical concepts like the 
+    t-test, ANOVA, or null-hypothesis statistical testing. 
+URL: https://github.com/jdbest/r-psych-stats
+BugReports: https://github.com/jdbest/r-psych-stats/issues
+Depends: R (>= 4.0)
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  stringr
+RoxygenNote: 7.1.1
