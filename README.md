@@ -4,7 +4,7 @@ This is an R package based on Bard College's Statistics for Psychology (PSY 203,
 
 Installing the package (see below) will download vignettes and exercises which build on one another to develop skills while also exploring basic statistical concepts like _t_-tests, ANOVA, and null-hypothesis statistical testing. 
 
-The primary website for that course was <https://faculty.bard.edu/~jdainerbest/psy-203> with all labs being listed on [the lab website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html); the labs as used in the course are available at <https://github.com/jdbest/psy-203/>. This repository takes the `{learnr}` tutorials which were the basis of those labs and deploys them as package vignettes, meaning that you can use *this page* and the included [website](https://jdbest.github.io/r-psych-stats) for all exercises. 
+The primary website for that course was <https://faculty.bard.edu/~jdainerbest/psy-203> with all labs being listed on [the lab website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html); the labs as used in the course are available at <https://github.com/jdbest/psy-203/>. This repository takes the `{learnr}` tutorials which were the basis of those labs and deploys them as package vignettes, meaning that you can use *this page* and the included [website](https://jdbest.github.io/r-psych-stats) (<https://jdbest.github.io/r-psych-stats/>) for all exercises. 
 
 ## Installation
 
