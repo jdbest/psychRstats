@@ -3,6 +3,6 @@
 ^data-raw$
 ^_site$
 ^docs$
-^*.zip$
+^\*.zip$
 .gitignore
 README.md
