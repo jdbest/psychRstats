@@ -16,9 +16,10 @@ In R, you can install this package directly from github:
 # install devtools for the following function, if needed
 install.packages("devtools")
 devtools::install_github("jdbest/r-psych-stats")
+library(psychRstats)
 ```
 
-However, this is **not yet ready for use**.
+If you're prompted to update packages, you should respond as prompted -- usually with a number (e.g., typing a 1 and then hitting enter). Alternatively, leave the line blank for "don't update."
 
 ## Running tutorials
 
@@ -27,4 +28,16 @@ Once installed, tutorials can be used to learn basic concepts. The basic syntax 
 ```
 library(psychRstats)
 lab("intro-to-r")
+```
+
+Once you've gotten through the first tutorial, you'll want to download the exercises as well. 
+
+## Downloading exercises
+
+Download all exercises and data in one go when you first get started. After running the above code and installing the `{psychRstats}` package, make sure you're in the right working directory.
+
+(We discuss setting a working directory [in the first lab](https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r/#set-a-working-directory), but there's also an entry about it [on the wiki](https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory).)
+
+```
+usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE)
 ```
