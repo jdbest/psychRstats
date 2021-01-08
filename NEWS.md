@@ -1,5 +1,12 @@
 # psychRstats: Updates
 
-## 0.1.0, 12-03-2020
+## 0.0.2, 01-08-2021
+
+* Got package running and amended README
+* Included info on how to install and how to download exercises
+* Updated website on github pages to have both exercises and answers
+* Included first tutorial
+
+## 0.0.1, 12-03-2020
 
 * Created package and beginning basic functionality
