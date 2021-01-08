@@ -1,0 +1,178 @@
+---
+title: "Introduction to R: Exercises"
+author: "Justin Dainer-Best"
+output: html_document
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <https://jdbest.github.io/r-psych-stats/answers.html>
+
+This R Markdown file can be gotten to by looking on the [the lab class website](https://faculty.bard.edu/jdainerbest/psy-203/labslist.html).
+
+This is the set of *exercises* for you to complete after the first lab tutorial. Please read the text and try the code as it follows! 
+
+---
+
+These documents are the second way (after tutorials like what you've already completed) that you will interact with data in R Studio during our lab classes. The "markdown" here is similar to what you may have seen on web forums, on Wikipedia, or elsewhere online. It is pretty straightforward, and mostly just involves basic word processing. Fortunately, you can also find some excellent "cheatsheets" by searching online for an R Markdown cheatsheet, or start [here on the R studio website](https://rmarkdown.rstudio.com/lesson-15.html).
+
+Want to learn more about Markdown? I recommend spending 15 minutes completing this tutorial: <https://commonmark.org/help/tutorial/>
+
+You'll also see that things like asterisks make font italics (two make font bold) in the knitted output---but we'll talk more about that, below. Similarly, when I put text between tick marks `like this`, it usually means that it's code! 
+
+### How to run code in these documents
+
+You can try executing the "chunk" below by clicking the *Run* button within the chunk, or by placing your cursor inside it and pressing (on a Mac) *Cmd+Shift+Enter*. (On a PC, try instead pressing *Ctrl+Shift+Enter*. Many shortcuts in R will use the Command key on a Mac and the Control key on a PC.) If you only want to execute (run) one line at a time, you can always just hit *Cmd+Enter* (*Ctrl+Enter*) while the cursor is on that line---or just a selection of text.
+
+```{r packages}
+# Load the relevant packages
+library(tidyverse)
+```
+
+The code that you just ran loads the `tidyverse` package that we installed last lab. You need to load some packages every time you load RStudio; this is one of them. 
+
+When you ran that line, it may have "minimized" the Console window and made this pane larger. That's fine! It's still running the code in the Console, though. If you click on the word Console below, you'll see that it loaded several packages.
+
+Loading a package lets you use the **functions** (commands) that the package has. Functions like the chain operator `%>%` or `select()` that we talked about in the tutorial come from a package called `dplyr`; that package is loaded by running the above command, but we could also load it explicitly with: 
+
+```{r}
+library(dplyr)
+```
+
+You can add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*. (*Ctrl+Alt+I* on a PC.) Hit enter twice (from the end of this line) and give it a try! Write something like 5+5 in the code chunk you create, and try running it. Make sure the code works!
+
+## Knitting
+
+In a code chunk, any code you write will "run" in the console when you run it, or when you Knit the document. Knitting an R Markdown document will create an HTML file (a website) with all of your code. Try hitting the Knit button (it has a ball of yarn next to it) at the top of this pane. You should get a browser that pops up with the whole document. (You can close it to return here.)
+
+If there's an error, that's okay---it might be because your working directory isn't quite right. 
+
+These HTML files contain all of the code and its output, and are saved in the same folder as the .Rmd (R Markdown) file. Again: click the *Knit* button or press *Cmd+Shift+K* [*Ctrl+Shift+K*] to see the HTML file. 
+
+When you are asked to submit the results of your work, that HTML file is what you should submit. (But I'll also always accept the .Rmd version if the code won't knit.)
+
+A general rule about knitting R Markdown: do it **early** and **often**. Much better to find errors right away, rather than figuring them out when you thought you were done. 
+
+If you have any questions at this point, take some time to make sense of everything!
+
+---
+
+## Importing data
+
+You can import data from the File menu in RStudio. However, most of the time you'll want to do so using code. 
+
+When you ran the line that downloaded this file, it also downloaded a CSV (comma-separated value) file with data about penguins. You can read more about that data [here](https://github.com/allisonhorst/palmerpenguins). (That will be a link when you knit this---either knit it and click, or copy and paste the URL into your web browser if you'd like to read it.) The data is from Horst, Hill, & Gorman (2020). 
+
+You can use the function `read_csv()` to, well, read a CSV file. Try running the following code. (How? Scroll back up and read the section "How to run code in these documents".)
+
+```{r}
+read_csv("penguins.csv")
+```
+
+It should just work---this is the great thing about having your working directory set! (If it doesn't work on its own, try adding `lab02/` before the name `"penguins.csv"`, and again in the code chunk below.) You might see some language about how it's been "Parsed with column specification"---great! It's telling you the types (classes) of variables.
+
+Now, you may remember from the tutorial, that if it's printing to the screen, it's *not* actually saving this data. To do that, we need to assign it to a variable. Run this code:
+
+```{r}
+penguins <- read_csv("penguins.csv")
+```
+
+You should see the variable `penguins` appear in the Environment pane. (If you don't see the Environment pane, it's one of the tabs in the top right!) It'll tell you that there are 344 observations of 8 variables---i.e., the data frame has 344 rows and 8 columns. 
+
+(Aside: You don't *have* to use code to import data. You could also [a] click on the "Import Dataset" button in the Environment pane, or [b] in the Files pane, click on the filename of the file when you're in the right folder.)
+
+## Exercises
+
+1. What class is this variable `penguins`? In the code chunk below, use the `class()` function to find out! (It should give you more than one answer, including that it's a "tbl" [table] and a data.frame)
+
+```{r exercise1}
+
+```
+
+2. Using both the `select()` function from the `dplyr` package **and** the `$` operator (which is the default in R), print the column `species` from `penguins`. (Do one on the first line and the other on the second.) 
+
+Remember that you should use the chain `%>%` with `select()`. Feel free to refer back to your notes or the tutorial! 
+
+```{r exercise2}
+
+```
+
+3. Using the `slice()` function from `dplyr`, print the 20th row of `penguins`.
+
+```{r exercise3}
+
+```
+
+4. Okay, now combine them! Use a chain `%>%` between the commands. First, `select()` the column `species` from `penguins` and second, `slice()` the 20th row. 
+
+```{r exercise4}
+
+```
+
+5. In words, describe what is going on in #4. (Just type it in the space below.)
+
+> 
+
+6. Try knitting the document. Does everything work? If there's an error, is it one you can address? Try to fix it. 
+
+7. You can also use square brackets [like these] after the name of a variable to subset part of that variable, as you learned in the tutorial. With a data frame, if you put any number inside the brackets, it will select the column that corresponds to that number. Use this method to select the 4th column of `penguins` in the code chunk below.
+
+Technically, there's a comma that comes **before** the 4, inside the brackets. (Nothing comes before the comma.) Try that out---you should get the same result.
+
+```{r exercise7}
+
+```
+
+8. If you put a comma *after* the number in the square brackets, it selects the *row* from a data frame. (e.g., `dataframe[number,]`). Try this with the `penguins` data: select the fifth **row** below.
+
+```{r exercise8}
+
+```
+
+9. Okay, now combine them: select the fifth row of the fourth column in `penguins` by selecting `[5,4]` after the variable `penguins`. 
+
+```{r exercise9}
+
+```
+
+This is actually similar to how Excel thinks of cells: it's called "row, column" notation. 
+    
+## Next step: Filtering
+
+10. What about **filtering** data? Imagine that we were only interested in Chinstrap penguins (not Adelie). Well, we can **filter** those out with the `filter()` function from the `dplyr` package. 
+
+You can click on the Help pane at the lower right of the RStudio window, or type `?filter` in the Console, to find out more about filter. Essentially, it does a logical check for some condition that you provide. What's that mean?
+
+Well, `filter()` wants something that results in either TRUE or FALSE---a logical (or Boolean) response. Let's check that out: just run the following code:
+    
+```{r}
+penguins$species == "Chinstrap"
+```
+    
+What you'll get is a series of TRUE and FALSE values, as R tests every one of the 344 rows of the `species` column against the name "Chinstrap". Looks like the Chinstrap penguins are the last of the set. 
+
+The double equal sign can be read as "is this equal?" or a test for equivalence. If we put that *inside of a* `filter()` function, we'll get *only the rows where it's true*. 
+
+So: `filter()` works like `select()` or `slice()`. Name the variable, use the `%>%` chain, and then use the `filter()` function with this code inside the parentheses: `species == "Chinstrap"`. Give that a try below. (Remember not to include the tick marks ` themselves in the code you write.)
+
+```{r exercise10}
+
+```
+
+You should get 68 rows---all of which are of the Chinstrap species. 
+
+You'll note that I didn't need to specify the name of the data frame again inside of the `filter()` function. In fact, you *should not* name the data frame again. 
+
+11. Last two pieces: use `filter()` again to only select rows from `penguins` where the bill length in millimeters (column name: `bill_length_mm`) is more than 40.
+
+```{r exercise11a}
+
+```
+
+Then, copy that code below---and after the 40, add a comma, and a second thing to filter by. You want to `filter()` only rows from `penguins` where (again) the bill length in millimeters (column name: `bill_length_mm`) is more than 40, **and** where the species is Adelie. 
+
+```{r exercise11b}
+
+```
+
+12. When that's all done, Knit the document again. If there are errors, try to solve them. And then upload the HTML file to [Brightspace](https://bardcollege.brightspace.com/d2l/le/content/6809/viewContent/17789/View?dst=1) under Lab Exercises: Practicing with R (this link should get you there). *I'll note again: if the file doesn't knit and you can't get it to work, that's okay! You can upload this .Rmd file.*
+
+Have feedback for me? Send it to me at [the same exit survey link](bit.ly/psy203exit)---select Lab 2. 
