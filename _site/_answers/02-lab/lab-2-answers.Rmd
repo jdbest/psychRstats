@@ -19,7 +19,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. I'll upload a version of the correct answer after each class. 
+This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <https://jdbest.github.io/r-psych-stats/answers.html>
 
 This R Markdown file can be gotten to by looking on the [the lab class website](https://faculty.bard.edu/jdainerbest/psy-203/labslist.html).
 
@@ -37,7 +37,7 @@ You'll also see that things like asterisks make font italics (two make font bold
 
 You can try executing the "chunk" below by clicking the *Run* button within the chunk, or by placing your cursor inside it and pressing (on a Mac) *Cmd+Shift+Enter*. (On a PC, try instead pressing *Ctrl+Shift+Enter*. Many shortcuts in R will use the Command key on a Mac and the Control key on a PC.) If you only want to execute (run) one line at a time, you can always just hit *Cmd+Enter* (*Ctrl+Enter*) while the cursor is on that line---or just a selection of text.
 
-```{r}
+```{r packages}
 # Load the relevant packages
 library(tidyverse)
 ```
@@ -58,15 +58,15 @@ You can add a new chunk by clicking the *Insert Chunk* button on the toolbar or 
 
 In a code chunk, any code you write will "run" in the console when you run it, or when you Knit the document. Knitting an R Markdown document will create an HTML file (a website) with all of your code. Try hitting the Knit button (it has a ball of yarn next to it) at the top of this pane. You should get a browser that pops up with the whole document. (You can close it to return here.)
 
-If there's an error, that's okay---it might be because your working directory isn't quite right. 
+If there's an error, that's okay---it might be because your working directory isn't quite right. Try to fix it!
 
 These HTML files contain all of the code and its output, and are saved in the same folder as the .Rmd (R Markdown) file. Again: click the *Knit* button or press *Cmd+Shift+K* [*Ctrl+Shift+K*] to see the HTML file. 
 
-When you are asked to submit the results of your work, that HTML file is what you should submit. (But I'll also always accept the .Rmd version if the code won't knit.)
+These HTML files are useful for sharing with others to show what you've done! 
 
 A general rule about knitting R Markdown: do it **early** and **often**. Much better to find errors right away, rather than figuring them out when you thought you were done. 
 
-If you have any questions at this point, ask me or a course assistant.
+If you have any questions at this point, take some time to make sense of everything!
 
 ---
 
@@ -82,7 +82,7 @@ You can use the function `read_csv()` to, well, read a CSV file. Try running the
 read_csv("penguins.csv")
 ```
 
-It should just work---this is the great thing about having your working directory set! You might see some language about how it's been "Parsed with column specification"---great! It's telling you the types (classes) of variables.
+It should just work---this is the great thing about having your working directory set! (If it doesn't work on its own, try adding `02-lab/` before the name `"penguins.csv"`, and again in the code chunk below. Because of *where* it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.) You might see some language about how it's been "Parsed with column specification"---great! It's telling you the types (classes) of variables.
 
 Now, you may remember from the tutorial, that if it's printing to the screen, it's *not* actually saving this data. To do that, we need to assign it to a variable. Run this code:
 
@@ -202,6 +202,4 @@ penguins %>%
          species == "Adelie")
 ```
 
-12. When that's all done, Knit the document again. If there are errors, try to solve them. And then upload the HTML file to [Brightspace](https://bardcollege.brightspace.com/d2l/le/content/6809/viewContent/17789/View?dst=1) under Lab Exercises: Practicing with R (this link should get you there). *I'll note again: if the file doesn't knit and you can't get it to work, that's okay! You can upload this .Rmd file.*
-
-Have feedback for me? Send it to me at [the same exit survey link](bit.ly/psy203exit)---select Lab 2. 
+12. When that's all done, Knit the document again. If there are errors, try to solve them. 

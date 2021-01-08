@@ -60,7 +60,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["lab-2-answers_files/bowser-1.9.3/bowser.min.js","lab-2-answers_files/distill-2.2.21/template.v2.js","lab-2-answers_files/jquery-1.11.3/jquery.min.js","lab-2-answers_files/webcomponents-2.0.0/webcomponents.js","penguins.csv"]}
+  {"type":"character","attributes":{},"value":["lab-2-answers_files/bowser-1.9.3/bowser.min.js","lab-2-answers_files/distill-2.2.21/template.v2.js","lab-2-answers_files/header-attrs-2.3/header-attrs.js","lab-2-answers_files/jquery-1.11.3/jquery.min.js","lab-2-answers_files/webcomponents-2.0.0/webcomponents.js","penguins.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1285,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.3/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1341,7 +1341,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. I’ll upload a version of the correct answer after each class.</p>
+<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <a href="https://jdbest.github.io/r-psych-stats/answers.html" class="uri">https://jdbest.github.io/r-psych-stats/answers.html</a></p>
 <p>This R Markdown file can be gotten to by looking on the <a href="https://faculty.bard.edu/jdainerbest/psy-203/labslist.html">the lab class website</a>.</p>
 <p>This is the set of <em>exercises</em> for you to complete after the first lab tutorial. Please read the text and try the code as it follows!</p>
 <hr />
@@ -1365,11 +1365,11 @@ library(dplyr)</code></pre>
 <p>You can add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Cmd+Option+I</em>. (<em>Ctrl+Alt+I</em> on a PC.) Hit enter twice (from the end of this line) and give it a try! Write something like 5+5 in the code chunk you create, and try running it. Make sure the code works!</p>
 <h2 id="knitting">Knitting</h2>
 <p>In a code chunk, any code you write will “run” in the console when you run it, or when you Knit the document. Knitting an R Markdown document will create an HTML file (a website) with all of your code. Try hitting the Knit button (it has a ball of yarn next to it) at the top of this pane. You should get a browser that pops up with the whole document. (You can close it to return here.)</p>
-<p>If there’s an error, that’s okay—it might be because your working directory isn’t quite right.</p>
+<p>If there’s an error, that’s okay—it might be because your working directory isn’t quite right. Try to fix it!</p>
 <p>These HTML files contain all of the code and its output, and are saved in the same folder as the .Rmd (R Markdown) file. Again: click the <em>Knit</em> button or press <em>Cmd+Shift+K</em> [<em>Ctrl+Shift+K</em>] to see the HTML file.</p>
-<p>When you are asked to submit the results of your work, that HTML file is what you should submit. (But I’ll also always accept the .Rmd version if the code won’t knit.)</p>
+<p>These HTML files are useful for sharing with others to show what you’ve done!</p>
 <p>A general rule about knitting R Markdown: do it <strong>early</strong> and <strong>often</strong>. Much better to find errors right away, rather than figuring them out when you thought you were done.</p>
-<p>If you have any questions at this point, ask me or a course assistant.</p>
+<p>If you have any questions at this point, take some time to make sense of everything!</p>
 <hr />
 <h2 id="importing-data">Importing data</h2>
 <p>You can import data from the File menu in RStudio. However, most of the time you’ll want to do so using code.</p>
@@ -1395,7 +1395,7 @@ read_csv(&quot;penguins.csv&quot;)</code></pre>
 # … with 334 more rows, and 3 more variables: body_mass_g &lt;dbl&gt;,
 #   sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
 </div>
-<p>It should just work—this is the great thing about having your working directory set! You might see some language about how it’s been “Parsed with column specification”—great! It’s telling you the types (classes) of variables.</p>
+<p>It should just work—this is the great thing about having your working directory set! (If it doesn’t work on its own, try adding <code>02-lab/</code> before the name <code>"penguins.csv"</code>, and again in the code chunk below. Because of <em>where</em> it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.) You might see some language about how it’s been “Parsed with column specification”—great! It’s telling you the types (classes) of variables.</p>
 <p>Now, you may remember from the tutorial, that if it’s printing to the screen, it’s <em>not</em> actually saving this data. To do that, we need to assign it to a variable. Run this code:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
@@ -1752,9 +1752,8 @@ penguins %&gt;%
 #   sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
 </div>
 <ol start="12" type="1">
-<li>When that’s all done, Knit the document again. If there are errors, try to solve them. And then upload the HTML file to <a href="https://bardcollege.brightspace.com/d2l/le/content/6809/viewContent/17789/View?dst=1">Brightspace</a> under Lab Exercises: Practicing with R (this link should get you there). <em>I’ll note again: if the file doesn’t knit and you can’t get it to work, that’s okay! You can upload this .Rmd file.</em></li>
+<li>When that’s all done, Knit the document again. If there are errors, try to solve them.</li>
 </ol>
-<p>Have feedback for me? Send it to me at <a href="bit.ly/psy203exit">the same exit survey link</a>—select Lab 2.</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
