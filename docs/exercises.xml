@@ -14,10 +14,10 @@
     <generator>Distill</generator>
     <lastBuildDate>Mon, 31 Aug 2020 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Lab 01: Introduction to R</title>
+      <title>01: Introduction to R</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
       <link>https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r</link>
-      <description>PSY 203: Lab 1</description>
+      <description>01: Introduction to R</description>
       <category>rlanguage</category>
       <category>comments</category>
       <category>dplyr</category>
