@@ -1,0 +1,135 @@
+---
+title: "Correlation and Regression (Lab 10) Exercises, Completed"
+description: |
+  Completed exercises for the tenth lab
+author:
+  - name: Justin Dainer-Best
+date: 11-06-2020
+categories: 
+  - rlanguage
+  - visualization
+  - ggplot
+  - correlation
+  - regression
+  - real-data
+  - effect-sizes
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
+
+If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html). 
+
+Important reminder: as with every time you open RStudio, don't forget to load the libraries, below.
+
+## Objectives
+
+In the tutorial, we learned about using `lm()` and `summary()` for regressions, and `cor()` and `cor.test()` for correlations. You'll use those and the `library(ggplot2)` functions to plot them to make further sense of the `predictions` data, including adding regression lines. You'll also practice (briefly) `filter()` and a few other functions to clean up the data as provided. 
+
+As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html>
+
+Don't forget to (a) save and (b) knit the document frequently, so you'll keep track of your work and also know where you run into errors. 
+
+## Loading packages
+
+As always, you _must_ load packages if you intend to use their functions. Run the following code chunk to load necessary packages for these exercises. 
+
+```{r loadpackages, message=FALSE}
+library(tidyverse)
+```
+
+## Importing data
+
+As discussed in the tutorial, we're using data from Beall, Hofer, & Shaller (2016).
+
+> Beall, A. T., Hofer, M. K., & Shaller, M. (2016). Infections and elections: Did an Ebola outbreak influence the 2014 U.S. federal elections (and if so, how)? _Psychological Science_, _27_, 595-605. <https://doi.org/10.1177/0956797616628861>
+
+Make sure you read the description of the study in the tutorial---it's important for thinking about what we're doing in these exercises. 
+
+In the tutorial, we used a "cleaned-up" version of the data. (It's in a folder called /www.) But let's actually use the raw data here: that one is called `beall_untidy.csv` and should be in the same folder as this document. 
+
+The data was downloaded with this file. Load it using the `read_csv()` command---probably with the code below:
+
+```{r importdata}
+predictions <- read_csv("beall_untidy.csv")
+```
+
+## Today's task
+
+For the questions below, [create your own code chunks](https://github.com/jdbest/psy-203/wiki/Create-a-code-chunk) and insert all code into them.
+
+1. Be sure to assign the resulting data to itself or to a new data frame, so you can use it in the subsequent questions. Filter the data using the `filter()` function: 
+    a. Remove the two lines at the very top for which there are NAS even in the `Date` and `Month` column
+    b. Remove the column `DJIA` with either `select()` (putting a - in front of the name will remove it) or by assigning `predictions$DJIA` to the value NULL
+    c. You should now have 65 observations and 14 variables in the Environment.
+
+```{r}
+predictions <- tibble(predictions) %>%
+  filter( ! is.na(Month) ) %>%
+  select(-DJIA)
+```
+
+2. The authors report that "Across all days in the data set, [the Ebola-search-volume index] was very highly correlated with an index---computed from LexisNexis data---of the mean number of daily news stories about Ebola during the preceding week, *r* = .83, *p* < .001." Calculate this correlation yourself using `cor.test()` and your `predictions` data. (You'll use the columns `Ebola.Search.Volume.Index` and `LexisNexisNewsVolumeWeek`) Then, briefly report the correlation. Is it significant?
+
+```{r}
+cor.test(predictions$Ebola.Search.Volume.Index, predictions$LexisNexisNewsVolumeWeek)
+```
+
+> There was a significant relationship between the Ebola-search-volume index and the LexisNexis index, $r(63)=.83, 95% CI [.73, .89], p < .05$
+
+3. Plot that relationship using `ggplot() + geom_point()`. Add a theme and label the axes. Add a regression line using `geom_smooth()` or `geom_abline()` (you'll get the data in the next question).
+
+```{r, preview=TRUE}
+ggplot(predictions, aes(x = Ebola.Search.Volume.Index, 
+                        y = LexisNexisNewsVolumeWeek)) +
+  geom_point() +
+  theme_classic() +
+  geom_smooth(method = "lm", se = FALSE, formula = "y ~ x") +
+  labs(x = "Ebola-search-volume index", y = "LexisNexis index")
+```
+
+4. Use the `lm()` function to create a regression model of the same relationship. Then use `summary()` to get the results. Report them succinctly below. Also report what parallels exist between the numbers from this regression and the correlation.
+
+```{r}
+model <- lm(Ebola.Search.Volume.Index ~ LexisNexisNewsVolumeWeek, 
+            data = predictions)
+summary(model)
+```
+
+> There was a statistically-significant relationship between the two indexes, $b=0.16,p<.05$, with an $R^2$ of .69, $p<.05$. 
+
+5. Use `filter()` to select only the scores from the two-week period including the last week of September and the first week of October. You could look at the `Month` and `Date` columns... but the third column might be more helpful. Don't forget to assign this to a new data frame so we can use it.
+
+```{r}
+highanxtime <- filter(predictions, Two.weeks.prior.to.outbreak.only==1)
+```
+
+6. On the full dataset, run the correlation analyses we did in the tutorial, for the association between Ebola search volume index and voter intention index.
+
+7. With the filtered data from #5, re-run the correlation analyses for the association between Ebola search volume index and voter intention index. Is the correlation higher or lower?
+
+```{r}
+cor.test(highanxtime$Voter.Intention.Index, 
+         highanxtime$Ebola.Search.Volume.Index)
+```
+
+> It's much higher---although note that there are many fewer data points! 
+
+8. Plot that filtered data. Add a regression line. Label the axes and add a theme.
+
+```{r}
+ggplot(highanxtime, 
+       aes(x = Ebola.Search.Volume.Index, y = Voter.Intention.Index)) +
+  geom_point() +
+  theme_classic() +
+  geom_smooth(method = "lm", se = FALSE, formula = "y ~ x") +
+  labs(x = "Ebola-search-volume index", y = "LexisNexis index")
+```
+
+Have any feedback about the exercises? Let me know at the [exit survey](https://bit.ly/psy203exit) and select Lab 9.

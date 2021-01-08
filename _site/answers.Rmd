@@ -1,12 +1,12 @@
 ---
 title: "psychRstats: Exercise answers"
 site: distill::distill_website
-listing: posts
+listing: answers
 preview: images/marble.png
 navbar: 
   search: true
 collections:
-  posts:
+  answers:
     feed_items_max: 25
 ---
 

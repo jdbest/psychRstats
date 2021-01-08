@@ -1,0 +1,49 @@
+---
+title: "Lab 08: The solo project"
+description: |
+  PSY 203: Lab 8. 
+author:
+  - name: Justin Dainer-Best
+    url: {}
+date: 10-19-2020
+categories:
+  - practice
+  - rlanguage
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The primary website for this course is <https://faculty.bard.edu/~jdainerbest/psy-203>
+
+These are all of the instructions for the solo project. [The list of labs is here](../../labslist.html).
+
+This website contains R lab code for labs in Bard College's Fall 2020 for Statistics for Psychology, taught by Prof. Justin Dainer-Best. 
+
+You will download the lab's files to your computer or to your rstudio.cloud account.
+
+## Objectives
+
+This lab asks you to practice the skills you have learned about running *t*-tests and visualizing the results, as well as reporting them. It also expects you to practice using `filter()` and otherwise subsetting data. As [described in the syllabus](../../syllabus.html#solo-project), the solo project is _designed to be completed alone_, and allows you to apply the code we've been learning in lab to a research question. This project helps you practice adapting code from previous work to a new question. 
+
+## Make sure you're in the right working directory
+
+Set your working directory if necessary. Check that you're in the directory you expect by running `getwd()` in the Console. If you need more help, [look at the wiki page on setting a working directory](https://github.com/jdbest/psy-203/wiki/setting-a-working-directory). 
+
+## The solo project
+
+To download the project and the data it relies on, run the following command. **Please note: only run the `usethis::usezip()` line once! Running it again will result in your overwriting the files on your computer---potentially losing your work.**
+
+Make sure you run the whole command, all the way to the closing parenthesis.
+
+```
+usethis::use_zip(paste0("https://github.com/jdbest/",
+                        "psy-203/raw/master/lab08.zip"), 
+                        cleanup = TRUE)
+```
+
+For most users, a window will pop up with the solo project. Double click on it to open it, or select it from the Files pane in RStudio. 
