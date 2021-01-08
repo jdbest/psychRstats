@@ -11,7 +11,14 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Exercises"
+      href: exercises.html
     - text: "Answers"
       href: answers.html
 output: distill::distill_article
 base_url: https://jdbest.github.io/r-psych-stats
+collections:
+  posts: 
+    categories: true
+  exercises:
+    categories: true
