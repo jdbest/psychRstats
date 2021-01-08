@@ -1,0 +1,12 @@
+---
+title: "psychRstats: Exercise answers"
+site: distill::distill_website
+listing: posts
+preview: images/marble.png
+navbar: 
+  search: true
+collections:
+  posts:
+    feed_items_max: 25
+---
+

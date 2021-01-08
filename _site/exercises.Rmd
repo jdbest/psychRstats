@@ -1,0 +1,12 @@
+---
+title: "psychRstats: Exercises"
+site: distill::distill_website
+listing: exercises
+preview: images/marble.png
+navbar: 
+  search: true
+collections:
+  exercises:
+    feed_items_max: 25
+---
+
