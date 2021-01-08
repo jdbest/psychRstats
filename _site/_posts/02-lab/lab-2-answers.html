@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Introduction to R (Lab 02) Exercise Answers</title>
+
+  <meta property="description" itemprop="description" content="Completed exercises for the second lab"/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-09-10"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-09-10"/>
+  <meta name="article:author" content="Justin Dainer-Best"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Introduction to R (Lab 02) Exercise Answers"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Completed exercises for the second lab"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Introduction to R (Lab 02) Exercise Answers"/>
+  <meta property="twitter:description" content="Completed exercises for the second lab"/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Introduction to R (Lab 02) Exercise Answers"]},{"type":"character","attributes":{},"value":["Completed exercises for the second lab\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Justin Dainer-Best"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["09-10-2020"]},{"type":"character","attributes":{},"value":["rlanguage","comments","dplyr"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["lab-2-answers_files/bowser-1.9.3/bowser.min.js","lab-2-answers_files/distill-2.2.21/template.v2.js","lab-2-answers_files/jquery-1.11.3/jquery.min.js","lab-2-answers_files/webcomponents-2.0.0/webcomponents.js","penguins.csv"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for table of contents */
+
+  .d-toc {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    line-height: 1em;
+  }
+
+  .d-toc-header {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+
+  .d-toc a {
+    border-bottom: none;
+  }
+
+  .d-toc ul {
+    padding-left: 0;
+  }
+
+  .d-toc li>ul {
+    padding-top: 0.8em;
+    padding-left: 16px;
+    margin-bottom: 0.6em;
+  }
+
+  .d-toc ul,
+  .d-toc li {
+    list-style-type: none;
+  }
+
+  .d-toc li {
+    margin-bottom: 0.9em;
+  }
+
+  .d-toc-separator {
+    margin-top: 20px;
+    margin-bottom: 2em;
+  }
+
+  .d-article-with-toc {
+    border-top: none;
+    padding-top: 0;
+  }
+
+
+
+  /* Tweak code blocks (note that this CSS is repeated above in an injection
+     into the d-code shadow dom) */
+
+  d-code {
+    overflow-x: auto !important;
+  }
+
+  pre.d-code code.d-code {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  pre.text-output {
+
+    font-size: 12px;
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  @media(min-width: 768px) {
+
+  d-code {
+    overflow-x: visible !important;
+  }
+
+  pre.d-code code.d-code  {
+      padding-left: 18px;
+      font-size: 14px;
+  }
+  pre.text-output {
+    font-size: 14px;
+  }
+  }
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // create d-bibliography
+    var bibliography = $('<d-bibliography></d-bibliography>');
+    $('#distill-bibliography').wrap(bibliography);
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace citations with <d-cite>
+    $('.citation').each(function(i, val) {
+      appendix = true;
+      var cites = $(this).attr('data-cites').split(" ");
+      var dt_cite = $('<d-cite></d-cite>');
+      dt_cite.attr('key', cites.join());
+      $(this).replaceWith(dt_cite);
+    });
+    // remove refs
+    $('#refs').remove();
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // replace code blocks with d-code
+    $('pre>code').each(function(i, val) {
+      var code = $(this);
+      var pre = code.parent();
+      var clz = "";
+      var language = pre.attr('class');
+      if (language) {
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
+          language = "clike";
+        language = ' language="' + language + '"';
+        var dt_code = $('<d-code block' + language + clz + '></d-code>');
+        dt_code.text(code.text());
+        pre.replaceWith(dt_code);
+      } else {
+        code.addClass('text-output').unwrap().changeElementType('pre');
+      }
+    });
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('d-code, pre.text-output, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // table of contents
+      if (have_authors) // adjust border if we are in authors
+        $('.d-toc').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
+      $('d-code').each(function(i, val) {
+        var style = document.createElement('style');
+        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
+                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
+        if (this.shadowRoot)
+          this.shadowRoot.appendChild(style);
+      });
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-toc-header').remove();
+    $('.d-toc').remove();
+    $('.d-toc-separator').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="lab-2-answers_files/header-attrs-2.3/header-attrs.js"></script>
+  <script src="lab-2-answers_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="lab-2-answers_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="lab-2-answers_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="lab-2-answers_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Introduction to R (Lab 02) Exercise Answers","description":"Completed exercises for the second lab","authors":[{"author":"Justin Dainer-Best","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2020-09-10T00:00:00.000-04:00","citationText":"Dainer-Best, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Introduction to R (Lab 02) Exercise Answers</h1>
+<p><p>Completed exercises for the second lab</p></p>
+</div>
+
+<div class="d-byline">
+  Justin Dainer-Best true 
+  
+<br/>09-10-2020
+</div>
+
+<div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. I’ll upload a version of the correct answer after each class.</p>
+<p>This R Markdown file can be gotten to by looking on the <a href="https://faculty.bard.edu/jdainerbest/psy-203/labslist.html">the lab class website</a>.</p>
+<p>This is the set of <em>exercises</em> for you to complete after the first lab tutorial. Please read the text and try the code as it follows!</p>
+<hr />
+<p>These documents are the second way (after tutorials like what you’ve already completed) that you will interact with data in R Studio during our lab classes. The “markdown” here is similar to what you may have seen on web forums, on Wikipedia, or elsewhere online. It is pretty straightforward, and mostly just involves basic word processing. Fortunately, you can also find some excellent “cheatsheets” by searching online for an R Markdown cheatsheet, or start <a href="https://rmarkdown.rstudio.com/lesson-15.html">here on the R studio website</a>.</p>
+<p>Want to learn more about Markdown? I recommend spending 15 minutes completing this tutorial: <a href="https://commonmark.org/help/tutorial/" class="uri">https://commonmark.org/help/tutorial/</a></p>
+<p>You’ll also see that things like asterisks make font italics (two make font bold) in the knitted output—but we’ll talk more about that, below. Similarly, when I put text between tick marks <code>like this</code>, it usually means that it’s code!</p>
+<h3 id="how-to-run-code-in-these-documents">How to run code in these documents</h3>
+<p>You can try executing the “chunk” below by clicking the <em>Run</em> button within the chunk, or by placing your cursor inside it and pressing (on a Mac) <em>Cmd+Shift+Enter</em>. (On a PC, try instead pressing <em>Ctrl+Shift+Enter</em>. Many shortcuts in R will use the Command key on a Mac and the Control key on a PC.) If you only want to execute (run) one line at a time, you can always just hit <em>Cmd+Enter</em> (<em>Ctrl+Enter</em>) while the cursor is on that line—or just a selection of text.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Load the relevant packages
+library(tidyverse)</code></pre>
+</div>
+<p>The code that you just ran loads the <code>tidyverse</code> package that we installed last lab. You need to load some packages every time you load RStudio; this is one of them.</p>
+<p>When you ran that line, it may have “minimized” the Console window and made this pane larger. That’s fine! It’s still running the code in the Console, though. If you click on the word Console below, you’ll see that it loaded several packages.</p>
+<p>Loading a package lets you use the <strong>functions</strong> (commands) that the package has. Functions like the chain operator <code>%&gt;%</code> or <code>select()</code> that we talked about in the tutorial come from a package called <code>dplyr</code>; that package is loaded by running the above command, but we could also load it explicitly with:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+library(dplyr)</code></pre>
+</div>
+<p>You can add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Cmd+Option+I</em>. (<em>Ctrl+Alt+I</em> on a PC.) Hit enter twice (from the end of this line) and give it a try! Write something like 5+5 in the code chunk you create, and try running it. Make sure the code works!</p>
+<h2 id="knitting">Knitting</h2>
+<p>In a code chunk, any code you write will “run” in the console when you run it, or when you Knit the document. Knitting an R Markdown document will create an HTML file (a website) with all of your code. Try hitting the Knit button (it has a ball of yarn next to it) at the top of this pane. You should get a browser that pops up with the whole document. (You can close it to return here.)</p>
+<p>If there’s an error, that’s okay—it might be because your working directory isn’t quite right.</p>
+<p>These HTML files contain all of the code and its output, and are saved in the same folder as the .Rmd (R Markdown) file. Again: click the <em>Knit</em> button or press <em>Cmd+Shift+K</em> [<em>Ctrl+Shift+K</em>] to see the HTML file.</p>
+<p>When you are asked to submit the results of your work, that HTML file is what you should submit. (But I’ll also always accept the .Rmd version if the code won’t knit.)</p>
+<p>A general rule about knitting R Markdown: do it <strong>early</strong> and <strong>often</strong>. Much better to find errors right away, rather than figuring them out when you thought you were done.</p>
+<p>If you have any questions at this point, ask me or a course assistant.</p>
+<hr />
+<h2 id="importing-data">Importing data</h2>
+<p>You can import data from the File menu in RStudio. However, most of the time you’ll want to do so using code.</p>
+<p>When you ran the line that downloaded this file, it also downloaded a CSV (comma-separated value) file with data about penguins. You can read more about that data <a href="https://github.com/allisonhorst/palmerpenguins">here</a>. (That will be a link when you knit this—either knit it and click, or copy and paste the URL into your web browser if you’d like to read it.) The data is from Horst, Hill, &amp; Gorman (2020).</p>
+<p>You can use the function <code>read_csv()</code> to, well, read a CSV file. Try running the following code. (How? Scroll back up and read the section “How to run code in these documents”.)</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+read_csv(&quot;penguins.csv&quot;)</code></pre>
+<pre><code>
+# A tibble: 344 x 8
+   species island bill_length_mm bill_depth_mm flipper_length_…
+   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Adelie  Torge…           39.1          18.7              181
+ 2 Adelie  Torge…           39.5          17.4              186
+ 3 Adelie  Torge…           40.3          18                195
+ 4 Adelie  Torge…           NA            NA                 NA
+ 5 Adelie  Torge…           36.7          19.3              193
+ 6 Adelie  Torge…           39.3          20.6              190
+ 7 Adelie  Torge…           38.9          17.8              181
+ 8 Adelie  Torge…           39.2          19.6              195
+ 9 Adelie  Torge…           34.1          18.1              193
+10 Adelie  Torge…           42            20.2              190
+# … with 334 more rows, and 3 more variables: body_mass_g &lt;dbl&gt;,
+#   sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+<p>It should just work—this is the great thing about having your working directory set! You might see some language about how it’s been “Parsed with column specification”—great! It’s telling you the types (classes) of variables.</p>
+<p>Now, you may remember from the tutorial, that if it’s printing to the screen, it’s <em>not</em> actually saving this data. To do that, we need to assign it to a variable. Run this code:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins &lt;- read_csv(&quot;penguins.csv&quot;)</code></pre>
+</div>
+<p>You should see the variable <code>penguins</code> appear in the Environment pane. (If you don’t see the Environment pane, it’s one of the tabs in the top right!) It’ll tell you that there are 344 observations of 8 variables—i.e., the data frame has 344 rows and 8 columns.</p>
+<p>(Aside: You don’t <em>have</em> to use code to import data. You could also [a] click on the “Import Dataset” button in the Environment pane, or [b] in the Files pane, click on the filename of the file when you’re in the right folder.)</p>
+<h2 id="exercises">Exercises</h2>
+<ol type="1">
+<li>What class is this variable <code>penguins</code>? In the code chunk below, use the <code>class()</code> function to find out! (It should give you more than one answer, including that it’s a “tbl” [table] and a data.frame)</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+class(penguins)</code></pre>
+<pre><code>
+[1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot; </code></pre>
+</div>
+<ol start="2" type="1">
+<li>Using both the <code>select()</code> function from the <code>dplyr</code> package <strong>and</strong> the <code>$</code> operator (which is the default in R), print the column <code>species</code> from <code>penguins</code>. (Do one on the first line and the other on the second.)</li>
+</ol>
+<p>Remember that you should use the chain <code>%&gt;%</code> with <code>select()</code>. Feel free to refer back to your notes or the tutorial!</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# with select()
+penguins %&gt;% select(species)</code></pre>
+<pre><code>
+# A tibble: 344 x 1
+   species
+   &lt;chr&gt;  
+ 1 Adelie 
+ 2 Adelie 
+ 3 Adelie 
+ 4 Adelie 
+ 5 Adelie 
+ 6 Adelie 
+ 7 Adelie 
+ 8 Adelie 
+ 9 Adelie 
+10 Adelie 
+# … with 334 more rows</code></pre>
+<pre class="r"><code>
+# or:
+select(penguins, species)</code></pre>
+<pre><code>
+# A tibble: 344 x 1
+   species
+   &lt;chr&gt;  
+ 1 Adelie 
+ 2 Adelie 
+ 3 Adelie 
+ 4 Adelie 
+ 5 Adelie 
+ 6 Adelie 
+ 7 Adelie 
+ 8 Adelie 
+ 9 Adelie 
+10 Adelie 
+# … with 334 more rows</code></pre>
+<pre class="r"><code>
+# with the $
+penguins$species</code></pre>
+<pre><code>
+  [1] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+  [6] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [11] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [16] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [21] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [26] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [31] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [36] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [41] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [46] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [51] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [56] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [61] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [66] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [71] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [76] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [81] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [86] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [91] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+ [96] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[101] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[106] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[111] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[116] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[121] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[126] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[131] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[136] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[141] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[146] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+[151] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[156] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[161] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[166] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[171] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[176] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[181] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[186] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[191] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[196] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[201] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[206] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[211] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[216] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[221] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[226] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[231] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[236] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[241] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[246] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[251] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[256] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[261] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[266] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[271] &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;    &quot;Gentoo&quot;   
+[276] &quot;Gentoo&quot;    &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[281] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[286] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[291] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[296] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[301] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[306] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[311] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[316] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[321] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[326] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[331] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[336] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;
+[341] &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot; &quot;Chinstrap&quot;</code></pre>
+</div>
+<ol start="3" type="1">
+<li>Using the <code>slice()</code> function from <code>dplyr</code>, print the 20th row of <code>penguins</code>.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins %&gt;% slice(20)</code></pre>
+<pre><code>
+# A tibble: 1 x 8
+  species island bill_length_mm bill_depth_mm flipper_length_…
+  &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
+1 Adelie  Torge…             46          21.5              194
+# … with 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+<ol start="4" type="1">
+<li>Okay, now combine them! Use a chain <code>%&gt;%</code> between the commands. First, <code>select()</code> the column <code>species</code> from <code>penguins</code> and second, <code>slice()</code> the 20th row.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins %&gt;% 
+  select(species) %&gt;%
+  slice(20)</code></pre>
+<pre><code>
+# A tibble: 1 x 1
+  species
+  &lt;chr&gt;  
+1 Adelie </code></pre>
+</div>
+<ol start="5" type="1">
+<li>In words, describe what is going on in #4. (Just type it in the space below.)</li>
+</ol>
+<blockquote>
+<p>We take the data frame “penguins” and select the column “species” from it, and then we slice the 20th row – so we get the value of “Adelie” (which is the 20th value in that row.)</p>
+</blockquote>
+<ol start="6" type="1">
+<li><p>Try knitting the document. Does everything work? If there’s an error, is it one you can address? Try to fix it.</p></li>
+<li><p>You can also use square brackets [like these] after the name of a variable to subset part of that variable, as you learned in the tutorial. With a data frame, if you put any number inside the brackets, it will select the column that corresponds to that number. Use this method to select the 4th column of <code>penguins</code> in the code chunk below.</p></li>
+</ol>
+<p>Technically, there’s a comma that comes <strong>before</strong> the 4, inside the brackets. (Nothing comes before the comma.) Try that out—you should get the same result.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins[4]</code></pre>
+<pre><code>
+# A tibble: 344 x 1
+   bill_depth_mm
+           &lt;dbl&gt;
+ 1          18.7
+ 2          17.4
+ 3          18  
+ 4          NA  
+ 5          19.3
+ 6          20.6
+ 7          17.8
+ 8          19.6
+ 9          18.1
+10          20.2
+# … with 334 more rows</code></pre>
+<pre class="r"><code>
+penguins[,4] # same thing</code></pre>
+<pre><code>
+# A tibble: 344 x 1
+   bill_depth_mm
+           &lt;dbl&gt;
+ 1          18.7
+ 2          17.4
+ 3          18  
+ 4          NA  
+ 5          19.3
+ 6          20.6
+ 7          17.8
+ 8          19.6
+ 9          18.1
+10          20.2
+# … with 334 more rows</code></pre>
+<pre class="r"><code>
+identical(penguins[4], penguins[,4]) # tests if they&#39;re identical---TRUE</code></pre>
+<pre><code>
+[1] TRUE</code></pre>
+</div>
+<ol start="8" type="1">
+<li>If you put a comma <em>after</em> the number in the square brackets, it selects the <em>row</em> from a data frame. (e.g., <code>dataframe[number,]</code>). Try this with the <code>penguins</code> data: select the fifth <strong>row</strong> below.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins[5,]</code></pre>
+<pre><code>
+# A tibble: 1 x 8
+  species island bill_length_mm bill_depth_mm flipper_length_…
+  &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
+1 Adelie  Torge…           36.7          19.3              193
+# … with 3 more variables: body_mass_g &lt;dbl&gt;, sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+<ol start="9" type="1">
+<li>Okay, now combine them: select the fifth row of the fourth column in <code>penguins</code> by selecting <code>[5,4]</code> after the variable <code>penguins</code>.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins[5,4]</code></pre>
+<pre><code>
+# A tibble: 1 x 1
+  bill_depth_mm
+          &lt;dbl&gt;
+1          19.3</code></pre>
+</div>
+<p>This is actually similar to how Excel thinks of cells: it’s called “row, column” notation.</p>
+<h2 id="next-step-filtering">Next step: Filtering</h2>
+<ol start="10" type="1">
+<li>What about <strong>filtering</strong> data? Imagine that we were only interested in Chinstrap penguins (not Adelie). Well, we can <strong>filter</strong> those out with the <code>filter()</code> function from the <code>dplyr</code> package.</li>
+</ol>
+<p>You can click on the Help pane at the lower right of the RStudio window, or type <code>?filter</code> in the Console, to find out more about filter. Essentially, it does a logical check for some condition that you provide. What’s that mean?</p>
+<p>Well, <code>filter()</code> wants something that results in either TRUE or FALSE—a logical (or Boolean) response. Let’s check that out: just run the following code:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins$species == &quot;Chinstrap&quot;</code></pre>
+<pre><code>
+  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [11] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [21] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [31] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [41] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [51] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [71] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [81] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [91] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[101] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[111] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[131] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[141] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[151] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[161] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[171] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[191] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[201] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[211] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[221] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[231] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[251] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[261] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[271] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+[281]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[291]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[301]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[311]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[321]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[331]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[341]  TRUE  TRUE  TRUE  TRUE</code></pre>
+</div>
+<p>What you’ll get is a series of TRUE and FALSE values, as R tests every one of the 344 rows of the <code>species</code> column against the name “Chinstrap”. Looks like the Chinstrap penguins are the last of the set.</p>
+<p>The double equal sign can be read as “is this equal?” or a test for equivalence. If we put that <em>inside of a</em> <code>filter()</code> function, we’ll get <em>only the rows where it’s true</em>.</p>
+<p>So: <code>filter()</code> works like <code>select()</code> or <code>slice()</code>. Name the variable, use the <code>%&gt;%</code> chain, and then use the <code>filter()</code> function with this code inside the parentheses: <code>species == "Chinstrap"</code>. Give that a try below. (Remember not to include the tick marks ` themselves in the code you write.)</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins %&gt;%
+  filter(species == &quot;Chinstrap&quot;)</code></pre>
+<pre><code>
+# A tibble: 68 x 8
+   species island bill_length_mm bill_depth_mm flipper_length_…
+   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Chinst… Dream            46.5          17.9              192
+ 2 Chinst… Dream            50            19.5              196
+ 3 Chinst… Dream            51.3          19.2              193
+ 4 Chinst… Dream            45.4          18.7              188
+ 5 Chinst… Dream            52.7          19.8              197
+ 6 Chinst… Dream            45.2          17.8              198
+ 7 Chinst… Dream            46.1          18.2              178
+ 8 Chinst… Dream            51.3          18.2              197
+ 9 Chinst… Dream            46            18.9              195
+10 Chinst… Dream            51.3          19.9              198
+# … with 58 more rows, and 3 more variables: body_mass_g &lt;dbl&gt;,
+#   sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+<p>You should get 68 rows—all of which are of the Chinstrap species.</p>
+<p>You’ll note that I didn’t need to specify the name of the data frame again inside of the <code>filter()</code> function. In fact, you <em>should not</em> name the data frame again.</p>
+<ol start="11" type="1">
+<li>Last two pieces: use <code>filter()</code> again to only select rows from <code>penguins</code> where the bill length in millimeters (column name: <code>bill_length_mm</code>) is more than 40.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins %&gt;%
+  filter(bill_length_mm &gt; 40)</code></pre>
+<pre><code>
+# A tibble: 242 x 8
+   species island bill_length_mm bill_depth_mm flipper_length_…
+   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Adelie  Torge…           40.3          18                195
+ 2 Adelie  Torge…           42            20.2              190
+ 3 Adelie  Torge…           41.1          17.6              182
+ 4 Adelie  Torge…           42.5          20.7              197
+ 5 Adelie  Torge…           46            21.5              194
+ 6 Adelie  Biscoe           40.6          18.6              183
+ 7 Adelie  Biscoe           40.5          17.9              187
+ 8 Adelie  Biscoe           40.5          18.9              180
+ 9 Adelie  Dream            40.9          18.9              184
+10 Adelie  Dream            42.2          18.5              180
+# … with 232 more rows, and 3 more variables: body_mass_g &lt;dbl&gt;,
+#   sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+<p>Then, copy that code below—and after the 40, add a comma, and a second thing to filter by. You want to <code>filter()</code> only rows from <code>penguins</code> where (again) the bill length in millimeters (column name: <code>bill_length_mm</code>) is more than 40, <strong>and</strong> where the species is Adelie.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+penguins %&gt;%
+  filter(bill_length_mm &gt; 40, 
+         species == &quot;Adelie&quot;)</code></pre>
+<pre><code>
+# A tibble: 51 x 8
+   species island bill_length_mm bill_depth_mm flipper_length_…
+   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Adelie  Torge…           40.3          18                195
+ 2 Adelie  Torge…           42            20.2              190
+ 3 Adelie  Torge…           41.1          17.6              182
+ 4 Adelie  Torge…           42.5          20.7              197
+ 5 Adelie  Torge…           46            21.5              194
+ 6 Adelie  Biscoe           40.6          18.6              183
+ 7 Adelie  Biscoe           40.5          17.9              187
+ 8 Adelie  Biscoe           40.5          18.9              180
+ 9 Adelie  Dream            40.9          18.9              184
+10 Adelie  Dream            42.2          18.5              180
+# … with 41 more rows, and 3 more variables: body_mass_g &lt;dbl&gt;,
+#   sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+<ol start="12" type="1">
+<li>When that’s all done, Knit the document again. If there are errors, try to solve them. And then upload the HTML file to <a href="https://bardcollege.brightspace.com/d2l/le/content/6809/viewContent/17789/View?dst=1">Brightspace</a> under Lab Exercises: Practicing with R (this link should get you there). <em>I’ll note again: if the file doesn’t knit and you can’t get it to work, that’s okay! You can upload this .Rmd file.</em></li>
+</ol>
+<p>Have feedback for me? Send it to me at <a href="bit.ly/psy203exit">the same exit survey link</a>—select Lab 2.</p>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
