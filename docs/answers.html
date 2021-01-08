@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
+  <link rel="alternate" type="application/rss+xml" href="https://jdbest.github.io/r-psych-stats/answers.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -19,29 +20,33 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>psychRstats: Learning Statistics for Psychology in R: psychRstats
-  </title>
+  <title>psychRstats: Learning Statistics for Psychology in R: psychRstats: Exercise answers</title>
 
 
   <link rel="icon" type="image/png" href="images/favicon.png"/>
 
-  <meta name="article:author" content="Justin Dainer-Best"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="psychRstats: Learning Statistics for Psychology in R: psychRstats&#10;"/>
+  <meta property="og:title" content="psychRstats: Learning Statistics for Psychology in R: psychRstats: Exercise answers"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://jdbest.github.io/r-psych-stats/./images/marble.png"/>
+  <meta property="og:image:width" content="500"/>
+  <meta property="og:image:height" content="500"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="psychRstats: Learning Statistics for Psychology in R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
-  <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="psychRstats: Learning Statistics for Psychology in R: psychRstats&#10;"/>
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:title" content="psychRstats: Learning Statistics for Psychology in R: psychRstats: Exercise answers"/>
+  <meta property="twitter:image" content="https://jdbest.github.io/r-psych-stats/./images/marble.png"/>
+  <meta property="twitter:image:width" content="500"/>
+  <meta property="twitter:image:height" content="500"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","site"]}},"value":[{"type":"character","attributes":{},"value":["psychRstats\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Justin Dainer-Best"]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/r-psych-stats"]},{"type":"character","attributes":{},"value":["Bard College"]},{"type":"character","attributes":{},"value":["https://psychology.bard.edu/"]}]}]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing","preview","navbar","collections"]}},"value":[{"type":"character","attributes":{},"value":["psychRstats: Exercise answers"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]},{"type":"character","attributes":{},"value":["images/marble.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["search"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["posts"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["feed_items_max"]}},"value":[{"type":"integer","attributes":{},"value":[25]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1267,7 +1272,7 @@
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
   <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1278,12 +1283,12 @@
 
 </head>
 
-<body>
+<body class="layout-listing">
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"psychRstats\n","authors":[{"author":"Justin Dainer-Best","authorURL":"https://jdbest.github.io/r-psych-stats","affiliation":"Bard College","affiliationURL":"https://psychology.bard.edu/"}]}
+{"title":"psychRstats: Exercise answers","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1296,7 +1301,6 @@
 </a>
 <a href="index.html" class="title">psychRstats: Learning Statistics for Psychology in R</a>
 <a href="index.html">Home</a>
-<a href="exercises.html">Exercises</a>
 <a href="answers.html">Answers</a>
 </div>
 <div class="nav-right">
@@ -1307,32 +1311,702 @@
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
+<!--radix_placeholder_article_listing-->
+
+<style type="text/css">
+
+/* Styles for listing layout (hide title) */
+.layout-listing d-title, .layout-listing .d-title {
+  display: none;
+}
+
+/* Styles for posts lists (not auto-injected) */
+
+
+.posts-with-sidebar {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.posts-list .description h2,
+.posts-list .description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.posts-list .description h2 {
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.posts-list h2.post-tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+}
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.posts-list .post-preview {
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0;
+}
+
+.post-preview-last {
+  border-bottom: none !important;
+}
+
+.posts-list .posts-list-caption {
+  grid-column: screen;
+  font-weight: 400;
+}
+
+.posts-list .post-preview h2 {
+  margin: 0 0 6px 0;
+  line-height: 1.2em;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.posts-list .post-preview p {
+  margin: 0 0 12px 0;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  position: relative;
+  max-width: 500px;
+}
+.posts-list .post-preview img {
+  width: 100%;
+  display: block;
+}
+
+.posts-list .metadata {
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-bottom: 18px;
+}
+
+.posts-list .metadata > * {
+  display: inline-block;
+}
+
+.posts-list .metadata .publishedDate {
+  margin-right: 1em;
+}
+
+.posts-list .metadata .tags {
+  margin-top: 1em;
+}
+
+.posts-list .tags .tag {
+  color: rgba(0,0,0,0.67);
+  padding: 0.3em 0.5em;
+  margin: 0;
+  font-size: 80%;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.posts-list img {
+  opacity: 1;
+}
+
+.posts-list img[data-src] {
+  opacity: 0;
+}
+
+.posts-more {
+  clear: both;
+}
+
+
+.posts-sidebar {
+  font-size: 16px;
+}
+
+.posts-sidebar h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.categories ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}
+
+.categories li>a {
+  border-bottom: none;
+}
+
+.categories li>a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.categories .active {
+  font-weight: 600;
+}
+
+.categories .category-count {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+@media(min-width: 768px) {
+  .posts-list .post-preview h2 {
+    font-size: 26px;
+  }
+  .posts-list .post-preview .thumbnail {
+    float: right;
+    width: 35%;
+    margin-bottom: 0;
+  }
+  .posts-list .post-preview .description {
+    float: left;
+    width: 45%;
+  }
+  .posts-list .post-preview .metadata {
+    float: left;
+    width: 15%;
+    margin-top: 8px;
+  }
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.5em;
+    font-size: 16px;
+  }
+  .posts-with-sidebar .posts-list {
+    float: left;
+    width: 72%;
+  }
+  .posts-with-sidebar .posts-sidebar {
+    float: right;
+    width: 20%;
+    margin-top: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+.downlevel .posts-list .post-preview {
+  color: inherit;
+}
+
+</style>
+
+<script type="application/javascript">
+
+function init_posts_list() {
+
+  function load_image(img) {
+    var src = $(img).attr('data-src');
+    if (src) {
+      $(img).attr('src', src);
+      $(img).load(function() {
+        img.removeAttribute('data-src');
+      });
+    }
+  }
+
+  function set_posts_visible(posts, visible) {
+    if (visible) {
+
+      // show bottom border by default
+      $(posts).removeClass('post-preview-last');
+
+      // apply limits if need be
+      var max_posts = 25;
+      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
+      if (apply_limits && posts.length > max_posts) {
+        posts = $(posts).slice(0, max_posts);
+      } else {
+        $('.posts-more a').addClass('hidden');
+      }
+
+      // apply last style
+      $(posts.slice(-1)[0]).addClass('post-preview-last');
+
+      $(posts).removeClass('hidden');
+      $(posts).find('img[data-src]').each(function(i, img) {
+        load_image(img);
+      });
+    } else {
+      $(posts).addClass('hidden');
+    }
+  }
+
+  function apply_hash_filter() {
+
+    // clear active state
+    $('.categories .active').removeClass('active');
+
+    // mark all posts invisible to start
+    set_posts_visible($('.posts-list').children('a'), false);
+
+    // if we have a hash filter
+    if (window.location.hash) {
+
+      // mark posts that match the category visible
+      var page_category = window.location.hash.replace("#", "");
+      var posts = $('.post-metadata').map(function(idx, script) {
+        var metadata = $.parseJSON($(script).html());
+        var post = null;
+        $.each(metadata.categories, function(idx, category) {
+          category = category.replace(/ /g,"_");
+          if (category == page_category) {
+            post = $(script).parent().get();
+            return false;
+          }
+        });
+        return post;
+      });
+      set_posts_visible(posts, true);
+
+      // mark the hash active
+      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
+
+    } else {
+
+      // no hash filter, make all posts visible (subject to max display)
+      set_posts_visible($('.posts-list').children(), true);
+
+    }
+  }
+
+  // more articles
+  function apply_post_limits(apply) {
+    if (apply) {
+      $('.posts-container').addClass('posts-apply-limit');
+      $('.posts-more a').removeClass('hidden');
+    } else {
+      $('.posts-container').removeClass('posts-apply-limit');
+      $('.posts-more a').addClass('hidden');
+    }
+  }
+
+  // hash filter handling
+  apply_hash_filter();
+  $(window).on('hashchange',function() {
+    apply_post_limits(true);
+    apply_hash_filter();
+  });
+
+  // more articles link
+  $('.posts-more a').click(function(e) {
+    e.preventDefault();
+    apply_post_limits(false);
+    apply_hash_filter();
+    return false;
+  });
+
+}
+
+</script>
+
+
+
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
+<div class="posts-list">
+<h1 class="posts-list-caption">psychRstats: Exercise answers</h1>
+<a href="posts/2020-11-20-lab-12-chisq-factorial-ANOVA/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","chi-squared","ANOVA","dplyr","effect-size"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 20, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-11-20-lab-12-chisq-factorial-ANOVA/chisq-and-factorial-ANOVA-lab-12-completed_files/figure-html5/unnamed-chunk-6-1.png"/>
+</div>
+<div class="description">
+<h2>Chi-square and factorial ANOVA (Lab 12) Exercises, Completed</h2>
+<p>Completed exercises for the twelfth lab</p>
+</div>
+</a>
+<a href="posts/2020-11-18-final-lab-project/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["practice","rlanguage"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 18, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Final Lab Project</h2>
+<p>PSY 203: Group final project</p>
+</div>
+</a>
+<a href="posts/2020-11-16-lab-12-chisq-fanova/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","chi-squared","ANOVA","dplyr","effect-size"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 16, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 12: Chi-square and factorial ANOVA</h2>
+<p>PSY 203: Lab 12.</p>
+</div>
+</a>
+<a href="posts/2020-11-09-lab-11-plagiarism/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["academic-writing"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 9, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 11: Plagiarism and Academic Writing</h2>
+<p>PSY 203: Lab 11.</p>
+</div>
+</a>
+<a href="posts/2020-11-06-lab-10-correg-completed/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","correlation","regression","real-data","effect-sizes"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 6, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-11-06-lab-10-correg-completed/correg-lab-10-completed_files/figure-html5/unnamed-chunk-3-1.png"/>
+</div>
+<div class="description">
+<h2>Correlation and Regression (Lab 10) Exercises, Completed</h2>
+<p>Completed exercises for the tenth lab</p>
+</div>
+</a>
+<a href="posts/2020-11-02-lab-10-correg/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","correlation","regression","real-data","effect-sizes"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 2, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 10: Correlation and Regression</h2>
+<p>PSY 203: Lab 10.</p>
+</div>
+</a>
+<a href="posts/2020-10-30-lab-9-anova-completed/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","ANOVA","real-data","effect-sizes"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 30, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-10-30-lab-9-anova-completed/anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png"/>
+</div>
+<div class="description">
+<h2>One-way ANOVA (Lab 09) Exercises, Completed</h2>
+<p>Completed exercises for the ninth lab</p>
+</div>
+</a>
+<a href="posts/2020-10-26-lab-9-anova/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","ANOVA","real-data","effect-sizes"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 26, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 09: One-Way ANOVA</h2>
+<p>PSY 203: Lab 9.</p>
+</div>
+</a>
+<a href="posts/2020-10-19-solo-project/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["practice","rlanguage"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 19, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 08: The solo project</h2>
+<p>PSY 203: Lab 8.</p>
+</div>
+</a>
+<a href="posts/2020-10-18-lab-7-t-tests-completed/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","t-tests"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 18, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-10-18-lab-7-t-tests-completed/lab-7-completed_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>t-tests (Lab 07) Exercises, Completed</h2>
+<p>Completed exercises for the seventh lab</p>
+</div>
+</a>
+<a href="posts/2020-10-12-lab-7-t-tests/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","t-tests"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 12, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 07: t-tests</h2>
+<p>PSY 203: Lab 7.</p>
+</div>
+</a>
+<a href="posts/2020-10-09-lab-6-visualizations-ii/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","group_by"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 9, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-10-09-lab-6-visualizations-ii/lab-6-completed_files/figure-html5/unnamed-chunk-3-1.png"/>
+</div>
+<div class="description">
+<h2>Visualizing Data II (Lab 06) Exercises, Completed</h2>
+<p>Completed exercises for the sixth lab</p>
+</div>
+</a>
+<a href="posts/2020-10-05-lab-6/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","group_by"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 5, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 06: Visualizing Data</h2>
+<p>PSY 203: Lab 6.</p>
+</div>
+</a>
+<a href="posts/2020-10-02-lab-5-completed/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","dplyr","t-tests"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 2, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-10-02-lab-5-completed/index_files/figure-html5/ex7-1.png"/>
+</div>
+<div class="description">
+<h2>Refreshing and Reviewing (Lab 05) Exercises, Completed</h2>
+<p>Completed exercises for the fifth lab</p>
+</div>
+</a>
+<a href="posts/2020-09-28-lab-5-one-sample-t/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","dplyr","t-tests"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 28, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 05: One-Sample t-tests</h2>
+<p>PSY 203: Lab 5.</p>
+</div>
+</a>
+<a href="posts/2020-09-24-lab-4-answers/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","dplyr","distributions"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 25, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-09-24-lab-4-answers/lab-4-completed_files/figure-html5/unnamed-chunk-3-1.png"/>
+</div>
+<div class="description">
+<h2>Hypothesis Testing (Lab 04) Exercises, Completed</h2>
+<p>Completed exercises for the fourth lab</p>
+</div>
+</a>
+<a href="posts/2020-09-21-lab-4-hypothesis-testing/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","dplyr","distributions"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 21, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 04: Hypothesis Testing</h2>
+<p>PSY 203: Lab 4.</p>
+</div>
+</a>
+<a href="posts/2020-09-19-lab-3-answers/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","dplyr"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 19, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-09-19-lab-3-answers/lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png"/>
+</div>
+<div class="description">
+<h2>Visualizing Data (Lab 03) Exercises, Completed</h2>
+<p>Completed exercises for the third lab</p>
+</div>
+</a>
+<a href="posts/2020-09-14-lab-3-visualizing-data/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","dplyr"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 14, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 03: Visualizing Data</h2>
+<p>PSY 203: Lab 3.</p>
+</div>
+</a>
+<a href="posts/2020-09-11-lab-2-answers/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","comments","dplyr"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 10, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Introduction to R (Lab 02) Exercise Answers</h2>
+<p>Completed exercises for the second lab</p>
+</div>
+</a>
+<a href="posts/2020-09-07-lab-2-exercises-for-the-intro-to-r/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","comments","dplyr"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 7, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 02: Exercises for the Intro to R Lab</h2>
+<p>Practicing with R and subsetting</p>
+</div>
+</a>
+<a href="posts/2020-08-31-intro-to-r/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","comments","dplyr"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 31, 2020</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Lab 01: Introduction to R</h2>
+<p>PSY 203: Lab 1</p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#academic-writing">academic-writing</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#ANOVA">ANOVA</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#chi-squared">chi-squared</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#comments">comments</a>
+<span class="category-count">(3)</span>
+</li>
+<li>
+<a href="#correlation">correlation</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#distributions">distributions</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#dplyr">dplyr</a>
+<span class="category-count">(11)</span>
+</li>
+<li>
+<a href="#effect-size">effect-size</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#effect-sizes">effect-sizes</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#ggplot">ggplot</a>
+<span class="category-count">(14)</span>
+</li>
+<li>
+<a href="#group_by">group_by</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#practice">practice</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#real-data">real-data</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#regression">regression</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#rlanguage">rlanguage</a>
+<span class="category-count">(21)</span>
+</li>
+<li>
+<a href="#t-tests">t-tests</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#visualization">visualization</a>
+<span class="category-count">(14)</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="posts-more">
+<a href="#">More articles &raquo;</a>
+</div>
+</div>
+<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>psychRstats</h1>
+<h1>psychRstats: Exercise answers</h1>
 
 </div>
 
-<div class="d-byline">
-  Justin Dainer-Best <a href="https://jdbest.github.io/r-psych-stats" class="uri">https://jdbest.github.io/r-psych-stats</a> (Bard College)<a href="https://psychology.bard.edu/" class="uri">https://psychology.bard.edu/</a>
-  
-
-</div>
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="images/marble.png" width="20%" height="20%" style="display: block; margin: auto;" /></p>
-</div>
-<h2 id="welcome">Welcome</h2>
-<p>This is the website for an R package (<code>{psychRstats}</code>) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best. It is intended to be used alongside an undergraduate course in statistics, or an understanding of statistics based on such a course.</p>
-<p>Installing the package (see below) will download vignettes and exercises which build on one another to develop skills while also exploring basic statistical concepts like <em>t</em>-tests, ANOVA, and null-hypothesis statistical testing.</p>
-<p>The primary website for that course was <a href="https://faculty.bard.edu/~jdainerbest/psy-203" class="uri">https://faculty.bard.edu/~jdainerbest/psy-203</a> with all labs being listed on <a href="https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html">the lab website</a>; the labs as used in the course are available at <a href="https://github.com/jdbest/psy-203/" class="uri">https://github.com/jdbest/psy-203/</a>. This repository takes the <code>{learnr}</code> tutorials which were the basis of those labs and deploys them as package vignettes, meaning that you can use <em>this page</em> to go through all 13 labs.</p>
-<h2 id="installation">Installation</h2>
-<p>For information on installing R and RStudio, visit the website.</p>
-<p>In R, you can install directly from github:</p>
-<pre><code>
-install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;jdbest/r-psych-stats&quot;)</code></pre>
+
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

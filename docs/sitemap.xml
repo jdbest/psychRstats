@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
+    <loc>https://jdbest.github.io/r-psych-stats/answers.html</loc>
+    <lastmod>2020-12-03T17:35:34-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/exercises.html</loc>
+    <lastmod>2021-01-08T12:28:34-05:00</lastmod>
+  </url>
+  <url>
     <loc>https://jdbest.github.io/r-psych-stats/</loc>
-    <lastmod>2020-12-03T17:25:50-05:00</lastmod>
+    <lastmod>2021-01-08T11:53:00-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/10-lab/</loc>
+    <lastmod>2020-11-19T16:24:40-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/13-test-yourself-II/</loc>
+    <lastmod>2020-11-19T16:25:50-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/09-lab/</loc>
+    <lastmod>2020-11-19T16:23:58-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/08-lab/</loc>
+    <lastmod>2020-11-19T16:23:08-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/12-test-yourself-I/</loc>
+    <lastmod>2020-11-19T16:21:58-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/07-lab/</loc>
+    <lastmod>2020-11-19T16:21:12-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/06-lab/</loc>
+    <lastmod>2020-11-19T16:20:26-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/05-lab/</loc>
+    <lastmod>2020-11-19T16:19:34-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/04-lab/</loc>
+    <lastmod>2020-11-19T16:18:35-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/03-lab/</loc>
+    <lastmod>2020-11-19T16:17:34-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/posts/02-lab/</loc>
+    <lastmod>2020-11-19T16:16:22-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r/</loc>
+    <lastmod>2020-10-02T09:41:21-04:00</lastmod>
   </url>
 </urlset>

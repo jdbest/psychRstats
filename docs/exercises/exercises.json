@@ -1,0 +1,22 @@
+[
+  {
+    "path": "exercises/01-intro-to-r/",
+    "title": "Lab 01: Introduction to R",
+    "description": "PSY 203: Lab 1",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-08-31",
+    "categories": [
+      "rlanguage",
+      "comments",
+      "dplyr"
+    ],
+    "preview": {},
+    "last_modified": "2020-10-02T09:41:21-04:00",
+    "input_file": {}
+  }
+]

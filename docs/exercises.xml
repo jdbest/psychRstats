@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>psychRstats: Learning Statistics for Psychology in R</title>
+    <link>https://jdbest.github.io/r-psych-stats</link>
+    <atom:link href="https://jdbest.github.io/r-psych-stats/exercises.xml" rel="self" type="application/rss+xml"/>
+    <description>psychRstats
+</description>
+    <image>
+      <title>psychRstats: Learning Statistics for Psychology in R</title>
+      <url>https://jdbest.github.io/r-psych-stats/images/favicon.png</url>
+      <link>https://jdbest.github.io/r-psych-stats</link>
+    </image>
+    <generator>Distill</generator>
+    <lastBuildDate>Mon, 31 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Lab 01: Introduction to R</title>
+      <dc:creator>Justin Dainer-Best</dc:creator>
+      <link>https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r</link>
+      <description>PSY 203: Lab 1</description>
+      <category>rlanguage</category>
+      <category>comments</category>
+      <category>dplyr</category>
+      <guid>https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r</guid>
+      <pubDate>Mon, 31 Aug 2020 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,252 @@
+[
+  {
+    "path": "posts/10-lab/",
+    "title": "Chi-square and factorial ANOVA (Lab 12) Exercises, Completed",
+    "description": "Completed exercises for the twelfth lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-11-20",
+    "categories": [
+      "rlanguage",
+      "chi-squared",
+      "ANOVA",
+      "dplyr",
+      "effect-size"
+    ],
+    "preview": "posts/10-lab/chisq-and-factorial-ANOVA-lab-12-completed_files/figure-html5/unnamed-chunk-6-1.png",
+    "last_modified": "2020-11-19T16:24:40-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/13-test-yourself-II/",
+    "title": "Final Lab Project",
+    "description": "PSY 203: Group final project",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-11-18",
+    "categories": [
+      "practice",
+      "rlanguage"
+    ],
+    "preview": {},
+    "last_modified": "2020-11-19T16:25:50-05:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/09-lab/",
+    "title": "Correlation and Regression (Lab 10) Exercises, Completed",
+    "description": "Completed exercises for the tenth lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-11-06",
+    "categories": [
+      "rlanguage",
+      "visualization",
+      "ggplot",
+      "correlation",
+      "regression",
+      "real-data",
+      "effect-sizes"
+    ],
+    "preview": "posts/09-lab/correg-lab-10-completed_files/figure-html5/unnamed-chunk-3-1.png",
+    "last_modified": "2020-11-19T16:23:58-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/08-lab/",
+    "title": "One-way ANOVA (Lab 09) Exercises, Completed",
+    "description": "Completed exercises for the ninth lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-10-30",
+    "categories": [
+      "rlanguage",
+      "visualization",
+      "ggplot",
+      "ANOVA",
+      "real-data",
+      "effect-sizes"
+    ],
+    "preview": "posts/08-lab/anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png",
+    "last_modified": "2020-11-19T16:23:08-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/12-test-yourself-I/",
+    "title": "Lab 08: The solo project",
+    "description": "PSY 203: Lab 8.",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-10-19",
+    "categories": [
+      "practice",
+      "rlanguage"
+    ],
+    "preview": {},
+    "last_modified": "2020-11-19T16:21:58-05:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/07-lab/",
+    "title": "t-tests (Lab 07) Exercises, Completed",
+    "description": "Completed exercises for the seventh lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-10-18",
+    "categories": [
+      "rlanguage",
+      "visualization",
+      "ggplot",
+      "t-tests"
+    ],
+    "preview": "posts/07-lab/lab-7-completed_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2020-11-19T16:21:12-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/06-lab/",
+    "title": "Visualizing Data II (Lab 06) Exercises, Completed",
+    "description": "Completed exercises for the sixth lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-10-09",
+    "categories": [
+      "rlanguage",
+      "visualization",
+      "ggplot",
+      "group_by"
+    ],
+    "preview": "posts/06-lab/lab-6-completed_files/figure-html5/unnamed-chunk-3-1.png",
+    "last_modified": "2020-11-19T16:20:26-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/05-lab/",
+    "title": "Refreshing and Reviewing (Lab 05) Exercises, Completed",
+    "description": "Completed exercises for the fifth lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-10-02",
+    "categories": [
+      "rlanguage",
+      "visualization",
+      "ggplot",
+      "dplyr",
+      "t-tests"
+    ],
+    "preview": "posts/05-lab/index_files/figure-html5/ex7-1.png",
+    "last_modified": "2020-11-19T16:19:34-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/04-lab/",
+    "title": "Hypothesis Testing (Lab 04) Exercises, Completed",
+    "description": "Completed exercises for the fourth lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-09-25",
+    "categories": [
+      "rlanguage",
+      "visualization",
+      "ggplot",
+      "dplyr",
+      "distributions"
+    ],
+    "preview": "posts/04-lab/lab-4-completed_files/figure-html5/unnamed-chunk-3-1.png",
+    "last_modified": "2020-11-19T16:18:35-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/03-lab/",
+    "title": "Visualizing Data (Lab 03) Exercises, Completed",
+    "description": "Completed exercises for the third lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-09-19",
+    "categories": [
+      "rlanguage",
+      "visualization",
+      "ggplot",
+      "dplyr"
+    ],
+    "preview": "posts/03-lab/lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png",
+    "last_modified": "2020-11-19T16:17:34-05:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
+    "path": "posts/02-lab/",
+    "title": "Introduction to R (Lab 02) Exercise Answers",
+    "description": "Completed exercises for the second lab",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-09-10",
+    "categories": [
+      "rlanguage",
+      "comments",
+      "dplyr"
+    ],
+    "preview": {},
+    "last_modified": "2020-11-19T16:16:22-05:00",
+    "input_file": {}
+  }
+]
