@@ -36,4 +36,3 @@ Imports:
   tibble,
   HistData
 RoxygenNote: 7.1.1
-VignetteBuilder: knitr
