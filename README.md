@@ -19,3 +19,12 @@ devtools::install_github("jdbest/r-psych-stats")
 ```
 
 However, this is **not yet ready for use**.
+
+## Running tutorials
+
+Once installed, tutorials can be used to learn basic concepts. The basic syntax is as follows:
+
+```
+library(psychRstats)
+lab("intro-to-r")
+```
