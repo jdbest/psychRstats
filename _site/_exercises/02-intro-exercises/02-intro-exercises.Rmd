@@ -53,9 +53,11 @@ This exercise gives you the opportunity to do the following:
 2. Understand how to load a package.
 3. Practice writing your own code in an R Markdown document. 
 
-You should have downloaded the exercises already. If not, [click here](./).
+You should have downloaded the exercises already. If not, [click here](../01-intro-to-r/#download-exercises).
 
 ### Run this code in the RStudio console to download the exercise directly into your working directory
+
+(Make sure to copy the full line, all the way to the closing parenthesis.)
 
 ```{r}
 usethis::use_zip("https://github.com/jdbest/psy-203/raw/master/lab02.zip", cleanup = TRUE)
