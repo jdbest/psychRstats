@@ -26,8 +26,7 @@ If you're prompted to update packages, you should respond as prompted -- usually
 Once installed, tutorials can be used to learn basic concepts. The basic syntax is as follows:
 
 ```
-library(psychRstats)
-lab("intro-to-r")
+psychRstats::lab("intro-to-r")
 ```
 
 Once you've gotten through the first tutorial, you'll want to download the exercises as well. 
@@ -39,5 +38,5 @@ Download all exercises and data in one go when you first get started. After runn
 (We discuss setting a working directory [in the first lab](https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r/#set-a-working-directory), but there's also an entry about it [on the wiki](https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory).)
 
 ```
-usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE)
+psychRstats::download_exercises()
 ```
