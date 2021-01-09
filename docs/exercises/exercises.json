@@ -1,5 +1,26 @@
 [
   {
+    "path": "exercises/02-intro-exercises/",
+    "title": "02: Introduction to R: Exercises",
+    "description": "Practicing with R and subsetting",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-09-07",
+    "categories": [
+      "rlanguage",
+      "comments",
+      "dplyr"
+    ],
+    "contents": "\nFor each lab, you should expect to download the lab’s files locally to your computer, and run them there. If you’re using https://rstudio.cloud/ instead of running things locally, the same instructions should work today.\nPrevious labs\nFind the full list of labs here.\nFind Lab 1 here\nBelow are instructions for the exercise corresponding to that tutorial.\nMake sure you’re in the right working directory\nIn the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don’t remember, look at the wiki page I’ve created on setting a working directory.\nCheck that you’re in the directory you expect by running getwd() (the parentheses should have nothing in them). Just copy and paste that into the console and hit return/enter.\nToday’s lab\nIf you haven’t already completed the tutorial, you can open it up by pasting the following lines to run in your RStudio console, which will open the tutorial.\n\n\nlibrary(psychRstats)\nlab(\"intro-to-r\")\n\n\n\nOnce you’ve completed the tutorial, return here for an exercise that you will turn in at the end of the lab. Make sure that you close the tutorial window. (If you’d like to keep it open, refer to this page on the wiki.)\nExercise\nThis exercise gives you the opportunity to do the following:\nPractice selecting subsets of data.\nUnderstand how to load a package.\nPractice writing your own code in an R Markdown document.\nYou should have downloaded the exercises already. If not, click here.\nRun this code in the RStudio console to download the exercise directly into your working directory\n\n\nusethis::use_zip(\"https://github.com/jdbest/psy-203/raw/master/lab02.zip\", cleanup = TRUE)\n\n\n\nAfter running this, a folder should open with the exercise. You can double click on the file called intro-to-r-exercises.Rmd to open it in RStudio. (If you’d prefer, you should be able to find it in the Files pane: open the folder “lab02” and click on the name of the exercise.)\nSolutions\nA version of the document with solutions is viewable here.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-01-08T19:47:06-05:00",
+    "input_file": "02-intro-exercises.utf8.md"
+  },
+  {
     "path": "exercises/01-intro-to-r/",
     "title": "01: Introduction to R",
     "description": {},
@@ -15,8 +36,9 @@
       "comments",
       "dplyr"
     ],
+    "contents": "\nThe first steps involve setting up R and RStudio, getting acquainted with them, and making sure everything is working.\nInstall R\nIf you are using your own computer\nInstall R from https://cran.r-project.org/—it is available for Mac OS, Windows, and Linux. Choose the appropriate link, download, and install.\nInstall RStudio from https://www.rstudio.com/products/rstudio/download/—choose the free “RStudio Desktop” (all the way to the left). You can run R without RStudio, but I strongly recommend using RStudio (since that is what you’ll be seeing for all examples).\nIf you are using RStudio Cloud\nMake an account on RStudio.Cloud, and then skip to the next section.\nInstall this package\nOnce you’ve installed R, but before doing anything else, you can install this package. Doing so will also install a number of other imoportant packages.\nOccasionally R may ask you questions like “These packages have more recent versions available. It is recommended to update all of them. Which would you like to update?” And you will need to select a response (e.g., type 1 and hit enter to download all updates).\n\n\ninstall.packages(\"devtools\")\ndevtools::install_github(\"jdbest/r-psych-stats\")\n\n\n\nInstalling the package will also install all of the tutorials. However, I’ve also written exercises, which you’ll want to download somewhere on your machine. For that purpose, you should follow the instructions below on setting a working directory and then downloading exercises.\nSet a working directory\nYou’ll need to make a decision about what will be your “working directory”. The working directory is the folder on your computer where you’ll be storing the exercise files, and where R assumes you’re working. (For example, you might use the “Downloads” folder on most computers is located in your user folder/Downloads, e.g., mine might be in /Users/jdbest/Downloads on a Mac or in C:/Users/jdbest/Downloads on a PC.)\nThere’s more info on this on the github wiki. You can always return there with questions.\nUse the Session > Set Working Directory menu. Navigate to whatever folder you’ll be using for this class. (You might want to use something like /yourusername/Bard/PSY 203/labs – but anything is fine so long as you know where it is.) This is the sort of folder that when you go to Finder (Mac) or Windows Explorer (PC), you can find all of the files associated with this class in one place. (If you’re on a shared computer, you may have limited choices. Documents folders are fine!)\nOptional: You can permanently set your working directory using the Tools Menu. Go to Tools: Global Options, and then click the “Browse…” under Default working directory. Navigate to the same folder you just set.\nIf you’re familiar with some coding, you can also set your working directory using the setwd() command—just be sure to enclose the path in quotation marks, e.g., setwd(\"/yourusername/Bard/PSY 203/labs\").\n(Read more about working directories in R and RStudio.)\nTo check that you’ve got the right working directory set up, run the following code in the RStudio console (just copy and paste it and then hit enter):\n\n\ngetwd()\n\n\n\nDoes it say what you expected it to? If not, either ask for help or read through the above again.\nRStudio Cloud\nYour files will download to “/home/rstudio-user” – if when you run getwd() you don’t get that, run the following code: setwd(\"/home/rstudio-user\").\nIf you want to download files from the Cloud to your own computer, follow these instructions.\nDownload exercises\nWhen you have decided on your working directory—even if you’re sticking with \"~\" (your user folder), you can download the lab exercises. They will all download from a zip file, and all be R Markdown files designed to run in RStudio. You should have downloaded the package before this will work. If you’re only planning to download the exercises but not this package, first run install.packages(\"usethis\") to download the relevant package to make that download.\nOnce all packages are installed, run the following:\n\n\nusethis::use_zip(\"https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip\", cleanup = TRUE)\n\n\n\nThe lab documents will download to your computer in the directory (folder) you defined above—into your working directory. (If you didn’t define it, it’ll download into whatever working directory was the default, usually your user folder.) It may pop up a folder where the file lives.\nErrors and Problems\nIf you run into any errors, consider looking to the wiki page on troubleshooting for solutions. (You can also scroll up and click “Wiki”.)\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-01-08T17:49:47-05:00",
+    "last_modified": "2021-01-08T19:45:40-05:00",
     "input_file": "intro-to-r.utf8.md"
   }
 ]

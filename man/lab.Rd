@@ -17,7 +17,7 @@ Load a tutorial from the psychRstats package using packages
 }
 \examples{
 \dontrun{
-lab("intro-to-R")
+lab("intro-to-r")
 }
 
 }

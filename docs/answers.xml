@@ -2,14 +2,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>psychRstats: Learning Statistics for Psychology in R</title>
-    <link>https://jdbest.github.io/r-psych-stats</link>
+    <link>https://jdbest.github.io/r-psych-stats/</link>
     <atom:link href="https://jdbest.github.io/r-psych-stats/answers.xml" rel="self" type="application/rss+xml"/>
     <description>psychRstats
 </description>
     <image>
       <title>psychRstats: Learning Statistics for Psychology in R</title>
       <url>https://jdbest.github.io/r-psych-stats/images/favicon.png</url>
-      <link>https://jdbest.github.io/r-psych-stats</link>
+      <link>https://jdbest.github.io/r-psych-stats/</link>
     </image>
     <generator>Distill</generator>
     <lastBuildDate>Fri, 20 Nov 2020 00:00:00 +0000</lastBuildDate>
