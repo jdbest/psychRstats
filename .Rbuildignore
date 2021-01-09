@@ -4,5 +4,6 @@
 ^_site$
 ^docs$
 ^\*.zip$
+^exercises$
 .gitignore
 README.md
