@@ -55,16 +55,13 @@ This exercise gives you the opportunity to do the following:
 
 You should have downloaded the exercises already. If not, [click here](../01-intro-to-r/#download-exercises).
 
-### Run this code in the RStudio console to download the exercise directly into your working directory
-
-(Make sure to copy the full line, all the way to the closing parenthesis.)
+Today's file is called "03-visualizing.Rmd". Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or (if in the correct working directory) you should be able to open the file by running the following code:
 
 ```{r}
-usethis::use_zip("https://github.com/jdbest/psy-203/raw/master/lab02.zip", cleanup = TRUE)
+library(psychRstats)
+run_exercise("02-lab")
 ```
-
-After running this, a folder should open with the exercise. You can double click on the file called `intro-to-r-exercises.Rmd` to open it in RStudio. (If you'd prefer, you should be able to find it in the Files pane: open the folder "lab02" and click on the name of the exercise.)
 
 ## Solutions
 
-A version of the document with solutions is viewable [here](https://faculty.bard.edu/~jdainerbest/psy-203/posts/2020-09-11-lab-2-answers/).
+A version of the document with solutions can be seen [here](../../answers/02-lab/).

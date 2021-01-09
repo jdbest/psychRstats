@@ -195,8 +195,9 @@ summary {
 
 
 <p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <a href="https://jdbest.github.io/r-psych-stats/answers.html" class="uri">https://jdbest.github.io/r-psych-stats/answers.html</a></p>
-<p>This R Markdown file can be gotten to by looking on the <a href="https://faculty.bard.edu/jdainerbest/psy-203/labslist.html">the lab class website</a>.</p>
+<p>Feel free to change the top to have your name! You’re the person answering these exercises, now.</p>
 <p>This is the set of <em>exercises</em> for you to complete after the first lab tutorial. Please read the text and try the code as it follows!</p>
+<p>If you would like to refer to the tutorial while also working on this document, there are instructions on the <a href="https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
 <hr />
 <p>These documents are the second way (after tutorials like what you’ve already completed) that you will interact with data in R Studio during our lab classes. The “markdown” here is similar to what you may have seen on web forums, on Wikipedia, or elsewhere online. It is pretty straightforward, and mostly just involves basic word processing. Fortunately, you can also find some excellent “cheatsheets” by searching online for an R Markdown cheatsheet, or start <a href="https://rmarkdown.rstudio.com/lesson-15.html">here on the R studio website</a>.</p>
 <p>Want to learn more about Markdown? I recommend spending 15 minutes completing this tutorial: <a href="https://commonmark.org/help/tutorial/" class="uri">https://commonmark.org/help/tutorial/</a></p>
@@ -206,12 +207,12 @@ summary {
 <p>You can try executing the “chunk” below by clicking the <em>Run</em> button within the chunk, or by placing your cursor inside it and pressing (on a Mac) <em>Cmd+Shift+Enter</em>. (On a PC, try instead pressing <em>Ctrl+Shift+Enter</em>. Many shortcuts in R will use the Command key on a Mac and the Control key on a PC.) If you only want to execute (run) one line at a time, you can always just hit <em>Cmd+Enter</em> (<em>Ctrl+Enter</em>) while the cursor is on that line—or just a selection of text.</p>
 <pre class="r"><code># Load the relevant packages
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.3     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>The code that you just ran loads the <code>tidyverse</code> package that we installed last lab. You need to load some packages every time you load RStudio; this is one of them.</p>
@@ -223,9 +224,9 @@ library(tidyverse)</code></pre>
 <div id="knitting" class="section level2">
 <h2>Knitting</h2>
 <p>In a code chunk, any code you write will “run” in the console when you run it, or when you Knit the document. Knitting an R Markdown document will create an HTML file (a website) with all of your code. Try hitting the Knit button (it has a ball of yarn next to it) at the top of this pane. You should get a browser that pops up with the whole document. (You can close it to return here.)</p>
-<p>If there’s an error, that’s okay—it might be because your working directory isn’t quite right.</p>
+<p>If there’s an error, that’s okay—it might be because your working directory isn’t quite right. Try to fix it!</p>
 <p>These HTML files contain all of the code and its output, and are saved in the same folder as the .Rmd (R Markdown) file. Again: click the <em>Knit</em> button or press <em>Cmd+Shift+K</em> [<em>Ctrl+Shift+K</em>] to see the HTML file.</p>
-<p>When you are asked to submit the results of your work, that HTML file is what you should submit. (But I’ll also always accept the .Rmd version if the code won’t knit.)</p>
+<p>These HTML files are useful for sharing with others to show what you’ve done!</p>
 <p>A general rule about knitting R Markdown: do it <strong>early</strong> and <strong>often</strong>. Much better to find errors right away, rather than figuring them out when you thought you were done.</p>
 <p>If you have any questions at this point, take some time to make sense of everything!</p>
 <hr />
@@ -236,7 +237,8 @@ library(tidyverse)</code></pre>
 <p>When you ran the line that downloaded this file, it also downloaded a CSV (comma-separated value) file with data about penguins. You can read more about that data <a href="https://github.com/allisonhorst/palmerpenguins">here</a>. (That will be a link when you knit this—either knit it and click, or copy and paste the URL into your web browser if you’d like to read it.) The data is from Horst, Hill, &amp; Gorman (2020).</p>
 <p>You can use the function <code>read_csv()</code> to, well, read a CSV file. Try running the following code. (How? Scroll back up and read the section “How to run code in these documents”.)</p>
 <pre class="r"><code>read_csv(&quot;penguins.csv&quot;)</code></pre>
-<pre><code>## Parsed with column specification:
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
 ##   species = col_character(),
 ##   island = col_character(),
@@ -261,10 +263,11 @@ library(tidyverse)</code></pre>
 ##  9 Adelie  Torge…           34.1          18.1              193        3475
 ## 10 Adelie  Torge…           42            20.2              190        4250
 ## # … with 334 more rows, and 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
-<p>It should just work—this is the great thing about having your working directory set! (If it doesn’t work on its own, try adding <code>lab02/</code> before the name <code>&quot;penguins.csv&quot;</code>, and again in the code chunk below.) You might see some language about how it’s been “Parsed with column specification”—great! It’s telling you the types (classes) of variables.</p>
+<p>It should just work—this is the great thing about having your working directory set! (If it doesn’t work on its own, try adding <code>02-lab/</code> before the name <code>&quot;penguins.csv&quot;</code>, and again in the code chunk below. Because of <em>where</em> it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.) You might see some language about how it’s been “Parsed with column specification”—great! It’s telling you the types (classes) of variables.</p>
 <p>Now, you may remember from the tutorial, that if it’s printing to the screen, it’s <em>not</em> actually saving this data. To do that, we need to assign it to a variable. Run this code:</p>
 <pre class="r"><code>penguins &lt;- read_csv(&quot;penguins.csv&quot;)</code></pre>
-<pre><code>## Parsed with column specification:
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
 ##   species = col_character(),
 ##   island = col_character(),
@@ -351,9 +354,9 @@ library(tidyverse)</code></pre>
 </ol>
 <p>Then, copy that code below—and after the 40, add a comma, and a second thing to filter by. You want to <code>filter()</code> only rows from <code>penguins</code> where (again) the bill length in millimeters (column name: <code>bill_length_mm</code>) is more than 40, <strong>and</strong> where the species is Adelie.</p>
 <ol start="12" style="list-style-type: decimal">
-<li>When that’s all done, Knit the document again. If there are errors, try to solve them. And then upload the HTML file to <a href="https://bardcollege.brightspace.com/d2l/le/content/6809/viewContent/17789/View?dst=1">Brightspace</a> under Lab Exercises: Practicing with R (this link should get you there). <em>I’ll note again: if the file doesn’t knit and you can’t get it to work, that’s okay! You can upload this .Rmd file.</em></li>
+<li>When that’s all done, Knit the document again. If there are errors, try to solve them.</li>
 </ol>
-<p>Have feedback for me? Send it to me at <a href="bit.ly/psy203exit">the same exit survey link</a>—select Lab 2.</p>
+<p>The completed version of this document is here: <a href="https://jdbest.github.io/r-psych-stats/answers.html" class="uri">https://jdbest.github.io/r-psych-stats/answers.html</a></p>
 </div>
 
 

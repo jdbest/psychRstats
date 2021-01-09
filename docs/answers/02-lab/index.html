@@ -18,6 +18,73 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
   <!--radix_placeholder_meta_tags-->
 <title>psychRstats: Learning Statistics for Psychology in R: Introduction to R (Lab 02) Exercise Answers</title>
 
@@ -1942,6 +2009,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_distill-->
   <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
@@ -1984,6 +2052,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-title">
 <h1>Introduction to R (Lab 02) Exercise Answers</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
 <p><p>Completed exercises for the second lab</p></p>
 </div>
 
@@ -1998,8 +2068,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </div>
 <p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <a href="https://jdbest.github.io/r-psych-stats/answers.html" class="uri">https://jdbest.github.io/r-psych-stats/answers.html</a></p>
-<p>This R Markdown file can be gotten to by looking on the <a href="https://faculty.bard.edu/jdainerbest/psy-203/labslist.html">the lab class website</a>.</p>
 <p>This is the set of <em>exercises</em> for you to complete after the first lab tutorial. Please read the text and try the code as it follows!</p>
+<p>If you would like to refer to the tutorial while also working on this document, there are instructions on the <a href="https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
 <hr />
 <p>These documents are the second way (after tutorials like what you’ve already completed) that you will interact with data in R Studio during our lab classes. The “markdown” here is similar to what you may have seen on web forums, on Wikipedia, or elsewhere online. It is pretty straightforward, and mostly just involves basic word processing. Fortunately, you can also find some excellent “cheatsheets” by searching online for an R Markdown cheatsheet, or start <a href="https://rmarkdown.rstudio.com/lesson-15.html">here on the R studio website</a>.</p>
 <p>Want to learn more about Markdown? I recommend spending 15 minutes completing this tutorial: <a href="https://commonmark.org/help/tutorial/" class="uri">https://commonmark.org/help/tutorial/</a></p>
@@ -2007,16 +2077,20 @@ document.addEventListener('DOMContentLoaded', function() {
 <h3 id="how-to-run-code-in-these-documents">How to run code in these documents</h3>
 <p>You can try executing the “chunk” below by clicking the <em>Run</em> button within the chunk, or by placing your cursor inside it and pressing (on a Mac) <em>Cmd+Shift+Enter</em>. (On a PC, try instead pressing <em>Ctrl+Shift+Enter</em>. Many shortcuts in R will use the Command key on a Mac and the Control key on a PC.) If you only want to execute (run) one line at a time, you can always just hit <em>Cmd+Enter</em> (<em>Ctrl+Enter</em>) while the cursor is on that line—or just a selection of text.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# Load the relevant packages
-library(tidyverse)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='co'># Load the relevant packages</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>The code that you just ran loads the <code>tidyverse</code> package that we installed last lab. You need to load some packages every time you load RStudio; this is one of them.</p>
 <p>When you ran that line, it may have “minimized” the Console window and made this pane larger. That’s fine! It’s still running the code in the Console, though. If you click on the word Console below, you’ll see that it loaded several packages.</p>
 <p>Loading a package lets you use the <strong>functions</strong> (commands) that the package has. Functions like the chain operator <code>%&gt;%</code> or <code>select()</code> that we talked about in the tutorial come from a package called <code>dplyr</code>; that package is loaded by running the above command, but we could also load it explicitly with:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(dplyr)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>You can add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Cmd+Option+I</em>. (<em>Ctrl+Alt+I</em> on a PC.) Hit enter twice (from the end of this line) and give it a try! Write something like 5+5 in the code chunk you create, and try running it. Make sure the code works!</p>
 <h2 id="knitting">Knitting</h2>
@@ -2032,10 +2106,11 @@ library(dplyr)</code></pre>
 <p>When you ran the line that downloaded this file, it also downloaded a CSV (comma-separated value) file with data about penguins. You can read more about that data <a href="https://github.com/allisonhorst/palmerpenguins">here</a>. (That will be a link when you knit this—either knit it and click, or copy and paste the URL into your web browser if you’d like to read it.) The data is from Horst, Hill, &amp; Gorman (2020).</p>
 <p>You can use the function <code>read_csv()</code> to, well, read a CSV file. Try running the following code. (How? Scroll back up and read the section “How to run code in these documents”.)</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-read_csv(&quot;penguins.csv&quot;)</code></pre>
-<pre><code>
-# A tibble: 344 x 8
+<div class="sourceCode">
+<pre><code><span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"penguins.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 8
    species island bill_length_mm bill_depth_mm flipper_length_…
    &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
  1 Adelie  Torge…           39.1          18.7              181
@@ -2054,8 +2129,10 @@ read_csv(&quot;penguins.csv&quot;)</code></pre>
 <p>It should just work—this is the great thing about having your working directory set! (If it doesn’t work on its own, try adding <code>02-lab/</code> before the name <code>"penguins.csv"</code>, and again in the code chunk below. Because of <em>where</em> it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.) You might see some language about how it’s been “Parsed with column specification”—great! It’s telling you the types (classes) of variables.</p>
 <p>Now, you may remember from the tutorial, that if it’s printing to the screen, it’s <em>not</em> actually saving this data. To do that, we need to assign it to a variable. Run this code:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins &lt;- read_csv(&quot;penguins.csv&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"penguins.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>You should see the variable <code>penguins</code> appear in the Environment pane. (If you don’t see the Environment pane, it’s one of the tabs in the top right!) It’ll tell you that there are 344 observations of 8 variables—i.e., the data frame has 344 rows and 8 columns.</p>
 <p>(Aside: You don’t <em>have</em> to use code to import data. You could also [a] click on the “Import Dataset” button in the Environment pane, or [b] in the Files pane, click on the filename of the file when you’re in the right folder.)</p>
@@ -2064,21 +2141,23 @@ penguins &lt;- read_csv(&quot;penguins.csv&quot;)</code></pre>
 <li>What class is this variable <code>penguins</code>? In the code chunk below, use the <code>class()</code> function to find out! (It should give you more than one answer, including that it’s a “tbl” [table] and a data.frame)</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-class(penguins)</code></pre>
-<pre><code>
-[1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot; </code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot; </code></pre>
 </div>
 <ol start="2" type="1">
 <li>Using both the <code>select()</code> function from the <code>dplyr</code> package <strong>and</strong> the <code>$</code> operator (which is the default in R), print the column <code>species</code> from <code>penguins</code>. (Do one on the first line and the other on the second.)</li>
 </ol>
 <p>Remember that you should use the chain <code>%&gt;%</code> with <code>select()</code>. Feel free to refer back to your notes or the tutorial!</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# with select()
-penguins %&gt;% select(species)</code></pre>
-<pre><code>
-# A tibble: 344 x 1
+<div class="sourceCode">
+<pre><code><span class='co'># with select()</span>
+<span class='va'>penguins</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>species</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 1
    species
    &lt;chr&gt;  
  1 Adelie 
@@ -2092,11 +2171,12 @@ penguins %&gt;% select(species)</code></pre>
  9 Adelie 
 10 Adelie 
 # … with 334 more rows</code></pre>
-<pre class="r"><code>
-# or:
-select(penguins, species)</code></pre>
-<pre><code>
-# A tibble: 344 x 1
+<div class="sourceCode">
+<pre><code><span class='co'># or:</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 1
    species
    &lt;chr&gt;  
  1 Adelie 
@@ -2110,11 +2190,12 @@ select(penguins, species)</code></pre>
  9 Adelie 
 10 Adelie 
 # … with 334 more rows</code></pre>
-<pre class="r"><code>
-# with the $
-penguins$species</code></pre>
-<pre><code>
-  [1] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
+<div class="sourceCode">
+<pre><code><span class='co'># with the $</span>
+<span class='va'>penguins</span><span class='op'>$</span><span class='va'>species</span>
+</code></pre>
+</div>
+<pre><code>  [1] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
   [6] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
  [11] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
  [16] &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;    &quot;Adelie&quot;   
@@ -2188,10 +2269,11 @@ penguins$species</code></pre>
 <li>Using the <code>slice()</code> function from <code>dplyr</code>, print the 20th row of <code>penguins</code>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins %&gt;% slice(20)</code></pre>
-<pre><code>
-# A tibble: 1 x 8
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 8
   species island bill_length_mm bill_depth_mm flipper_length_…
   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
 1 Adelie  Torge…             46          21.5              194
@@ -2201,12 +2283,13 @@ penguins %&gt;% slice(20)</code></pre>
 <li>Okay, now combine them! Use a chain <code>%&gt;%</code> between the commands. First, <code>select()</code> the column <code>species</code> from <code>penguins</code> and second, <code>slice()</code> the 20th row.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins %&gt;% 
-  select(species) %&gt;%
-  slice(20)</code></pre>
-<pre><code>
-# A tibble: 1 x 1
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>species</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 1
   species
   &lt;chr&gt;  
 1 Adelie </code></pre>
@@ -2223,10 +2306,11 @@ penguins %&gt;%
 </ol>
 <p>Technically, there’s a comma that comes <strong>before</strong> the 4, inside the brackets. (Nothing comes before the comma.) Try that out—you should get the same result.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins[4]</code></pre>
-<pre><code>
-# A tibble: 344 x 1
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 1
    bill_depth_mm
            &lt;dbl&gt;
  1          18.7
@@ -2240,10 +2324,11 @@ penguins[4]</code></pre>
  9          18.1
 10          20.2
 # … with 334 more rows</code></pre>
-<pre class="r"><code>
-penguins[,4] # same thing</code></pre>
-<pre><code>
-# A tibble: 344 x 1
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span><span class='op'>[</span>,<span class='fl'>4</span><span class='op'>]</span> <span class='co'># same thing</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 1
    bill_depth_mm
            &lt;dbl&gt;
  1          18.7
@@ -2257,19 +2342,21 @@ penguins[,4] # same thing</code></pre>
  9          18.1
 10          20.2
 # … with 334 more rows</code></pre>
-<pre class="r"><code>
-identical(penguins[4], penguins[,4]) # tests if they&#39;re identical---TRUE</code></pre>
-<pre><code>
-[1] TRUE</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span>, <span class='va'>penguins</span><span class='op'>[</span>,<span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span> <span class='co'># tests if they're identical---TRUE</span>
+</code></pre>
+</div>
+<pre><code>[1] TRUE</code></pre>
 </div>
 <ol start="8" type="1">
 <li>If you put a comma <em>after</em> the number in the square brackets, it selects the <em>row</em> from a data frame. (e.g., <code>dataframe[number,]</code>). Try this with the <code>penguins</code> data: select the fifth <strong>row</strong> below.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins[5,]</code></pre>
-<pre><code>
-# A tibble: 1 x 8
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span><span class='op'>[</span><span class='fl'>5</span>,<span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 8
   species island bill_length_mm bill_depth_mm flipper_length_…
   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
 1 Adelie  Torge…           36.7          19.3              193
@@ -2279,10 +2366,11 @@ penguins[5,]</code></pre>
 <li>Okay, now combine them: select the fifth row of the fourth column in <code>penguins</code> by selecting <code>[5,4]</code> after the variable <code>penguins</code>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins[5,4]</code></pre>
-<pre><code>
-# A tibble: 1 x 1
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span><span class='op'>[</span><span class='fl'>5</span>,<span class='fl'>4</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 1
   bill_depth_mm
           &lt;dbl&gt;
 1          19.3</code></pre>
@@ -2295,10 +2383,11 @@ penguins[5,4]</code></pre>
 <p>You can click on the Help pane at the lower right of the RStudio window, or type <code>?filter</code> in the Console, to find out more about filter. Essentially, it does a logical check for some condition that you provide. What’s that mean?</p>
 <p>Well, <code>filter()</code> wants something that results in either TRUE or FALSE—a logical (or Boolean) response. Let’s check that out: just run the following code:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins$species == &quot;Chinstrap&quot;</code></pre>
-<pre><code>
-  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span><span class='op'>$</span><span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span>
+</code></pre>
+</div>
+<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [11] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [21] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [31] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -2338,11 +2427,12 @@ penguins$species == &quot;Chinstrap&quot;</code></pre>
 <p>The double equal sign can be read as “is this equal?” or a test for equivalence. If we put that <em>inside of a</em> <code>filter()</code> function, we’ll get <em>only the rows where it’s true</em>.</p>
 <p>So: <code>filter()</code> works like <code>select()</code> or <code>slice()</code>. Name the variable, use the <code>%&gt;%</code> chain, and then use the <code>filter()</code> function with this code inside the parentheses: <code>species == "Chinstrap"</code>. Give that a try below. (Remember not to include the tick marks ` themselves in the code you write.)</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins %&gt;%
-  filter(species == &quot;Chinstrap&quot;)</code></pre>
-<pre><code>
-# A tibble: 68 x 8
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 68 x 8
    species island bill_length_mm bill_depth_mm flipper_length_…
    &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
  1 Chinst… Dream            46.5          17.9              192
@@ -2364,11 +2454,12 @@ penguins %&gt;%
 <li>Last two pieces: use <code>filter()</code> again to only select rows from <code>penguins</code> where the bill length in millimeters (column name: <code>bill_length_mm</code>) is more than 40.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins %&gt;%
-  filter(bill_length_mm &gt; 40)</code></pre>
-<pre><code>
-# A tibble: 242 x 8
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bill_length_mm</span> <span class='op'>&gt;</span> <span class='fl'>40</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 242 x 8
    species island bill_length_mm bill_depth_mm flipper_length_…
    &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
  1 Adelie  Torge…           40.3          18                195
@@ -2386,12 +2477,13 @@ penguins %&gt;%
 </div>
 <p>Then, copy that code below—and after the 40, add a comma, and a second thing to filter by. You want to <code>filter()</code> only rows from <code>penguins</code> where (again) the bill length in millimeters (column name: <code>bill_length_mm</code>) is more than 40, <strong>and</strong> where the species is Adelie.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-penguins %&gt;%
-  filter(bill_length_mm &gt; 40, 
-         species == &quot;Adelie&quot;)</code></pre>
-<pre><code>
-# A tibble: 51 x 8
+<div class="sourceCode">
+<pre><code><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>bill_length_mm</span> <span class='op'>&gt;</span> <span class='fl'>40</span>, 
+         <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 51 x 8
    species island bill_length_mm bill_depth_mm flipper_length_…
    &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
  1 Adelie  Torge…           40.3          18                195
@@ -2410,6 +2502,7 @@ penguins %&gt;%
 <ol start="12" type="1">
 <li>When that’s all done, Knit the document again. If there are errors, try to solve them.</li>
 </ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
