@@ -20,13 +20,13 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-These are all of the instructions for Lab 3. [The list of labs is here](../../exercises.html).
+These are all of the instructions for Lab 3. [The list of labs is here](../../labs.html).
 
 This repository contains R labs for R package ([`{psychRstats}`](https://github.com/jdbest/r-psych-stats)) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.
 
 For each lab, you should expect to download the lab's files locally to your computer, and run them there. If you're using https://rstudio.cloud/ instead of running things locally, the same instructions should work today. 
 
-[Find the full list of labs here](../../exercises.html). 
+[Find the full list of labs here](../../labs.html). 
 
 Below are instructions for Lab 3.
 

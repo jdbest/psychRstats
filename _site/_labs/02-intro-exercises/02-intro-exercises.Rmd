@@ -22,7 +22,7 @@ For each lab, you should expect to download the lab's files locally to your comp
 
 ## Previous labs
 
-[Find the full list of labs here](../../exercises.html). 
+[Find the full list of labs here](../../labs.html). 
 
 * [Find Lab 1 here](../01-intro-to-r/)
 
