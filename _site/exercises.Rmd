@@ -1,12 +1,10 @@
 ---
 title: "psychRstats: Exercises"
 site: distill::distill_website
-listing: exercises
+listing: 
+  exercises: 
+    - 01-intro-to-r
+    - 02-intro-exercises
 preview: images/marble.png
-navbar: 
-  search: true
-collections:
-  exercises:
-    feed_items_max: 25
 ---
 
