@@ -23,6 +23,7 @@ Depends: R (>= 4.0)
 Encoding: UTF-8
 LazyData: true
 Imports: 
+  rstudioapi, 
   usethis,
   learnr,
   flair,
