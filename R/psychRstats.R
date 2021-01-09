@@ -77,15 +77,26 @@ lab <- function(name) {
 #' 
 #' @export
 run_exercise <- function(exercise, dir) {
-  if(missing(dir)) dir <- getwd()
+  if(missing(dir)) path <- getwd() else path <- file.path(dir)
   if(missing(exercise)) stop("You must choose an exercise to open, e.g., run_exercise(\"02-lab\"). \nRefer to the website if you have questions.\n")
   if(! is.character(exercise) & ! is.numeric(exercise)) stop("The lab exercise name must be a character/string vector, e.g., run_exercise(\"02-lab\"), or a number, e.g., run_exercise(2). \n")
   if(is.character(exercise)) exercise <- base::tolower(exercise)
-  if(is.numeric(exercise)) exercise <- exercises[exercises$number == exercise,]$name
-  path <- base::file.path(
-    dir, exercise, paste0(exercise, ".Rmd")
-    )
-  
+  if(is.numeric(exercise)) {
+    exercise <- exercises[exercises$number == exercise,]$name
+  }
+  # add exercises folder if missing
+  if(file.exists(file.path(path, "exercises"))) {
+    path <- file.path(path, "exercises")
+  }
+  # add folder for current exercise
+  path <- file.path(path, exercise)
+  if(!file.exists(path)) {
+    message <- paste("The directory indicated,",
+                     path, "doesn't exist.\n")
+    stop(message)
+  }
+  # add filename
+  path <- file.path(path, paste0(exercise, ".Rmd"))
   # code amended from usethis::edit_file() to either open file in
   # R Studio or to use file.edit() to open it
   if (rstudioapi::isAvailable() && 
@@ -116,4 +127,41 @@ list_tutorials <- function(n = NULL) {
   if(!is.null(n)) n <- n*2 # because print max is based on number
   # of entries, not number of rows...
   print(tutorials, max = n)
+}
+
+
+#-----------------------------------------------------
+#' Download exercises for psychRstats
+#' 
+#' Wraps around the \code{\link[usethis]{use_zip}} function
+#' to download the exercises. First checks whether the directory 
+#' already exists. If you'd like to overwrite an existing directory,
+#' you must use \code{force = TRUE}.
+#' 
+#' @param dir The directory defaults to your current working 
+#'   directory, but can be set otherwise. 
+#' @param force Whether to overwrite other folders if they exist
+#'   -- defaults to FALSE, but can overwrite by being set to TRUE.
+#' 
+#' @examples 
+#' \dontrun{
+#' download_exercises()
+#' download_exercises("~/Downloads/")
+#' download_exercises(dir = "~/Downloads/", force = TRUE)
+#' }
+#' @export
+download_exercises <- function(dir, force = FALSE) {
+  if(missing(dir)) path <- getwd() else path <- file.path(dir)
+  if(!file.exists(path)) {
+    message <- paste("The directory indicated,",
+                     path, "doesn't exist.\n")
+    stop(message)
+  }
+  if(file.exists(file.path(path, "exercises")) & ! force) {
+    message <- paste("There is already an exercises folder in the",
+                     "directory ", path, 
+                     "-- are you sure you want to overwrite?\n")
+    stop(message)
+  }
+  usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE, destdir = path)
 }

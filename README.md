@@ -38,8 +38,6 @@ Download all exercises and data in one go when you first get started. After runn
 
 (We discuss setting a working directory [in the first lab](https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r/#set-a-working-directory), but there's also an entry about it [on the wiki](https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory).)
 
-## NOTE THAT THIS WON'T YET WORK
-
 ```
-# usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE)
+usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE)
 ```

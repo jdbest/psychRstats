@@ -1,5 +1,10 @@
 # psychRstats: Updates
 
+## 0.0.3, 01-09-2021
+
+* Add more functions to simplify
+* Included two more labs and a zip version of exercises
+
 ## 0.0.2, 01-08-2021
 
 * Got package running and amended README
