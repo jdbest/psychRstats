@@ -17,7 +17,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
 These are all of the instructions for Lab 3. [The list of labs is here](../../labs.html).
@@ -36,7 +36,7 @@ Today's tutorial builds on the skills you learned in Labs 1 and 2; it uses the p
 
 To run the tutorial:
 
-```
+```{r}
 library(psychRstats)
 psychRstats::lab("03-visualizing")
 ```
@@ -60,5 +60,10 @@ This exercise gives you the opportunity to do the following:
 You should have downloaded the exercise and data already; today's file is called "03-visualizing.Rmd". Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file by running the following code:
 
 ```{r}
-usethis::edit_file(file.path(getwd(), "03-visualizing/03-visualizing.Rmd"))
+library(psychRstats)
+run_exercise("03-visualizing.Rmd")
 ```
+
+## Solutions
+
+A version of the document with solutions can be seen [here](../../answers/03-lab/).

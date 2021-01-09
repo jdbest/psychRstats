@@ -1,7 +1,6 @@
 ---
 title: "Visualizing Data: Exercises"
 author: "Justin Dainer-Best"
-date: "September 14, 2020"
 output: 
   html_document:
     self_contained: yes

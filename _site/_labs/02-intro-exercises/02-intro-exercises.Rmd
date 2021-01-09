@@ -55,7 +55,7 @@ This exercise gives you the opportunity to do the following:
 
 You should have downloaded the exercises already. If not, [click here](../01-intro-to-r/#download-exercises).
 
-Today's file is called "03-visualizing.Rmd". Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or (if in the correct working directory) you should be able to open the file by running the following code:
+Today's file is called "02-lab.Rmd". Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or (if in the correct working directory) you should be able to open the file by running the following code:
 
 ```{r}
 library(psychRstats)

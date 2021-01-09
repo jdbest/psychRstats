@@ -2072,8 +2072,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <h2 id="todays-tutorial">Today’s tutorial</h2>
 <p>Today’s tutorial builds on the skills you learned in Labs 1 and 2; it uses the packages you installed earlier, including the <code>library(psychRstats)</code>.</p>
 <p>To run the tutorial:</p>
-<pre><code>library(psychRstats)
-psychRstats::lab(&quot;03-visualizing&quot;)</code></pre>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/r-psych-stats'>psychRstats</a></span><span class='op'>)</span>
+<span class='fu'>psychRstats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/lab.html'>lab</a></span><span class='op'>(</span><span class='st'>"03-visualizing"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
 <p>Once you’ve completed the tutorial, return here for the exercise that you will turn in at the end of the lab. (If you’d like to keep the tutorial open, refer to <a href="https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously">this page on the wiki</a>.)</p>
 <h2 id="make-sure-youre-in-the-right-working-directory">Make sure you’re in the right working directory</h2>
 <p>In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don’t remember, <a href="https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory">look at the wiki page I’ve created on setting a working directory</a>.</p>
@@ -2088,11 +2093,14 @@ psychRstats::lab(&quot;03-visualizing&quot;)</code></pre>
 <p>You should have downloaded the exercise and data already; today’s file is called “03-visualizing.Rmd”. Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file by running the following code:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/edit_file.html'>edit_file</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"03-visualizing/03-visualizing.Rmd"</span><span class='op'>)</span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/r-psych-stats'>psychRstats</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/run_exercise.html'>run_exercise</a></span><span class='op'>(</span><span class='st'>"03-visualizing.Rmd"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="solutions">Solutions</h2>
+<p>A version of the document with solutions can be seen <a href="../../answers/03-lab/">here</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
