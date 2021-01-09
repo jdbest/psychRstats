@@ -17,10 +17,15 @@ statistical testing.
 }
 \section{psychRstats functions}{
 
-There is only one added function, \code{\link{lab}}, which
+There are two functions. The first, \code{\link{lab}},
 will run a tutorial. It is just a mask of 
 \code{learnr::run_tutorial()} with the package defaulting to 
 this one.
+
+The second function is \code{\link{run_exercise}},
+which will open an R Markdown exercise from this package for 
+editing, assuming you are in the current working directory.
+
 For more information, look at the main github site,
 \url{https://github.com/jdbest/r-psych-stats/}
 }

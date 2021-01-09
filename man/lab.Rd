@@ -9,7 +9,8 @@ lab(name)
 }
 \arguments{
 \item{name}{The name of the tutorial, in quotation marks. 
-A full list of tutorials can be found by running.}
+A full list of tutorials can be found by running 
+\code{\link{list_tutorials}}}
 }
 \description{
 Load a tutorial from the psychRstats package using packages
