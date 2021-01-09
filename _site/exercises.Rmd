@@ -5,6 +5,7 @@ listing:
   exercises: 
     - 01-intro-to-r
     - 02-intro-exercises
+    - 03-visualizing-data
 preview: images/marble.png
 ---
 

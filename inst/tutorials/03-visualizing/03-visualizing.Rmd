@@ -1,0 +1,528 @@
+---
+title: "Lab 03: Visualizing Displays of Information"
+description: >
+  Learn how to visualize data with graphs
+author: Justin Dainer-Best
+tutorial:
+  id: "PSY-203-F20"
+  version: 0.2
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+<!--## Getting started
+
+Do not edit this document! Complete this tutorial first by hitting "Run Document" or by running this code from your working directory:
+
+```
+rmarkdown::run("lab03/visualizing-data.Rmd")
+```
+
+You'll then return to the exercise.-->
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(error = TRUE)
+
+# Install new packages if they are not yet installed
+packages <- c("HistData", "palmerpenguins")
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages], 
+                   repos = "http://cran.us.r-project.org",
+                   quiet = TRUE)
+}
+rm(installed_packages, packages)
+library(palmerpenguins)
+data(penguins) # load the data
+```
+
+## Introduction
+
+Today's lab is focused on these objectives:
+
+* How can we learn about the data that we have?
+* What are some basics of visualizing data? 
+* *Why* do we visualize data? (Next page!)
+* How do we change basic features of a plot? 
+
+## Why visualize?
+
+We'll discuss visualizations more in class next week, but they'll be a throughline throughout the labs of this course. You've also already seen quite a few in class!---all of those histograms and density curves I show each day, as well as the applet that helped explore variance. 
+
+Visualizing data helps you to understand things about the *distribution* of the data, helps you to visually identify *outliers*, and helps you to *identify trends*. However, visualizing data may not always be enough---visualizations used alongside statistical tests may often be the best. 
+
+Visualizing data can also be satisfying and fun, as you get to make images that help to explore interesting questions. You may also see people using these same tools for creating art; see Danielle Navarro's work, for example: <https://art.djnavarro.net/>
+
+## Today's data
+
+We'll continue using data from the `penguins` data set you were introduced to in Lab 2. It should have been downloaded when you ran this document! If you run into errors, consult with the professor or course assistant (or just installed the packages yourself).
+
+```{r penguinsdata}
+library(palmerpenguins)
+data(penguins) # load the data
+```
+
+Loading this package and the data will load the same penguins data we used in the previous set of exercises into the environment of this tutorial. This means we can make use of it! For example, use the `class()` function to find out what type of class the `bill_length_mm` column of `penguins` is. (Suggestion: use the `$` operator to select the column from `penguins`.)
+
+```{r classspecies, exercise=TRUE}
+
+```
+
+```{r classspecies-solution}
+class(penguins$bill_length_mm)
+```
+
+```{r classspecies-check, echo=FALSE}
+grade_result(
+  pass_if(~ identical(.result, class(penguins$bill_length_mm)), "You found the class(penguins$bill_length_mm) -- well done!"),
+  fail_if(~ identical(.result, class(penguins %>% select(bill_length_mm))), "It looks like you used select() from `dplyr` instead of just calling penguins$bill_length_mm -- maybe try that?"),
+  fail_if(~ identical(.result, class("penguins")), "Did you use quotation marks? I don't recommend it! These are variables, so you need to name them! "),
+  fail_if(~ TRUE, "Not quite. You want to use the class() function to select the $bill_length_mm column from the penguins data frame.")
+)
+```
+
+*Note*: If you're not seeing a place to enter text and the buttons "run code" and "submit answer" here, you're missing a package! Copy this code---`remotes::install_github("rstudio-education/gradethis")`---and then close this document and run it in the console. You might also need to restart RStudio. If you've edited this document at all, that could be an issue, too... you can always try downloading it again. Any errors? Ask a course assistant or the professor for help. If you get an error that the `penguins` data doesn't exist (e.g., <span style="color:red;">Error: object 'penguins' not found</span>), you should also check in!
+
+---
+
+Let's learn something about this data. There are three commands that we'll introduced here: `head()`, `str()`, and `names()`. In the code chunk below this, try running each on `penguins` (i.e., with the word penguins, no quotes, in the parentheses). What can you learn about them?
+
+```{r str_sandbox, exercise=TRUE}
+
+```
+
+`head()` prints the first 6 lines of a data frame or vector; if you run `head(c(1:100))`, it will print the numbers 1 through 6 (rather than the whole 100). Because of the structure of penguins---its class, as you may remember, is data.frame, tbl, and "tbl_df"---it will by default print only the first 10 rows. Remember from the previous tutorial how when we ran the command `penguins$species` (on its own), it printed all 344 rows of the `species` column? Try running the below code to see how `head()` helps cut down on that:
+
+```{r head_sandbox, exercise=TRUE}
+head(penguins$species)
+```
+
+It also will print the **Levels** of the variable---those are the possible categories here. 
+
+`str()` prints the *structure* of the data---lists the names of the variables and what they look like---you'll see here that three are "factors" (categories!), two are "numeric", and three are "integers". 
+
+Lastly, `names()` just prints a vector of the column names. Each of those are ones you could call by printing `penguins$THATNAME` (the "THATNAME" won't work---it's a placeholder), like `penguins$species`. 
+
+We'll get to graphing shortly, but first, let's talk about the `count()` function:
+
+## `count()`ing data
+
+In class, we've been spending a lot of time discussing frequency tables. Fortunately, you don't *usually* have to do those by hand. There are two ways of doing this in R. One is called `table()` and one is called `count()` and comes from the `dplyr` package. 
+
+Take a look at the following code:
+
+```{r}
+# island is a list of islands:
+head(penguins$island)
+```
+
+We can tabulate it with `table()`
+
+```{r}
+table(penguins$island)
+```
+
+And compare to the `count()` function:
+
+```{r}
+penguins %>% count(island)
+```
+
+Any major differences? The main one is that the running `table()` on `penguins$island` creates a table:
+
+```{r}
+class(table(penguins$island))
+```
+
+Whereas `count()` makes another data frame, as you see here:
+
+```{r}
+penguins %>% count(island) %>% class()
+```
+
+Why does this matter? Well, you can actually create histograms or plots based on these formats of data! 
+
+There are other things we can do with `count()`, but this is just a start. 
+
+Try it yourself before we move on: use `count()` to find out how many `penguins` there are of each `sex`.
+
+```{r count_ex, exercise=TRUE}
+
+```
+
+```{r count_ex-solution}
+penguins %>% count(sex)
+```
+
+```{r count_ex-check, echo=FALSE}
+grade_result(
+  pass_if(~ identical(.result, penguins %>% count(sex)), "Yes, looks like 165 female, 168 male, and 11 penguins for whom a sex wasn't recorded."),
+  fail_if(~ identical(.result, table(penguins$sex)), "It looks like you used table() instead of count() -- try using count()!"),
+  fail_if(~ identical(.result, penguins %>% count("sex")), "Did you use quotation marks? I don't recommend it! These are variables, so you need to name them directly."),
+  fail_if(~ identical(.result, penguins), "Did you use the count() function? You need to!"),
+  fail_if(~ TRUE, "Not quite. You want to start by naming the penguins data frame, then using a chain (%>%), and then specifying that you want to count() the sex column.")
+)
+```
+
+## Histograms
+
+As you've learned in class, a histogram is a representation of the distribution of data in bins. You can use a histogram on any type of numerical data. 
+
+The most basic way of creating a histogram in R is the `hist()` function, which is built into R. Try running it below on the bill lengths data:
+
+```{r hist_play, exercise=TRUE}
+hist(penguins$bill_length_mm)
+```
+
+`hist()` makes automatic decisions for you, like how big the "bins" (or `breaks`) should be, but you can change them, too. In the following example, try setting the `breaks` to a number that makes sense to you, and switching the labels (`xlab` and `ylab`) and title (`main`) to more formal labels and titles. Then re-run the code. Play around with the number of `breaks.` 
+
+```{r hist_bills, exercise=TRUE}
+hist(penguins$bill_length_mm, 
+     breaks = 2,
+     xlab = "bill_length_mm",
+     ylab = "Frequency",
+     main = "Histogram of penguins$bill_length_mm"
+     )
+```
+
+---
+
+Okay, your turn. Create a histogram with `hist()` which shows the distribution of the body mass (in grams) of the penguins, which is in column `body_mass_g` in the `penguins` data frame. Set the breaks to 15, the x-axis label to `"Body Mass (in g)"`, y-axis label to `"Frequency"`, and the main title to `"Histogram of penguin body mass"`. 
+
+And feel free to copy the preceding code! That's how you learn (and it saves you from re-typing all that).
+
+```{r hist_bodymass, exercise=TRUE}
+
+```
+
+```{r hist_bodymass-solution}
+hist(penguins$body_mass_g, 
+     breaks = 15,
+     xlab = "Body Mass (in g)",
+     ylab = "Frequency", 
+     main = "Histogram of penguin body mass")
+```
+
+```{r hist_bodymass-check}
+grade_code("Nicely done!")
+```
+
+Interested (or bored) parties should look into the `help(hist)` file, and see what other options it has, like `col` for colors...
+
+## Throwback to `filter()`
+
+Remember how I've been talking about the chain operator (`%>%`)? Well, we can really chain things together with it. We introduced the `filter()` command last time. Let's make use of it.
+
+Imagine you want to `filter()` only the `penguins` from the `"Dream"` `island`, and then `count()` the number of penguins of each `species` on it. You could chain those statements together. Give it a try below. If you're struggling, please check in with me, a course assistant, or a classmate.
+
+```{r filterisland, exercise=TRUE}
+
+```
+
+```{r filterisland-solution}
+penguins %>% 
+  filter(island == "Dream") %>%
+  count(species)
+```
+
+```{r filterisland-hint}
+# Don't forget that you check if things are equivalent in the filter() function using the == (double equal sign)
+```
+
+```{r filterisland-check, echo=FALSE}
+grade_result(
+  pass_if(~ identical(.result, penguins %>% filter(island == "Dream") %>% count(species)), "Yes, 56 Adelie and 68 Chinstrap on there! "),
+  fail_if(~ identical(.result, penguins %>% filter(island == "Dream")), "Okay, great---you've filter()ed the data. Now add a %>% chain and then count() the species. "),
+  fail_if(~ identical(.result, penguins %>% count(species)), "Looks like you skipped straight to counting! Don't forget to filter() the data first, and THEN %>% chain on the count of species."),
+  fail_if(~ identical(.result, penguins %>% filter(island == "Dream", species == "Chinstrap")), "Looks like you included a second item in your filter. Just filter to the Dream island, and then count() the species."),
+  fail_if(~ identical(.result, penguins %>% filter(island == "Dream") %>% count("species")), "You don't need to put quotes on species! It's a variable, not a character string."),
+  fail_if(~ identical(.result, penguins %>% count(island, species)), "You've discovered something cool -- you can put multiple things in the count() function. However, you should move island to the filter() function, first! "),
+  fail_if(~ identical(.result, penguins %>% filter(island == Dream) %>% count(species)), "Dream DOES need to be in quotation marks, however."),
+  fail_if(~ TRUE, "Not quite. You want to start by naming the penguins data frame, then using a chain (%>%) and filter()ing by seeing if the island is equivalent to 'Dream', and then using count() to see how many species there are.")
+)
+```
+
+## Adding in more control
+
+More "exciting" than `hist()` is the graphing package `ggplot2`, and we'll only scratch the surface in class. However, it's actually pretty important for creating visualizations in R. 
+
+We load it like we load any libraries---the name in the function `library()`. 
+
+As prof of business analytics Di Cook notes, the function we used to install these, `install.packages("packagename")`, is like putting in a light bulb. Running `library(packagename)` is how you turn on the lights. You have to do it whenever you want to use them in a document---and then they're on for the document. Here, our `packagename` is `ggplot2`---let's turn it on. 
+
+```{r}
+library(ggplot2)
+```
+
+For an example use of `ggplot2`, this is the plot that the creator of the `penguins` data shows on the main page---a histogram of `flipper_length_mm`, divided by `species`. 
+
+```{r, echo=FALSE}
+ggplot(data = penguins %>% 
+         select(species, flipper_length_mm) %>% 
+         na.omit(), 
+       aes(x = flipper_length_mm)) +
+  geom_histogram(aes(fill = species), 
+                 alpha = 0.5, bins = 30,
+                 position = "identity") +
+  scale_fill_manual(values = c("darkorange","purple","cyan4")) +
+  theme_minimal() +
+  labs(x = "Flipper length (mm)",
+       y = "Frequency",
+       fill = "Species",
+       title = "Penguin flipper lengths")
+```
+
+We're not quite there, yet, though. Let's start with the basics.
+
+`ggplot2` is one of the power-houses in R, but its basic language is always more or less the same: we start by calling the `ggplot()` function and naming the data and our mapping aesthetic `(aes)`, and then we add on (with the plus sign, +) the types of plots we want. 
+
+For example, try running the following code. (You should get a blank plot. Feel free to try changing it around to other variables in the `penguins` data.)
+
+```{r plotpanel, exercise=TRUE}
+ggplot(data = penguins, 
+       mapping = aes(x = flipper_length_mm)
+       )
+```
+
+The `ggplot()` function "sets up" the plot. We've defined the x-axis by setting its aesthetics---we said that the x-axis would have `x = flipper_length_mm` (flipper length, in mm!), and so it shows up. But we haven't asked `ggplot2` to **plot** anything, yet. We will! 
+
+You'll see that we can often not write `mapping = aes()` -- the `ggplot()` function can understand when you just write `aes()` on its own. 
+
+Plotting in `ggplot2` involves geometries, or geoms. In this case, we'll use a `geom_histogram()`---literally add, with a plus sign:
+
+```{r geomhist1, exercise=TRUE}
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm)
+       ) +
+  geom_histogram()
+```
+
+You might see two messages there: one tells you that it picked a number of bins for your data---30. It actually looks okay, but try adding `bins = 15` **into the parentheses** of `geom_histogram()` and re-run it. Better? Worse? Obviously, from the image on the previous page, you know why this isn't normal---it's three different species! (The other message is telling you that it's removed missing data. Oh, well.)
+
+You might notice that your plot has a gray background, but the other one didn't. That's because `ggplot2` has **themes**. Let's try adding (again, with the + sign) one: add `theme_minimal()` below (but I don't recommend adding the `bins = 15` here): 
+
+```{r geomhist2, exercise=TRUE}
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm)
+       ) +
+  geom_histogram()
+```
+
+```{r geomhist2-solution}
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm)
+       ) +
+  geom_histogram() +
+  theme_minimal()
+```
+
+```{r geomhist2-check}
+grade_code()
+```
+
+---
+
+Axis labels in `ggplot2` are also easy: add on a `labs()` layer. Inside the `labs()` you just name each axis (and the title) by setting it equal to a character string, e.g., `x = "Variable name"`, `y = "Frequency"`, `title = "Good title for your graph"`. 
+
+Go ahead and take your code from above (it's okay if you have to look at the hint!) and copy it down here, then add appropriate `labs()`.
+
+```{r geomhist3, exercise=TRUE}
+
+```
+
+```{r geomhist3-hint}
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm)
+       ) +
+  geom_histogram(bins = 30) +
+  labs(x = "", 
+       y = "", 
+       title = "")
+```
+
+One last thing to add---we won't make it quite as pretty as they did, but that's okay. Add into the `aes()` code (with a comma to separate arguments---a comma right after `flipper_length_mm`) this bit: `fill = species`. This tells R to use different colors for each `species`. Try it out---again, just copying your code from above and adding this in. (This time, there's a "solution" to check, if needed.) You can also add a `fill` to the `labs()` to label the legend.
+
+```{r geomhist4, exercise=TRUE}
+
+```
+
+```{r geomhist4-solution}
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm, fill = species)
+       ) +
+  geom_histogram(bins = 30) +
+  labs(x = "Flipper length (mm)",
+       y = "Frequency",
+       fill = "Species of Penguin",
+       title = "Penguin flipper lengths")
+```
+
+There we go!
+
+Ultimately, I think that histograms aren't that useful---there are better plots for most things you might need, including checking on whether data is normally distributed. But they're good to know, anyway!
+
+## Quiz
+
+```{r quiz, echo=FALSE}
+quiz(
+  question("When do we use the library(packagename) command?",
+    answer("Every time we need to use a function that comes from the package"),
+    answer("Only once"),
+    answer("Once per document or R session, to 'turn on the lights' of the package", correct = TRUE),
+    answer("Never")
+  ),
+  question("What does the first ggplot() function do?",
+    answer("It sets up the initial 'panel' for the plot with the x and y axes", correct = TRUE),
+    answer("It creates the entire plot that you want with all its lines or points"),
+    answer("It doesn't do anything"),
+    answer("It tells R to plot the penguins data")
+  ),
+  question("Which is true about the count() function?",
+    answer("It counts unique values for any variable", correct = TRUE),
+    answer("It comes from the `dplyr` package", correct = TRUE),
+    answer("It increases by 1 each time it is run"),
+    answer("It is exactly equivalent to the table() function")
+  )
+)
+```
+
+Let's learn something about the basics of graphing before we keep going.
+
+## Graphing for psychology
+
+### Some tips for creating figures and tables in psychological research
+
+Figures and tables are a critical component of the research process. When used correctly, figures and tables enhance the message in your data. In fact, readers often report spending more time looking at figures and tables within a manuscript than they do reading the text---and I encourage spending a good amount of time doing so in my classes. Below is a non-exhaustive list of guidelines to help make your figures and tables effective.
+
+* Line graphs should be used when your independent variable is continuous.
+* Bar graphs should be used when your independent variable is discrete. 
+* Scatter plots should be used when you are interested in the relationship between individual scores on two or more variables. (Note: scatter plots can also be laid under a line graph to give detail about both the underlying data and the means.)
+* Do not be afraid to use tables; not all data is best represented by a chart!
+* Pie charts are rarely appropriate.
+* Figures and tables should be self-contained. This means that all axes and lines should be clearly labeled, legends should be included if necessary, and figures and tables should be accurately titled. Someone should be able to understand the story from the figure/table itself.
+* Make sure your figure and/or table can be clearly presented in either a PDF or PowerPoint. Your job is not done until the table or figure is in a format that is presentable to an audience. 
+* Be cautious of interpolating values. Do not assume that values between points on a line are linearly related.
+* Also be cautious of extrapolation. Do not assume the same pattern of results will extend beyond the boundaries of your data.
+* Scale your figure or table so that the frame of the page (or poster) is filled and large areas of unused white space are avoided.
+* When using error bars (we'll get here in a few labs), they should reflect the statistical analysis you are conducting on the data.
+* Minimize non-data related ink. This refers to anything that may potentially distract from the message. Grids, background shading, etc. should be avoided if they are not essential to your message. Axis lines and ticks should be thin compared to lines and symbols describing the data. Tick labels and axis titles should be brief but large enough to read in print.
+* Avoid nonessential add-ons including 3-D bars, drop shadows, gradient fills, pictograms (e.g. pyramids instead of bars). While fun to play with for graphic designers, they often make data confusing to understand. "Data is beautiful" is a lovely sentiment, but you'd be shocked by how often people take this to mean that they should create a plot with distracting images. 
+* Make sure that the symbols, lines, etc. which are depicting results from different groups are easily distinguished from one another.
+* It may be helpful to sketch out the graph by hand prior to attempting to create it in Excel or R.
+* Always consider if the figure or table helps the reader to understand your data. If so, include it. If not, skip it. Sometimes, the figure may help *you* but not the reader.
+
+## Box plots
+
+Another kind of plot that helps you get an understanding of your data---which is what a histogram is trying to do!---is a box plot, or box-and-whisker plot. Let's take a look at a basic one, divided by species:
+
+```{r, echo = FALSE}
+ggplot(penguins %>% select(species, body_mass_g) %>% na.omit(), 
+       aes(x = species, y = body_mass_g)) +
+  geom_boxplot() +
+  labs(x = "Species", y = "Body mass (g)", title = "Penguin body masses")
+```
+
+Those of you in classes with me before may have seen me use this kind of plot to show grades on exams. The thick line in the middle of the box is the median. The box covers data from the 25th to 75th percentile (i.e., a 50% interquartile range). The "whiskers" cover the full range of the data. If there are outliers, things look *slightly* different---the whiskers cover the range $\times 1.5$, but outliers appear as open dots.
+
+(There's also the `boxplot()` function, but we're focusing on `ggplot2`.)
+
+Similarly, we can start by running the panel-defining `ggplot()` command. Run the below by itself. Then, try adding on a `geom_boxplot()` with the + sign. Try adding on a `theme_classic()`. And try adding on `labs()` that label `x` as `"Species"`, `y` as `"Body mass (g)"`, and `title` as `"Penguin body masses"`. Then submit the code.
+
+```{r boxplot1, exercise=TRUE}
+ggplot(penguins, aes(x = species, y = body_mass_g))
+```
+
+```{r boxplot1-solution}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot() +
+  theme_classic() +
+  labs(x = "Species", y = "Body mass (g)", title = "Penguin body masses")
+```
+
+```{r boxplot1-check}
+grade_code()
+```
+
+You can also do the exact same thing, but with a `geom_violin()` instead of `geom_boxplot()`. Copy your code from above and try running it here, but replacing the `geom_boxplot()` with `geom_violin()`. This is the cool thing about `ggplot2`: change one thing, and you can have a different plot! 
+
+```{r geombox, exercise=TRUE}
+
+```
+
+```{r geombox-solution}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_violin() +
+  theme_classic() +
+  labs(x = "Species", y = "Body mass (g)", title = "Penguin body masses")
+```
+
+## Other plots
+###
+Other types of plots are easy in `ggplot2`. For example, there is a `geom_point()` for plotting points like a scatterplot:
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  theme_classic() +
+  labs(x = "Flipper length (mm)", y = "Body mass (g)", 
+       title = "Penguin weight by flipper length")
+```
+
+And there is a `geom_col()` for printing column plots (AKA bar plots):
+
+```{r}
+penguins.means <- penguins %>%
+  group_by(species) %>%
+  summarize(meanweight = mean(body_mass_g, na.rm = TRUE), .groups = "drop_last")
+
+ggplot(penguins.means, aes(x = species, y = meanweight)) +
+  geom_col() +
+  theme_classic() +
+  labs(x = "Species", y = "Body mass (g)", title = "Penguin body masses by species")
+```
+
+Note that you'll see that this kind of plot *needs you to give it summary data*, which is what the code above is doing. It couldn't just plot the weights---give that a try by running the code below, but note that I'm *telling you this is not accurate*. 
+
+```{r badplot, exercise=TRUE}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_col() +
+  theme_classic() +
+  labs(x = "Species", y = "Body mass (g)", title = "Penguin body masses by species")
+```
+
+Why do you think it's not accurate? Discuss in your groups, if possible. (Note the lines across the bars?)
+
+### Okay, let's practice this.
+
+Create a scatterplot using `ggplot()` and the `geom_point()` in the chunk below that compares `bill_length_mm` and `bill_depth_mm` for **only** the `"Gentoo"` `species`. This time, no need for labeling the axes. **Just** do this: create a new variable called `gentoo` which uses `filter()` to select the rows where `species` is `"Gentoo"`. Then create a `ggplot()` with that new data, with a mapping aesthetic `aes()` where `x` is the lengths and `y` is the depths. Lastly, **add on** a `geom_point()`. 
+
+```{r scatterplot, exercise=TRUE}
+
+```
+
+```{r scatterplot-solution}
+gentoo <- penguins %>% filter(species == "Gentoo")
+ggplot(gentoo, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point()
+```
+
+```{r scatterplot-check}
+grade_code()
+```
+
+## Exit survey
+
+This is where the tutorial ends, for today.
+
+To let me know any questions you might have, give feedback, or just comment on the material [fill out the survey](https://bit.ly/psy203exit). Select Lab 3. 
+
+Then, go back to the folder where this was downloaded and open `visualizing-data-exercises.Rmd` for today's exercises. 
