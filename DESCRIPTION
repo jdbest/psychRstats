@@ -2,7 +2,7 @@ Package: psychRstats
 Type: Package
 Title: College-Level Intro Stats Exercises in R
 Date: 2021-01-08
-Version: 0.1.0
+Version: 0.0.3
 Authors@R: 
     person(given = "Justin",
            family = "Dainer-Best",
