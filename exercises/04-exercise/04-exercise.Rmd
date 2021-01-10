@@ -7,23 +7,17 @@ output:
     self_contained: yes
 ---
 
-This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
+This document is meant to be used to practice after you have completed the tutorial for today's lab. You can find a completed version of these exercises at <https://jdbest.github.io/r-psych-stats/answers.html>
 
-If you would like to refer to the tutorial while also working on this document, open the HTML version of the tutorial (after closing it in RStudio) in a web browser to refer to the code. (In RStudio.Cloud, browse to the file in the Files pane, click on it, and click "View in Web Browser".)
+If you would like to refer to the tutorial while also working on this document, there are instructions on the [wiki](https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
 
-If you intend to work on both simultaneously, there are instructions on the [wiki](https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
-
-You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html).
+You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
 
 ## Objectives
 
 In the tutorial, you put some of the work we did in class into practice in exploring a hypothesis test. Instead of using the `friends` data we focused on in the tutorial, we'll be using some real data for this example. 
 
-## Turning it in
-
-I invite you to turn in this document on Brightspace, where I will provide some basic feedback. As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html>
-
-I will again encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now---it'll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document for me to review.
+I will again encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now---it'll create an HTML file in the folder where this file lives. Knitting will help to identify problems and provide a complete document for sharing.
 
 ## Loading packages
 
@@ -35,7 +29,6 @@ library(tidyverse)
 # library(dplyr)
 # library(ggplot2)
 ```
-
 
 ## Practicing a hypothesis test
 
@@ -140,11 +133,11 @@ Would that score (0 `tvhours`) be statistically significant if we're only intere
 
 
 
-Once you've completed the lab, knit it---and then upload the knitted HTML to Brightspace if you'd like feedback.
+Once you've completed the lab, knit it.
 
 ## Extension exercise
 
-If you have more time, want to practice, or are just interested, this is another exercise of the same vein; we'll return to this data. 
+If you have more time, want to practice, or are just interested, this is another exercise of the same vein. 
 
 This is a summary of data from *Pro Publica*, an investigative journalism organization. You can read more about the data here: <https://www.propublica.org/article/so-sue-them-what-weve-learned-about-the-debt-collection-lawsuit-machine>
 

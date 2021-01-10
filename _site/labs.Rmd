@@ -6,6 +6,7 @@ listing:
     - 01-intro-to-r
     - 02-intro-exercises
     - 03-visualizing-data
+    - 04-hypothesis-testing
 preview: images/marble.png
 ---
 
