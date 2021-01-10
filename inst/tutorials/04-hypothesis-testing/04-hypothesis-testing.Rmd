@@ -6,6 +6,7 @@ output:
     progressive: true
     allow_skip: true
     theme: lumen
+    self-contained: true
 runtime: shiny_prerendered
 tutorial:
   id: "pRs-04"
