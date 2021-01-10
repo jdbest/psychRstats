@@ -59,7 +59,7 @@ Today's file is called "02-lab.Rmd". Either open the file (in R through the File
 
 ```{r}
 library(psychRstats)
-run_exercise("02-lab")
+run_exercise("02-exercise")
 ```
 
 ## Solutions

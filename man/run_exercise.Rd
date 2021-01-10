@@ -8,7 +8,7 @@ run_exercise(exercise, dir)
 }
 \arguments{
 \item{exercise}{The name or number of the exercise, e.g., 
-\code{run_exercise(3)} or \code{run_exercise("03-visualizing")}}
+\code{run_exercise(3)} or \code{run_exercise("03-exercise")}}
 
 \item{dir}{The folder/directory to look for the exercise. Defaults
 to your current working directory.}
@@ -24,8 +24,8 @@ and consider changing R's working directory.
 }
 \examples{
 \dontrun{
-run_exercise("03-visualizing")
-run_exercise(2)
+run_exercise("03-exercise")
+run_exercise(3)
 }
 
 }

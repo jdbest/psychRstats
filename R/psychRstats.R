@@ -41,6 +41,7 @@ NULL
 #' @examples 
 #' \dontrun{
 #' lab("intro-to-r")
+#' lab(1)
 #' }
 #' 
 #' @export
@@ -65,22 +66,27 @@ lab <- function(name) {
 #' and consider changing R's working directory.
 #' 
 #' @param exercise The name or number of the exercise, e.g., 
-#'   \code{run_exercise(3)} or \code{run_exercise("03-visualizing")}
+#'   \code{run_exercise(3)} or \code{run_exercise("03-exercise")}
 #' @param dir The folder/directory to look for the exercise. Defaults
 #'   to your current working directory.
 #' 
 #' @examples
 #' \dontrun{
-#' run_exercise("03-visualizing")
-#' run_exercise(2)
+#' run_exercise("03-exercise")
+#' run_exercise(3)
 #' }
 #' 
 #' @export
 run_exercise <- function(exercise, dir) {
   if(missing(dir)) path <- getwd() else path <- file.path(dir)
-  if(missing(exercise)) stop("You must choose an exercise to open, e.g., run_exercise(\"02-lab\"). \nRefer to the website if you have questions.\n")
-  if(! is.character(exercise) & ! is.numeric(exercise)) stop("The lab exercise name must be a character/string vector, e.g., run_exercise(\"02-lab\"), or a number, e.g., run_exercise(2). \n")
-  if(is.character(exercise)) exercise <- base::tolower(exercise)
+  if(missing(exercise)) stop("You must choose an exercise to open, e.g., run_exercise(\"02-exercise\"). \nRefer to the website if you have questions.\n")
+  if(! is.character(exercise) & ! is.numeric(exercise)) stop("The lab exercise name must be a character/string vector, e.g., run_exercise(\"02-exercise\"), or a number, e.g., run_exercise(2). \n")
+  if(is.character(exercise)) {
+    exercise <- base::tolower(exercise)
+    if(grepl(pattern = ".rmd", x = exercise)) { # remove rmd if kept
+      exercise <- unlist(strsplit(exercise, split = "\\."))[1]
+    }
+  }
   if(is.numeric(exercise)) {
     exercise <- exercises[exercises$number == exercise,]$name
   }
@@ -91,8 +97,8 @@ run_exercise <- function(exercise, dir) {
   # add folder for current exercise
   path <- file.path(path, exercise)
   if(!file.exists(path)) {
-    message <- paste("The directory indicated,",
-                     path, "doesn't exist.\n")
+    message <- paste0("The directory indicated, ",
+                     path, "/ doesn't exist.\n")
     stop(message)
   }
   # add filename
@@ -160,7 +166,8 @@ download_exercises <- function(dir, force = FALSE) {
   if(file.exists(file.path(path, "exercises")) & ! force) {
     message <- paste("There is already an exercises folder in the",
                      "directory ", path, 
-                     "-- are you sure you want to overwrite?\n")
+                     "-- are you sure you want to overwrite?",
+                     "If so, re-run with force = TRUE.\n")
     stop(message)
   }
   usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE, destdir = path)

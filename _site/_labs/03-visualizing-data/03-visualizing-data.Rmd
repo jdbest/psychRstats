@@ -61,7 +61,7 @@ You should have downloaded the exercise and data already; today's file is called
 
 ```{r}
 library(psychRstats)
-run_exercise("03-visualizing.Rmd")
+run_exercise("03-exercise")
 ```
 
 ## Solutions

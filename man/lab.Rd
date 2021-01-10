@@ -19,6 +19,7 @@ Load a tutorial from the psychRstats package using packages
 \examples{
 \dontrun{
 lab("intro-to-r")
+lab(1)
 }
 
 }
