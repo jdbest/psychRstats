@@ -1,0 +1,521 @@
+---
+title: "Lab 04: Hypothesis-Testing in R"
+author: "Justin Dainer-Best"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+tutorial:
+  id: "pRs-04"
+  version: 0.3
+---
+
+```{r setup, include=FALSE}
+library(psychRstats)
+library(learnr)
+library(tidyverse)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+
+friends <- structure(list(height = c(60, 60, 74, 62, NA, 65, 65, NA, NA, 
+67, NA, 67, 69, 60, 71, 69, NA, 60, 64, 60.5, 59, 61.5, 65, 63, 
+NA, 65, 62, 63, 68, 67, 68, 68, 64, 67, 68, 63, 66, 64, 67, 68.5, 
+66, 67, 60, 72, 66, 73, 65, 67, 63, 66, 71, 64, 65, 70, 62, 71, 
+64, 63, 66, 68, 64, 70, NA, 64, 67, NA, 64, NA, 67, 69, 65, 60, 
+61, 65, 69, 6, 65, 73, 65, 73, 67, 5.6, 6, 6.2), tvhours = c(4, 
+1, 0, 0, NA, 5, 4, NA, NA, 10, NA, 0, 0, 15, 8, 4, NA, 2, 10, 
+4, 0, 5, 4, 3, NA, 7, 5, 14, 0, 6, 3, 0, 8, 0, 1, 10, 14, 15, 
+6, 4.5, 17, 7, 10, 7, 1, 3, 2, 25, 14, 5, 5, 2, 3, 2, 2, 7, 7, 
+4, 7, 10, 3, 5, NA, 20, 14, NA, 1, NA, 8, 3, 7, 0.5, 8, 3, 1, 
+20, 2, 1, 15, 14, 5, 1, 0, 4), gender = c("female", "female", 
+"male", "female", NA, "female", "female", "female", NA, NA, "male", 
+"female", "non-binary", "female", "male", NA, "male", "female", 
+NA, "female", "agender", "male", "male", "female", NA, "female", 
+"female", "female", "female", "female", "male", "male", "female", 
+"male", "male", "female", "male", "female", "male", "male", "female", 
+"female", "female", "male", NA, "male", "female", NA, "female", 
+"non-binary", "male", "female", NA, "male", "female", "male", 
+"female", "female", "male", "male", "female", "male", "female", 
+"female", "female", "female", "female", "female", "female", "female", 
+"female", "female", "female", "female", "female", "male", "female", 
+"male", "female", "male", "female", "female", "male", "male")), row.names = c(NA, 
+-84L), class = c("tbl_df", "tbl", "data.frame")) %>% na.omit()
+heights <- friends %>%
+  mutate(height = ifelse(height < 10, 
+                         floor(height) * 12 + (height - floor(height)),
+                         height))
+meanheight <- mean(heights$height)
+sdheight <- sd(heights$height)
+x <- 6*12 + 5
+z <- (x - meanheight) / sdheight
+```
+
+## Introduction
+###
+Today's lab is focused on these objectives:
+
+* Learning how to implement a basic hypothesis test in R
+* Learning some of the commands that allow you to get probabilities in R
+* Practicing the data visualization skills you learned in the previous lab
+
+Let's be clear from the get-go: the methods we're using today aren't very good. We're using data from a small sample and pretending it's from a population. That's fine, because we're learning here---but in the future, you **should not use a *z*-test to run analyses**. 
+
+### Research questions
+
+Today, we'll be using your `friends` data for a few simple questions:
+
+1. Would someone who was 6'5" be considered to have a "significantly different" height among Bard students?
+2. Would they be considered "significantly **tall**" compared to other Bard students?
+3. Would someone who doesn't watch any TV be considered a statistically-significant outlier among Bard students? 
+4. Would that person be considered to watch significantly **less** TV than other Bard students? 
+
+You'll note that (2) and (4) are *one-tailed hypotheses*.
+
+## Step 1
+###
+***Step 1: Restate question as a research and null hypothesis***
+
+We asked: Would someone who was 6'5" be considered to have a "significantly different" height among Bard students?
+
+```{r quiz1, echo=FALSE}
+quiz(
+  question("What is the framing of this for the research hypothesis?",
+           answer("People who are as tall as this person are different from Bard students as a whole", correct = TRUE), 
+           answer("People who are as tall as this person are taller than Bard students as a whole"), 
+           answer("People who are as tall as this person are shorter than Bard students as a whole"),
+           answer("People who are as tall as this person are no different from Bard students as a whole")
+           ),
+  question("What is the framing of this for the null hypothesis?", 
+           answer("People who are as tall as this person are different from Bard students as a whole"), 
+           answer("People who are as tall as this person are taller than Bard students as a whole"), 
+           answer("People who are as tall as this person are shorter than Bard students as a whole"),
+           answer("People who are as tall as this person are no different from Bard students as a whole", correct = TRUE)
+           )
+)
+```
+
+### Statistical Framing
+
+Ultimately, we're interested in means, as you'll remember---the statistical framing of these hypotheses. How do the means of people like this person compare to the means of students at Bard. We can frame the research hypothesis as 
+
+$\mu_{\mathrm{Bard~students~of~this~height}}\neq\mu_{\mathrm{Bard~students~in~general}}$ 
+
+and the null hypothesis as 
+
+$\mu_{\mathrm{Bard~students~of~this~height}}=\mu_{\mathrm{Bard~students~in~general}}$
+
+## Steps 2 and 3
+###
+***Step 2: Determine the characteristics of the comparison distribution***
+
+***Step 3: Determine the sample cutoff score to reject the null hypothesis***
+
+In this case, we're continuing to use the distribution of *z*-scores.
+
+```{r quiz2, echo=FALSE}
+quiz(
+  question(
+    "Which of the following is/are true about a z-score distribution? (Select all that apply)",
+    answer("We assume that it is normally-distributed", correct = TRUE),
+    answer("It has a mean of 0", correct = TRUE),
+    answer("It has a standard deviation of 1", correct = TRUE),
+    answer("It is symmetrical", correct = TRUE),
+    incorrect = "Actually, all of these are true!"
+  ),
+  question(
+    "What is the cut-off score for the z-distribution when using a cutoff of p = .05?",
+    answer("The cut-off depends on the data"), 
+    answer("The cut-off is +/- 1.64"),
+    answer("The cut-off is +/- 1.96", correct = TRUE),
+    answer("The cut-off is +/- 2.57")
+  )
+)
+```
+
+With those two questions, we've gotten the hang of Steps 2 and 3 for the first research question!
+
+### R cutoff and `qnorm()`
+
+R can actually determine that cutoff of 1.96 for us with a function called `qnorm()`. It's not something we'll use a lot after today, but it's a function that takes the percentiles from the normal distribution and prints out what *z*-values correspond to them. 
+
+Remember how in class we discussed the fact that what we actually want to get the most extreme 5% of scores is the bottom 2.5% of scores and the top 2.5% of scores? Something like this: 
+
+```{r echo=FALSE}
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  geom_area(stat = "function", fun = dnorm, 
+            fill = "red", xlim = c(-3, -1.96)) +
+    geom_area(stat = "function", fun = dnorm, 
+            fill = "red", xlim = c(1.96, 3)) +
+  stat_function(fun = dnorm, size = 1.2, colour = "black") + 
+  ylab("") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(breaks = seq(-3, 3, 1), 
+                     name = "") + 
+  theme_void() + 
+  theme(panel.grid.minor = element_blank(), 
+        panel.grid.major = element_blank(), 
+        axis.line = element_line(size = 1),
+        axis.title = element_text(size = 24),
+        axis.text = element_text(size = 20)) +
+  annotate("text", x = -2.3, y = .01, label = "2.5%", color = "white") +
+  annotate("text", x = 2.3, y = .01, label = "2.5%", color = "white")
+```
+
+Well, we can also think of those as cut-offs for the lowest 2.5% of scores and the highest 2.5% of scores---something like this. (The 97.5% is just $100\% - 2.5\%$.)
+
+```{r echo=FALSE}
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  geom_area(stat = "function", fun = dnorm, 
+            fill = "red", xlim = c(-3, -1.96)) +
+    geom_area(stat = "function", fun = dnorm, 
+            fill = "red", xlim = c(1.96, 3)) +
+  stat_function(fun = dnorm, size = 1.2, colour = "black") + 
+  ylab("") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(breaks = seq(-3, 3, 1), 
+                     name = "") + 
+  theme_void() + 
+  theme(panel.grid.minor = element_blank(), 
+        panel.grid.major = element_blank(), 
+        axis.line = element_line(size = 1),
+        axis.title = element_text(size = 24),
+        axis.text = element_text(size = 20)) +
+  annotate("text", x = -1.96, y = dnorm(-1.96), label = " 2.5%", size = 5, hjust = 0) +
+  annotate("text", x = 1.96, y = dnorm(1.96), label = "97.5%", size = 5, hjust = 1)
+```
+
+### Using `qnorm()` to find the cut-off
+
+So to use the `qnorm()` function to get what *z*-value corresponds to each of those, we just need to ask it to give us the *z*-score for 2.5% and 97.5%---using the basic `c()` combine function: `c(.025, .975)`. 
+
+```{r}
+qnorm(c(.025, .975))
+```
+
+We usually round to two digits in this class, and there's a `round()` function (we tell it how many digits to round **to**). Run the code:
+
+```{r qnorm, exercise=TRUE}
+qnorm(c(.025, .975)) %>% round(digits = 2)
+```
+
+Yes, that's exactly the $\pm1.96$ we've been using! 
+
+## Step 4
+
+### Step 4: Determine your sample's score
+
+Now, we haven't played with our data yet. The information on heights is saved in the data-frame `friends`. 
+
+Plot a histogram of the data. It might be worth playing around with `ggplot2` (which is loaded), but you can do it with the base plot of `hist()` if you'd like. Your x-variable here will be `height`
+
+```{r hist1, exercise = TRUE}
+
+```
+
+```{r hist1-solution}
+ggplot(friends, aes(x = height)) +
+  geom_histogram(binwidth = 2) +
+  theme_light()
+```
+
+What do you notice about this data? If you said "there are some obvious outliers," you're correct.
+
+### Boxplot
+
+Try using a boxplot plot to see the outliers better. (Remember, that's `geom_boxplot()`.) Make your `x` `height` and your `y` `gender.` No need for a theme or labels---just a quick plot. (*Note: I'm including gender here because you'd expect to see a height difference. We'll talk more about gender at a later date.*)
+
+```{r hist2, exercise = TRUE}
+
+```
+
+```{r hist2-solution}
+ggplot(friends, aes(x = height, y = gender)) +
+  geom_boxplot()
+```
+
+```{r hist2-check, echo=FALSE}
+grade_code(correct = "Okay, seems pretty clear to me: some of your friends who responded to the survey seem to have misinterpreted the question. They gave their height in feet instead of inches.")
+```
+
+### Problems with heights
+
+Since some folks gave their height in feet instead of inches, if you wanted to exclude them with `filter()`, how would you do that? I'd filter to get a `height` of *more than* 10. (Inches.) Remember that the number should **not** have quotation marks, nor should the variable.
+
+Give it a try below, and then re-run the boxplot. Delete the comments (starting with #) below, and then create a `ggplot()` with a `geom_boxplot()` again. Be careful to use your new data frame and not the old one.
+
+```{r exclude, exercise=TRUE}
+tallfriends <- friends # filter here
+# ggplot() here +
+# geom_boxplot()
+```
+
+```{r exclude-solution}
+tallfriends <- friends %>% filter(height > 10)
+ggplot(tallfriends, aes(x = height, y = gender)) +
+  geom_boxplot()
+```
+
+```{r exclude-check}
+grade_code(correct = "Yes, your boxplot looks more normal now that you've filtered to only height in inches. ")
+```
+
+### Fixing that data
+
+Side-step for a moment with me: We can fix those data. First, let's take a look: just run the following code to see what the confusing heights are. 
+
+```{r checkheight, exercise=TRUE}
+friends %>% filter(height < 10)
+```
+
+Looks to me like those are reasonable heights, if they were instead in feet-inches format... We could fix them! 
+
+###
+
+To fix them, run the following code. Read the comments to make sense of it. We're introducing two new functions: 
+
+1. The `mutate()` function from `dplyr` which, well, "changes" the columns from a data frame. It takes the name of a column (here, `height`) and then changes it according to whatever is on the right of the equal sign. 
+2. The `ifelse()` function, which checks a condition and, if it's true, does the first thing; if false, the second. (IF, ELSE.) Argument one: the condition (here, `height < 10`---is the value for each row of height less than 10?). Argument two: what to do if the condition is TRUE (here, a little math assuming that the 5.6 means 5'6"---adding the `5 * 12` to the 6"). Argument three: what to do if the condition is FALSE---if the height isn't less than 10 (here, just keep the same `height` value).
+
+This will have the new data-frame heights, which has things working correctly now. Once you've run this, no values of `heights` will be less than 10. We've "fixed" it.
+
+```{r fixheights, exercise=TRUE}
+heights <- friends %>%
+  mutate(height = ifelse(height < 10, 
+                         floor(height) * 12 + (height - floor(height)),
+                         height))
+
+heights %>% filter(height < 10)
+```
+
+### Determine the *z*-score
+
+Great! Now comes the "easy" part. We know how to determine a *z*-score already. Let's do it. Remember that $z=\frac{X-M}{SD}$ or (in population terms) $z=\frac{X-\mu}{\sigma}$. So our sample---from which we'll estimate the mean and standard deviation---will be **students in this survey**. You'll see soon enough that we normally make corrections for the fact that this is only an estimate... but for today, let's just calculate the `mean()` and `sd()` of the `height` column from the `heights` data frame, and pretend that those are for a total population. 
+
+In the below field: 
+
+1. Calculate the `mean()` of `heights$height` and assign it (`<-`) to a new variable called `meanheight`
+2. Calculate `sd()` of `heights$height` and assign it (`<-`) to a new variable called `sdheight`
+3. Assign the height of our 6'5" person (converted to inches) to a new variable called `x`
+4. Calculate the *z*-score for them using those new variables, and assign **that** to a new variable called `z`. Don't forget to use parentheses to make clear what happens first.
+
+As you go, I encourage you to make sure the code is working piece-by-piece (by hitting "Run code"), before submitting your answer.
+
+```{r getscore1, exercise=TRUE}
+
+```
+
+```{r getscore1-solution}
+meanheight <- mean(heights$height)
+sdheight <- sd(heights$height)
+x <- 6*12 + 5
+z <- (x - meanheight) / sdheight
+```
+
+```{r getscore1-check}
+grade_code(correct = "Yes, exactly. You'll want to calculate the mean and sd, make sure your x is in the same units (inches) as those, and then calculate z.")
+```
+
+## Step 5
+
+### Step 5: Decide whether or not to reject the null hypothesis
+
+You'll probably notice that unless you explicitly asked for the value of *z*, you haven't seen it---step 5 is where we think about it.
+
+Try running the following to check in: what's the value of *z*?
+
+```{r zcheck, exercise=TRUE}
+z
+```
+
+### Making decisions
+
+As we discussed in Steps 2 and 3, our cut-off is $\pm1.96$. 
+
+```{r quiz3, echo=FALSE}
+quiz(
+  question(
+    "Based on the z-score and the cutoff above, should we reject the null hypothesis?",
+    answer("Yes, because the z-score is higher than our cutoff", correct = TRUE),
+    answer("Yes, because the z-score is lower than our cutoff"),
+    answer("No, because the z-score is neither higher than the cutoff nor lower than the negative cutoff"),
+    post_message = paste0("This is important, so discuss with your group if you're still not sure. ",
+                          "We can reject the null hypothesis---that there is no difference! ",
+                          "This is because the z-score is HIGHER than the cutoff of +1.96.")
+  )
+)
+```
+
+###
+
+We can simply compare to our cutoff---is it more than $+1.96$ or less than $-1.96$?
+
+```{r comparison, exercise=TRUE}
+z > 1.96
+z < -1.96
+```
+
+We can actually do this in one line with the "or" operator, the straight pipe `|`
+
+```{r}
+z > 1.96 | z < -1.96
+```
+
+But let's go ahead and calculate more than just yes or no, using some useful R functions.
+
+###
+
+Again, like the `qnorm()` function, there's a corresponding one to go the other way---avoiding the *z*-table. It's called `pnorm()` and it prints the percentile for a given *z*-score. Print it out here:
+
+```{r pnorm, exercise=TRUE}
+pnorm(z)
+```
+
+Turns out that having a height of 6'5" *in our sample* would be extremely unlikely---such a person would fall in the top 99.79% of the sample. 
+
+Compare to a *z*-table (where we would need to add 50% to the "% Mean to z" column or subtract the "% in Tail" column from 100%):
+
+```{r echo=FALSE}
+tibble(
+  z = seq(2.8, 2.9, by = .01),
+  `% Mean to z` = round(100*(pnorm(z, lower.tail = TRUE)-.5), 2),
+  `% in Tail` = round(100*pnorm(z, lower.tail = FALSE), 2)
+) %>%
+  knitr::kable(format = "html")
+```
+
+### *p*-value
+
+Let's think about the *p*-value---the actual percentile of this score based on our distribution. How rare is it?
+
+How can we get the actual *p*-value? Turns out that we can make a claim about how rare this height (and this *z*-value) actually is. We'll use the same function `pnorm()`. Because we asked a two-tailed question, we have to ask this in a two-tailed sort of way: what is the probability of getting a value higher than the positive version of this value, or lower than the negative version? We add those together to get the *p*-value: 
+
+```{r}
+pnorm(z, lower.tail = FALSE) + pnorm(-z, lower.tail = TRUE)
+```
+
+So, we can say that our actual $p=$ `r round(pnorm(z, lower.tail = FALSE) + pnorm(-z, lower.tail = TRUE), 3)`. Which, **yes**, is definitely smaller than $p=.05$, so we can confirm here that $p<.05$.
+
+You won't need to do this calculation with `pnorm()` on your own, but I may walk you through it again...
+
+## A one-tailed test
+###
+We can do re-run this as a one-tailed test much more quickly now that we have the basics! Let's take the same person---6'5" in height---and return to this question: Would they be considered "significantly **tall**" compared to other Bard students? 
+
+This is a one-sided test---we don't care whether they're on the short side because we know they are not.
+
+### Step 1: Restate question as a research and null hypothesis
+
+```{r quiz4, echo=FALSE}
+quiz(
+  question("What is the framing of this for the research hypothesis?",
+           answer("People who are as tall as this person are different from Bard students as a whole"), 
+           answer("People who are as tall as this person are taller than Bard students as a whole", correct = TRUE), 
+           answer("People who are as tall as this person are shorter than Bard students as a whole"),
+           answer("People who are as tall as this person are no different from Bard students as a whole")
+           ),
+  question("What is the framing of this for the null hypothesis?", 
+           answer("People who are as tall as this person are different from Bard students as a whole"), 
+           answer("People who are as tall as this person are the same height or taller than Bard students as a whole"), 
+           answer("People who are as tall as this person are the same height or shorter than Bard students as a whole", correct = TRUE),
+           answer("People who are as tall as this person are no different from Bard students as a whole"),
+           incorrect = "Be careful here! With a one-sided test, or one-tailed test, we are including any result which is not that this person is taller as the null."
+           )
+)
+```
+
+### Statistical framing
+
+We can frame the research hypothesis in statistical terms as 
+
+$\mu_{\mathrm{Bard~students~of~this~height}}>\mu_{\mathrm{Bard~students~in~general}}$ 
+
+and the null hypothesis as 
+
+$\mu_{\mathrm{Bard~students~of~this~height}}\leq\mu_{\mathrm{Bard~students~in~general}}$
+
+Remember, that it's not just LESS THAN---it's LESS THAN **OR EQUAL TO**.
+
+### Steps 2 and 3
+
+***Step 2: Determine the characteristics of the comparison distribution***
+
+***Step 3: Determine the sample cutoff score to reject the null hypothesis***
+
+We're still using the *z*-distribution, but now we're only interested in scores that fall in the upper 5% of the distribution---where 95% of the scores fall below:
+
+```{r echo=FALSE}
+ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+    geom_area(stat = "function", fun = dnorm, 
+            fill = "red", xlim = c(qnorm(.95), 3)) +
+  stat_function(fun = dnorm, size = 1.2, colour = "black") + 
+  ylab("") +
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(breaks = seq(-3, 3, 1), 
+                     name = "") + 
+  theme_void() + 
+  theme(panel.grid.minor = element_blank(), 
+        panel.grid.major = element_blank(), 
+        axis.line = element_line(size = 1),
+        axis.title = element_text(size = 24),
+        axis.text = element_text(size = 20)) +
+  annotate("text", x = qnorm(.95), y = dnorm(qnorm(.95))/2, label = "95%", size = 5, hjust = 1)
+```
+
+Again, we can use the `qnorm()` function to ask for the upper 95% cut-off:
+
+```{r}
+qnorm(.95)
+```
+
+Yep, that's what we discussed in class! Our cut-off is $+1.64$. 
+
+### Step 4: Determine your sample's score
+
+You already determined the score!---here, it's:
+
+```{r}
+x
+```
+
+And the corresponding *z*-score, which we can use to compare, is:
+
+```{r}
+z
+```
+
+### Step 5: Decide whether or not to reject the null hypothesis
+
+To decide whether or not to reject the null hypothesis, we don't actually need to think too hard---if something was statistically significant for a two-tailed test, a one-tailed test will always be statistically significant at the same *p*-value. (One-tailed tests, as we discussed in class, can be "more lenient", because they're only "looking" at one tail of the distribution.)
+
+We can simply compare to our cutoff. Hit run code:
+
+```{r comparison2, exercise=TRUE}
+z > 1.64
+```
+
+Okay, ready to get more than just the "yes or no" answer?
+
+### 
+
+Rather than needing to calculate the *p*-value at the top and bottom, we can just do it for the top, this time---since we only expected it to be on the top!
+
+```{r pnorm2}
+pnorm(z, lower.tail = FALSE)
+```
+
+So we can say that $p=$ `r round(pnorm(z, lower.tail = FALSE), 3)`, and again, confirm that in this case $p<.05$. 
+
+Any questions? Now's a great time to check in with your group, a course assistant, or the instructor. 
+
+You'll answer questions 3 and 4 from above---about number of hours of TV---in the exercises. 
+
+## Wrap up
+
+Once you've finished, go back to the website for today's exercises, open the exercise directly, or run the following code (from your primary working directory):
+
+```{r, eval=FALSE}
+psychRstats::run_exercise("04-exercise")
+```

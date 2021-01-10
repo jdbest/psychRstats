@@ -18,6 +18,73 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
   <!--radix_placeholder_meta_tags-->
 <title>psychRstats: Learning Statistics for Psychology in R: Visualizing Data (Lab 03) Exercises, Completed</title>
 
@@ -66,7 +133,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["friends.csv","lab-3-completed_files/bowser-1.9.3/bowser.min.js","lab-3-completed_files/distill-2.2.21/template.v2.js","lab-3-completed_files/figure-html5/ex10-1.png","lab-3-completed_files/figure-html5/ex13-1.png","lab-3-completed_files/figure-html5/ex7-1.png","lab-3-completed_files/figure-html5/ex8-1.png","lab-3-completed_files/figure-html5/ex9-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-4-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-2.png","lab-3-completed_files/figure-html5/unnamed-chunk-6-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png","lab-3-completed_files/jquery-1.11.3/jquery.min.js","lab-3-completed_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["friends.csv","lab-3-completed_files/bowser-1.9.3/bowser.min.js","lab-3-completed_files/distill-2.2.21/template.v2.js","lab-3-completed_files/figure-html5/ex10-1.png","lab-3-completed_files/figure-html5/ex13-1.png","lab-3-completed_files/figure-html5/ex7-1.png","lab-3-completed_files/figure-html5/ex8-1.png","lab-3-completed_files/figure-html5/ex9-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-4-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-2.png","lab-3-completed_files/figure-html5/unnamed-chunk-6-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png","lab-3-completed_files/header-attrs-2.3/header-attrs.js","lab-3-completed_files/jquery-1.11.3/jquery.min.js","lab-3-completed_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -1946,8 +2013,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.3/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
@@ -1990,6 +2058,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-title">
 <h1>Visualizing Data (Lab 03) Exercises, Completed</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
 <p><p>Completed exercises for the third lab</p></p>
 </div>
 
@@ -2003,31 +2073,33 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>This document is meant to be used to practice after you have completed the tutorial for today’s lab. Please note that it uses some packages installed during that tutorial. Make sure to put your name as the author of the document, above!</p>
-<p>If you would like to refer to the tutorial while also working on this document, open the HTML version of the tutorial (after closing it in RStudio) in a web browser to refer to the code. (In RStudio.Cloud, browse to the file in the Files pane, click on it, and click “View in Web Browser”.)</p>
-<p>If you intend to work on both simultaneously, there are instructions on the <a href="https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
-<p>You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html">labs website</a>; Lab 2’s exercise answers are <a href="https://faculty.bard.edu/~jdainerbest/psy-203/posts/2020-09-11-lab-2-answers/">here</a>.</p>
+<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <a href="https://jdbest.github.io/r-psych-stats/answers.html" class="uri">https://jdbest.github.io/r-psych-stats/answers.html</a></p>
+<p>Feel free to change the top to have your name! You’re the person answering these exercises, now.</p>
+<p>If you would like to refer to the tutorial while also working on this document, there are instructions on the <a href="https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
+<p>You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="../../labs.html">labs website</a>.</p>
 <h2 id="objectives">Objectives</h2>
-<p>In the tutorial, you learned how to manipulate and visualize data in a few ways. In today’s exercise, you’ll practice doing those with the <code>friends</code> data we collected together.</p>
+<p>In the tutorial, you learned how to manipulate and visualize data in a few ways. In today’s exercise, you’ll practice doing those with the <code>friends</code> data that students in PSY 203 collected by asking friends to provide information. (This data is somewhat edited by the instructor and contains no identifying information.)</p>
 <p>You’ll also get to continue learning about the <code>filter()</code> function and other ways of manipulating data.</p>
-<h2 id="turning-it-in">Turning it in?</h2>
-<p>I invite you to turn in this document on Brightspace, where I will provide some basic feedback. You do not <em>need</em> to do this, but you may find it useful. As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <a href="https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html" class="uri">https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html</a></p>
 <p>I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now—it’ll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document for me to review.</p>
 <h2 id="loading-packages">Loading packages</h2>
 <p>Run the following code chunk to load necessary packages for these exercises. If any don’t load, install them with the <code>install.packages("")</code> function.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(tidyverse)
-# tidyverse loads these:
-# library(dplyr)
-# library(ggplot2)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='co'># tidyverse loads these:</span>
+<span class='co'># library(dplyr)</span>
+<span class='co'># library(ggplot2)</span>
+</code></pre>
+</div>
 </div>
 <h2 id="importing-data">Importing data</h2>
-<p>When you downloaded this document, you also downloaded a file called <code>friends.csv</code>. In the empty code chunk below, import those data now, using the <code>read_csv()</code> function and assigning it to a variable which I recommend you call <code>friends</code>. Don’t remember how to import data? We talked about it in <a href="https://faculty.bard.edu/~jdainerbest/psy-203/posts/2020-09-11-lab-2-answers/index.html#importing-data">Lab 2</a> (and you can follow that link to the section where we did so).</p>
-<p>For <em>most people</em>, running this code by hitting the green “play” button to the right (or by hitting Ctrl/Command + Enter/return while your cursor is on the line) will “just work”; if it does not, consider adding “lab03/” before the “f” in “friends,” checking your working directory, or asking for help.</p>
+<p>When you downloaded this document, you also downloaded a file called <code>friends.csv</code>. In the empty code chunk below, import those data now, using the <code>read_csv()</code> function and assigning it to a variable which I recommend you call <code>friends</code>. Don’t remember how to import data? We talked about it in <a href="https://jdbest.github.io/r-psych-stats/answers/02-lab/#importing-data">Lab 2</a> (and you can follow that link to the section where we did so).</p>
+<p>(If the code below doesn’t work on its own, try adding <code>03-lab/</code> before the name <code>"friends.csv"</code>, and again in the code chunk below. Because of <em>where</em> it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.)</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends &lt;- read_csv(&quot;friends.csv&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"friends.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>Remember that red text reading “Parsed with column specification:” and some info is just R explaining how it “read” the file—not an error!</p>
 <h2 id="finding-out-the-structure">Finding out the structure</h2>
@@ -2039,10 +2111,11 @@ friends &lt;- read_csv(&quot;friends.csv&quot;)</code></pre>
 <li>Pick a column from <code>friends</code>. What is the <code>class()</code> of that column?</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-str(friends)</code></pre>
-<pre><code>
-tibble [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>tibble [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ duration           : num [1:84] 464 332 399 328 37 ...
  $ finished           : num [1:84] 1 1 1 1 0 1 1 0 0 1 ...
  $ whentook           : POSIXct[1:84], format: &quot;2020-08-27 13:05:27&quot; ...
@@ -2110,10 +2183,11 @@ tibble [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   ..   shootingdrills = col_double(),
   ..   handedness = col_double()
   .. )</code></pre>
-<pre class="r"><code>
-names(friends)</code></pre>
-<pre><code>
- [1] &quot;duration&quot;            &quot;finished&quot;            &quot;whentook&quot;           
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;duration&quot;            &quot;finished&quot;            &quot;whentook&quot;           
  [4] &quot;DistributionChannel&quot; &quot;socialmedia&quot;         &quot;gender&quot;             
  [7] &quot;siblings&quot;            &quot;smed.hrs&quot;            &quot;gram.followers&quot;     
 [10] &quot;fbfriends&quot;           &quot;tvhours&quot;             &quot;haircolor&quot;          
@@ -2124,10 +2198,11 @@ names(friends)</code></pre>
 [25] &quot;expectedoutcome_2&quot;   &quot;expectedoutcome_3&quot;   &quot;expectedoutcome_4&quot;  
 [28] &quot;majordiv&quot;            &quot;hrs.sleep&quot;           &quot;height.unvalidated&quot; 
 [31] &quot;shootingdrills&quot;      &quot;handedness&quot;         </code></pre>
-<pre class="r"><code>
-head(friends)</code></pre>
-<pre><code>
-# A tibble: 6 x 32
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 6 x 32
   duration finished whentook            DistributionCha… socialmedia
      &lt;dbl&gt;    &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;                  &lt;dbl&gt;
 1      464        1 2020-08-27 13:05:27 anonymous                  1
@@ -2146,39 +2221,44 @@ head(friends)</code></pre>
 #   expectedoutcome_3 &lt;dbl&gt;, expectedoutcome_4 &lt;dbl&gt;, majordiv &lt;dbl&gt;,
 #   hrs.sleep &lt;dbl&gt;, height.unvalidated &lt;dbl&gt;, shootingdrills &lt;dbl&gt;,
 #   handedness &lt;dbl&gt;</code></pre>
-<pre class="r"><code>
-class(friends$gender)</code></pre>
-<pre><code>
-[1] &quot;character&quot;</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>gender</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;character&quot;</code></pre>
 </div>
 <p>You can also click on the name <code>friends</code> in the “Environment” pane at the upper right of the RStudio screen; it will open it up in a tab for you to take a look. Does it look like you’d expect? (If you hit the blue “play button” arrow next to the name in that pane, you’ll see something that looks like what you saw when you ran the <code>str()</code> command.)</p>
 <h2 id="counting">Counting</h2>
 <p>Use the <code>count()</code> command from <code>library(dplyr)</code> to figure out how many respondents responded anonymously by running it on the <code>DistributionChannel</code> column of <code>friends</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends %&gt;% count(DistributionChannel)</code></pre>
-<pre><code>
-# A tibble: 1 x 2
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>DistributionChannel</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 2
   DistributionChannel     n
   &lt;chr&gt;               &lt;int&gt;
 1 anonymous              84</code></pre>
 </div>
 <p>Then, create a <code>table()</code> of <code>siblings</code> from <code>friends</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-table(friends$siblings)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code>
  0  1  2  3  4  5  8 
  6 34 24 12  2  4  1 </code></pre>
 </div>
 <p>Use a chain of <code>filter()</code> and <code>count()</code> to count how many classes (<code>numclasses</code>) the <code>friends</code> who have one sibling have. Said another way: <code>filter()</code> to people who have <code>siblings</code> of 1, then <code>count()</code> the number of classes.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends %&gt;% 
-  filter(siblings == 1) %&gt;% 
-  count(numclasses)</code></pre>
-<pre><code>
-# A tibble: 5 x 2
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>siblings</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>numclasses</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 5 x 2
   numclasses     n
        &lt;dbl&gt; &lt;int&gt;
 1          3     3
@@ -2190,49 +2270,59 @@ friends %&gt;%
 <h2 id="some-plots">Some plots</h2>
 <p>Make a histogram of the <code>duration</code> it took people to finish the survey. Your choice if you use the <code>ggplot() + geom_histogram()</code> from <code>ggplot2</code> or just <code>hist()</code>. Label your axes either way.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(friends, aes(x = duration)) +
-  geom_histogram(bins = 20) +
-  theme_minimal() +
-  labs(x = &quot;Duration (s)&quot;, y = &quot;Frequency&quot;, title = &quot;How long people took to respond&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Duration (s)"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"How long people took to respond"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex7-1.png" width="624" /></p>
 </div>
 <p>You may notice that this looks pretty bad because there’s an outlier. We can exclude them using <code>filter()</code>! Create a new variable called <code>friends2</code> which filters out any <code>duration</code> over 10000 (hint: you’ll want the &lt; sign, since we’re looking to keep in the new data frame any duration SHORTER than 10000). Then copy the code for the histogram to the space below, and re-run it (make sure to change to <code>friends2</code>, now).</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends2 &lt;- friends %&gt;% filter(duration &lt; 10000)
-ggplot(friends2, aes(x = duration)) +
-  geom_histogram(bins = 20) +
-  theme_minimal() +
-  labs(x = &quot;Duration (s)&quot;, y = &quot;Frequency&quot;, title = &quot;How long people took to respond&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends2</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>10000</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends2</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Duration (s)"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"How long people took to respond"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex8-1.png" width="624" /></p>
 </div>
 <p>Not very normal, huh?</p>
 <p><strong>Have you saved this file? Please do. If you think your code should work, try knitting the document, too. Does it? If there are errors, can you identify them?</strong></p>
 <p>Create <strong>another</strong> data-frame variable called <code>friends3</code>, and this time filter out any <code>duration</code> over 600 s—seems like most people should have finished that in 10 minutes, barring them opening it and then getting distracted. Then, make a <code>geom_histogram()</code> of the data. (You can re-use your code, of course—just be sure to call it <code>friends3</code> in the <code>ggplot()</code> command.) You should find that the data looks MUCH more normally-distributed, right?</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends3 &lt;- friends %&gt;% filter(duration &lt; 600)
-ggplot(friends3, aes(x = duration)) +
-  geom_histogram(bins = 20) +
-  theme_minimal() +
-  labs(x = &quot;Duration (s)&quot;, y = &quot;Frequency&quot;, title = &quot;How long people took to respond&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends3</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>600</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends3</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Duration (s)"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"How long people took to respond"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex9-1.png" width="624" /></p>
 </div>
 <p>If we actually dropped those people, that would be dropping seven responses. We won’t right now. It’s not necessarily bad data if someone took two hours to hit submit… but perhaps you’re seeing some of the decisions that we go into in data analysis and the <em>preparation</em> for it.</p>
 <h2 id="box-and-violin-plots">Box and violin plots</h2>
 <p>For this last visualization, we’re going to need to tell R that number of siblings is a <strong>factor</strong>, not a continuous variable. (No-one has 1.5 siblings.) Run the following code to do that. It literally tells R “this is a factor” with the <code>factor()</code> function.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends$siblings &lt;- factor(friends$siblings)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>Use <code>friends</code> (rather than <code>friends2</code>) for this. Make both a <code>geom_boxplot()</code> and a <code>geom_violin()</code> of the data for <code>gram.followers</code> against <code>siblings</code>. (You can try doing them as two layers on the same plot, but it doesn’t look too good.) Up to you which is x and which is y; this is a case where it doesn’t matter. Do add on a theme, and <code>labs()</code>. Play around with colors if you like—this is a great time to start learning how to do that.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(friends, aes(y = siblings, x = gram.followers)) +
-  geom_boxplot() +
-  theme_minimal() +
-  labs(x = &quot;Number of instagram followers&quot;, y = &quot;Number of siblings&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>siblings</span>, x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of instagram followers"</span>, y <span class='op'>=</span> <span class='st'>"Number of siblings"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex10-1.png" width="624" /></p>
 </div>
 <p>Based on the plot, do you think that people with more siblings have more of a social media presence? Are there any outliers?</p>
@@ -2280,114 +2370,131 @@ ggplot(friends, aes(y = siblings, x = gram.followers)) +
 <li>Make a <code>data.frame()</code> with the data above. Two suggestions: (a) name everything (the data frame variable, the columns) with lower case names without spaces (the group’s <em>names</em> will be in quotes, and can be however you like), and (b) remember that you name each <strong>column</strong> in the data.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graphdata &lt;- data.frame(group = c(&quot;Control&quot;, &quot;Preparation&quot;, &quot;Teaching&quot;),
-                        n = c(31, 32, 30),
-                        score = c(6.2, 7.9, 8.7),
-                        sd = c(3.3, 2.4, 2.8))</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>graphdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Control"</span>, <span class='st'>"Preparation"</span>, <span class='st'>"Teaching"</span><span class='op'>)</span>,
+                        n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>31</span>, <span class='fl'>32</span>, <span class='fl'>30</span><span class='op'>)</span>,
+                        score <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6.2</span>, <span class='fl'>7.9</span>, <span class='fl'>8.7</span><span class='op'>)</span>,
+                        sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3.3</span>, <span class='fl'>2.4</span>, <span class='fl'>2.8</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <ol start="2" type="1">
 <li>Using the above <code>factor()</code>, make the group column of your new data frame a factor.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graphdata$group &lt;- factor(graphdata$group)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <ol start="3" type="1">
 <li>Plot these results in a bar graph with <code>ggplot2</code> and using the <code>geom_col()</code> layer. The <code>x</code> in your <code>ggplot()</code> <code>aes()</code> should be the group, and the <code>y</code> should be the comprehension score. Your graph should include a title, labeled axes, and clearly demonstrate the relationship between group and comprehension score. Feel free to add a theme.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(graphdata, aes(x = group, y = score)) +
-  geom_col() +
-  labs(x = &quot;Group&quot;, y = &quot;Mean Comprehension Score&quot;, title = &quot;Comprehension Scores by Group&quot;) +
-  theme_bw()</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>graphdata</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>group</span>, y <span class='op'>=</span> <span class='va'>score</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Group"</span>, y <span class='op'>=</span> <span class='st'>"Mean Comprehension Score"</span>, title <span class='op'>=</span> <span class='st'>"Comprehension Scores by Group"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex13-1.png" width="624" /></p>
 </div>
 <ol start="4" type="1">
 <li>Challenge: Calculate the standard error of the mean based on the above plot and the equation for <em>SEM</em>, which is <span class="math inline">\(SEM=\frac{SD}{\sqrt{n}}\)</span></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graphdata$se &lt;- graphdata$sd / sqrt(graphdata$n)
-graphdata$se</code></pre>
-<pre><code>
-[1] 0.5926975 0.4242641 0.5112077</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>se</span> <span class='op'>&lt;-</span> <span class='va'>graphdata</span><span class='op'>$</span><span class='va'>sd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>n</span><span class='op'>)</span>
+<span class='va'>graphdata</span><span class='op'>$</span><span class='va'>se</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.5926975 0.4242641 0.5112077</code></pre>
 </div>
 <h2 id="extension">Extension</h2>
-<p>If you’re feeling comfortable with all of this, this exercise is for you. If not, it is not required.</p>
+<p>If you’re feeling comfortable with all of this, this exercise is for you.</p>
 <p>The data lives in the <code>HistData</code> package, which we installed earlier.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-install.packages(&quot;HistData&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"HistData"</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>Load this package here, adn the data:</p>
+</div>
+<p>Load this package here, and the data:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(HistData)
-data(Nightingale)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>HistData</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Nightingale</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>This is the data from Florence Nightingale’s research in the 1850s on causes of death after the Crimean war—which we will discuss in class. You can take a look by running <code>str(Nightingale)</code>. (As always, remove the tick marks before pasting that code into the Console.)</p>
 <p>For the 24 months listed, the data has how many deaths were caused by disease in the column: Nightingale$Disease</p>
 <p>Here’s a ggplot() version of the Nightingale coxcomb plot we saw in class—it’s also on wikipedia, <a href="https://en.wikipedia.org/wiki/Florence_Nightingale#/media/File:Nightingale-mortality.jpg">here</a>. For some more context, <a href="http://www.florence-nightingale-avenging-angel.co.uk/Nightingale_Hockey_Stick.pdf">read this</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-deaths &lt;- Nightingale %&gt;% 
-  mutate(Month = factor(Month, 
-                        levels = c(&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, 
-                                   &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;))) %&gt;%
-  pivot_longer(cols = c(Disease, Other, Wounds), names_to = &quot;Cause&quot;, values_to = &quot;Number&quot;)
-year1 &lt;- ggplot(deaths %&gt;% slice(1:36)) + 
-  geom_bar(aes(x = Month, y = Number, fill = Cause), color = &quot;grey40&quot;, 
-           stat = &quot;identity&quot;, alpha = .6, width = 1.0, size =.5) + 
-  coord_polar() +
-  scale_y_sqrt() + # actually, Nightingale used a square root transformation, which this applies
-  scale_x_discrete(limits = c(&quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;, 
-                              &quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;), 
-                   labels = c(&quot;Jul-1854&quot;, &quot;Aug-1854&quot;, &quot;Sep-1854&quot;, &quot;Oct-1854&quot;, 
-                              &quot;Nov-1854&quot;, &quot;Dec-1854&quot;, &quot;Jan-1855&quot;, &quot;Feb-1855&quot;, 
-                              &quot;Mar-1855&quot;, &quot;Apr-1854&quot;, &quot;May-1854&quot;, &quot;Jun-1854&quot;)) +
-  geom_abline(intercept = sqrt(1000), slope = 0, linetype = 5) +
-  theme_classic() + 
-  scale_fill_discrete(name = &quot;Cause&quot;, type = c(&quot;light blue&quot;, &quot;black&quot;, &quot;pink&quot;)) +
-  theme(axis.line = element_blank(),  axis.title = element_blank(), 
-        axis.ticks = element_blank(), axis.text.y = element_blank(),
-        title = element_text(size = 16))
-year2 &lt;- ggplot(deaths %&gt;% slice(37:72)) + 
-  geom_bar(aes(x = Month, y = Number, fill = Cause), color = &quot;grey40&quot;, 
-           stat = &quot;identity&quot;, alpha = .6, width = 1.0, size =.5) + 
-  coord_polar() +
-  scale_y_sqrt() + # actually, Nightingale used a square root transformation, which this applies
-  scale_x_discrete(limits = c(&quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;, 
-                              &quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;), 
-                   labels = c(&quot;Jul-1855&quot;, &quot;Aug-1855&quot;, &quot;Sep-1855&quot;, &quot;Oct-1855&quot;, 
-                              &quot;Nov-18554&quot;, &quot;Dec-1855&quot;, &quot;Jan-1856&quot;, &quot;Feb-1856&quot;, 
-                              &quot;Mar-1856&quot;, &quot;Apr-1855&quot;, &quot;May-1855&quot;, &quot;Jun-1855&quot;)) +
-  geom_abline(intercept = sqrt(1000), slope = 0, linetype = 5) +
-  theme_classic() + 
-  scale_fill_discrete(name = &quot;Cause&quot;, type = c(&quot;light blue&quot;, &quot;black&quot;, &quot;pink&quot;)) +
-  theme(axis.line = element_blank(),  axis.title = element_blank(), 
-        axis.ticks = element_blank(), axis.text.y = element_blank(),
-        title = element_text(size = 16), legend.position = &quot;none&quot;)
-gridExtra::grid.arrange(grobs = list(year2, year1), nrow = 1,
-                        top = grid::textGrob(&quot;Diagram of the Causes of Mortality\nin the Army in the East&quot;))</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>deaths</span> <span class='op'>&lt;-</span> <span class='va'>Nightingale</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>Month <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>Month</span>, 
+                        levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>, <span class='st'>"Mar"</span>, <span class='st'>"Apr"</span>, <span class='st'>"May"</span>, 
+                                   <span class='st'>"Jun"</span>, <span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sep"</span>, <span class='st'>"Oct"</span>, <span class='st'>"Nov"</span>, <span class='st'>"Dec"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pivot_longer</span><span class='op'>(</span>cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>Disease</span>, <span class='va'>Other</span>, <span class='va'>Wounds</span><span class='op'>)</span>, names_to <span class='op'>=</span> <span class='st'>"Cause"</span>, values_to <span class='op'>=</span> <span class='st'>"Number"</span><span class='op'>)</span>
+<span class='va'>year1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>deaths</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>36</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_bar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Month</span>, y <span class='op'>=</span> <span class='va'>Number</span>, fill <span class='op'>=</span> <span class='va'>Cause</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"grey40"</span>, 
+           stat <span class='op'>=</span> <span class='st'>"identity"</span>, alpha <span class='op'>=</span> <span class='fl'>.6</span>, width <span class='op'>=</span> <span class='fl'>1.0</span>, size <span class='op'>=</span><span class='fl'>.5</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>coord_polar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_y_sqrt</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># actually, Nightingale used a square root transformation, which this applies</span>
+  <span class='fu'>scale_x_discrete</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sep"</span>, <span class='st'>"Oct"</span>, <span class='st'>"Nov"</span>, <span class='st'>"Dec"</span>, 
+                              <span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>, <span class='st'>"Mar"</span>, <span class='st'>"Apr"</span>, <span class='st'>"May"</span>, <span class='st'>"Jun"</span><span class='op'>)</span>, 
+                   labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul-1854"</span>, <span class='st'>"Aug-1854"</span>, <span class='st'>"Sep-1854"</span>, <span class='st'>"Oct-1854"</span>, 
+                              <span class='st'>"Nov-1854"</span>, <span class='st'>"Dec-1854"</span>, <span class='st'>"Jan-1855"</span>, <span class='st'>"Feb-1855"</span>, 
+                              <span class='st'>"Mar-1855"</span>, <span class='st'>"Apr-1854"</span>, <span class='st'>"May-1854"</span>, <span class='st'>"Jun-1854"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_abline</span><span class='op'>(</span>intercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>1000</span><span class='op'>)</span>, slope <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>scale_fill_discrete</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Cause"</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"light blue"</span>, <span class='st'>"black"</span>, <span class='st'>"pink"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.line <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,  axis.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, 
+        axis.ticks <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+        title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>16</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>year2</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>deaths</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>37</span><span class='op'>:</span><span class='fl'>72</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_bar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Month</span>, y <span class='op'>=</span> <span class='va'>Number</span>, fill <span class='op'>=</span> <span class='va'>Cause</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"grey40"</span>, 
+           stat <span class='op'>=</span> <span class='st'>"identity"</span>, alpha <span class='op'>=</span> <span class='fl'>.6</span>, width <span class='op'>=</span> <span class='fl'>1.0</span>, size <span class='op'>=</span><span class='fl'>.5</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>coord_polar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_y_sqrt</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># actually, Nightingale used a square root transformation, which this applies</span>
+  <span class='fu'>scale_x_discrete</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sep"</span>, <span class='st'>"Oct"</span>, <span class='st'>"Nov"</span>, <span class='st'>"Dec"</span>, 
+                              <span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>, <span class='st'>"Mar"</span>, <span class='st'>"Apr"</span>, <span class='st'>"May"</span>, <span class='st'>"Jun"</span><span class='op'>)</span>, 
+                   labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul-1855"</span>, <span class='st'>"Aug-1855"</span>, <span class='st'>"Sep-1855"</span>, <span class='st'>"Oct-1855"</span>, 
+                              <span class='st'>"Nov-18554"</span>, <span class='st'>"Dec-1855"</span>, <span class='st'>"Jan-1856"</span>, <span class='st'>"Feb-1856"</span>, 
+                              <span class='st'>"Mar-1856"</span>, <span class='st'>"Apr-1855"</span>, <span class='st'>"May-1855"</span>, <span class='st'>"Jun-1855"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_abline</span><span class='op'>(</span>intercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>1000</span><span class='op'>)</span>, slope <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>scale_fill_discrete</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Cause"</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"light blue"</span>, <span class='st'>"black"</span>, <span class='st'>"pink"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.line <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,  axis.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, 
+        axis.ticks <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+        title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>16</span><span class='op'>)</span>, legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+<span class='fu'>gridExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html'>grid.arrange</a></span><span class='op'>(</span>grobs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>year2</span>, <span class='va'>year1</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>1</span>,
+                        top <span class='op'>=</span> <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.text.html'>textGrob</a></span><span class='op'>(</span><span class='st'>"Diagram of the Causes of Mortality\nin the Army in the East"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-4-1.png" width="1248" /></p>
 </div>
 <p>You don’t have to do that, however. (And we can all acknowledge that hers is more interesting to look at than this version!)</p>
 <p>Label your axes in all of these plots.</p>
 <p>Extension 1. Create a histogram using the full Nightingale$Disease data. Note that this should <em>only</em> involve the disease data—a histogram shows frequencies of how often you get a certain response. Is the data normally distributed?</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# in ggplot:
-ggplot(data = Nightingale, aes(x = Disease)) +
-  geom_histogram(binwidth = 300) + 
-  theme_bw() +
-  labs(x = &quot;Number of Disease Deaths&quot;, y = &quot;Frequency&quot;, title = &quot;Frequency of Disease Deaths&quot;)</code></pre>
-<p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
-<pre class="r"><code>
-# in base R:
-hist(Nightingale$Disease, 
-     xlab = &quot;Number of Disease Deaths&quot;, ylab = &quot;Frequency&quot;, main = &quot;Frequency of Disease Deaths&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='co'># in ggplot:</span>
+<span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>300</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of Disease Deaths"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"Frequency of Disease Deaths"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
+<div class="sourceCode">
+<pre><code><span class='co'># in base R:</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Nightingale</span><span class='op'>$</span><span class='va'>Disease</span>, 
+     xlab <span class='op'>=</span> <span class='st'>"Number of Disease Deaths"</span>, ylab <span class='op'>=</span> <span class='st'>"Frequency"</span>, main <span class='op'>=</span> <span class='st'>"Frequency of Disease Deaths"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-5-2.png" width="624" /></p>
 </div>
 <blockquote>
@@ -2397,12 +2504,14 @@ hist(Nightingale$Disease,
 <li>Create a scatterplot of deaths from Wounds against those from Disease. To do this, use the <code>geom_point()</code> layer from <code>ggplot2</code>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(data = Nightingale, aes(x = Wounds, y = Disease)) + 
-  geom_point(color = &quot;red&quot;, alpha = .5) + # setting alpha as lower than 1 makes the points partially transparent
-  theme_bw() +
-  labs(x = &quot;Deaths from Wounds&quot;, y = &quot;Deaths from Disease&quot;, 
-       title = &quot;Comparison of Deaths from Disease and from Wounds&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Wounds</span>, y <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_point</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"red"</span>, alpha <span class='op'>=</span> <span class='fl'>.5</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># setting alpha as lower than 1 makes the points partially transparent</span>
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Deaths from Wounds"</span>, y <span class='op'>=</span> <span class='st'>"Deaths from Disease"</span>, 
+       title <span class='op'>=</span> <span class='st'>"Comparison of Deaths from Disease and from Wounds"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
 <ol start="4" type="1">
@@ -2410,16 +2519,19 @@ ggplot(data = Nightingale, aes(x = Wounds, y = Disease)) +
 </ol>
 <p>You’ll note that R is actually quite good at handling dates! It knows these dates are <code>class(Nightingale$Date) == "Date"</code>!</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# in ggplot
-ggplot(data = Nightingale, aes(x = Date, y = Disease)) +
-  geom_point() +
-  geom_line() +
-  theme_bw() +
-  labs(x = &quot;Date&quot;, y = &quot;Number of Deaths by Disease&quot;, 
-       title = &quot;Deaths by Disease over Time&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='co'># in ggplot</span>
+<span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Date</span>, y <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Date"</span>, y <span class='op'>=</span> <span class='st'>"Number of Deaths by Disease"</span>, 
+       title <span class='op'>=</span> <span class='st'>"Deaths by Disease over Time"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png" width="624" data-distill-preview=1 /></p>
 </div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

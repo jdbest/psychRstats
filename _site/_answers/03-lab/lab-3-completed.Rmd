@@ -19,23 +19,19 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This document is meant to be used to practice after you have completed the tutorial for today's lab. Please note that it uses some packages installed during that tutorial. Make sure to put your name as the author of the document, above! 
+This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <https://jdbest.github.io/r-psych-stats/answers.html>
 
-If you would like to refer to the tutorial while also working on this document, open the HTML version of the tutorial (after closing it in RStudio) in a web browser to refer to the code. (In RStudio.Cloud, browse to the file in the Files pane, click on it, and click "View in Web Browser".)
+Feel free to change the top to have your name! You're the person answering these exercises, now.
 
-If you intend to work on both simultaneously, there are instructions on the [wiki](https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
+If you would like to refer to the tutorial while also working on this document, there are instructions on the [wiki](https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
 
-You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html); Lab 2's exercise answers are [here](https://faculty.bard.edu/~jdainerbest/psy-203/posts/2020-09-11-lab-2-answers/).
+You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
 
 ## Objectives
 
-In the tutorial, you learned how to manipulate and visualize data in a few ways. In today's exercise, you'll practice doing those with the `friends` data we collected together.  
+In the tutorial, you learned how to manipulate and visualize data in a few ways. In today's exercise, you'll practice doing those with the `friends` data that students in PSY 203 collected by asking friends to provide information. (This data is somewhat edited by the instructor and contains no identifying information.)
 
 You'll also get to continue learning about the `filter()` function and other ways of manipulating data.
-
-## Turning it in?
-
-I invite you to turn in this document on Brightspace, where I will provide some basic feedback. You do not *need* to do this, but you may find it useful. As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html>
 
 I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now---it'll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document for me to review.
 
@@ -52,9 +48,9 @@ library(tidyverse)
 
 ## Importing data
 
-When you downloaded this document, you also downloaded a file called `friends.csv`. In the empty code chunk below, import those data now, using the `read_csv()` function and assigning it to a variable which I recommend you call `friends`. Don't remember how to import data? We talked about it in [Lab 2](https://faculty.bard.edu/~jdainerbest/psy-203/posts/2020-09-11-lab-2-answers/index.html#importing-data) (and you can follow that link to the section where we did so). 
+When you downloaded this document, you also downloaded a file called `friends.csv`. In the empty code chunk below, import those data now, using the `read_csv()` function and assigning it to a variable which I recommend you call `friends`. Don't remember how to import data? We talked about it in [Lab 2](https://jdbest.github.io/r-psych-stats/answers/02-lab/#importing-data) (and you can follow that link to the section where we did so). 
 
-For *most people*, running this code by hitting the green "play" button to the right (or by hitting Ctrl/Command + Enter/return while your cursor is on the line) will "just work"; if it does not, consider adding "lab03/" before the "f" in "friends," checking your working directory, or asking for help.
+(If the code below doesn't work on its own, try adding `03-lab/` before the name `"friends.csv"`, and again in the code chunk below. Because of *where* it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.) 
 
 ```{r importdata}
 friends <- read_csv("friends.csv")
@@ -207,7 +203,7 @@ graphdata$se
 
 ## Extension
 
-If you're feeling comfortable with all of this, this exercise is for you. If not, it is not required.
+If you're feeling comfortable with all of this, this exercise is for you. 
 
 The data lives in the `HistData` package, which we installed earlier. 
 
@@ -215,7 +211,7 @@ The data lives in the `HistData` package, which we installed earlier.
 install.packages("HistData")
 ```
 
-Load this package here, adn the data:
+Load this package here, and the data:
 
 ```{r}
 library(HistData)

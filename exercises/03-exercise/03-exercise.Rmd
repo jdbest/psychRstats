@@ -164,7 +164,7 @@ Fiorella & Mayer (2013) hypothesized that students would learn course material b
 
 ## Extension
 
-If you're feeling comfortable with all of this, this exercise is for you. If not, it is not required.
+If you're feeling comfortable with all of this, this exercise is for you. 
 
 The data lives in the `HistData` package, which we installed earlier. 
 
@@ -172,7 +172,7 @@ The data lives in the `HistData` package, which we installed earlier.
 install.packages("HistData")
 ```
 
-Load this package here, adn the data:
+Load this package here, and the data:
 
 ```{r}
 library(HistData)

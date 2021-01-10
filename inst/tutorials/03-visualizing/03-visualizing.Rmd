@@ -512,6 +512,5 @@ grade_code()
 Once you've finished, go back to the website for today's exercises, open the exercise directly, or run the following code (from your primary working directory):
 
 ```{r, eval=FALSE}
-library(psychRstats)
-run_exercise("03-visualizing")
+psychRstats::run_exercise("03-exercise")
 ```

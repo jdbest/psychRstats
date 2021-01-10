@@ -18,6 +18,73 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
   <!--radix_placeholder_meta_tags-->
   <title>Visualizing Data (Lab 03) Exercises, Completed</title>
 
@@ -49,7 +116,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["friends.csv","lab-3-completed_files/bowser-1.9.3/bowser.min.js","lab-3-completed_files/distill-2.2.21/template.v2.js","lab-3-completed_files/figure-html5/ex10-1.png","lab-3-completed_files/figure-html5/ex13-1.png","lab-3-completed_files/figure-html5/ex7-1.png","lab-3-completed_files/figure-html5/ex8-1.png","lab-3-completed_files/figure-html5/ex9-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-4-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-2.png","lab-3-completed_files/figure-html5/unnamed-chunk-6-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png","lab-3-completed_files/jquery-1.11.3/jquery.min.js","lab-3-completed_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["friends.csv","lab-3-completed_files/bowser-1.9.3/bowser.min.js","lab-3-completed_files/distill-2.2.21/template.v2.js","lab-3-completed_files/figure-html5/ex10-1.png","lab-3-completed_files/figure-html5/ex13-1.png","lab-3-completed_files/figure-html5/ex7-1.png","lab-3-completed_files/figure-html5/ex8-1.png","lab-3-completed_files/figure-html5/ex9-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-4-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-5-2.png","lab-3-completed_files/figure-html5/unnamed-chunk-6-1.png","lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png","lab-3-completed_files/header-attrs-2.3/header-attrs.js","lab-3-completed_files/jquery-1.11.3/jquery.min.js","lab-3-completed_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -75,6 +142,51 @@
 
   .pagedtable-footer {
     font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
   }
 
   .html-widget {
@@ -116,6 +228,7 @@
   }
 
   d-article {
+    padding-top: 2.5rem;
     padding-bottom: 30px;
   }
 
@@ -127,91 +240,48 @@
     width: 100%;
   }
 
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
   d-article iframe {
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 2.0em;
     width: 100%;
   }
 
-  figure img.external {
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
-    padding: 18px;
-    box-sizing: border-box;
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   }
 
-  /* CSS for table of contents */
-
-  .d-toc {
-    color: rgba(0,0,0,0.8);
-    font-size: 0.8em;
-    line-height: 1em;
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
   }
 
-  .d-toc-header {
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
-    margin-top: 0;
-    margin-bottom: 1.3em;
+  d-article div.sourceCode {
+    background-color: white;
   }
 
-  .d-toc a {
-    border-bottom: none;
-  }
-
-  .d-toc ul {
-    padding-left: 0;
-  }
-
-  .d-toc li>ul {
-    padding-top: 0.8em;
-    padding-left: 16px;
-    margin-bottom: 0.6em;
-  }
-
-  .d-toc ul,
-  .d-toc li {
-    list-style-type: none;
-  }
-
-  .d-toc li {
-    margin-bottom: 0.9em;
-  }
-
-  .d-toc-separator {
-    margin-top: 20px;
-    margin-bottom: 2em;
-  }
-
-  .d-article-with-toc {
-    border-top: none;
-    padding-top: 0;
-  }
-
-
-
-  /* Tweak code blocks (note that this CSS is repeated above in an injection
-     into the d-code shadow dom) */
-
-  d-code {
-    overflow-x: auto !important;
-  }
-
-  pre.d-code code.d-code {
+  d-article div.sourceCode pre {
     padding-left: 10px;
     font-size: 12px;
     border-left: 2px solid rgba(0,0,0,0.1);
   }
 
-  pre.text-output {
-
+  d-article pre {
     font-size: 12px;
     color: black;
     background: none;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    margin-top: 0;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
@@ -229,20 +299,123 @@
     hyphens: none;
   }
 
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
   @media(min-width: 768px) {
 
-  d-code {
-    overflow-x: visible !important;
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
   }
 
-  pre.d-code code.d-code  {
-      padding-left: 18px;
-      font-size: 14px;
-  }
-  pre.text-output {
+  d-article div.sourceCode pre {
+    padding-left: 18px;
     font-size: 14px;
   }
+
+  d-article pre {
+    font-size: 14px;
   }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
 
   /* Figure */
 
@@ -280,6 +453,16 @@
     color: rgba(0, 0, 0, 1.0);
   }
 
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
 
 
   /* Tweak 1000px media break to show more text */
@@ -355,6 +538,91 @@
     word-wrap: break-word;
   }
 
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
 
   /* Social footer */
 
@@ -409,6 +677,211 @@
 
   .custom p {
     margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
   }
 
 
@@ -540,6 +1013,12 @@
     hyphens: none;
   }
 
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
   </style>
 
   <script type="application/javascript">
@@ -555,6 +1034,13 @@
 
   // show body when load is complete
   function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
 
     // set body to visible
     document.body.style.visibility = 'visible';
@@ -601,23 +1087,8 @@
     // create d-appendix
     $('.d-appendix').changeElementType('d-appendix');
 
-    // create d-bibliography
-    var bibliography = $('<d-bibliography></d-bibliography>');
-    $('#distill-bibliography').wrap(bibliography);
-
     // flag indicating that we have appendix items
     var appendix = $('.appendix-bottom').children('h3').length > 0;
-
-    // replace citations with <d-cite>
-    $('.citation').each(function(i, val) {
-      appendix = true;
-      var cites = $(this).attr('data-cites').split(" ");
-      var dt_cite = $('<d-cite></d-cite>');
-      dt_cite.attr('key', cites.join());
-      $(this).replaceWith(dt_cite);
-    });
-    // remove refs
-    $('#refs').remove();
 
     // replace footnotes with <d-footnote>
     $('.footnote-ref').each(function(i, val) {
@@ -635,39 +1106,21 @@
     // remove footnotes
     $('.footnotes').remove();
 
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
     $('h1.appendix, h2.appendix').each(function(i, val) {
       $(this).changeElementType('h3');
     });
     $('h3.appendix').each(function(i, val) {
       var id = $(this).attr('id');
-      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
       appendix = true;
       $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
     });
 
     // show d-appendix if we have appendix content
     $("d-appendix").css('display', appendix ? 'grid' : 'none');
-
-    // replace code blocks with d-code
-    $('pre>code').each(function(i, val) {
-      var code = $(this);
-      var pre = code.parent();
-      var clz = "";
-      var language = pre.attr('class');
-      if (language) {
-        // map unknown languages to "clike" (without this they just dissapear)
-        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
-                                 "javascript", "js", "julia", "lua", "markdown",
-                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
-          language = "clike";
-        language = ' language="' + language + '"';
-        var dt_code = $('<d-code block' + language + clz + '></d-code>');
-        dt_code.text(code.text());
-        pre.replaceWith(dt_code);
-      } else {
-        code.addClass('text-output').unwrap().changeElementType('pre');
-      }
-    });
 
     // localize layout chunks to just output
     $('.layout-chunk').each(function(i, val) {
@@ -676,7 +1129,7 @@
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('d-code, pre.text-output, script');
+      var elements = $(this).children().not('div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -693,6 +1146,13 @@
       $(this).children().unwrap();
     });
 
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
     // load distill framework
     load_distill_framework();
 
@@ -708,12 +1168,26 @@
       if (!have_authors)
         $('d-byline').addClass('hidden');
 
-      // table of contents
-      if (have_authors) // adjust border if we are in authors
-        $('.d-toc').parent().addClass('d-article-with-toc');
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
 
       // strip links that point to #
       $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
 
       // hide elements of author/affiliations grid that have no value
       function hide_byline_column(caption) {
@@ -763,14 +1237,9 @@
         grid.children('h3:contains("Affiliations")').text('Affiliation');
       }
 
-      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
-      $('d-code').each(function(i, val) {
-        var style = document.createElement('style');
-        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
-                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
-        if (this.shadowRoot)
-          this.shadowRoot.appendChild(style);
-      });
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
 
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
@@ -806,9 +1275,7 @@
     $('.d-byline a').remove();
 
     // remove toc
-    $('.d-toc-header').remove();
-    $('.d-toc').remove();
-    $('.d-toc-separator').remove();
+    $('.d-contents').remove();
 
     // move appendix elements
     $('h1.appendix, h2.appendix').each(function(i, val) {
@@ -937,8 +1404,9 @@
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="lab-3-completed_files/header-attrs-2.3/header-attrs.js"></script>
+  <script src="lab-3-completed_files/header-attrs-2.6/header-attrs.js"></script>
   <script src="lab-3-completed_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="lab-3-completed_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="lab-3-completed_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="lab-3-completed_files/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="lab-3-completed_files/distill-2.2.21/template.v2.js"></script>
@@ -953,7 +1421,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Visualizing Data (Lab 03) Exercises, Completed","description":"Completed exercises for the third lab","authors":[{"author":"Justin Dainer-Best","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2020-09-19T00:00:00.000-04:00","citationText":"Dainer-Best, 2020"}
+{"title":"Visualizing Data (Lab 03) Exercises, Completed","description":"Completed exercises for the third lab","authors":[{"author":"Justin Dainer-Best","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-09-19T00:00:00.000+00:00","citationText":"Dainer-Best, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -964,6 +1432,14 @@
 
 <div class="d-title">
 <h1>Visualizing Data (Lab 03) Exercises, Completed</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">rlanguage</div>
+<div class="dt=tag">visualization</div>
+<div class="dt=tag">ggplot</div>
+<div class="dt=tag">dplyr</div>
+</div>
+<!--/radix_placeholder_categories-->
 <p><p>Completed exercises for the third lab</p></p>
 </div>
 
@@ -977,31 +1453,33 @@
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>This document is meant to be used to practice after you have completed the tutorial for today’s lab. Please note that it uses some packages installed during that tutorial. Make sure to put your name as the author of the document, above!</p>
-<p>If you would like to refer to the tutorial while also working on this document, open the HTML version of the tutorial (after closing it in RStudio) in a web browser to refer to the code. (In RStudio.Cloud, browse to the file in the Files pane, click on it, and click “View in Web Browser”.)</p>
-<p>If you intend to work on both simultaneously, there are instructions on the <a href="https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
-<p>You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html">labs website</a>; Lab 2’s exercise answers are <a href="https://faculty.bard.edu/~jdainerbest/psy-203/posts/2020-09-11-lab-2-answers/">here</a>.</p>
+<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <a href="https://jdbest.github.io/r-psych-stats/answers.html" class="uri">https://jdbest.github.io/r-psych-stats/answers.html</a></p>
+<p>Feel free to change the top to have your name! You’re the person answering these exercises, now.</p>
+<p>If you would like to refer to the tutorial while also working on this document, there are instructions on the <a href="https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
+<p>You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="../../labs.html">labs website</a>.</p>
 <h2 id="objectives">Objectives</h2>
-<p>In the tutorial, you learned how to manipulate and visualize data in a few ways. In today’s exercise, you’ll practice doing those with the <code>friends</code> data we collected together.</p>
+<p>In the tutorial, you learned how to manipulate and visualize data in a few ways. In today’s exercise, you’ll practice doing those with the <code>friends</code> data that students in PSY 203 collected by asking friends to provide information. (This data is somewhat edited by the instructor and contains no identifying information.)</p>
 <p>You’ll also get to continue learning about the <code>filter()</code> function and other ways of manipulating data.</p>
-<h2 id="turning-it-in">Turning it in?</h2>
-<p>I invite you to turn in this document on Brightspace, where I will provide some basic feedback. You do not <em>need</em> to do this, but you may find it useful. As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <a href="https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html" class="uri">https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html</a></p>
 <p>I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now—it’ll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document for me to review.</p>
 <h2 id="loading-packages">Loading packages</h2>
 <p>Run the following code chunk to load necessary packages for these exercises. If any don’t load, install them with the <code>install.packages("")</code> function.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(tidyverse)
-# tidyverse loads these:
-# library(dplyr)
-# library(ggplot2)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='co'># tidyverse loads these:</span>
+<span class='co'># library(dplyr)</span>
+<span class='co'># library(ggplot2)</span>
+</code></pre>
+</div>
 </div>
 <h2 id="importing-data">Importing data</h2>
-<p>When you downloaded this document, you also downloaded a file called <code>friends.csv</code>. In the empty code chunk below, import those data now, using the <code>read_csv()</code> function and assigning it to a variable which I recommend you call <code>friends</code>. Don’t remember how to import data? We talked about it in <a href="https://faculty.bard.edu/~jdainerbest/psy-203/posts/2020-09-11-lab-2-answers/index.html#importing-data">Lab 2</a> (and you can follow that link to the section where we did so).</p>
-<p>For <em>most people</em>, running this code by hitting the green “play” button to the right (or by hitting Ctrl/Command + Enter/return while your cursor is on the line) will “just work”; if it does not, consider adding “lab03/” before the “f” in “friends,” checking your working directory, or asking for help.</p>
+<p>When you downloaded this document, you also downloaded a file called <code>friends.csv</code>. In the empty code chunk below, import those data now, using the <code>read_csv()</code> function and assigning it to a variable which I recommend you call <code>friends</code>. Don’t remember how to import data? We talked about it in <a href="https://jdbest.github.io/r-psych-stats/answers/02-lab/#importing-data">Lab 2</a> (and you can follow that link to the section where we did so).</p>
+<p>(If the code below doesn’t work on its own, try adding <code>03-lab/</code> before the name <code>"friends.csv"</code>, and again in the code chunk below. Because of <em>where</em> it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.)</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends &lt;- read_csv(&quot;friends.csv&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"friends.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>Remember that red text reading “Parsed with column specification:” and some info is just R explaining how it “read” the file—not an error!</p>
 <h2 id="finding-out-the-structure">Finding out the structure</h2>
@@ -1013,10 +1491,11 @@ friends &lt;- read_csv(&quot;friends.csv&quot;)</code></pre>
 <li>Pick a column from <code>friends</code>. What is the <code>class()</code> of that column?</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-str(friends)</code></pre>
-<pre><code>
-tibble [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>tibble [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ duration           : num [1:84] 464 332 399 328 37 ...
  $ finished           : num [1:84] 1 1 1 1 0 1 1 0 0 1 ...
  $ whentook           : POSIXct[1:84], format: &quot;2020-08-27 13:05:27&quot; ...
@@ -1084,10 +1563,11 @@ tibble [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   ..   shootingdrills = col_double(),
   ..   handedness = col_double()
   .. )</code></pre>
-<pre class="r"><code>
-names(friends)</code></pre>
-<pre><code>
- [1] &quot;duration&quot;            &quot;finished&quot;            &quot;whentook&quot;           
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;duration&quot;            &quot;finished&quot;            &quot;whentook&quot;           
  [4] &quot;DistributionChannel&quot; &quot;socialmedia&quot;         &quot;gender&quot;             
  [7] &quot;siblings&quot;            &quot;smed.hrs&quot;            &quot;gram.followers&quot;     
 [10] &quot;fbfriends&quot;           &quot;tvhours&quot;             &quot;haircolor&quot;          
@@ -1098,10 +1578,11 @@ names(friends)</code></pre>
 [25] &quot;expectedoutcome_2&quot;   &quot;expectedoutcome_3&quot;   &quot;expectedoutcome_4&quot;  
 [28] &quot;majordiv&quot;            &quot;hrs.sleep&quot;           &quot;height.unvalidated&quot; 
 [31] &quot;shootingdrills&quot;      &quot;handedness&quot;         </code></pre>
-<pre class="r"><code>
-head(friends)</code></pre>
-<pre><code>
-# A tibble: 6 x 32
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 6 x 32
   duration finished whentook            DistributionCha… socialmedia
      &lt;dbl&gt;    &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;                  &lt;dbl&gt;
 1      464        1 2020-08-27 13:05:27 anonymous                  1
@@ -1120,39 +1601,44 @@ head(friends)</code></pre>
 #   expectedoutcome_3 &lt;dbl&gt;, expectedoutcome_4 &lt;dbl&gt;, majordiv &lt;dbl&gt;,
 #   hrs.sleep &lt;dbl&gt;, height.unvalidated &lt;dbl&gt;, shootingdrills &lt;dbl&gt;,
 #   handedness &lt;dbl&gt;</code></pre>
-<pre class="r"><code>
-class(friends$gender)</code></pre>
-<pre><code>
-[1] &quot;character&quot;</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>gender</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;character&quot;</code></pre>
 </div>
 <p>You can also click on the name <code>friends</code> in the “Environment” pane at the upper right of the RStudio screen; it will open it up in a tab for you to take a look. Does it look like you’d expect? (If you hit the blue “play button” arrow next to the name in that pane, you’ll see something that looks like what you saw when you ran the <code>str()</code> command.)</p>
 <h2 id="counting">Counting</h2>
 <p>Use the <code>count()</code> command from <code>library(dplyr)</code> to figure out how many respondents responded anonymously by running it on the <code>DistributionChannel</code> column of <code>friends</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends %&gt;% count(DistributionChannel)</code></pre>
-<pre><code>
-# A tibble: 1 x 2
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>DistributionChannel</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 2
   DistributionChannel     n
   &lt;chr&gt;               &lt;int&gt;
 1 anonymous              84</code></pre>
 </div>
 <p>Then, create a <code>table()</code> of <code>siblings</code> from <code>friends</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-table(friends$siblings)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code>
  0  1  2  3  4  5  8 
  6 34 24 12  2  4  1 </code></pre>
 </div>
 <p>Use a chain of <code>filter()</code> and <code>count()</code> to count how many classes (<code>numclasses</code>) the <code>friends</code> who have one sibling have. Said another way: <code>filter()</code> to people who have <code>siblings</code> of 1, then <code>count()</code> the number of classes.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends %&gt;% 
-  filter(siblings == 1) %&gt;% 
-  count(numclasses)</code></pre>
-<pre><code>
-# A tibble: 5 x 2
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>siblings</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>numclasses</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 5 x 2
   numclasses     n
        &lt;dbl&gt; &lt;int&gt;
 1          3     3
@@ -1164,49 +1650,59 @@ friends %&gt;%
 <h2 id="some-plots">Some plots</h2>
 <p>Make a histogram of the <code>duration</code> it took people to finish the survey. Your choice if you use the <code>ggplot() + geom_histogram()</code> from <code>ggplot2</code> or just <code>hist()</code>. Label your axes either way.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(friends, aes(x = duration)) +
-  geom_histogram(bins = 20) +
-  theme_minimal() +
-  labs(x = &quot;Duration (s)&quot;, y = &quot;Frequency&quot;, title = &quot;How long people took to respond&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Duration (s)"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"How long people took to respond"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex7-1.png" width="624" /></p>
 </div>
 <p>You may notice that this looks pretty bad because there’s an outlier. We can exclude them using <code>filter()</code>! Create a new variable called <code>friends2</code> which filters out any <code>duration</code> over 10000 (hint: you’ll want the &lt; sign, since we’re looking to keep in the new data frame any duration SHORTER than 10000). Then copy the code for the histogram to the space below, and re-run it (make sure to change to <code>friends2</code>, now).</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends2 &lt;- friends %&gt;% filter(duration &lt; 10000)
-ggplot(friends2, aes(x = duration)) +
-  geom_histogram(bins = 20) +
-  theme_minimal() +
-  labs(x = &quot;Duration (s)&quot;, y = &quot;Frequency&quot;, title = &quot;How long people took to respond&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends2</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>10000</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends2</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Duration (s)"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"How long people took to respond"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex8-1.png" width="624" /></p>
 </div>
 <p>Not very normal, huh?</p>
 <p><strong>Have you saved this file? Please do. If you think your code should work, try knitting the document, too. Does it? If there are errors, can you identify them?</strong></p>
 <p>Create <strong>another</strong> data-frame variable called <code>friends3</code>, and this time filter out any <code>duration</code> over 600 s—seems like most people should have finished that in 10 minutes, barring them opening it and then getting distracted. Then, make a <code>geom_histogram()</code> of the data. (You can re-use your code, of course—just be sure to call it <code>friends3</code> in the <code>ggplot()</code> command.) You should find that the data looks MUCH more normally-distributed, right?</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends3 &lt;- friends %&gt;% filter(duration &lt; 600)
-ggplot(friends3, aes(x = duration)) +
-  geom_histogram(bins = 20) +
-  theme_minimal() +
-  labs(x = &quot;Duration (s)&quot;, y = &quot;Frequency&quot;, title = &quot;How long people took to respond&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends3</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>600</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends3</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Duration (s)"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"How long people took to respond"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex9-1.png" width="624" /></p>
 </div>
 <p>If we actually dropped those people, that would be dropping seven responses. We won’t right now. It’s not necessarily bad data if someone took two hours to hit submit… but perhaps you’re seeing some of the decisions that we go into in data analysis and the <em>preparation</em> for it.</p>
 <h2 id="box-and-violin-plots">Box and violin plots</h2>
 <p>For this last visualization, we’re going to need to tell R that number of siblings is a <strong>factor</strong>, not a continuous variable. (No-one has 1.5 siblings.) Run the following code to do that. It literally tells R “this is a factor” with the <code>factor()</code> function.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-friends$siblings &lt;- factor(friends$siblings)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>Use <code>friends</code> (rather than <code>friends2</code>) for this. Make both a <code>geom_boxplot()</code> and a <code>geom_violin()</code> of the data for <code>gram.followers</code> against <code>siblings</code>. (You can try doing them as two layers on the same plot, but it doesn’t look too good.) Up to you which is x and which is y; this is a case where it doesn’t matter. Do add on a theme, and <code>labs()</code>. Play around with colors if you like—this is a great time to start learning how to do that.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(friends, aes(y = siblings, x = gram.followers)) +
-  geom_boxplot() +
-  theme_minimal() +
-  labs(x = &quot;Number of instagram followers&quot;, y = &quot;Number of siblings&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>siblings</span>, x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of instagram followers"</span>, y <span class='op'>=</span> <span class='st'>"Number of siblings"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex10-1.png" width="624" /></p>
 </div>
 <p>Based on the plot, do you think that people with more siblings have more of a social media presence? Are there any outliers?</p>
@@ -1254,114 +1750,131 @@ ggplot(friends, aes(y = siblings, x = gram.followers)) +
 <li>Make a <code>data.frame()</code> with the data above. Two suggestions: (a) name everything (the data frame variable, the columns) with lower case names without spaces (the group’s <em>names</em> will be in quotes, and can be however you like), and (b) remember that you name each <strong>column</strong> in the data.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graphdata &lt;- data.frame(group = c(&quot;Control&quot;, &quot;Preparation&quot;, &quot;Teaching&quot;),
-                        n = c(31, 32, 30),
-                        score = c(6.2, 7.9, 8.7),
-                        sd = c(3.3, 2.4, 2.8))</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>graphdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Control"</span>, <span class='st'>"Preparation"</span>, <span class='st'>"Teaching"</span><span class='op'>)</span>,
+                        n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>31</span>, <span class='fl'>32</span>, <span class='fl'>30</span><span class='op'>)</span>,
+                        score <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6.2</span>, <span class='fl'>7.9</span>, <span class='fl'>8.7</span><span class='op'>)</span>,
+                        sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3.3</span>, <span class='fl'>2.4</span>, <span class='fl'>2.8</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <ol start="2" type="1">
 <li>Using the above <code>factor()</code>, make the group column of your new data frame a factor.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graphdata$group &lt;- factor(graphdata$group)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <ol start="3" type="1">
 <li>Plot these results in a bar graph with <code>ggplot2</code> and using the <code>geom_col()</code> layer. The <code>x</code> in your <code>ggplot()</code> <code>aes()</code> should be the group, and the <code>y</code> should be the comprehension score. Your graph should include a title, labeled axes, and clearly demonstrate the relationship between group and comprehension score. Feel free to add a theme.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(graphdata, aes(x = group, y = score)) +
-  geom_col() +
-  labs(x = &quot;Group&quot;, y = &quot;Mean Comprehension Score&quot;, title = &quot;Comprehension Scores by Group&quot;) +
-  theme_bw()</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>graphdata</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>group</span>, y <span class='op'>=</span> <span class='va'>score</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Group"</span>, y <span class='op'>=</span> <span class='st'>"Mean Comprehension Score"</span>, title <span class='op'>=</span> <span class='st'>"Comprehension Scores by Group"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/ex13-1.png" width="624" /></p>
 </div>
 <ol start="4" type="1">
 <li>Challenge: Calculate the standard error of the mean based on the above plot and the equation for <em>SEM</em>, which is <span class="math inline">\(SEM=\frac{SD}{\sqrt{n}}\)</span></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graphdata$se &lt;- graphdata$sd / sqrt(graphdata$n)
-graphdata$se</code></pre>
-<pre><code>
-[1] 0.5926975 0.4242641 0.5112077</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>se</span> <span class='op'>&lt;-</span> <span class='va'>graphdata</span><span class='op'>$</span><span class='va'>sd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>n</span><span class='op'>)</span>
+<span class='va'>graphdata</span><span class='op'>$</span><span class='va'>se</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.5926975 0.4242641 0.5112077</code></pre>
 </div>
 <h2 id="extension">Extension</h2>
-<p>If you’re feeling comfortable with all of this, this exercise is for you. If not, it is not required.</p>
+<p>If you’re feeling comfortable with all of this, this exercise is for you.</p>
 <p>The data lives in the <code>HistData</code> package, which we installed earlier.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-install.packages(&quot;HistData&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"HistData"</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>Load this package here, adn the data:</p>
+</div>
+<p>Load this package here, and the data:</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(HistData)
-data(Nightingale)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>HistData</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Nightingale</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>This is the data from Florence Nightingale’s research in the 1850s on causes of death after the Crimean war—which we will discuss in class. You can take a look by running <code>str(Nightingale)</code>. (As always, remove the tick marks before pasting that code into the Console.)</p>
 <p>For the 24 months listed, the data has how many deaths were caused by disease in the column: Nightingale$Disease</p>
 <p>Here’s a ggplot() version of the Nightingale coxcomb plot we saw in class—it’s also on wikipedia, <a href="https://en.wikipedia.org/wiki/Florence_Nightingale#/media/File:Nightingale-mortality.jpg">here</a>. For some more context, <a href="http://www.florence-nightingale-avenging-angel.co.uk/Nightingale_Hockey_Stick.pdf">read this</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-deaths &lt;- Nightingale %&gt;% 
-  mutate(Month = factor(Month, 
-                        levels = c(&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, 
-                                   &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;))) %&gt;%
-  pivot_longer(cols = c(Disease, Other, Wounds), names_to = &quot;Cause&quot;, values_to = &quot;Number&quot;)
-year1 &lt;- ggplot(deaths %&gt;% slice(1:36)) + 
-  geom_bar(aes(x = Month, y = Number, fill = Cause), color = &quot;grey40&quot;, 
-           stat = &quot;identity&quot;, alpha = .6, width = 1.0, size =.5) + 
-  coord_polar() +
-  scale_y_sqrt() + # actually, Nightingale used a square root transformation, which this applies
-  scale_x_discrete(limits = c(&quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;, 
-                              &quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;), 
-                   labels = c(&quot;Jul-1854&quot;, &quot;Aug-1854&quot;, &quot;Sep-1854&quot;, &quot;Oct-1854&quot;, 
-                              &quot;Nov-1854&quot;, &quot;Dec-1854&quot;, &quot;Jan-1855&quot;, &quot;Feb-1855&quot;, 
-                              &quot;Mar-1855&quot;, &quot;Apr-1854&quot;, &quot;May-1854&quot;, &quot;Jun-1854&quot;)) +
-  geom_abline(intercept = sqrt(1000), slope = 0, linetype = 5) +
-  theme_classic() + 
-  scale_fill_discrete(name = &quot;Cause&quot;, type = c(&quot;light blue&quot;, &quot;black&quot;, &quot;pink&quot;)) +
-  theme(axis.line = element_blank(),  axis.title = element_blank(), 
-        axis.ticks = element_blank(), axis.text.y = element_blank(),
-        title = element_text(size = 16))
-year2 &lt;- ggplot(deaths %&gt;% slice(37:72)) + 
-  geom_bar(aes(x = Month, y = Number, fill = Cause), color = &quot;grey40&quot;, 
-           stat = &quot;identity&quot;, alpha = .6, width = 1.0, size =.5) + 
-  coord_polar() +
-  scale_y_sqrt() + # actually, Nightingale used a square root transformation, which this applies
-  scale_x_discrete(limits = c(&quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;, 
-                              &quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;), 
-                   labels = c(&quot;Jul-1855&quot;, &quot;Aug-1855&quot;, &quot;Sep-1855&quot;, &quot;Oct-1855&quot;, 
-                              &quot;Nov-18554&quot;, &quot;Dec-1855&quot;, &quot;Jan-1856&quot;, &quot;Feb-1856&quot;, 
-                              &quot;Mar-1856&quot;, &quot;Apr-1855&quot;, &quot;May-1855&quot;, &quot;Jun-1855&quot;)) +
-  geom_abline(intercept = sqrt(1000), slope = 0, linetype = 5) +
-  theme_classic() + 
-  scale_fill_discrete(name = &quot;Cause&quot;, type = c(&quot;light blue&quot;, &quot;black&quot;, &quot;pink&quot;)) +
-  theme(axis.line = element_blank(),  axis.title = element_blank(), 
-        axis.ticks = element_blank(), axis.text.y = element_blank(),
-        title = element_text(size = 16), legend.position = &quot;none&quot;)
-gridExtra::grid.arrange(grobs = list(year2, year1), nrow = 1,
-                        top = grid::textGrob(&quot;Diagram of the Causes of Mortality\nin the Army in the East&quot;))</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>deaths</span> <span class='op'>&lt;-</span> <span class='va'>Nightingale</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>Month <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>Month</span>, 
+                        levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>, <span class='st'>"Mar"</span>, <span class='st'>"Apr"</span>, <span class='st'>"May"</span>, 
+                                   <span class='st'>"Jun"</span>, <span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sep"</span>, <span class='st'>"Oct"</span>, <span class='st'>"Nov"</span>, <span class='st'>"Dec"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pivot_longer</span><span class='op'>(</span>cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>Disease</span>, <span class='va'>Other</span>, <span class='va'>Wounds</span><span class='op'>)</span>, names_to <span class='op'>=</span> <span class='st'>"Cause"</span>, values_to <span class='op'>=</span> <span class='st'>"Number"</span><span class='op'>)</span>
+<span class='va'>year1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>deaths</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>36</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_bar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Month</span>, y <span class='op'>=</span> <span class='va'>Number</span>, fill <span class='op'>=</span> <span class='va'>Cause</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"grey40"</span>, 
+           stat <span class='op'>=</span> <span class='st'>"identity"</span>, alpha <span class='op'>=</span> <span class='fl'>.6</span>, width <span class='op'>=</span> <span class='fl'>1.0</span>, size <span class='op'>=</span><span class='fl'>.5</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>coord_polar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_y_sqrt</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># actually, Nightingale used a square root transformation, which this applies</span>
+  <span class='fu'>scale_x_discrete</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sep"</span>, <span class='st'>"Oct"</span>, <span class='st'>"Nov"</span>, <span class='st'>"Dec"</span>, 
+                              <span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>, <span class='st'>"Mar"</span>, <span class='st'>"Apr"</span>, <span class='st'>"May"</span>, <span class='st'>"Jun"</span><span class='op'>)</span>, 
+                   labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul-1854"</span>, <span class='st'>"Aug-1854"</span>, <span class='st'>"Sep-1854"</span>, <span class='st'>"Oct-1854"</span>, 
+                              <span class='st'>"Nov-1854"</span>, <span class='st'>"Dec-1854"</span>, <span class='st'>"Jan-1855"</span>, <span class='st'>"Feb-1855"</span>, 
+                              <span class='st'>"Mar-1855"</span>, <span class='st'>"Apr-1854"</span>, <span class='st'>"May-1854"</span>, <span class='st'>"Jun-1854"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_abline</span><span class='op'>(</span>intercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>1000</span><span class='op'>)</span>, slope <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>scale_fill_discrete</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Cause"</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"light blue"</span>, <span class='st'>"black"</span>, <span class='st'>"pink"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.line <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,  axis.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, 
+        axis.ticks <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+        title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>16</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>year2</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>deaths</span> <span class='op'>%&gt;%</span> <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>37</span><span class='op'>:</span><span class='fl'>72</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_bar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Month</span>, y <span class='op'>=</span> <span class='va'>Number</span>, fill <span class='op'>=</span> <span class='va'>Cause</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"grey40"</span>, 
+           stat <span class='op'>=</span> <span class='st'>"identity"</span>, alpha <span class='op'>=</span> <span class='fl'>.6</span>, width <span class='op'>=</span> <span class='fl'>1.0</span>, size <span class='op'>=</span><span class='fl'>.5</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>coord_polar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_y_sqrt</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># actually, Nightingale used a square root transformation, which this applies</span>
+  <span class='fu'>scale_x_discrete</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sep"</span>, <span class='st'>"Oct"</span>, <span class='st'>"Nov"</span>, <span class='st'>"Dec"</span>, 
+                              <span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>, <span class='st'>"Mar"</span>, <span class='st'>"Apr"</span>, <span class='st'>"May"</span>, <span class='st'>"Jun"</span><span class='op'>)</span>, 
+                   labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jul-1855"</span>, <span class='st'>"Aug-1855"</span>, <span class='st'>"Sep-1855"</span>, <span class='st'>"Oct-1855"</span>, 
+                              <span class='st'>"Nov-18554"</span>, <span class='st'>"Dec-1855"</span>, <span class='st'>"Jan-1856"</span>, <span class='st'>"Feb-1856"</span>, 
+                              <span class='st'>"Mar-1856"</span>, <span class='st'>"Apr-1855"</span>, <span class='st'>"May-1855"</span>, <span class='st'>"Jun-1855"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_abline</span><span class='op'>(</span>intercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>1000</span><span class='op'>)</span>, slope <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>scale_fill_discrete</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Cause"</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"light blue"</span>, <span class='st'>"black"</span>, <span class='st'>"pink"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>axis.line <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,  axis.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, 
+        axis.ticks <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>, axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+        title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>16</span><span class='op'>)</span>, legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+<span class='fu'>gridExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html'>grid.arrange</a></span><span class='op'>(</span>grobs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>year2</span>, <span class='va'>year1</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>1</span>,
+                        top <span class='op'>=</span> <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.text.html'>textGrob</a></span><span class='op'>(</span><span class='st'>"Diagram of the Causes of Mortality\nin the Army in the East"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-4-1.png" width="1248" /></p>
 </div>
 <p>You don’t have to do that, however. (And we can all acknowledge that hers is more interesting to look at than this version!)</p>
 <p>Label your axes in all of these plots.</p>
 <p>Extension 1. Create a histogram using the full Nightingale$Disease data. Note that this should <em>only</em> involve the disease data—a histogram shows frequencies of how often you get a certain response. Is the data normally distributed?</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# in ggplot:
-ggplot(data = Nightingale, aes(x = Disease)) +
-  geom_histogram(binwidth = 300) + 
-  theme_bw() +
-  labs(x = &quot;Number of Disease Deaths&quot;, y = &quot;Frequency&quot;, title = &quot;Frequency of Disease Deaths&quot;)</code></pre>
-<p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
-<pre class="r"><code>
-# in base R:
-hist(Nightingale$Disease, 
-     xlab = &quot;Number of Disease Deaths&quot;, ylab = &quot;Frequency&quot;, main = &quot;Frequency of Disease Deaths&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='co'># in ggplot:</span>
+<span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>300</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of Disease Deaths"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"Frequency of Disease Deaths"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
+<div class="sourceCode">
+<pre><code><span class='co'># in base R:</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Nightingale</span><span class='op'>$</span><span class='va'>Disease</span>, 
+     xlab <span class='op'>=</span> <span class='st'>"Number of Disease Deaths"</span>, ylab <span class='op'>=</span> <span class='st'>"Frequency"</span>, main <span class='op'>=</span> <span class='st'>"Frequency of Disease Deaths"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-5-2.png" width="624" /></p>
 </div>
 <blockquote>
@@ -1371,12 +1884,14 @@ hist(Nightingale$Disease,
 <li>Create a scatterplot of deaths from Wounds against those from Disease. To do this, use the <code>geom_point()</code> layer from <code>ggplot2</code>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-ggplot(data = Nightingale, aes(x = Wounds, y = Disease)) + 
-  geom_point(color = &quot;red&quot;, alpha = .5) + # setting alpha as lower than 1 makes the points partially transparent
-  theme_bw() +
-  labs(x = &quot;Deaths from Wounds&quot;, y = &quot;Deaths from Disease&quot;, 
-       title = &quot;Comparison of Deaths from Disease and from Wounds&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Wounds</span>, y <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_point</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"red"</span>, alpha <span class='op'>=</span> <span class='fl'>.5</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># setting alpha as lower than 1 makes the points partially transparent</span>
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Deaths from Wounds"</span>, y <span class='op'>=</span> <span class='st'>"Deaths from Disease"</span>, 
+       title <span class='op'>=</span> <span class='st'>"Comparison of Deaths from Disease and from Wounds"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
 <ol start="4" type="1">
@@ -1384,16 +1899,19 @@ ggplot(data = Nightingale, aes(x = Wounds, y = Disease)) +
 </ol>
 <p>You’ll note that R is actually quite good at handling dates! It knows these dates are <code>class(Nightingale$Date) == "Date"</code>!</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# in ggplot
-ggplot(data = Nightingale, aes(x = Date, y = Disease)) +
-  geom_point() +
-  geom_line() +
-  theme_bw() +
-  labs(x = &quot;Date&quot;, y = &quot;Number of Deaths by Disease&quot;, 
-       title = &quot;Deaths by Disease over Time&quot;)</code></pre>
+<div class="sourceCode">
+<pre><code><span class='co'># in ggplot</span>
+<span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Date</span>, y <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Date"</span>, y <span class='op'>=</span> <span class='st'>"Number of Deaths by Disease"</span>, 
+       title <span class='op'>=</span> <span class='st'>"Deaths by Disease over Time"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png" width="624" data-distill-preview=1 /></p>
 </div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

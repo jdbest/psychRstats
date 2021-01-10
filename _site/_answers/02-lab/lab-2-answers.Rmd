@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R (Lab 02) Exercise Answers"
+title: "Introduction to R (Lab 02) Exercises, Completed"
 description: |
   Completed exercises for the second lab
 author:
