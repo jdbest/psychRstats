@@ -1,0 +1,100 @@
+---
+title: "One-Way ANOVA: Exercises"
+author: ""
+date: "October 26/29, 2020"
+output: 
+  html_document:
+    self_contained: yes
+---
+
+This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
+
+If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
+
+## Objectives
+
+In the tutorial, we talked about how to run ANOVAs "manually" and how to do them using R's built-in functions. Now, you'll practice doing so in R, and learn to use `ggplot2` functions to plot it.
+
+You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
+
+I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now---it'll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document.
+
+## Loading packages
+
+As always, you _must_ load packages if you intend to use their functions. ("Turn on the lights.") Run the following code chunk to load necessary packages for these exercises. 
+
+```{r loadpackages, message=FALSE}
+library(tidyverse)
+# tidyverse loads these that we'll use today: (you don't need to load them individually)
+# library(readr)
+# library(dplyr)
+# library(ggplot2)
+# library(tidyr)
+```
+
+## Importing data
+
+As discussed in the tutorial, we're using data from James and colleagues (2015). 
+
+> James, E. L., Bonsall, M. B., Hoppitt, L., Tunbridge, E. M., Geddes, J. R., Milton, A. L., & Holmes, E. A. (2015). Computer game play reduces intrusive memories of experimental trauma via reconsolidation-update mechanisms. *Psychological Science*, 26, 1201--1215. https://doi.org/10.1177%2F0956797615583071
+
+Make sure you read the description of the study in the tutorial---it's important for thinking about what we're doing in these exercises. 
+
+The data was downloaded with this file. Load it using the `read_csv()` command (by either uncommenting the line below or some other method):
+
+```{r importdata}
+# tetris <- read.csv("James.csv")
+```
+
+## Today's task
+
+For the questions below, create your own code chunks ([how?: instructions here](https://github.com/jdbest/psychRstats/wiki/Create-a-code-chunk)) and insert all code into them.
+
+We spent the tutorial talking about how to use the `anova()` function after creating a model with `lm()`. You'll do the same thing with the `tetris` data here. 
+
+1. First, use `factor()` to do the same thing we did in the tutorial, renaming the levels of `Condition` from 1,2,3,4 to "Control", etc. 
+
+
+2. Then, run two ANOVAs: one asking whether `Condition` determines the number of intrusive thoughts in the days after the intervention (`Days_One_to_Seven_Number_of_Intrusions`), and the second asking whether `Condition` impacts the responses on the task that was designed to measure intrusive thoughts (`Number_of_Provocation_Task_Intrusions`). 
+
+    For each ANOVA, you should also plan to report the results as we did in the tutorial---complete with means and the F(df1,df2)=value,p<.05 or p=value. 
+
+
+
+3. When you find a significant result, you should also calculate the effect size, eta-squared. Do that either using `library(lsr)` and the `etaSquared()` function, or by hand. Your choice. Then edit the above paragraphs to include the effect size.
+
+
+
+4. I told you in class that you shouldn't repeatedly use *t*-tests because of the fact that doing so increases your Type I error rate (i.e., risk of false positives). However, you *can* do what are called **planned comparisons**. After a significant result on an ANOVA, you may compare the condition of interest against the others if you intended to do so. (This is one more reason why preregistration is so important!) Usually, even when you've planned to do comparisons, you should do a *correction* for the planned comparison. In this case, we want to compare the Reactivation + Tetris condition to the others. 
+
+    R has a built-in function called `pairwise.t.test()` which takes three arguments: `x` (the dependent variable), `g` (the grouping variable), and `p.adj` (the kind of correction---here, "bonf" for Bonferroni). I'm giving you an example here for how we'd have done this with the day 0 data. (Uncomment it to run it.)
+    
+```{r}
+# pairwise.t.test(x = tetris$Day_Zero_Number_of_Intrusions, 
+#                 g = tetris$Condition,
+#                 p.adj = "bonf")
+```
+
+The numbers it lists are the *p*-values for independent-samples *t*-tests between separate groups---with a Bonferroni-Holms correction. You'll see that it rates them all as 1---that's a 100% likelihood that they came from the null hypothesis (there are no differences). Try running the `pairwise.t.test()` function on either of the two tests you ran in #2. 
+
+```{r}
+
+```
+
+5. For any significant results from your pairwise *t*-test, you should then run a t-test for independent samples by filtering to only Reactivation+Tetris and the groups it is different from. You'll see that the p-value you received above is substantially closer to .05---that's the correction! 
+
+
+
+6. Report the results from your *t*-test. Mention that the *p*-values are adjusted.
+
+
+
+7. For the variable (`Days_One_to_Seven_Number_of_Intrusions` or `Number_of_Provocation_Task_Intrusions`) that you've been focused on, use `group_by()` and `summarize()` to calculated means and standard errors per `Condition` group, and then plot them using `geom_col()` and `geom_errorbar()`. Include labels and a theme.
+
+
+
+8. If you'd like, try using the *F* cut-off value for our ANOVAs (provided below), and change the error bars from your plot in 7 to 95% Confidence Intervals. How do those look?
+
+```{r}
+qf(.95, df1 = 3, df2 = 68)
+```
