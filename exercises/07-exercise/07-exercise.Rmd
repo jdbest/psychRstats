@@ -1,0 +1,61 @@
+---
+title: "t-tests: Exercises"
+author: ""
+date: "October 12-18, 2020"
+output: 
+  html_document:
+    self_contained: yes
+---
+
+This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
+
+If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
+
+## Objectives
+
+In the tutorial, you learned about the function `pivot_longer()`, which comes from the {tidyr} package (for "tidying" data). You also got to learn about running *t*-tests with the `t.test()` function, and practice using {ggplot2} functions to plot them. The exercise will let you work this out. 
+
+You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
+
+I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now---it'll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document.
+
+## Loading packages
+
+As always, you _must_ load packages if you intend to use their functions. ("Turn on the lights.") Run the following code chunk to load necessary packages for these exercises. 
+
+```{r loadpackages, message=FALSE}
+library(tidyverse)
+# tidyverse loads these that we'll use today:
+# library(readr)
+# library(dplyr)
+# library(ggplot2)
+# library(tidyr)
+```
+
+## Importing data
+
+You downloaded the `fisher.csv` data when you downloaded this file; it's in a folder called `/data`. Import it below; you probably want to use the `read_csv()` function from the {readr} package, which was loaded in the {tidyverse}. I'd name the imported file `fisher` like it was in the tutorial.
+
+You **also** re-downloaded the `friends.csv` data. Import that, too.
+
+Remember that both of these are in a folder called "/data", so your import line might look like `read_csv("data/friends.csv")`---make sure to have the code importing both data in the code chunk below if you want the document to knit.
+
+```{r importdata}
+
+```
+
+## Task
+
+You have two tasks today. You should create your own code chunks (how?: instructions here: https://github.com/jdbest/psychRstats/wiki/Create-a-code-chunk) and insert all code into them.
+
+Task 1: following the same procedures as in the tutorial, test whether anxiety scores in the `fisher` dataset (`hars.pre` and `hars.post`) reduced from pre-test to post-treatment. Include a `t.test()` with outcomes, a plot demonstrating the results (label all axes and give it a title!), and a brief write-up describing the results including **means** and the results of the *t*-test. (You do **not** need to go through the steps of calculating all components---you can just use the `t.test()` function---but you _should_ plan to go through the steps of hypothesis-testing.)
+
+Task 2: with the `friends` data, do the following:
+
+1. Filter to only people who do *not* have an NA for the questions `operas` ("How many operas have you seen in your life? (Approximately is fine.)") and `like.science` ("On a scale of 1 (not at all) to 7 (very much), how much do you like science?")
+
+2. Using the `ifelse()` function we've used a few times (remember: `ifelse(condition, "if true", "if false")`), create a new column in `friends` called `operaYN` that simplifies this into a binary "yes I've seen an opera" or "no I haven't": `operaYN = ifelse(operas > 0, "Yes", "No")`. Make sure to save it to the data frame. Up to you if you use `mutate()`---message me or a classmate if you're unsure on this one (feel free to use the Slack channel), but do figure it out. 
+
+3. Using a *t*-test, determine whether people who have seen an opera like science more or less than those who have not. Write up your results in the white space below the code chunk.
+
+4. Create a plot of the results. Don't forget to label axes. 

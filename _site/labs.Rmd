@@ -9,6 +9,7 @@ listing:
     - 04-hypothesis-testing
     - 05-one-sample-t-test
     - 06-visualizing-2
+    - 07-t-tests
 preview: images/marble.png
 ---
 
