@@ -1,5 +1,11 @@
 # psychRstats: Updates
 
+## 0.1.0, 01-29-2021
+
+* Technically finished---every file that should be part of this is now part of it
+* All tutorials are included; all exercises are included
+* Several images that are part of tutorials get Notes in `devtools::check()` that they are not portable because of size
+
 ## 0.0.5, 01-29-2021
 
 * Added labs 5-10
