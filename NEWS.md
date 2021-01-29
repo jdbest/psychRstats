@@ -3,7 +3,7 @@
 ## 0.0.4, 01-29-2021
 
 * Changing repo name to match package
-* Updating a few labs: lab 5, lab 6, lab 7
+* Updating a few labs: lab 5, lab 6, lab 7, lab 8
 * Removing references to course assistant and Brightspace
 
 ## 0.0.3, 01-09-2021
