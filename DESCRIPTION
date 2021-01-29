@@ -1,8 +1,8 @@
 Package: psychRstats
 Type: Package
 Title: College-Level Intro Stats Exercises in R
-Date: 2021-01-08
-Version: 0.0.3
+Date: 2021-01-29
+Version: 0.0.4
 Authors@R: 
     person(given = "Justin",
            family = "Dainer-Best",
@@ -17,8 +17,8 @@ Description: Based on Bard College's Statistics for Psychology (PSY 203, Fall
     to develop skills while also exploring basic statistical concepts like the 
     t-test, ANOVA, or null-hypothesis statistical testing. 
 License: GPL (>= 3) + file LICENSE
-URL: https://github.com/jdbest/r-psych-stats, https://jdbest.github.io/r-psych-stats
-BugReports: https://github.com/jdbest/r-psych-stats/issues
+URL: https://github.com/jdbest/psychRstats, https://jdbest.github.io/psychRstats
+BugReports: https://github.com/jdbest/psychRstats/issues
 Depends: R (>= 4.0)
 Encoding: UTF-8
 LazyData: true
