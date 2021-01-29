@@ -1,0 +1,508 @@
+---
+title: "Lab 08: One-way ANOVA"
+author: Justin Dainer-Best
+tutorial:
+  id: "pRs-08"
+  version: 0.3
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(psychRstats)
+library(learnr)
+library(tidyverse)
+library(gradethis)
+
+# Install packages not yet installed
+if (! "lsr" %in% rownames(installed.packages())) {
+  install.packages("lsr")
+}
+library(lsr)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(error = TRUE)
+
+# data
+tetris <- read_csv("www/James.csv")
+```
+
+## Introduction
+
+Today's lab's objectives are to:
+
+* Learn about one-way ANOVAs
+* Learn how to conduct a one-way ANOVA in R by calculating all of the parts
+* And then learn how to calculate them, easily and efficiently, with the `anova()` and `lm()` functions
+* Visualize the results of ANOVAs
+
+## Introducing Analysis of Variance (ANOVA)
+###
+In an ANOVA, we are comparing two+ independent groups on an interval or ratio variable---our independent variable (IV) is categorical (e.g., group membership / treatment group), and our dependent variable (DV) is numeric. 
+
+In a one-way ANOVA, most of the time, we want to test whether or not there is an effect of group (with more than two levels) on some dependent variable. We'll be using open data from Experiment 2 from [James et al.](https://doi.org/10.1177%2F0956797615583071 "DOI for article") (2015). 
+
+### The experiment
+
+James and colleagues were interested in the experiences of having flashbacks (intrusive memories of traumatic experiences). Past research has found that simply "trying to forget" doesn't work well---but we can *change* memories while we're remembering them. Importantly, research also shows that during **reconsolidation**, traumatic memories can be altered and weakened to the point that they are no longer intrusive. The researchers knew that these flashbacks are often visual, and so they decided to interrupt them with a visual task---the puzzle video game Tetris. 
+
+So they asked: does playing Tetric while a memory is being reconsolidated interfere with the storage of it? Does that make the memory less likely to reoccur? They hypothesized that only participants who played Tetris after reactivation of the traumatic memories would experience a reduction in intrusive memories. In comparison, simply playing the game (without reactivation to trigger reconsolidation) or reactivation of the memory (without Tetris), would not reduce the occurrence intrusive memories.
+
+###
+
+To test their hypothesis, the authors conducted an experiment (total *N = 72*; *n = 18* **per condition**; four conditions). All participants viewed a series of video clips of graphic violence (e.g., a person getting hit by a van while using his phone as he crossed the road) as a way to create memories that should become intrusive memories. Participants then went home and recorded the number of intrusive memories they experienced over the next 24 hours. 
+
+Before any experimental manipulations, all groups were predicted to have an equal occurrence of intrusive memories during the first 24 hours (called *Day 0*).
+
+After the first 24-hour period, the participants returned to the lab and completed the experiment. Participants were randomly assigned to **ONE** of the following conditions.
+
+#### The conditions
+
+1. **No-task control**: These participants completed a 10-minute music filler task.
+
+2. **Reactivation + Tetris**: These participants were shown a series of images from the trauma film to reactivate the traumatic memories (i.e., reactivation). After a 10-minute music filler task, participants played Tetris for 12 minutes.
+
+3. **Tetris Only**: These participants played Tetris for 12 minutes, but did not complete the reactivation task.
+
+4. **Reactivation Only**: These participants completed the reactivation task, but did not play Tetris.
+
+All participants were asked to record the number of intrusive memories that they experienced over the next seven days (Days 1 to 7). After the seven days had passed, participants completed an "Intrusion-Provocation" Task, in which they were shown blurred images from the trauma film and asked to indicate whether the blurred image triggered an intrusive memory. 
+
+###
+
+The researchers hypothesized that the second condition (**Reactivation + Tetris**) would have the lowest number of intrusive memories in those seven days, and also that they would have the lowest scores on the Intrusion-Provocation Task. 
+
+```{r quiz1, echo=FALSE}
+quiz(
+  question("What is the framing of this for the research hypothesis about intrusion, for a two-tailed hypothesis at the $\\alpha=.05$ level?",
+           answer("People who are in the Reactivation+Tetris condition $\\neq$ those in the Reactivation condition $\\neq$ those in the Tetris-only condition"),
+           answer("NOT (People who are in the Reactivation+Tetris condition = those in the Reactivation condition = those in the Tetris-only condition)", correct=TRUE), 
+           answer("People who are in the Reactivation+Tetris condition = those in the Reactivation condition = those in the Tetris-only condition"), 
+           answer("People who are in the Reactivation+Tetris condition > those in the Reactivation condition > those in the Tetris-only condition"),
+           answer("People who are in the Reactivation+Tetris condition < those in the Reactivation condition < those in the Tetris-only condition"),
+           allow_retry = TRUE, 
+           random_answer_order = TRUE
+           ),
+  question("What is the framing of this for the null hypothesis?", 
+           answer("People who are in the Reactivation+Tetris condition $\\neq$ those in the Reactivation condition $\\neq$ those in the Tetris-only condition"),
+           answer("NOT (People who are in the Reactivation+Tetris condition = those in the Reactivation condition = those in the Tetris-only condition)"),
+           answer("People who are in the Reactivation+Tetris condition = those in the Reactivation condition = those in the Tetris-only condition", correct = TRUE), 
+           answer("People who are in the Reactivation+Tetris condition > those in the Reactivation condition > those in the Tetris-only condition"),
+           answer("People who are in the Reactivation+Tetris condition < those in the Reactivation condition < those in the Tetris-only condition"),
+           allow_retry = TRUE, 
+           random_answer_order = TRUE
+           )
+)
+```
+
+## Explore the data
+###
+```{r}
+tetris
+```
+
+You can use the above interface to look through the data. There are quite a few variables! 
+
+```{r}
+ggplot(data = tetris, aes(x = Day_Zero_Number_of_Intrusions)) +
+  geom_histogram(binwidth = 2) +
+  theme_bw()
+```
+
+Is the data normal? Close enough for us not to be concerned in this case, I'd say.
+
+For this data, we'd anticipate finding no difference between groups. Let's visualize it first.
+
+###
+
+Plot the variable `Day_Zero_Number_of_Intrusions` against the variable `Condition`---note the capital C. As almost always, your independent variable (the thing the researchers manipulated) should be on the x-axis, and the measured variable on the y-axis. Use `geom_jitter()`. You might want to set the `height` to 0. 
+
+```{r ggplot, exercise=TRUE}
+ggplot(tetris, aes()) # complete the code
+```
+
+```{r ggplot-solution}
+ggplot(tetris, aes(x = Condition, y = Day_Zero_Number_of_Intrusions)) +
+  geom_jitter(height = 0)
+```
+
+```{r ggplot-check, echo=FALSE}
+grade_code()
+```
+
+###
+
+Use the `factor()` function to correctly label the conditions. As usual, the `factor()` function takes three arguments: the variable you want to factor (which, here, is your `tetris$Condition`), the levels (which, here, are `c(1, 2, 3, 4)`), and the labels (which are what you're going to add). Your labels are listed again below, in the correct order:
+
+1. Control
+2. Reactivation+Tetris
+3. Tetris
+4. Reactivation
+
+```{r factor, exercise=TRUE}
+# complete this code:
+tetris$Condition <- factor(tetris$Condition)
+```
+
+```{r factor-solution}
+tetris$Condition <- factor(tetris$Condition, 
+                           levels = c(1, 2, 3, 4),
+                           labels = c("Control", "Reactivation+Tetris", 
+                                      "Tetris", "Reactivation"))
+```
+
+```{r factor-check, echo=FALSE}
+grade_code()
+```
+
+```{r, echo=FALSE}
+tetris$Condition <- factor(tetris$Condition, labels = c("Control", "Reactivation+Tetris", "Tetris", "Reactivation"))
+```
+
+###
+
+Okay, with those labels, now when we plot again you'll see the labels describing the plot:
+
+```{r}
+ggplot(tetris, aes(x = Condition, y = Day_Zero_Number_of_Intrusions)) +
+  geom_jitter(height = 0, width = .2) +
+  theme_bw() +
+  labs(y = "Number of Intrusions Before Intervention")
+```
+
+## The ANOVA
+###
+One-way ANOVA in R will have us using two new functions: `lm()` and `anova()`. The first runs the model; the second prints its output in an ANOVA table. Let's try it with the day 0 number of intrusions: 
+
+```{r}
+# save the output to a new variable
+day0anova <- lm(Day_Zero_Number_of_Intrusions ~ Condition, data = tetris)
+```
+
+As you'll see, the `lm()` functions takes two main arguments: a formula (like with the `t.test()` function, of the format DV ~ IV), and your data---you don't name the data frame other than as `data = dataframe`. The formula here could be read as "predict *Day_Zero_Number_of_Intrusions* from *Condition*". And we know our data still comes from the `tetris` dataset. Because we used `factor()` *Condition* earlier, R knows that it's a factor for this prediction.
+
+```{r}
+# print it alone
+day0anova
+```
+
+When you just print the *day0anova* variable, it just tells us our terms. Not very useful! 
+
+```{r}
+# print the summary
+anova(day0anova)
+```
+
+Running the `anova()` function, however, actually prints the *Mean Sq* (mean square), the *F value* (_F_ ratio), and the *p*-value ("Pr(>F)"---the probability of F under the null hypothesis)---which is to say, that there are no differences between groups here. 
+
+Where it says "Condition", that's the between-groups row. And where it says "Residuals"---that's the within-groups bit. (Residuals are kind of like "error", as per our lecture.)
+
+### 
+
+Remember how with a _t_-test, the group means were listed? We'll have to calculate this directly ourselves here. That's okay, though---we know how to do this with `group_by()` and `summarize()`. 
+
+Go ahead: `group_by()` your `Condition` and then `summarize()` the `Day_Zero_Number_of_Intrusions` to find group means. I'd name the means `mean_intrusions` in the `summarize()` function. 
+
+```{r groupby, exercise=TRUE}
+
+```
+
+```{r groupby-solution, echo=FALSE}
+tetris %>%
+  group_by(Condition) %>%
+  summarize(mean_intrusions = mean(Day_Zero_Number_of_Intrusions))
+```
+
+```{r groupby-check, echo=FALSE}
+grade_code()
+```
+
+###
+
+We'll also cover the effect size for an ANOVA, which is often $\eta^2$ (eta-squared). It's actually fairly straightforward: $\eta^2=\frac{\mathit{SS}_{between}}{\mathit{SS}_{total}}$. 
+
+We have the $\mathit{SS}_{between}$ and $\mathit{SS}_{within}$ in the ANOVA table above, and we can convert them into a data frame with the `as.data.frame()` function. 
+
+```{r}
+as.data.frame(
+  anova(day0anova)
+)
+```
+
+And then we can just use the Sums of Squares to calculate eta-squared with `summarize()`:
+
+```{r}
+as.data.frame(anova(day0anova)) %>%
+  summarize(eta.sq = `Sum Sq`[1] / sum(`Sum Sq`))
+```
+
+###
+
+But of course there's a function that does this... One version is in a package called {**lsr**} which you've downloaded with this file. It takes a single argument: the saved results of the `lm()` function for an ANOVA. 
+
+```{r}
+library(lsr)
+etaSquared(day0anova)
+```
+
+Very easy! Of course, since the ANOVA wasn't significant, you should also not interpret the effect size. (Yes, there are two columns; you'd look at the one on the left.)
+
+## Reporting ANOVA results
+###
+
+Like with a _t_-test, we'll report based on the degrees of freedom. With _t_-tests, you report something like _t_(df)=t-value, p < .05 (or $p=value$). With an ANOVA, you do the same thing: $F(\mathit{df_b},\mathit{df_w})=\mathrm{Fvalue}, p<.05$ (or $p=value$). 
+
+So for our test, we know that $F=0.16$, that $p=0.92$, and that our degrees of freedom are 3 and 68. So we should report that as $F(3,68)=0.16,p=.92$. If the test were statistically significant, we'd also include the effect size: $F(3,68)=0.16,p=.92,\eta^2=0.007$ (or just write eta-squared or eta$^2$). But of course it's not significant, so we won't include it here. 
+
+###
+
+In a more narrative form, I might write:
+
+> There was no difference between conditions in the number of intrusions at baseline before the intervention occurred, $F(3,68)=0.16,p=.92$. Group means varied from $M=3.17$ intrusions for the Tetris condition to $M=3.56$ for the control condition, but there was no statistically-significant difference. 
+
+###
+
+Running low on time? That's okay---skip to the wrap up and then go do the exercises. 
+
+Want to think through what we **do** in an ANOVA and the underlying math? Click to continue. 
+
+## What's going on underneath? 
+
+To calculate the ANOVA "by hand"---meaning getting the component parts---we'll need to get the pieces to find the _F_ ratio. 
+
+I'll remind you of the formulae; you'll calculate the sum of squares and use them to get your mean squares, then the *F* statistic. 
+
+Remember that after getting the *SS* or *MS* for each step, you can double check to see if it's what the `anova()` function gave you, above. (It should be.)
+
+1. Get your degrees of freedom for between and within. $\mathit{df}_{between}=G-1$ and $\mathit{df}_{within}=N-G$
+
+You could enter these manually, or use the function `n_distinct()` which finds how many distinct groups there are:
+
+```{r step1, exercise=TRUE}
+# this is completed; just run it
+df.b <- n_distinct(tetris$Condition) - 1
+df.w <- nrow(tetris) - n_distinct(tetris$Condition)
+```
+
+2. Calculate the sum of squares for the between-groups variance: 
+    a. Find the grand mean and each group's means
+    
+The grand mean is simply the mean for `Day_Zero_Number_of_Intrusions` across all groups. Save them as `grandmean` and `groupmeans`. The means per group are what we calculated above with `group_by()` and `summarize()`. 
+    
+```{r step2a, exercise=TRUE}
+
+```
+
+```{r step2a-solution, echo=FALSE}
+grandmean <- mean(tetris$Day_Zero_Number_of_Intrusions)
+groupmeans <- tetris %>%
+  group_by(Condition) %>%
+  summarize(mean_intrusions = mean(Day_Zero_Number_of_Intrusions))
+```
+
+```{r step2a-check, echo=FALSE}
+grade_code()
+```
+
+###
+
+```{r, echo=FALSE}
+df.b <- n_distinct(tetris$Condition) - 1
+df.w <- nrow(tetris) - n_distinct(tetris$Condition)
+grandmean <- mean(tetris$Day_Zero_Number_of_Intrusions)
+groupmeans <- tetris %>%
+  group_by(Condition) %>%
+  summarize(mean_intrusions = mean(Day_Zero_Number_of_Intrusions), 
+            .groups = "drop_last")
+```
+
+So, now we have the following components:
+
+```{r}
+df.b
+df.w
+grandmean
+groupmeans
+```
+
+b. Subtract the grand mean from each group's mean, and square the differences: $(M-\mathit{GM})^2$
+c. Then add all four sums: $\sum{(M-\mathit{GM})^2}$
+    
+Well, the _M_ is each level of `groupmeans$mean_intrusions` and the _GM_ is `grandmean`, so just subtract (in parentheses) and square the result
+    
+Once you've got that, then use the `sum()` function around the whole thing:
+
+```{r step2b, exercise=TRUE}
+
+```
+
+```{r step2b-solution}
+sum((groupmeans$mean_intrusions - grandmean)^2)
+```
+
+```{r step2b-check}
+grade_result(
+  pass_if(~ identical(.result, sum((groupmeans$mean_intrusions - grandmean)^2)), 
+          "Yes, exactly right"),
+  fail_if(~ identical(.result, (groupmeans$mean_intrusions - grandmean)^2), 
+          "Okay, that's most of the way there, but now take the sum() of the whole thing."),
+  fail_if(~ identical(.result, groupmeans$mean_intrusions - grandmean^2), "Don't forget to do the subtraction in parentheses before squaring... and then take the sum."),
+  fail_if(~ identical(.result, sum(groupmeans$mean_intrusions - grandmean^2)), "Don't forget to do the subtraction in parentheses before squaring..."),
+  fail_if(~ TRUE, "Not quite... Read the instructions carefully")
+)
+```
+
+###
+
+The sum of squares for the between-groups variance in its final form is the sum of squared deviations you just calculated, **multiplied by the number of people in each group**.
+
+$$n\times\sum{(M-\mathit{GM})^2}$$
+
+The final _SS_ is just $n$ times what you should have gotten to above. Our $n$ per group is 18 here, so we just multiply that by 18, and I'll save it to a variable called `ss_between`:
+
+```{r}
+ss_between <- sum((groupmeans$mean_intrusions - grandmean)^2) * 18
+```
+
+Onto the $\mathit{MS}_{between}$.
+
+###
+
+3. Calculate the mean square for the between-groups variance: divide the sum of squares by its *df*.
+
+We have the $\mathit{SS}$ in `ss_between`; you know the _df_ for it is `df.b`. Save it as a new variable called `ms_between`. 
+
+```{r step3, exercise=TRUE}
+
+```
+
+```{r step3-solution}
+ms_between <- ss_between / df.b
+```
+
+```{r step3-check}
+grade_code()
+```
+
+### 
+
+```{r}
+ms_between <- ss_between / df.b
+```
+
+4. Calculate the sum of squares for the within-groups variance in two steps.
+    a. Subtract the mean for each condition (calculated above as `groupmeans`) from each participant in that condition, and square the difference: $(X-M)^2$, per group.
+    b. Add all all of those up: $\sum_1^G{\sum_{1}^{n}{(X-M)^2}}$ (it's just the sum per group and then the sum of all the groups)
+
+The **per group** bit is the complicated piece: how do you use a different mean for each person, depending on the group they're in? There are several okay ways to do this, and I'm happy to discuss others with you, but I'll show one method here.
+
+Because you used `group_by() %>% summarize()` to get the `groupmeans` above, your means are in a data-frame. Let's **merge** them with the original data to combine it using the `left_join()` function from the {dplyr} package. (It's loaded already.) The `left_join()` function takes three arguments: data frame one (here, `groupmeans`), data frame two (`tetris`), and `by`: what column lets you merge them. This is the equivalent of saying "I'm going to combine the scores from individual participants with their means." We can then chain it on (with `%>%`) to use `mutate()` and calculate the squared deviations per person. And finally, we'll use another chain and `group_by() %>% summarize()` by group. I'll break it down:
+
+Use `left_join()`:
+
+```{r}
+left_join(groupmeans, tetris, by = "Condition")
+```
+
+Use `mutate()`:
+
+```{r}
+left_join(groupmeans, tetris, by = "Condition") %>%
+  mutate(Day_Zero_Number_of_Intrusions - mean_intrusions)
+```
+
+Use `group_by()` and `summarize()`---and save it to a variable called `ss_within`
+
+```{r}
+ss_within <- left_join(groupmeans, tetris, by = "Condition") %>%
+  mutate(squared_deviation = (Day_Zero_Number_of_Intrusions - mean_intrusions)^2) %>%
+  summarize(ss_within = sum(squared_deviation)) 
+```
+
+So, now we've calculated the deviations, and then summed them all. Now to calculate the $\mathit{MS}_{within}$. 
+
+### 
+
+5. Calculate the mean square for the within-groups variance: divide the sum of squares by its *df*. 
+
+```{r}
+ms_within <- ss_within$ss_within / df.w
+```
+
+So now we should be able to calculate _F_!
+
+###
+
+6. Calculate the *F* ratio by dividing the $\mathit{MS}_{between}$ by the $\mathit{MS}_{within}$:
+
+$$F=\frac{\mathit{MS}_{between}}{\mathit{MS}_{within}}$$
+
+Our variables are `ms_within` and `ms_between`; call the variable you'll assign it to `f.ratio`.
+
+```{r fratio, exercise=TRUE}
+
+```
+
+```{r fratio-solution, echo=FALSE}
+f.ratio <- ms_between / ms_within
+```
+
+```{r fratio-check}
+grade_code()
+```
+
+###
+
+```{r, echo=FALSE}
+f.ratio <- ms_between / ms_within
+```
+
+And what about the _p_-value?! Remember our nice `pnorm()` and `pt()` functions? There's one for *F*, too! Here's how it works: `pf()` takes the _F_-value and then both degrees of freedom, _as well as_ a `lower.tail` argument. We're ultimately only interested in  the likelihood of having a **higher** F, because there's no real "tail" to the *t*-test... 
+
+```{r}
+p.value <- pf(f.ratio, df1 = df.b, df2 = df.w, lower.tail = FALSE)
+p.value
+```
+
+And, lastly, we could calculate the effect size $\eta^2$ (eta-squared) by dividing the $\mathit{SS}_{between}$ by the $\mathit{SS}_{total}$:
+
+```{r}
+ss_total <- ss_between + ss_within$ss_within
+eta.squared <- ss_between / ss_total
+```
+
+We can put all of this into an ANOVA table to make it look good:
+
+```{r}
+anova.table <- tibble(
+  group = c("Between", "Within"),
+  df = c(df.b, df.w),
+  SS = c(ss_between, ss_within$ss_within),
+  MS = c(ms_between, ms_within),
+  F  = c(f.ratio, NA),
+  p  = c(p.value, NA),
+  eta.sq = c(eta.squared, NA)
+)
+```
+
+```{r echo=FALSE}
+options(knitr.kable.NA = '')
+knitr::kable(anova.table, digits = 2, align = "l")
+```
+
+###
+
+Compare our output to the output of the ANOVA we ran above using anova() on the lm() output---is it the same? Other than rounding, it should be! (The below **is** that ANOVA output.)
+
+```{r, echo=FALSE}
+anova(day0anova) %>% 
+  knitr::kable(digits = 2, align = "l")
+```
+
+## Wrap up
+
+Okay! That's it for today. We know how to use the `lm()` and `anova()` functions together to conduct analyses of variance---as well as how to calculate the components by hand (come back to try that out later if you haven't done so). Try out the exercises. 
