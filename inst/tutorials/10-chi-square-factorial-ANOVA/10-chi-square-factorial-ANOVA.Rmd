@@ -1,0 +1,582 @@
+---
+title: "Lab 10: Chi-square and factorial ANOVA"
+author: Justin Dainer-Best
+tutorial:
+  id: "pRs-10"
+  version: 0.3
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(psychRstats)
+library(learnr)
+library(tidyverse)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(error = TRUE)
+
+# data
+color <- structure(list(ColorPref = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L), .Label = c("Green", 
+"Yellow", "Red"), class = "factor"), Personality = structure(c(1L, 
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 
+2L), .Label = c("Introvert", "Extravert"), class = "factor")), label.table = list(
+    ColorPref = c(Red = "2", Yellow = "1", Green = "0"), Personality = c(Extravert = "2", 
+    Introvert = "1")), variable.labels = c(ColorPref = "Color Preference", 
+Personality = "Personality"), codepage = 1252L, row.names = c(NA, 
+-50L), class = c("tbl_df", "tbl", "data.frame"))
+exp <- structure(list(id = c(101, 101, 102, 102, 103, 103, 104, 104, 
+105, 105, 106, 106, 107, 107, 108, 108, 109, 109, 110, 110, 112, 
+112, 114, 114, 115, 115, 116, 116, 117, 117, 118, 118, 119, 119, 
+201, 201, 202, 202, 203, 203, 204, 204, 205, 205, 206, 206, 207, 
+207, 208, 208, 209, 209, 210, 210, 212, 212, 214, 214, 215, 215, 
+216, 216, 217, 217, 218, 218, 219, 219), position = c("sitting", 
+"sitting", "sitting", "sitting", "sitting", "sitting", "sitting", 
+"sitting", "sitting", "sitting", "sitting", "sitting", "sitting", 
+"sitting", "sitting", "sitting", "sitting", "sitting", "sitting", 
+"sitting", "sitting", "sitting", "sitting", "sitting", "sitting", 
+"sitting", "sitting", "sitting", "sitting", "sitting", "sitting", 
+"sitting", "sitting", "sitting", "standing", "standing", "standing", 
+"standing", "standing", "standing", "standing", "standing", "standing", 
+"standing", "standing", "standing", "standing", "standing", "standing", 
+"standing", "standing", "standing", "standing", "standing", "standing", 
+"standing", "standing", "standing", "standing", "standing", "standing", 
+"standing", "standing", "standing", "standing", "standing", "standing", 
+"standing"), condition = c("incongruent", "congruent", "incongruent", 
+"congruent", "incongruent", "congruent", "incongruent", "congruent", 
+"incongruent", "congruent", "incongruent", "congruent", "incongruent", 
+"congruent", "incongruent", "congruent", "incongruent", "congruent", 
+"incongruent", "congruent", "incongruent", "congruent", "incongruent", 
+"congruent", "incongruent", "congruent", "incongruent", "congruent", 
+"incongruent", "congruent", "incongruent", "congruent", "incongruent", 
+"congruent", "incongruent", "congruent", "incongruent", "congruent", 
+"incongruent", "congruent", "incongruent", "congruent", "incongruent", 
+"congruent", "incongruent", "congruent", "incongruent", "congruent", 
+"incongruent", "congruent", "incongruent", "congruent", "incongruent", 
+"congruent", "incongruent", "congruent", "incongruent", "congruent", 
+"incongruent", "congruent", "incongruent", "congruent", "incongruent", 
+"congruent", "incongruent", "congruent", "incongruent", "congruent"
+), rt = c(929.0740741, 888.3870968, 988.1818182, 888.6176471, 
+945.2173913, 842.6969697, 913.6666667, 735.3125, 935.3125, 818.9705882, 
+867.125, 814.7428571, 936.4, 785.2857143, 764.7878788, 693.9428571, 
+985.7307692, 961.8, 976.28, 830.9354839, 780.5588235, 706.3055556, 
+950.6666667, 752.6470588, 865.3, 702.5294118, 734.6857143, 607.9166667, 
+896.2258065, 815.1470588, 854.0344828, 715.6875, 854.0833333, 
+797, 848.9411765, 786.0571429, 930.9259259, 933.15625, 860.8181818, 
+771.5555556, 895.0344828, 767.9375, 856.3333333, 792, 907.2903226, 
+858.3636364, 868.21875, 816.9722222, 780.1176471, 682, 858.9705882, 
+833.9393939, 934.1904762, 909.6071429, 802.3030303, 723.4545455, 
+883.6956522, 804.3714286, 897.53125, 709.7647059, 711.2424242, 
+624.0882353, 840.7333333, 703.8055556, 901.6875, 807.5806452, 
+860.8421053, 827.96)), row.names = c(NA, -68L), class = c("tbl_df", 
+"tbl", "data.frame"))
+stroop <- exp %>%
+  group_by(position, condition) %>%
+  summarize(meanrt = mean(rt),
+            sem = sd(rt)/sqrt(n()),
+            .groups = "drop_last")
+```
+
+## Introduction
+
+Today's lab's objectives are to:
+
+* Learn about running chi-squared tests in R
+* Do some basic plotting relating to them
+* Learn how to conduct a factorial ANOVA in R
+
+## Chi-squared tests
+###
+A chi-square[d] test ($\chi^2$) asks whether observed frequencies fit an expected pattern. ("Observed" [what you've got] vs. "expected" [what you expected] frequencies.) 
+
+* In the **goodness of fit** test, we compare how well a *single* nominal variable's distribution fits an expected distribution of that variable. 
+
+* In the **chi-squared test of independence**, we test hypotheses about the relationship between two nominal variables, comparing observed frequencies to the frequencies we would expect if there were no relationship.
+
+The test is based on the chi-squared distribution.
+
+### The distribution
+
+The chi-squared distribution looks different at different degrees of freedom---take a look:
+
+```{r}
+colors <- c("#648FFF", "#117733", "#44AA99", "#88CCEE", "#DDCC77", "#CC6677", "#AA4499", "#882255")
+data.frame(dfs = as.factor(rep(c(1:7), each = 502)),
+           x = rep(seq(-.02,10,.02), length(c(1:7))),
+           y = as.vector(sapply(c(1:7), function(x) dchisq(seq(-.02,10,.02), df = x)))) %>%
+  ggplot(aes(x = x, y = y, color = dfs)) +
+  geom_line() +
+  scale_color_manual(values = colors) +
+  theme_void() +
+  labs(x = "values of X", y  = "Density", 
+       title = "Chi-Squared distribution for different dfs") +
+  geom_hline(yintercept = 0) + geom_vline(xintercept = 0) +
+  theme(legend.position = c(.8, .7))
+```
+
+As you can see, the $\chi^2$ distribution with $\mathit{df}=1$ is rather different from the others; here---take a look without it: 
+
+```{r, echo=FALSE}
+data.frame(dfs = as.factor(rep(c(2:7), each = 502)),
+           x = rep(seq(-.02,10,.02), length(c(2:7))),
+           y = as.vector(sapply(c(2:7), function(x) dchisq(seq(-.02,10,.02), df = x)))) %>%
+  ggplot(aes(x = x, y = y, color = dfs)) +
+  geom_line() +
+  scale_color_manual(values = colors[2:8]) +
+  theme_void() +
+  labs(x = "values of X", y  = "Density", 
+       title = "Chi-Squared distribution for different dfs") +
+  geom_hline(yintercept = 0) + geom_vline(xintercept = 0) +
+  theme(legend.position = c(.8, .7))
+```
+
+###
+
+This is true even without $\mathit{df}=2$:
+
+```{r, echo=FALSE}
+data.frame(dfs = as.factor(rep(c(3:7), each = 502)),
+           x = rep(seq(-.02,10,.02), length(c(3:7))),
+           y = as.vector(sapply(c(3:7), function(x) dchisq(seq(-.02,10,.02), df = x)))) %>%
+  ggplot(aes(x = x, y = y, color = dfs)) +
+  geom_line() +
+  scale_color_manual(values = colors[3:8]) +
+  theme_void() +
+  labs(x = "values of X", y  = "Density", 
+       title = "Chi-Squared distribution for different dfs") +
+  geom_hline(yintercept = 0) + geom_vline(xintercept = 0) +
+  theme(legend.position = c(.8, .7))
+```
+
+As you can see, none of these distributions looks normal... you can't really run a useful chi-squared test with 100 categories, but if you could it would finally start to look sort of normal---just shifted to the right:
+
+```{r, echo=FALSE}
+data.frame(dfs = as.factor(rep(c(10,20,50,100), each = 7502)),
+           x = rep(seq(-.02,150,.02), length(c(10,20,50,100))),
+           y = as.vector(sapply(c(10,20,50,100), function(x) dchisq(seq(-.02,150,.02), df = x)))) %>%
+  ggplot(aes(x = x, y = y, color = dfs)) +
+  geom_line() +
+  scale_color_manual(values = colors[3:8]) +
+  theme_void() +
+  labs(x = "values of X", y  = "Density", 
+       title = "Chi-Squared distribution for different dfs") +
+  geom_hline(yintercept = 0) + geom_vline(xintercept = 0) +
+  theme(legend.position = c(.8, .7))
+```
+
+## Using the chi-squared test in R
+###
+The function is called `chisq.test()` and it can be used in a few ways. 
+
+**First, the _goodness of fit_ test**: The function can help you determine whether there are the same number of participants who select or fall into the same boxes across conditions. In this kind of test, the null hypothesis is that there _are_ the same number---i.e., there are no differences between conditions. (Put another way, it's the same percentage likelihood [probability] that any box will be chosen.) The chi-squared test determines whether it is unlikely that the data comes from the null distribution. 
+
+For example, imagine that there are 100 participants who all give you the type of pet they have, and you get the following data. The null hypothesis is that (of the four pet types) there is a 25% chance that any given participant would choose them. The research hypothesis is that this is not the case---some pets are more likely to be owned by participants.
+
+We can create some fake data---the below imagines that of the folks polled, 40 have cats, 55 have dogs, 3 have parakeets, and somehow 2 have pot-belly pigs:
+
+```{r}
+pets <- tibble(
+  participant_id = c(1:100),
+  pet = c(rep("cats", 40), 
+          rep("dogs", 55), 
+          rep("parakeets", 3), 
+          rep("potbellypigs", 2))
+)
+pets
+```
+
+Now, as you see with the data above, or if you used `View()` to see this in a normal R Studio window or clicked on it in the Environment pane, you'd see that this is just a string of names with "id" numbers. (The `rep()` function *repeats* the word.) It's nominal (categorical) data. Instead, we _could_ just enter the data as follows:
+
+```{r}
+pets2 <- tibble(
+  cats = 40, 
+  dogs = 55, 
+  parakeets = 3, 
+  potbellypigs = 2
+)
+pets2
+```
+
+Or, with the original `pets` data frame, we could just run the `table()` function on the `pet` column:
+
+```{r}
+table(pets$pet)
+```
+
+(And that's the equivalent of using `group_by()` and `summarize(n())`---but there are times when simple is better!)
+
+```{r}
+pets %>%
+  group_by(pet) %>%
+  summarize(n = n(), .groups = "drop_last")
+```
+
+###
+
+This is still nominal data. It's just tabulated now---the numbers we're seeing are the **counts** of how many people responded to each. Regardless, it sure seems like those are uneven counts. So: suppose we want to use a chi-squared test to determine whether there's a statistically-significant difference. 
+
+We can't just run the chi-squared test on the nominal data that is just the list of everyone's responses:
+
+```{r badcode, exercise=TRUE}
+# this won't work (but you might as well try running it to see what that looks like)
+chisq.test(pets$pet)
+```
+
+###
+
+You should get the error:
+
+> invalid 'type' (character) of argument
+
+We need the _tabulated_ data. You can run it based on the `pets2` data frame:
+
+```{r}
+pets2
+chisq.test(pets2)
+```
+
+Or based on the `table()` of the list of pets:
+
+```{r}
+chisq.test(table(pets$pet))
+```
+
+As you can see: same numbers!
+
+The output should be telling you: yes, there are differences in the groups! The null hypothesis can be rejected. You can write this up as follows:
+
+> There is a difference between expected and observed results in the pets participants had, $\chi^2(3)=85.52, p<.05$. 
+
+###
+
+Remember what I said about *probabilities* above? (The chi-squared test determines whether it is unlikely that the data comes from a distribution of probabilities [likelihoods].) 
+
+We could _explicitly_ articulate our null hypothesis by saying that we anticipate all probabilities to be the same: add an argument to your chi-squared test (with a comma) called `p`, and set `p = c(.25, .25, .25, .25)` -- that is, to four repetitions of 25% chance. 
+
+Try it out. (You should get the same result, verbatim.)
+
+```{r addprobs2, exercise=TRUE}
+chisq.test(table(pets$pet))
+```
+
+```{r addprobs2-solution}
+chisq.test(table(pets$pet), p = c(.25, .25, .25, .25))
+```
+
+```{r addprobs2-check}
+grade_code()
+```
+
+###
+
+Remember, this is just doing the background of the chi-squared formula for you:
+
+$$\chi^2=\sum{\frac{(O-E)^2}{E}}$$
+
+So given the numbers of 40, 55, 3, and 2---the observed values---and the "expected" values if there were 25% response for each animal (in fact: 25, 25, 25, 25)---this is doing the calculation:
+
+```{r}
+observed <- c(40, 55, 3, 2)
+expected <- c(25, 25, 25, 25)
+(observed - expected)
+(observed - expected)^2
+(observed - expected)^2 / expected
+sum((observed - expected)^2 / expected)
+```
+
+ ... which, yes, is the same thing our `chisq.test()` got us, above. As always, we *could* always use a q-() function to get the cut-off chi-squared value to declare that $p<.05$, and a p-() function to get the p-value for the given $\chi^2$ value. In this case, those functions are `qchisq()` and `pchisq()`, and both also need the degrees of freedom, `df`, which is equal to the number of groups (4, here) minus 1. 
+
+For `qchisq()`, we also provide a `p`, the probability that the score is in the highest 5%. 
+ 
+```{r}
+qchisq(p = .05, df = 3, lower.tail = FALSE)
+```
+
+Is our value of 85.52 larger than that? Absolutely! ... that said, you don't need to run this line! The `chisq.test()` function already told you all of this. We won't talk about `pchisq()` right now.
+
+Back to thinking about the `chisq.test()` function.
+
+###
+
+The interesting thing about the probabilities is that we can also suggest, e.g., that we anticipate something else. For example, suppose I thought that 45% of participants would choose dogs, 45% would choose cats, 5% would choose parakeets, and 5% pot-bellied pigs. That's the new null hypothesis. What does that look like?
+
+Well, we just change the probabilities from 25% each to the new ones. Give it a try by changing the 25% to the new ones:
+
+```{r addprobs, exercise=TRUE}
+chisq.test(table(pets$pet), p = c(.25, .25, .25, .25))
+```
+
+```{r addprobs-solution}
+chisq.test(table(pets$pet), p = c(.45, .45, .05, .05))
+```
+
+```{r addprobs-check}
+grade_code()
+```
+
+### 
+
+As you can see, with *this* null hypothesis, our results are just about right! Yeah, we'd expect most people to have cats and dogs.
+
+We'd actually *expect* 0% pot-bellied pigs, though, right? This is not something we can do with chi-squared, unfortunately! R will run it but give a warning ("Chi-squared approximation may be incorrect")---because it's wrong.
+
+```{r}
+# wrong!
+chisq.test(table(pets$pet), p = c(.50, .45, .05, 0))
+```
+
+One of the assumptions of the chi-squared test is that the expected value in each cell is greater than 5. Well, 0% isn't going to result in an expected value of anything other than 0! 
+
+### 
+
+Let's use one more example of the chi-squared test for goodness of fit, using the `penguins` data we used earlier this semester.
+
+```{r}
+library(palmerpenguins)
+data(penguins)
+```
+
+Suppose we wanted to know if the numbers of penguins of each species in the study were significantly different from one another. Let's take a look:
+
+```{r}
+table(penguins$species)
+```
+
+Seems like a substantial difference, no? Well, is it? Use `chisq.test()` to determine if those are different numbers per group.
+
+```{r penguins, exercise=TRUE}
+
+```
+
+```{r penguins-solution, echo=FALSE}
+chisq.test(table(penguins$species))
+```
+
+```{r penguins-check, echo=FALSE}
+gradethis::grade_result(
+  pass_if(~ identical(.result, chisq.test(table(penguins$species))), 
+          "Yes, exactly right!"),
+  pass_if(~ identical(.result, chisq.test(table(penguins$species), 
+                                          p = c((1/3), (1/3), (1/3)))), 
+          paste0("This will work well!, although you don't actually",
+                 " need to list the probabilities at all, though!")
+          ),
+  fail_if(~ identical(.result, chisq.test(table(penguins$species), 
+                                          p = c(.33, .33, .33))), 
+          paste0("This will give an error that probabilities must sum ",
+                 "to 1... but you're on the right track! You don't actually",
+                 " need to list the probabilities at all, though!")),
+  fail_if(~ TRUE, paste0("You can do this! Just make sure to use the ",
+                         "chisq.test() function on the table() of penguins species."))
+)
+```
+
+## Chi-squared test for independence
+
+In the test of independence, we test hypotheses about the relationship between two nominal variables, comparing observed frequencies to the frequencies we would expect if there were no relationship.
+
+Let's use a data-set called color:
+
+```{r}
+color
+```
+
+Take a look. Imagine that the "research question" is: does personality type (`Personality`) affect favorite color (`ColorPref`)? 
+
+Again, we can get a table of these---looks similar to the cells in a factorial ANOVA, huh? This is called a **contingency table**. 
+
+```{r}
+table(color$Personality, color$ColorPref)
+```
+
+(Again, we could do something like this with `group_by()`... but this method is easier and plays well with the `chisq.test()` function.)
+
+We see that we might ask a question like "do introverts have a different level of liking for these colors than extraverts?" Again, what we have here are categorical variables---but we can ask a question about who falls into which category. (The numbers here are counts based on those categorical variables.)
+
+We could plot these in a few ways, but for a plot it actually is *tons* easier to use `group_by()` with *both variables* and then the `summarize(n = n())` setup:
+
+```{r}
+colortable <- color %>%
+  group_by(Personality, ColorPref) %>%
+  summarize(n = n())
+colortable
+```
+
+What we get is the same table, but in a format where we can make the same sort of chart we made for factorial ANOVAs (we'll get there shortly). (I'm manually assigning the colors with `scale_fill_manual()` so that they're in the right order.)
+
+```{r}
+ggplot(colortable, 
+       aes(x = Personality, y = n, fill = ColorPref)) +
+  geom_col(position = position_dodge()) +
+  scale_fill_manual(breaks = c("Green", "Yellow", "Red"), 
+                    values = c("#006600", "#FFCC00", "#FF3300")) +
+  theme_bw() +
+  labs(x = "Personality", y = "Frequency", fill = "Favorite Color")
+```
+
+Before you go any further: do you think that there is a difference in counts between personalities in this (made up) sample? What is *your* hypothesis based on the plot?
+
+###
+
+Run a `chisq.test()` on the tabulated values. Remember, use the `table()` function inside it, on the columns `Personality` and `ColorPref` in `color`, as we've been doing. No need to define probabilities with `p`; we're asking "are they independent".
+
+```{r colorpref, exercise=TRUE}
+
+```
+
+```{r colorpref-solution, echo=FALSE}
+chisq.test(table(color$Personality, color$ColorPref))
+```
+
+```{r colorpref-check, echo=FALSE}
+grade_code()
+```
+
+###
+
+```{r}
+chisq.test(table(color$Personality, color$ColorPref))
+```
+
+Based on this, we can write this up as follows:
+
+> Groups were *not* independent---there was a link between personality and color, $\chi^2(2)=8.26,p<.05$. 
+
+Fortunately, the mechanics of running this kind of *t*-test in R aren't any different from running a chi-squared test of independence!
+
+Ready to move on to factorial ANOVA?
+
+## Factorial ANOVA
+###
+We'll use an example via [Matthew Crump](https://crumplab.github.io/statistics/factorial-anova.html) for this, based on data from Rosenbaum, Mama, & Algom (2017):
+
+> Rosenbaum, D., Mama, Y., & Algom, D. (2017). Stand by your Stroop: Standing up enhances selective attention and cognitive control. *Psychological Science*, 28(*12*), 1864--1867. https://doi.org/10.1177/0956797617721270
+
+The paper asked the kind of silly question of whether standing up vs. sitting down influenced attention. They used the Stroop task---naming words based on the color of the letters rather than their content, which is easier when the word is the same color (e.g., <span style="color: red">red</span>---congruent) and harder when different (e.g., <span style="color: green">red</span>---incongruent). So we have a $2\times{}2$ design, or a two-way factorial ANOVA. Factors are position (standing vs. sitting) and condition (congruent vs. incongruent). They had participants do a congruent Stroop while sitting and then do the incongruent Stroop. They also had folks do it while standing. Throughout, they measured how long it took for people to respond (reaction time---RT). 
+
+The data from experiment 1 follows:
+
+```{r}
+exp
+```
+
+We can plot this using the same skills you've learned before. First, we'll need to calculate the means---we can't just use a `geom_col()` with it. Use `group_by()` to group the `exp` data by **both `position` and `condition`** (separate the names with a comma) and then chain on (`%>%`) a `summarize()` to calculate a `meanrt` which is, well, `mean(rt)`. 
+
+```{r means, exercise=TRUE}
+
+```
+
+```{r means-solution, echo=FALSE}
+exp %>%
+  group_by(position, condition) %>%
+  summarize(meanrt = mean(rt))
+```
+
+```{r means-check, echo=FALSE}
+gradethis::grade_result(
+  pass_if(~ identical(.result, summarize(group_by(exp, position, condition), meanrt = mean(rt))), 
+          "Yes, exactly right!"),
+  pass_if(~ identical(.result, summarize(group_by(exp, condition, position), meanrt = mean(rt))), 
+          "Yes, great!"
+          ),
+  fail_if(~ TRUE, paste0("You can do this! Just make sure to use the ",
+                         "group_by() function and then summarize(), and that ",
+                         "your %>% chains are made correctly."))
+)
+```
+
+###
+
+Okay! I've saved that into a new data frame called `stroop`... the data also has a column called `sem`, which we can use later.
+
+Make a `ggplot()` with the `stroop` data. In the `aes()` add variables `x` as `position`, `y` as `meanrt` (reaction time), and `fill` as `condition`. Then, add on a `geom_col()`. Feel free to run that---it won't look quite right---put this in the parentheses of `geom_col()` to make the bars stand *next* to one another: `position = position_dodge()`.
+
+```{r plotstroop, exercise=TRUE}
+ggplot(data = stroop, aes())
+```
+
+```{r plotstroop-solution}
+ggplot(data = stroop, aes(x = position, y = meanrt, fill = condition)) +
+  geom_col(position = position_dodge())
+```
+
+```{r plotstroop-check}
+grade_code()
+```
+
+Not very... obvious, is it? 
+
+###
+
+We can change the y-axis to at least zoom in with the `coord_cartesian()` function, which we can add on. (I'll also add some `labs()`, standard error bars, and a theme.)
+
+```{r}
+ggplot(data = stroop, aes(x = position, y = meanrt, fill = condition)) +
+  geom_col(position = position_dodge()) +
+  coord_cartesian(ylim = c(700, 1000)) +
+  theme_classic() +
+  geom_errorbar(aes(ymin = meanrt - sem, ymax = meanrt + sem), 
+                width = .3, 
+                position = position_dodge(width = .9)) +
+  labs(x = "Position", y = "Mean reaction time", fill = "Condition")
+```
+
+When we zoom in, it actually looks like there's something here, perhaps? At least, there's a main effect of condition, for sure---incongruent trials are responded to more slowly than normal. That would be a *t*-test, right? But is there a main effect of position? Probably not, perhaps? And is there an interaction? Well, that's the question! 
+
+There's more to the experiment in the original, but for us we can just use the syntax below. This, like a one-way ANOVA and like regressions, is a **linear model**---so we'll use the `lm()` function. Except instead of just using one term after the `~`, we add a `*` and then the second term:
+
+```{r}
+model <- lm(rt ~ condition * position, data = exp)
+```
+
+And then we run the `anova()` function on the model:
+
+```{r}
+anova(model)
+```
+
+###
+
+So what do we see from that model? There's a main effect of `condition`, as we supposed. You can write it up using the *df* from above and the *F* and *p*-values: $F(1, 64)=24.6,p<.05$; participants were slower to respond on incongruent trials.
+
+```{r, echo=FALSE}
+exp %>%
+  group_by(condition) %>%
+  summarize(meanrt = mean(rt),
+            sd = sd(rt),
+            .groups = "drop_last") %>%
+  knitr::kable()
+```
+
+There's no effect of `position`, though, $F(1, 64)=0.73,p=.39$; participants didn't respond more slowly when sitting or standing. 
+
+```{r, echo=FALSE}
+exp %>%
+  group_by(position) %>%
+  summarize(meanrt = mean(rt),
+            sd = sd(rt),
+            .groups = "drop_last") %>%
+  knitr::kable()
+```
+
+And there's no interaction, either, $F(1, 64)=0.73,p=.40$; there was no interaction between condition and prediction. 
+
+There's a ton more of intricacies in terms of understanding factorial ANOVAs and how to do them---but this is a nice introduction, I think. 
+
+## Wrap up
+
+Okay! That's the tutorial for today. 
+
+You should feel more comfortable with the idea of plotting for factorial ANOVAs, and running both them and chi-squared tests in R using the `anova()`, `lm()`, and `chisq.test()` functions. 
+
+Try out the exercises. 
