@@ -1,0 +1,62 @@
+---
+title: "06: Visualizing Data"
+description: |
+  Learning more about visualizing data in R.
+author:
+  - name: Justin Dainer-Best
+    url: {}
+date: 10-05-2020
+categories:
+  - rlanguage
+  - visualization
+  - ggplot
+  - dplyr
+  - t-tests
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+These are all of the instructions for Lab 6. [The list of labs is here](../../labs.html).
+
+This repository contains R labs for R package ([`{psychRstats}`](https://github.com/jdbest/psychRstats)) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.
+
+For each lab, you should expect to download the lab's files locally to your computer, and run them there. If you're using https://rstudio.cloud/ instead of running things locally, the same instructions should work today. 
+
+Below are instructions for Lab 6.
+
+## Today's tutorial
+
+Today's lab explores some ideas about missing data, helps you identify common errors, and then introduces error bars in {ggplot2}. 
+
+To run the tutorial:
+
+```{r}
+library(psychRstats)
+psychRstats::lab("06-visualizing-2")
+```
+
+Once you've completed the tutorial, return here for the exercise that you will turn in at the end of the lab. (If you'd like to keep the tutorial open, refer to [this page on the wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously).)
+
+## Make sure you're in the right working directory
+
+In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don't remember, [look at the wiki page I've created on setting a working directory](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory). 
+
+Check that you're in the directory you expect by running `getwd()` (the parentheses should have nothing in them). 
+
+## Exercise
+
+You should have downloaded the exercise and data already; today's file is called "06-exercise.Rmd". Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file from the correct working directory by running the following code:
+
+```{r}
+library(psychRstats)
+run_exercise("06-exercise")
+```
+
+## Solutions
+
+A version of the document with solutions can be seen [here](../../answers/06-lab/).

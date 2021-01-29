@@ -19,19 +19,20 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
+This document is meant to be used to practice after you have completed the tutorial for today's lab. Don't forget to put your name between the quotation marks following the word author: above.
 
-If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html). 
+If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
 
 ## Objectives
 
-In the tutorial, you practiced with removing NAs, identifying errors in code, and some more advanced plots. In today's exercises, you'll reflect on that.
+In the tutorial, you practiced with removing NAs, identifying errors in code, and some more advanced plots. In today's exercises, you'll reflect on those ideas and create a few examples.
 
-## Turning it in?
+You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
 
-I invite you to turn in this document on Brightspace, where I will provide some basic feedback. You do not *need* to do this, but you may find it useful. As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html>
+As you work through this document: 
 
-I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now---it'll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document for me to review.
+1. Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. 
+2. Practice Knitting the document by hitting the Knit button (or do it via the keyboard shortcut: Command [or Control], Shift, and K). You can do it right away---knitting will create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document.
 
 ## Loading packages
 
@@ -46,7 +47,7 @@ library(tidyverse)
 
 ## Importing data
 
-Import the newfriends dataset in the folder `lab06/data/`. You can do this by going to that and clicking on it, or by running code like: `load("data/newfriends.Rdata")`. This is a new kind of data: .Rdata files, which have R variables saved in them. 
+Import the newfriends dataset in the folder `06-exercise/data/`. You can do this by going to that and clicking on it, or by running code like: `load("data/newfriends.Rdata")`. This is a new kind of data: .Rdata files, which have R variables saved in them. 
 
 ```{r importdata}
 load("data/newfriends.Rdata")
@@ -56,7 +57,7 @@ load("data/newfriends.Rdata")
 
 1. Which errors in R are most common for you? How can you address them? 
 
-Refer to the [common mistakes and errors list](https://github.com/jdbest/psy-203/wiki/common-mistakes-and-errors)
+Refer to the [common mistakes and errors list](https://github.com/jdbest/psychRstats/wiki/common-mistakes-and-errors)
 
 2. Take the `newfriends` dataset. It is the same as the one we used during the tutorial. Do the following:
 

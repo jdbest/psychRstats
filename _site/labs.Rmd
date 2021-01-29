@@ -8,6 +8,7 @@ listing:
     - 03-visualizing-data
     - 04-hypothesis-testing
     - 05-one-sample-t-test
+    - 06-visualizing-2
 preview: images/marble.png
 ---
 

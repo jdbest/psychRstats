@@ -112,7 +112,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing","preview"]}},"value":[{"type":"character","attributes":{},"value":["psychRstats: Exercises"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["labs"]}},"value":[{"type":"character","attributes":{},"value":["01-intro-to-r","02-intro-exercises","03-visualizing-data","04-hypothesis-testing","05-one-sample-t-test"]}]},{"type":"character","attributes":{},"value":["images/marble.png"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing","preview"]}},"value":[{"type":"character","attributes":{},"value":["psychRstats: Exercises"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["labs"]}},"value":[{"type":"character","attributes":{},"value":["01-intro-to-r","02-intro-exercises","03-visualizing-data","04-hypothesis-testing","05-one-sample-t-test","06-visualizing-2"]}]},{"type":"character","attributes":{},"value":["images/marble.png"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -451,8 +451,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     top: 0;
   }
 
+  /* adjust viewport for navbar height */
+  /* helps vertically center bootstrap (non-distill) content */
+  .min-vh-100 {
+    min-height: calc(100vh - 100px) !important;
+  }
+
   </style>
 
+  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -560,19 +567,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
             var results = fuse.search(query, searchOptions);
             callback(results
               .map(function(result) { return result.item; })
-              .filter(function(item) { return !!item.description; })
             );
           },
           templates: {
             suggestion: function(suggestion) {
+              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+                : '';
               var html = `
                 <div class="search-item">
                   <h3>${suggestion.title}</h3>
                   <div class="search-item-description">
-                    ${suggestion.description}
+                    ${suggestion.description || ''}
                   </div>
                   <div class="search-item-preview">
-                    <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
+                    ${img}
                   </div>
                 </div>
               `;
@@ -595,6 +604,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <style type="text/css">
+
+  .nav-search {
+    font-size: x-small;
+  }
 
   /* Algolioa Autocomplete */
 
@@ -670,6 +683,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }
 
   .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+    font-size: 1rem;
     margin-block-start: 0;
     margin-block-end: 5px;
   }
@@ -897,6 +911,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
 
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
   @media(min-width: 768px) {
 
   d-article pre,
@@ -1051,6 +1070,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -1718,7 +1748,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1833,6 +1863,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
 
       // clear polling timer
       clearInterval(tid);
@@ -1994,7 +2038,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2279,6 +2326,29 @@ function init_posts_list() {
 <p>Using R to perform one-sample t-tests.</p>
 </div>
 </a>
+<a href="labs/06-visualizing-2/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["rlanguage","visualization","ggplot","dplyr","t-tests"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 5, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Justin Dainer-Best</div>
+</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>06: Visualizing Data</h2>
+<div class="dt-tags">
+<div class="dt-tag">rlanguage</div>
+<div class="dt-tag">visualization</div>
+<div class="dt-tag">ggplot</div>
+<div class="dt-tag">dplyr</div>
+<div class="dt-tag">t-tests</div>
+</div>
+<p>Learning more about visualizing data in R.</p>
+</div>
+</a>
 </div>
 <div class="posts-sidebar">
 <div class="sidebar-section categories">
@@ -2286,7 +2356,7 @@ function init_posts_list() {
 <ul>
 <li>
 <a href="#category:articles">articles</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:comments">comments</a>
@@ -2294,23 +2364,23 @@ function init_posts_list() {
 </li>
 <li>
 <a href="#category:dplyr">dplyr</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:ggplot">ggplot</a>
-<span class="category-count">(3)</span>
+<span class="category-count">(4)</span>
 </li>
 <li>
 <a href="#category:rlanguage">rlanguage</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:t-tests">t-tests</a>
-<span class="category-count">(1)</span>
+<span class="category-count">(2)</span>
 </li>
 <li>
 <a href="#category:visualization">visualization</a>
-<span class="category-count">(3)</span>
+<span class="category-count">(4)</span>
 </li>
 </ul>
 </div>
