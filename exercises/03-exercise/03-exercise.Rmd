@@ -12,7 +12,7 @@ Feel free to change the top to have your name! You're the person answering these
 
 If you would like to refer to the tutorial while also working on this document, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
 
-You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
+You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://jdbest.github.io/psychRstats/labs.html).
 
 ## Objectives
 

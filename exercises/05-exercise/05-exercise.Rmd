@@ -9,7 +9,7 @@ output:
 
 There is no tutorial for today's lab; this document is the primary focus. Don't forget to put your name between the quotation marks following the word author: above.
 
-You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
+You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://jdbest.github.io/psychRstats/labs.html).
 
 ## Objectives
 
