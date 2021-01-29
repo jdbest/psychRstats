@@ -35,5 +35,6 @@ Imports:
   tidyr,
   palmerpenguins,
   tibble,
-  HistData
+  HistData,
+  lsr
 RoxygenNote: 7.1.1
