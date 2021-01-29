@@ -4,13 +4,13 @@ author: "Justin Dainer-Best"
 output: html_document
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <https://jdbest.github.io/r-psych-stats/answers.html>
+This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
 
 Feel free to change the top to have your name! You're the person answering these exercises, now.
 
 This is the set of *exercises* for you to complete after the first lab tutorial. Please read the text and try the code as it follows! 
 
-If you would like to refer to the tutorial while also working on this document, there are instructions on the [wiki](https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
+If you would like to refer to the tutorial while also working on this document, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
 
 
 ---
@@ -178,4 +178,4 @@ Then, copy that code below---and after the 40, add a comma, and a second thing t
 
 12. When that's all done, Knit the document again. If there are errors, try to solve them. 
 
-The completed version of this document is here: https://jdbest.github.io/r-psych-stats/answers.html
+The completed version of this document is here: https://jdbest.github.io/psychRstats/answers.html

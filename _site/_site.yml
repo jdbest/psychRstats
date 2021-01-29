@@ -16,7 +16,7 @@ navbar:
     - text: "Exercise Answers"
       href: answers.html
 output: distill::distill_article
-base_url: https://jdbest.github.io/r-psych-stats/
+base_url: https://jdbest.github.io/psychRstats/
 collections:
   labs:
     categories: true

@@ -113,7 +113,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["intro-to-r_files/bowser-1.9.3/bowser.min.js","intro-to-r_files/distill-2.2.21/template.v2.js","intro-to-r_files/figure-html5/unnamed-chunk-2-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-2.png","intro-to-r_files/figure-html5/unnamed-chunk-20-3.png","intro-to-r_files/figure-html5/unnamed-chunk-20-4.png","intro-to-r_files/figure-html5/unnamed-chunk-21-1.png","intro-to-r_files/figure-html5/unnamed-chunk-21-2.png","intro-to-r_files/figure-html5/unnamed-chunk-21-3.png","intro-to-r_files/header-attrs-2.6/header-attrs.js","intro-to-r_files/jquery-1.11.3/jquery.min.js","intro-to-r_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["intro-to-r_files/anchor-4.2.2/anchor.min.js","intro-to-r_files/bowser-1.9.3/bowser.min.js","intro-to-r_files/distill-2.2.21/template.v2.js","intro-to-r_files/figure-html5/unnamed-chunk-2-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-2.png","intro-to-r_files/figure-html5/unnamed-chunk-20-3.png","intro-to-r_files/figure-html5/unnamed-chunk-20-4.png","intro-to-r_files/figure-html5/unnamed-chunk-21-1.png","intro-to-r_files/figure-html5/unnamed-chunk-21-2.png","intro-to-r_files/figure-html5/unnamed-chunk-21-3.png","intro-to-r_files/header-attrs-2.6/header-attrs.js","intro-to-r_files/jquery-1.11.3/jquery.min.js","intro-to-r_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1463,14 +1463,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"devtools"</span><span class='op'>)</span>
-<span class='fu'>devtools</span><span class='fu'>::</span><span class='fu'><a href='https://devtools.r-lib.org//reference/remote-reexports.html'>install_github</a></span><span class='op'>(</span><span class='st'>"jdbest/r-psych-stats"</span><span class='op'>)</span>
+<span class='fu'>devtools</span><span class='fu'>::</span><span class='fu'><a href='https://devtools.r-lib.org//reference/remote-reexports.html'>install_github</a></span><span class='op'>(</span><span class='st'>"jdbest/psychRstats"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>Installing the package will also install all of the <strong>tutorials</strong>. However, I’ve also written <strong>exercises</strong>, which you’ll want to download somewhere on your machine. For that purpose, you should follow the instructions below on setting a working directory and then downloading exercises.</p>
 <h2 id="set-a-working-directory">Set a working directory</h2>
 <p>You’ll need to make a decision about what will be your “working directory”. The working directory is the folder on your computer where you’ll be storing the exercise files, and where R assumes you’re working. (For example, you might use the “Downloads” folder on most computers is located in your user folder/Downloads, e.g., mine might be in /Users/jdbest/Downloads on a Mac or in C:/Users/jdbest/Downloads on a PC.)</p>
-<p><a href="https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory">There’s more info on this on the github wiki</a>. You can always return there with questions.</p>
+<p><a href="https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory">There’s more info on this on the github wiki</a>. You can always return there with questions.</p>
 <ul>
 <li><p>Use the <strong>Session &gt; Set Working Directory</strong> menu. Navigate to whatever folder you’ll be using for this class. (You might want to use something like /yourusername/Bard/PSY 203/labs – but anything is fine so long as you know where it is.) This is the sort of folder that when you go to Finder (<em>Mac</em>) or Windows Explorer (<em>PC</em>), you can find all of the files associated with this class in one place. (If you’re on a shared computer, you may have limited choices. Documents folders are fine!)</p></li>
 <li><p>Optional: You can permanently set your working directory using the Tools Menu. Go to Tools: Global Options, and then click the “Browse…” under Default working directory. Navigate to the same folder you just set.</p></li>
@@ -1493,13 +1493,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Once all packages are installed, run the following:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/zip-utils.html'>use_zip</a></span><span class='op'>(</span><span class='st'>"https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip"</span>, cleanup <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre><code><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/zip-utils.html'>use_zip</a></span><span class='op'>(</span><span class='st'>"https://github.com/jdbest/psychRstats/raw/main/exercises.zip"</span>, cleanup <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>The lab documents will download to your computer in the directory (folder) you defined above—into your working directory. (If you didn’t define it, it’ll download into whatever working directory was the default, usually your user folder.) It may pop up a folder where the file lives.</p>
 <h2 id="errors-and-problems">Errors and Problems</h2>
-<p>If you run into any errors, consider looking to the <a href="https://github.com/jdbest/r-psych-stats/wiki/Installation-Errors-and-Problems">wiki page on troubleshooting</a> for solutions. (You can also scroll up and click “Wiki”.)</p>
+<p>If you run into any errors, consider looking to the <a href="https://github.com/jdbest/psychRstats/wiki/Installation-Errors-and-Problems">wiki page on troubleshooting</a> for solutions. (You can also scroll up and click “Wiki”.)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

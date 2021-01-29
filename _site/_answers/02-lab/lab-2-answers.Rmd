@@ -19,11 +19,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <https://jdbest.github.io/r-psych-stats/answers.html>
+This is an [R Markdown](http://rmarkdown.rstudio.com) document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
 
 This is the set of *exercises* for you to complete after the first lab tutorial. Please read the text and try the code as it follows! 
 
-If you would like to refer to the tutorial while also working on this document, there are instructions on the [wiki](https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
+If you would like to refer to the tutorial while also working on this document, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so.
 
 
 ---

@@ -90,7 +90,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <meta property="description" itemprop="description" content="Practicing with R and subsetting"/>
 
-<link rel="canonical" href="https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/"/>
+<link rel="canonical" href="https://jdbest.github.io/psychRstats/labs/02-intro-exercises/"/>
 <link rel="icon" type="image/png" href="../../images/favicon.png"/>
 
 <!--  https://schema.org/Article -->
@@ -102,7 +102,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:title" content="psychRstats: Learning Statistics for Psychology in R: 02: Introduction to R: Exercises"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Practicing with R and subsetting"/>
-<meta property="og:url" content="https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/"/>
+<meta property="og:url" content="https://jdbest.github.io/psychRstats/labs/02-intro-exercises/"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="psychRstats: Learning Statistics for Psychology in R"/>
 
@@ -110,11 +110,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="twitter:card" content="summary"/>
 <meta property="twitter:title" content="psychRstats: Learning Statistics for Psychology in R: 02: Introduction to R: Exercises"/>
 <meta property="twitter:description" content="Practicing with R and subsetting"/>
-<meta property="twitter:url" content="https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/"/>
+<meta property="twitter:url" content="https://jdbest.github.io/psychRstats/labs/02-intro-exercises/"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
 <meta name="citation_title" content="psychRstats: Learning Statistics for Psychology in R: 02: Introduction to R: Exercises"/>
-<meta name="citation_fulltext_html_url" content="https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/"/>
+<meta name="citation_fulltext_html_url" content="https://jdbest.github.io/psychRstats/labs/02-intro-exercises/"/>
 <meta name="citation_online_date" content="2020/09/07"/>
 <meta name="citation_publication_date" content="2020/09/07"/>
 <meta name="citation_author" content="Justin Dainer-Best"/>
@@ -122,7 +122,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["02: Introduction to R: Exercises"]},{"type":"character","attributes":{},"value":["Practicing with R and subsetting"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Justin Dainer-Best"]}]}]},{"type":"character","attributes":{},"value":["09-07-2020"]},{"type":"character","attributes":{},"value":["rlanguage","comments","dplyr"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/"]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["02: Introduction to R: Exercises"]},{"type":"character","attributes":{},"value":["Practicing with R and subsetting"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Justin Dainer-Best"]}]}]},{"type":"character","attributes":{},"value":["09-07-2020"]},{"type":"character","attributes":{},"value":["rlanguage","comments","dplyr"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/psychRstats/labs/02-intro-exercises/"]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/psychRstats/labs/02-intro-exercises/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2072,18 +2072,18 @@ document.addEventListener('DOMContentLoaded', function() {
 </ul>
 <p>Below are instructions for the exercise corresponding to that tutorial.</p>
 <h2 id="make-sure-youre-in-the-right-working-directory">Make sure you’re in the right working directory</h2>
-<p>In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don’t remember, <a href="https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory">look at the wiki page I’ve created on setting a working directory</a>.</p>
+<p>In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don’t remember, <a href="https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory">look at the wiki page I’ve created on setting a working directory</a>.</p>
 <p>Check that you’re in the directory you expect by running <code>getwd()</code> (the parentheses should have nothing in them). Just copy and paste that into the console and hit return/enter.</p>
 <h2 id="todays-lab">Today’s lab</h2>
 <p>If you haven’t already completed the tutorial, you can open it up by pasting the following lines to run in your RStudio console, which will open the tutorial.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/r-psych-stats'>psychRstats</a></span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/psychRstats'>psychRstats</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/lab.html'>lab</a></span><span class='op'>(</span><span class='st'>"intro-to-r"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>Once you’ve completed the tutorial, return here for an exercise that you will turn in at the end of the lab. Make sure that you <em>close the tutorial window</em>. (If you’d like to keep it open, refer to <a href="https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously">this page on the wiki</a>.)</p>
+<p>Once you’ve completed the tutorial, return here for an exercise that you will turn in at the end of the lab. Make sure that you <em>close the tutorial window</em>. (If you’d like to keep it open, refer to <a href="https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously">this page on the wiki</a>.)</p>
 <h2 id="exercise">Exercise</h2>
 <p>This exercise gives you the opportunity to do the following:</p>
 <ol type="1">
@@ -2095,7 +2095,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Today’s file is called “02-lab.Rmd”. Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or (if in the correct working directory) you should be able to open the file by running the following code:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/r-psych-stats'>psychRstats</a></span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/psychRstats'>psychRstats</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/run_exercise.html'>run_exercise</a></span><span class='op'>(</span><span class='st'>"02-exercise"</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2117,12 +2117,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="appendix-bottom">
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Dainer-Best (2020, Sept. 7). psychRstats: Learning Statistics for Psychology in R: 02: Introduction to R: Exercises. Retrieved from https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/</pre>
+  <pre class="citation-appendix short">Dainer-Best (2020, Sept. 7). psychRstats: Learning Statistics for Psychology in R: 02: Introduction to R: Exercises. Retrieved from https://jdbest.github.io/psychRstats/labs/02-intro-exercises/</pre>
   <p>BibTeX citation</p>
   <pre class="citation-appendix long">@misc{dainer-best202002:,
   author = {Dainer-Best, Justin},
   title = {psychRstats: Learning Statistics for Psychology in R: 02: Introduction to R: Exercises},
-  url = {https://jdbest.github.io/r-psych-stats/labs/02-intro-exercises/},
+  url = {https://jdbest.github.io/psychRstats/labs/02-intro-exercises/},
   year = {2020}
 }</pre>
 </div>

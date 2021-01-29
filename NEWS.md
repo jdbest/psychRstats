@@ -1,5 +1,10 @@
 # psychRstats: Updates
 
+## 0.0.4, 01-29-2021
+
+* Changing repo name to match package
+* Updating a few labs
+
 ## 0.0.3, 01-09-2021
 
 * Add more functions to simplify

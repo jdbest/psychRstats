@@ -3,7 +3,7 @@ title: |
   psychRstats
 author:
   - name: Justin Dainer-Best 
-    url: https://jdbest.github.io/r-psych-stats
+    url: https://jdbest.github.io/psychRstats
     affiliation: Bard College
     affiliation_url: https://psychology.bard.edu/
 site: distill::distill_website
@@ -15,7 +15,7 @@ knitr::include_graphics("images/marble.png")
 
 ## Welcome
 
-This is the website for an R package ([`{psychRstats}`](https://github.com/jdbest/r-psych-stats)) based on Bard College's Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best. It is intended to be used alongside an undergraduate course in statistics, or an understanding of statistics based on such a course. 
+This is the website for an R package ([`{psychRstats}`](https://github.com/jdbest/psychRstats)) based on Bard College's Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best. It is intended to be used alongside an undergraduate course in statistics, or an understanding of statistics based on such a course. 
 
 Installing the package (see below) will download vignettes and exercises which build on one another to develop skills while also exploring basic statistical concepts like _t_-tests, ANOVA, and null-hypothesis statistical testing. 
 
@@ -29,7 +29,7 @@ In R, you can install directly from github:
 
 ```
 install.packages("devtools")
-devtools::install_github("jdbest/r-psych-stats")
+devtools::install_github("jdbest/psychRstats")
 library(psychRstats)
 ```
 
@@ -49,7 +49,7 @@ Once you've gotten through the first tutorial, you'll want to download the exerc
 
 Download all exercises and data in one go when you first get started. After running the above code and installing the `{psychRstats}` package, make sure you're in the right working directory.
 
-(We discuss setting a working directory [in the first lab](https://jdbest.github.io/r-psych-stats/exercises/01-intro-to-r/#set-a-working-directory), but there's also an entry about it [on the wiki](https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory).)
+(We discuss setting a working directory [in the first lab](https://jdbest.github.io/psychRstats/exercises/01-intro-to-r/#set-a-working-directory), but there's also an entry about it [on the wiki](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory).)
 
 ```
 psychRstats::download_exercises()

@@ -30,7 +30,7 @@ Below are instructions for the exercise corresponding to that tutorial.
 
 ## Make sure you're in the right working directory
 
-In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don't remember, [look at the wiki page I've created on setting a working directory](https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory). 
+In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don't remember, [look at the wiki page I've created on setting a working directory](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory). 
 
 Check that you're in the directory you expect by running `getwd()` (the parentheses should have nothing in them). Just copy and paste that into the console and hit return/enter.
 
@@ -43,7 +43,7 @@ library(psychRstats)
 lab("intro-to-r")
 ```
 
-Once you've completed the tutorial, return here for an exercise that you will turn in at the end of the lab. Make sure that you *close the tutorial window*. (If you'd like to keep it open, refer to [this page on the wiki](https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously).)
+Once you've completed the tutorial, return here for an exercise that you will turn in at the end of the lab. Make sure that you *close the tutorial window*. (If you'd like to keep it open, refer to [this page on the wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously).)
 
 ## Exercise
 

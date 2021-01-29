@@ -21,7 +21,7 @@
 #' editing, assuming you are in the current working directory.
 #' 
 #' For more information, look at the main github site,
-#' \url{https://github.com/jdbest/r-psych-stats/}
+#' \url{https://github.com/jdbest/psychRstats/}
 #'
 #' @docType package
 #' @name psychRstats
@@ -170,5 +170,5 @@ download_exercises <- function(dir, force = FALSE) {
                      "If so, re-run with force = TRUE.\n")
     stop(message)
   }
-  usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE, destdir = path)
+  usethis::use_zip("https://github.com/jdbest/psychRstats/raw/main/exercises.zip", cleanup = TRUE, destdir = path)
 }

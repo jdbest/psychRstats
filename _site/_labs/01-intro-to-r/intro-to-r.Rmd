@@ -38,7 +38,7 @@ Occasionally R may ask you questions like "These packages have more recent versi
 
 ```{r}
 install.packages("devtools")
-devtools::install_github("jdbest/r-psych-stats")
+devtools::install_github("jdbest/psychRstats")
 ```
 
 Installing the package will also install all of the **tutorials**. However, I've also written **exercises**, which you'll want to download somewhere on your machine. For that purpose, you should follow the instructions below on setting a working directory and then downloading exercises. 
@@ -47,7 +47,7 @@ Installing the package will also install all of the **tutorials**. However, I've
 
 You'll need to make a decision about what will be your "working directory". The working directory is the folder on your computer where you'll be storing the exercise files, and where R assumes you're working. (For example, you might use the "Downloads" folder on most computers is located in your user folder/Downloads, e.g., mine might be in /Users/jdbest/Downloads on a Mac or in C:/Users/jdbest/Downloads on a PC.) 
 
-[There's more info on this on the github wiki](https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory). You can always return there with questions. 
+[There's more info on this on the github wiki](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory). You can always return there with questions. 
 
 * Use the **Session > Set Working Directory** menu. Navigate to whatever folder you'll be using for this class. (You might want to use something like /yourusername/Bard/PSY 203/labs -- but anything is fine so long as you know where it is.) This is the sort of folder that when you go to Finder (*Mac*) or Windows Explorer (*PC*), you can find all of the files associated with this class in one place. (If you're on a shared computer, you may have limited choices. Documents folders are fine!)
 
@@ -78,11 +78,11 @@ When you have decided on your working directory---even if you're sticking with `
 Once all packages are installed, run the following:
 
 ```{r}
-usethis::use_zip("https://github.com/jdbest/r-psych-stats/raw/main/exercises.zip", cleanup = TRUE)
+usethis::use_zip("https://github.com/jdbest/psychRstats/raw/main/exercises.zip", cleanup = TRUE)
 ```
 
 The lab documents will download to your computer in the directory (folder) you defined above---into your working directory. (If you didn't define it, it'll download into whatever working directory was the default, usually your user folder.) It may pop up a folder where the file lives.
 
 ## Errors and Problems
 
-If you run into any errors, consider looking to the [wiki page on troubleshooting](https://github.com/jdbest/r-psych-stats/wiki/Installation-Errors-and-Problems) for solutions. (You can also scroll up and click "Wiki".)
+If you run into any errors, consider looking to the [wiki page on troubleshooting](https://github.com/jdbest/psychRstats/wiki/Installation-Errors-and-Problems) for solutions. (You can also scroll up and click "Wiki".)

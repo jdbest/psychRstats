@@ -27,6 +27,6 @@ which will open an R Markdown exercise from this package for
 editing, assuming you are in the current working directory.
 
 For more information, look at the main github site,
-\url{https://github.com/jdbest/r-psych-stats/}
+\url{https://github.com/jdbest/psychRstats/}
 }
 

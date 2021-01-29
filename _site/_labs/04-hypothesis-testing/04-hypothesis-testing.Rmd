@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 These are all of the instructions for Lab 4. [The list of labs is here](../../labs.html).
 
-This repository contains R labs for R package ([`{psychRstats}`](https://github.com/jdbest/r-psych-stats)) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.
+This repository contains R labs for R package ([`{psychRstats}`](https://github.com/jdbest/psychRstats)) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.
 
 For each lab, you should expect to download the lab's files locally to your computer, and run them there. If you're using https://rstudio.cloud/ instead of running things locally, the same instructions should work today. 
 
@@ -41,11 +41,11 @@ library(psychRstats)
 psychRstats::lab("04-hypothesis-testing")
 ```
 
-Once you've completed the tutorial, return here for the exercise that you will turn in at the end of the lab. (If you'd like to keep the tutorial open, refer to [this page on the wiki](https://github.com/jdbest/r-psych-stats/wiki/Run-a-tutorial-and-exercise-simultaneously).)
+Once you've completed the tutorial, return here for the exercise that you will turn in at the end of the lab. (If you'd like to keep the tutorial open, refer to [this page on the wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously).)
 
 ## Make sure you're in the right working directory
 
-In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don't remember, [look at the wiki page I've created on setting a working directory](https://github.com/jdbest/r-psych-stats/wiki/setting-a-working-directory). 
+In the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don't remember, [look at the wiki page I've created on setting a working directory](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory). 
 
 Check that you're in the directory you expect by running `getwd()` (the parentheses should have nothing in them). 
 
