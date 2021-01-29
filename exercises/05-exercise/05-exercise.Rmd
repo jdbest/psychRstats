@@ -1,5 +1,5 @@
 ---
-title: "Refreshing and Reviewing: Exercises"
+title: "One-sample t-tests: Exercises"
 author: ""
 date: "September 28 / October 1, 2020"
 output: 
