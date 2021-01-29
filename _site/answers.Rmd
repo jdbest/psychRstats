@@ -12,8 +12,7 @@ listing:
     - 08-lab
     - 09-lab
     - 10-lab
-    - 11-test-yourself-I
-    - 12-test-yourself-II
+    - 11-lab
 preview: images/marble.png
 navbar: 
   search: true

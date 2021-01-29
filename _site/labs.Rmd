@@ -13,6 +13,9 @@ listing:
     - 08-one-way-anova
     - 09-regression-correlation
     - 10-chi-square-factorial-ANOVA
+    - 11-questions-and-knitting
+    - 12-test-yourself-I
+    - 13-test-yourself-II
 preview: images/marble.png
 ---
 
