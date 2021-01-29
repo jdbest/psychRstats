@@ -40,7 +40,7 @@ If you're prompted to update packages, you should respond as prompted -- usually
 Once installed, tutorials can be used to learn basic concepts. The basic syntax is as follows:
 
 ```
-psychRstats::lab("intro-to-r")
+psychRstats::lab("01-intro-to-r")
 ```
 
 Once you've gotten through the first tutorial, you'll want to download the exercises as well. 

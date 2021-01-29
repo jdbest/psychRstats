@@ -40,16 +40,17 @@ NULL
 #' 
 #' @examples 
 #' \dontrun{
-#' lab("intro-to-r")
+#' lab("01-intro-to-r")
 #' lab(1)
 #' }
 #' 
 #' @export
 lab <- function(name) {
-  if(missing(name)) stop("You must choose a lab to run, e.g., lab(\"intro-to-r\"). \nRun the function list_tutorials() if you would like a list of all possible psychRstats tutorials.\n")
-  if(! is.character(name) & ! is.numeric(name)) stop("The lab tutorial name must be a character/string vector, e.g., lab(\"intro-to-r\"), or a number, e.g., lab(1). \n")
+  if(missing(name)) stop("You must choose a lab to run, e.g., lab(\"01-intro-to-r\"). \nRun the function list_tutorials() if you would like a list of all possible psychRstats tutorials.\n")
+  if(! is.character(name) & ! is.numeric(name)) stop("The lab tutorial name must be a character/string vector, e.g., lab(\"01-intro-to-r\"), or a number, e.g., lab(1). \n")
   if(is.character(name)) name <- tolower(name)
   if(is.numeric(name)) name <- tutorials[tutorials$number == name,]$name
+  if(is.na(name)) stop("There is no tutorial for the lab you have requested.")
   learnr::run_tutorial(name, package = "psychRstats")
 }
 
