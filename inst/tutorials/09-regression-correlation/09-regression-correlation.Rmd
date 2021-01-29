@@ -1,0 +1,365 @@
+---
+title: "Lab 09: Correlation and Regression"
+author: Justin Dainer-Best
+tutorial:
+  id: "pRs-09"
+  version: 0.3
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(psychRstats)
+library(learnr)
+library(tidyverse)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(error = TRUE)
+
+# data
+load("www/tutorial.Rdata")
+```
+
+## Introduction
+
+Today's lab's objectives are to:
+
+* Learn about regressions and correlations
+* Do some basic plotting relating to them
+* Learn how to conduct a regression and a correlation in R
+
+## Correlations and regressions
+###
+A **correlation** examines the relationship between two numeric variables, while a **regression** lets us predict a score on an outcome (criterion) variable from one or multiple predictors. The latter is also the statistical procedure for finding the best-fitting linear line to aid in that prediction. 
+
+Regressions and correlations by definition use _two_, _paired_ numeric variables. There must be some specific relationship between them. 
+
+In today's lab, we'll be using data from Beall, Hofer, & Shaller (2016). The article is:
+
+> Beall, A. T., Hofer, M. K., & Shaller, M. (2016). Infections and elections: Did an Ebola outbreak influence the 2014 U.S. federal elections (and if so, how)? _Psychological Science_, _27_, 595-605. <https://doi.org/10.1177/0956797616628861>
+
+(Thanks to Kevin P. McIntyre's curation of this data.)
+
+### The experiment
+
+Beall, Hofer, and Schaller (2016) wanted to determine whether the outbreak of Ebola in 2014 increased support for more conservative electoral candidates. They didn't look at people in particular---they looked at the frequency of web searches for the term "Ebola" before and after the outbreak, and they looked at polls on support for Republicans and Democrats in their U.S. House of Representatives races during the same time. 
+
+Their data is thus paired by **date**---it's not paired by the individual like much of the work we're interested in is. 
+
+The researchers asked: is the psychological salience of Ebola associated with an increased intention to vote for Republican candidates? 
+
+###
+
+```{r quiz1, echo=FALSE}
+quiz(
+  question("What is the framing of this question for a research hypothesis?",
+           answer("There is some relationship ($r\\neq0$) between Ebola searches and conservative voting intentions", correct=TRUE),
+           answer("There is no relationship ($r=0$) between Ebola searches and conservative voting intentions"), 
+           answer("There is a positive relationship ($r>0$) between Ebola searches and conservative voting intentions"), 
+           answer("There is a negative relationship ($r<0$) between Ebola searches and conservative voting intentions"),
+           allow_retry = TRUE, 
+           random_answer_order = TRUE
+           ),
+  question("What is the framing of this for the null hypothesis?", 
+           answer("There is some relationship ($r\\neq0$) between Ebola searches and conservative voting intentions"),
+           answer("There is no relationship ($r=0$) between Ebola searches and conservative voting intentions", correct=TRUE), 
+           answer("There is a positive relationship ($r>0$) between Ebola searches and conservative voting intentions"), 
+           answer("There is a negative relationship ($r<0$) between Ebola searches and conservative voting intentions"),
+           allow_retry = TRUE, 
+           random_answer_order = TRUE
+           )
+)
+```
+
+## Explore the data
+###
+The data is in a data frame called `predictions`. Let's take a look.
+
+```{r}
+predictions
+```
+
+You can use the above interface to look through the data. There are several variables and a lot of NAs. You'll get to look at some of the other variables later, but for the moment, we're going to look at the `Voter.Intention.Index` and the `Ebola.Search.Volume.Index`---you can read the paper for more info, but these two have been created as indexes of the main ideas. 
+
+* The `Voter.Intention.Index` is created as the difference between the percentage of voters who planned to vote for a Democrat and those who intended to vote for a Republican; thus a positive value indicates preference for Republican candidates.
+* The `Ebola.Search.Volume.Index` involves online searches for the term "Ebola".
+
+Let's start by looking at the way they changed over time. 
+
+###
+
+Using the `ggplot2` frame below, add in the following:
+
+1. `x` is `time` and `y` is `Ebola.Search.Volume.Index`.
+2. Add on the `geom_point()` function
+3. And then add on a `geom_line()` function **too**.
+
+```{r ebolaovertime, exercise=TRUE}
+ggplot(predictions, aes())
+```
+
+```{r ebolaovertime-solution, echo=FALSE}
+ggplot(predictions, aes(x = time, y = Ebola.Search.Volume.Index)) +
+  geom_point() +
+  geom_line()
+```
+
+```{r ebolaovertime-check, echo=FALSE}
+grade_code()
+```
+
+###
+
+As you can see, there were rare searches for the term "Ebola," then a significant increase in early October of 2014, and then a decline after the peak in mid-October:
+
+```{r}
+ggplot(predictions, aes(x = time, y = Ebola.Search.Volume.Index)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal() +
+  labs(x = "Date", y = "Index of Searches for Ebola",
+       title = "Searches for \"Ebola\" over time",
+       subtitle = "9/1/14-11/4/14")
+```
+
+We can also look at voting intentions, an index of a variety of polls, which were conducted on several days. Only some days include such an index, so you'll see fewer dates:
+
+```{r}
+ggplot(polls, aes(x = time, y = Voter.Intention.Index)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal() +
+  labs(x = "Date", y = "Index of Voters' Intentions",
+       title = "Voters' intentions may have changed due to the Ebola outbreak",
+       subtitle = "9/1/14-11/4/14")
+```
+
+###
+
+You may say: okay, but the correlation is not with the date---and you're quite right. One way to look at these together is to plot them against one another. Use the `ggplot() + geom_point()` without a line to do that: plot `x` as `Ebola.Search.Volume.Index` and `y` as `Voter.Intention.Index`.
+
+```{r corplot1, exercise=TRUE}
+ggplot(data = predictions, aes())
+```
+
+```{r corplot1-solution}
+ggplot(predictions, 
+       aes(x = Ebola.Search.Volume.Index, y = Voter.Intention.Index)) +
+  geom_point()
+```
+
+```{r corplot1-check}
+grade_code()
+```
+
+It will give you a warning that it has removed 41 rows containing missing values---like I said, not every day had the voting index.
+
+Before we go any further, do you think there's a pattern there? Feel free to discuss with your group! 
+
+###
+
+A new function in the `library(ggplot2)` toolkit: `geom_smooth()`. This is what we'll use for the regression line---specifically, add on:
+
+```{r, eval=FALSE}
+geom_smooth(method = "lm", formula = "y ~ x")
+```
+
+To break that down, this function helps you see patterns in the data by adding a regression line. We tell it we're using a "lm" (a linear model), and then that we want to use the formula of "y predicted by x"---`"y ~ x"`. (The formula is actually optional; that's what it assumes you want---so you could just do `geom_smooth(method = "lm")`. I'll leave you to see what happens if you drop the `method`, too.) 
+
+Try running this:
+
+```{r testsmooth, exercise=TRUE}
+ggplot(predictions, 
+       aes(x = Ebola.Search.Volume.Index, y = Voter.Intention.Index)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = "y ~ x") +
+  theme_minimal()
+```
+
+The gray area represents the confidence interval---yep, like the 95% confidence intervals we've discussed. You can remove it by setting `se = FALSE` (where "se" is standard error!) or change its color by setting `fill = "orange"` (or any color). Try that out.
+
+### 
+
+We can tell that there's probably some connection between these points, but one more thing we *could* do is plot them against each other **over time**. This isn't necessarily what a correlation is testing, but let's take a look. No worries about the details of the code---just wanted to share what this looks like. 
+
+```{r}
+predictions %>%
+  filter(! is.na(Voter.Intention.Index)) %>%
+  pivot_longer(cols = c(Ebola.Search.Volume.Index, Voter.Intention.Index),
+               names_to = "Index", values_to = "index.value") %>%
+  ggplot(aes(x = time, y = index.value)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap( . ~ Index, scales = "free") +
+  theme_minimal() +
+  labs(x = "Date", y = "Index")
+```
+
+From this, do you think there's a date-based pattern? Do these rise and fall together? 
+
+Onward to the tests.
+
+## Running correlations
+
+The main tests for a correlation are `cor()` which just gives you the $r$ value, and `cor.test()` which tests the *r*-value's significance and gives a 95% confidence interval as well. 
+
+The benefit of `cor()` is that you can provide multiple values---not just two---and it will create a correlation table of all of their comparisons. Suppose, for example, that we wanted to run this on the 5th through 8th columns of our data:
+
+```{r}
+cor(predictions[5:8], use = "pairwise.complete.obs")
+```
+
+This is probably a bit "messy" in the way it looks, but it should be comparing all of those variables to one another. You'll note that we just provide the `predictions[5:8]`---essentially, an entire data frame. We could also provide exactly two columns, e.g.:
+
+```{r}
+cor(
+  predictions$Nationwide.Republican.Support, 
+  predictions$Nationwide.Democratic.Support,
+  use = "complete.obs"
+)
+```
+
+You'll also note the argument `use`---we're telling R what to use. Try it out without that argument here:
+
+```{r withoutuse, exercise=TRUE}
+cor(predictions[5:8])
+```
+
+All those NAs in the data make for NAs in the data! Telling R to use "pairwise complete observations" or "complete observations" makes it drop NAs, much like the `na.rm` argument does in other functions. 
+
+### 
+
+On the other hand, `cor.test()` is a bit "smarter"---it will drop NAs automatically. But it will *only* allow you to run one test at a time---probably a good thing to keep down the Type I (false positive) error rate.
+
+```{r}
+cor.test(
+  predictions$Nationwide.Republican.Support, 
+  predictions$Nationwide.Democratic.Support
+)
+```
+
+You'd report this as either $r(22)=.31,p=.14$ or $r=.31,t(22)=1.52,p=.14$. (Or just $p>.05$, too---it's not significant.) There is a correlation, but it's not significant.
+
+You could also report the 95% confidence interval on $r$ as something like $r=.31$, 95% CI [-.11, .63]. Which is telling you that it's possible the correlation is actually negative---these two variables aren't obviously and significantly correlated, as we saw. 
+
+Let's return to the data of interest.
+
+###
+
+Are `Ebola.Search.Volume.Index` and `Voter.Intention.Index` correlated in a statistically-significant way? Use `cor.test()` to find out (don't forget to tell the function that they're in the `predictions` data frame:
+
+```{r cortestmain, exercise=TRUE}
+
+```
+
+```{r cortestmain-solution}
+cor.test(predictions$Ebola.Search.Volume.Index, predictions$Voter.Intention.Index)
+```
+
+```{r cortestmain-check}
+grade_code()
+```
+
+```{r quiz2, echo=FALSE}
+quiz(
+  question("Is the result of the correlation statistically significant?",
+           answer("Yes, it is statistically significant because $p<.05$", correct=TRUE),
+           answer("No, it is not statistically significant, because $p=.01$"), 
+           allow_retry = TRUE, 
+           message = "The test shows a p-value of 0.01177; this is less than .05 and therefore you should reject the null hypothesis. The correlation is statistically-significant. "
+           )
+)
+```
+
+## Regression
+###
+What about a regression? Well, we actually pretty much already know how to do this: we use the `lm()` function that you learned in the lab about one-way ANOVA, but rather than using it with the `anova()` function, we just run a `summary()`. However, as opposed to in the ANOVA, where there is a clear dependent variable, that isn't always the case in regression.
+
+Nonetheless, in this case, the order seems clear: we're asking whether the Ebola outbreak changed voting habits, and therefore the Ebola index is the independent variable (IV) and the voting index the dependent variable (DV). Remember, in the `lm()` function, you provide a formula of the format `DV ~ IV`, then a comma, and then the data frame (`predictions`) that the columns come from. Try creating the `lm()` function below:
+
+```{r lm1, exercise=TRUE}
+
+```
+
+```{r lm1-solution, echo=FALSE}
+lm(Voter.Intention.Index ~ Ebola.Search.Volume.Index, predictions)
+```
+
+```{r lm1-check, echo=FALSE}
+grade_code()
+```
+
+However, that's not enough yet to see the "results"---that's just the model.
+
+###
+
+To get the results, we use the `summary()` function:
+
+```{r}
+summary(lm(Voter.Intention.Index ~ Ebola.Search.Volume.Index, predictions))
+```
+
+We could also assign the `lm()` to a variable and then run `summary()` on that:
+
+```{r}
+model <- lm(Voter.Intention.Index ~ Ebola.Search.Volume.Index, predictions)
+summary(model)
+```
+
+The line under the intercept is our predictor: the results show that voter intentions (the dependent variable) are significantly predicted by Ebola searches (`Ebola.Search.Volume.Index`)---the *p*-value is the same, in fact, as the one you found above with `cor.test()`. Not a surprise, I hope, since these are mathematically very similar.
+
+That $R^2$ at the bottom of the output is what we call "R-squared"---it is literally the correlation (above) squared:
+
+```{r}
+r <- cor(predictions$Voter.Intention.Index, 
+    predictions$Ebola.Search.Volume.Index, 
+    use="complete.obs")
+r^2
+```
+
+In a regression, we call $R^2$ "variance explained". That's because it's how much of the variability in our dependent variable is explained by the independent variable. 
+
+Depending on what you're interested in, you'd either report the $R^2$ and the *p*-value for the whole model (here, $p=.01177$), or the specific Estimate and _p_-value for the term of interest. You might say:
+
+> The regression model found a significant relationship between voter intention index and Ebola search index, $R^2=.26,p<.05$. The Ebola search volume index had $b=0.02,p<.05$ in predicting voter intentions.
+
+###
+
+Another thing that the regression summary gives you is an "Estimate" of the coefficients, which is a piece from the linear equation you might remember from high school geometry. Remember that old idea of $y=mx+b$, where *m* was the slope and *b* was the intercept? The same thing is true here, too. However, our names for the terms are different. We write our equation as $y=b_1x+b_0$, where each number we're figuring out is a subscripted coefficient called *b*. Thus the $b_1$ is the slope and the $b_0$ is the intercept. 
+
+If we look at the "Estimate" column in the `summary(model)` above, you'll see that it gives us an estimate for the Intercept---$b_0$---and for `Ebola.Search.Volume.Index`---the slope or $b_1$. Remember how we plotted the points against one another? We could add the line "manually" by putting the numbers from our regression into a function called `geom_abline()` rather than using `geom_smooth()`. Try it: in the parentheses of `geom_abline()` below, it, set the `intercept` equal to the intercept's estimate (the number above) and the `slope` equal to the Estimate for `Ebola.Search.Volume.Index`. 
+
+Also tell R to make the line `color = "red"`. 
+
+```{r abline, exercise=TRUE}
+ggplot(predictions, 
+       aes(x = Ebola.Search.Volume.Index, y = Voter.Intention.Index)) +
+  geom_point() +
+  geom_abline() +
+  theme_minimal()
+```
+
+```{r abline-solution}
+ggplot(predictions, 
+       aes(x = Ebola.Search.Volume.Index, y = Voter.Intention.Index)) +
+  geom_point() +
+  geom_abline(intercept = 0.554535, slope = 0.019388, color = "red") +
+  theme_minimal()
+```
+
+```{r abline-check}
+grade_code()
+```
+
+## Wrap up
+
+Okay! That's the tutorial for today. 
+
+You should feel more comfortable with the idea of regression lines (and making them in R using `library(ggplot2)`), using the `cor()` and `cor.test()` functions for correlations, and using `summary()` on `lm()` model objects for regressions.
+
+Try out the exercises. 
