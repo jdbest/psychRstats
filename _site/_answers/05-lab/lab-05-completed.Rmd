@@ -1,0 +1,426 @@
+---
+title: "Refreshing and Reviewing (Lab 05) Exercises, Completed"
+description: |
+  Completed exercises for the fifth lab
+author:
+  - name: Justin Dainer-Best
+date: 10-02-2020
+categories: 
+  - rlanguage
+  - visualization
+  - ggplot
+  - dplyr
+  - t-tests
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+There is no tutorial for today's lab; this document is the primary focus. Don't forget to put your name between the quotation marks following the word author: above.
+
+You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
+
+## Objectives
+
+Today, you'll practice a number of the coding features from previous labs, while also practicing some of the initial concepts of the *t*-test. You'll get to do a bit of `filter()`ing and (gg)plotting, and then see the difference between a *z*-test with a sample mean (and known population mean and variance) and a one-sample *t*-test with a sample mean (and known population mean, but *unknown* population variance). 
+
+You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
+
+As you work through this document: 
+
+1. Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. 
+2. Practice Knitting the document by hitting the Knit button (or do it via the keyboard shortcut: Command [or Control], Shift, and K). You can do it right away---knitting will create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document.
+
+## Loading packages
+
+Run the following code chunk to load necessary packages for these exercises. If you haven't yet loaded the tidyverse documents for your file, you should do so now.
+
+```{r loadpackages}
+library(tidyverse)
+# tidyverse loads these:
+# library(dplyr)
+# library(ggplot2)
+```
+
+## The data
+
+Today you'll be looking at the `friends` dataset again. 
+
+You downloaded this data a few weeks ago (in lab 03). Take some time and figure out how to load it below. This is something you should know how to do, and that we've done in the past few weeks; I'm intentionally leaving you to it rather than giving you the data again. Assign the friends data to a variable called `friends <- ` using the assignment operator, `<-`. You'll want to do _one_ of the following to import the data. (These are not steps.)
+
+- Find the friends.csv file on your computer, and copy it into the same folder as this document, then run the command in the code chunk below after uncommenting it (removing the #).
+- Navigate to the file in the Files pane of RStudio, click on it and select "Import", and then import it. Then copy the code that RStudio provides in the Console into the code chunk below for when you knit this document.
+- Use the File menu. Go to *File*: *Import Dataset*: *From text (readr)* and then find the file on your computer. Then copy the code that RStudio provides in the Console into the code chunk below for when you knit this document.
+- Hand-write the code: use `read_csv()` and write the relative (../etc.) or explicit path to the file. Don't forget to use quotation marks for the file. You can copy the file path. Windows: Click "Copy Path" in the Home tab ribbon in file explorer. Mac: Right-click on the file, hold down the option key on your keyboard, and click 'Copy "friends.csv" as Path name'. 
+
+*Note*: if the code from (2) or (3) works, but it does _not_ work from the code chunk, try adding two dots and a forward slash "../" at the very beginning of the quoted bit, e.g., `read_csv("../03-exercise/friends.csv")`
+
+*Note 2:* if you get an error when you try to use `read_csv()`, it's either that your path is wrong or that you didn't load the packages, above. The former error would be, e.g., "could not find function read_csv"---go load the packages! 
+
+```{r, eval=FALSE}
+# uncomment the line below if the file friends.csv is in the same folder as this document, 
+# or edit it so that it correctly points to the right path for the friends.csv file
+friends <- read_csv("../03-exercise/friends.csv")
+```
+```{r, include=FALSE,eval=TRUE}
+friends <- read_csv("../03-lab/friends.csv")
+```
+
+
+1. What are the `names()` of all of our data frame's columns? (There are 32 of them!)
+
+```{r ex1}
+names(friends)
+```
+
+2. How do you select the third column of the data frame?
+
+```{r ex2}
+# all of these work to do this:
+friends %>% select(3)
+friends[,3]
+friends$whentook
+friends %>% select(whentook)
+```
+
+3. Use the `filter()` function to filter *out* people with only one sibling listed in the column called `siblings` (i.e., remove people who have only one sibling). (But people with zero siblings should be included.) Said another way: you want everyone with 0 siblings *or more than one*, but not one sibling.
+
+If you're not sure how to say "not" in R: not is an exclamation point, as it is in many other programming languages. Thus, writing `!=` is like saying "not equivalent". If you're wanting to instead use "or", that's the pipe, | -- as we've used last lab. e.g., try running the code `2+2 == 4 | 2+2 == 5` in your console. While only the former is TRUE, the "or" pipe | says "well, *one* of these is true---and will read TRUE.
+
+*Note*: I've seen a few people use <> in their writing. This is totally fine as a note for yourself, but does not mean "not" in R.
+
+```{r ex3}
+friends %>% filter(siblings != 1)
+# or
+friends %>% filter(siblings < 1 | siblings > 1) # remember the | means OR
+```
+
+4. Use the `filter()` function to show only people who have an NA (meaning that they did not respond) for the sibling question. Use the `is.na()` function to test whether answers to that question (in column `siblings`) are NA. Put the column name in the parentheses *inside the `filter()` parentheses: `filter(is.na(VARIABLENAME))`. Don't forget to "chain" it onto the `friends` data frame.
+
+```{r ex4}
+friends %>% filter(is.na(siblings))
+```
+
+5. Create a _new_ variable called `w` which is assigned to 5 values that you make up, combined with `c()`. Then find the mean and standard deviation of the values, using that variable.
+
+```{r ex5}
+w <- c(4, 56, 2, 3, 65)
+mean(w)
+sd(w)
+```
+
+6. Create a new variable (which will *become* a data frame---because you're assigning it to an already-existing data frame---you don't have to use the `data.frame()` function here!). Assign it to everyone who _does not_ have an NA for the `gram.followers` column. When you want to say *not* NA, since you're using a function (you remember, this was two questions ago: `is.na()`), you put the *not* operator (`!`) in front of the function: e.g., `! is.na(VARIABLENAME)`.
+
+Trying to say this a different way: make a new variable, named whatever you like, which is *assigned* with the `<-` operator to the value of `friends`, and then chain on a `filter()` selecting only people who do NOT have NA for the `gram.followers` column. You will be using this NEW data-frame (without NAs in that column) for the rest of the lab. 
+
+```{r ex6}
+grammers <- friends %>% filter( ! is.na(gram.followers))
+```
+
+Done correctly, you should have 67 rows, as you'll see in the Environment pane. (17 people either don't use instagram or didn't tell us their number of followers.)
+
+7. Use `ggplot() + geom_histogram()` *and, also, separately* `hist()` to create histograms of the `gram.followers` data from the data frame you created in the last question. Remember that in a histogram, you only define the `x` (not the `y`). In the `ggplot2` version, set your `binwidth` to something that makes sense to you (what is an appropriate number between bins?) or set the number of `bins` you want to see; in the `hist()` version, set your `breaks` equal to how many bins you want to see. No worries about labeling your axes. 
+
+```{r ex7}
+ggplot(grammers, aes(x = gram.followers)) +
+  geom_histogram(binwidth = 100) +
+  theme_classic()
+
+ggplot(grammers, aes(x = gram.followers)) +
+  geom_histogram(bins = 10) +
+  theme_classic()
+
+
+hist(grammers$gram.followers, breaks = 10)
+```
+
+8. Find all of the measures of central tendency for the `gram.followers` column from your data frame: `mean()`, `median()`, `sd()`, range (`min()` and `max()` or, if you prefer, `max()-min()`). Use your new data frame without NAs. You don't need to write the answers anywhere. Just your code. When you knit the document, they'll all print (you don't need to save them to new variables yet).
+
+```{r ex8}
+mean(grammers$gram.followers)
+sd(grammers$gram.followers)
+median(grammers$gram.followers)
+c(min(grammers$gram.followers), max(grammers$gram.followers))
+# and there actually is a function called range which does just that:
+range(grammers$gram.followers)
+
+# You can also do this with a `dplyr` function called `summarize()`---the benefit
+# being that you don't have to re-write the name of the data frame each time---
+# and that it's all in one place:
+grammers %>%
+  summarize(mean = mean(gram.followers),
+            sd = sd(gram.followers),
+            median = median(gram.followers),
+            range = max(gram.followers) - min(gram.followers))
+```
+
+9. Use `ggplot2` to create a `ggplot()` which adds on a `geom_point()` layer to plot `gram.followers` on the y-axis and `siblings` on the x-axis. This probably won't mean a ton, but that's okay. Be sure to label your `x` and `y` axes with full names and give the plot a *meaningful* `title` with the `labs()` added on. Consider adding a theme. Also consider adding some color: can you make the points blue? 
+
+```{r ex9}
+ggplot(grammers, aes(x = siblings, y = gram.followers)) +
+  geom_point(color = "blue") + 
+  theme_bw() +
+  labs(x = "Number of Siblings", y = "Number of Instagram Followers", 
+       title = "Rel. b/w siblings and facebook friends")
+```
+
+10. Uncomment (remove the # marks from) the code chunk immediately below, replacing "DATA" with your data frame's name. Then run the chunk to recode the 1 or 2 answers in column `haircolor` to be the answers to the question "Is your current hair color your natural hair color?"
+
+*Please note*: only run this once! If you run it a second time, it will turn the whole `haircolor` column to NAs. Want to check what it looks like? Just highlight the part after the assignment `<-` operator and run that in the console.
+
+```{r}
+grammers$haircolor <- factor(grammers$haircolor,
+                             levels = c(1, 2),
+                             labels = c("Natural", "Dyed"))
+```
+
+Copy the code for the plot from Q9 in the code chunk labeled ex10 below. If you added blue points, delete the `color = "blue"` in the parentheses of `geom_point()`. **Into the parentheses of the `aes()`** mapping in the `ggplot()` call at the beginning of the code chunk below, set `color = ` equal to the hair color variable (`haircolor`)---careful: neither gets quotation marks! Then, inside the `geom_point()` command's parentheses, set `shape = "+"` and (with a comma after the closing quotation mark in "+") set `size = 5`. You're changing the points to + signs and making them larger. 
+
+```{r ex10}
+ggplot(grammers, aes(x = siblings, y = gram.followers, color = haircolor)) +
+  geom_point(shape = "+", size = 5) + 
+  theme_bw() +
+  labs(x = "Number of Siblings", y = "Number of Instagram Followers", 
+       title = "Relationship b/w siblings and instagram followers")
+```
+
+# *z*-tests for a single sample
+
+Suppose we are interested in whether *our* sample has, on average, the same number of instagram followers as people in general. We could say our research hypothesis is that our sample has a _different_ mean number of followers, but the null hypothesis is that it does. (Step 1!)
+
+You might say then that:
+
+$$H_0: \mu_{our~data}=\mu_{people~in~general}$$
+
+$$H_1: \mu_{our~data}\neq{}\mu_{people~in~general}$$
+
+Now, how do we define people in general? This is pretty tricky in most cases---which is why, quite soon, we're going to stop using a *z*-test at all. However, we can make something up---suppose that the average number of followers is 500. (I tried to find a real number online, and failed. Think you have a better estimate? Feel free to use yours instead.) There are a lot of accounts with very few followers, and a lot with thousands (and some with millions), but imagine that it averages out to 500. Is **our sample** different from that figure? To figure this out, to start, let's also imagine that the standard deviation for the population distribution is 300. Again, that's unlikely! But we're going to roll with it for today.
+
+## Step 2: Determine the characteristics of the comparison distribution. 
+
+11. Okay, let's get the information about our sample and therefore define the comparison distribution. We'll use this info for calculating *z*. First, let's assign the mean of the `gram.followers` to a new variable called `follow.mean`. Remember, we're still using the new data-frame you created in #6. 
+
+```{r ex11a}
+follow.mean <- mean(grammers$gram.followers)
+```
+
+We don't need to calculate the standard deviation---we've got it (even though it's fake). Assign the number I gave you for the population standard deviation (300) as the variable`follow.sd`.
+
+```{r ex11b}
+follow.sd <- 300
+```
+
+To get the actual standard deviation of the comparison distribution, we want the sampling distribution of the mean, which has a standard deviation equal to the standard error of the mean---that's $SEM=\frac{SD}{\sqrt{n}}$ and we already know SD (you just saved it in a variable!). That's easy to calculate in R. Many of you did it the other day! Just use the `sqrt()` function to find square roots, and use the good old-fashioned [forward] slash `/` for dividing. Go ahead: assign the SEM to a variable called `follow.sem`. 
+
+(*Note*: You can find the `n` by just looking at the length of the data frame---it's actually the number of rows I told you way back in Q6. But if you'd like to use an R function for it, there's `nrow()` which you can run on the data frame: `nrow(DATA)` will give you how many rows there are in your data frame if you replace DATA with its name---in this case, one per person.)
+
+```{r ex11c}
+follow.sem <- follow.sd / sqrt(nrow(grammers))
+```
+
+So, we can define our comparison distribution as follows: it is a *z*-distribution based on the **sampling distribution of the mean**, which has a mean of `r round(follow.mean, 2)` and a standard deviation equal to the *standard error of the mean*, `r round(follow.sem, 2)`. 
+
+## Step 3: Determine the sample cutoff score to reject the null hypothesis
+
+No changes yet! Still using the same cut-offs from last lab, with a significance level of $p < .05$. We'll continue with `qnorm()` for this, which is the quantiles (i.e., you're passing it the percentile and it's giving you what number falls there) of the normal distribution.
+
+```{r}
+qnorm(c(.025, .975)) %>% round(digits = 2)
+```
+
+## Step 4: Determine your sample's score
+
+12. Okay, let's do it. Calculate *z* below. Assign it to a variable called `follow.z` and then print it out by re-writing the name on its own line. Remember: we're using *our sample mean* that you just calculated, our sample's *SEM* that you calculated (as an estimate of the sampling distribution's standard deviation), and the number 500 as our fake *population mean* for the comparison distribution. When you divide, don't forget to use parentheses for the numerator (on top).
+
+$$z=\frac{\mu_{sample}-\mu_{population}}{SEM}$$
+
+```{r ex12}
+follow.z <- (follow.mean - 500) / follow.sem
+follow.z
+```
+
+Okay, our *z*-score here is `r round(follow.z, 2)`. 
+
+## Step 5: Decide whether or not to reject the null hypothesis
+
+13. You can likely tell straight away that this mean is statistically different from the (fake) population mean---the *z*-value that you calculated should be well above the cut-off. Just to practice, uncomment the third and seventh lines in the code below (beginning with `follow.z` and `abs(follow.z)`), and run the code chunk to confirm that. It should read TRUE, twice.
+
+What are we doing here? We're testing: does the sample mean for our sample differ from the (fake) population mean and SD that I gave you? 
+
+```{r ex13a}
+# check if follow.z is more than 1.96 OR less than -1.96; 
+# if it is either (it can't be both), return TRUE
+follow.z > 1.96 | follow.z < -1.96
+
+# alternatively, use the abs() function to check if the MAGNITUDE of z
+# is more than 1.96
+abs(follow.z) > 1.96
+```
+
+It does! 
+
+What percentile is it? Again, uncomment to see. Here, we're using the `pnorm()` function we used last week, which is the reverse of `qnorm()`. Where `qnorm()` takes a percentile and gives a z-score, `pnorm()` takes a z-score and gives a percentile. (No, really---try running it on -1.96 and you'll get just about .05, and on 1.96 where you'll get just about .975.)
+
+```{r ex13b}
+pnorm(follow.z)
+```
+
+You should get a .999999. What does that mean? It means that this score is so high that it must not come from the same distribution. It's saying that the score's from the 99.99999th percentile. 
+
+... it also probably means that the fake population mean and *SD* are wrong, huh? Yeah, I think that fake population *SD* was off, even if the mean isn't.
+
+# Switching from *z* to *t*
+
+Now we'll try to do this whole thing with a slight difference: looking at the most basic kind of *t*-score. As we will (or have) discuss[ed] in class, a *t*-test has one primary difference from the basic *z*-test: rather than assuming that we know the population's standard deviation, we instead accept that we **do not**. All we know in this instance is the population mean. (We're still using the fake population mean of 500---we're just no longer using a fake population standard deviation!)
+
+What do we need to do to find an estimate of the population standard deviation? The following things, none of which are actually knew. 
+
+* Degrees of freedom: in R language, that's `df <- n-1`; mathematically, 
+
+$$df = n - 1$$
+
+* The Sum of Squares (also known as the SS) which in R language is `SS <- sum((x-mean(x))^2)`; 
+
+$$SS = \sum{(X-M)^2}$$
+
+* The estimate of the population SD, in R, `sd.est <- sd(x)` or, if you're doing it by hand, `sd.est <- sqrt(SS/df)` (using the two variables we've defined above!); 
+
+$$S=\sqrt{\frac{\sum{(X-M)^2}}{n-1}}=\sqrt{\frac{SS}{df}}$$
+
+* The estimate of the *t*-distribution's SD, which is to say, using those variables above, that's `t.sd <- sd.est/sqrt(n)`;
+
+$$S_M=\frac{S}{\sqrt{n}}$$
+
+## Step 1
+
+This is identical to the way we wrote them before. To recap:
+
+$$H_0: \mu_{our~data}=\mu_{people~in~general}$$
+
+$$H_1: \mu_{our~data}\neq{}\mu_{people~in~general}$$
+
+## Step 2: Find the characteristics of the comparison distribution
+
+14. Use the information above and the code below to calculate the new *SD*.
+
+I'll walk you through this with *dummy code* (code that doesn't work because it has stand-ins for your variables); you replace the dummy code with the variable names from our data. Replace the text that says DATA with the name of your data frame---still using the one we created that doesn't have NAs. Replace the text that says COLUMN with the name of the column of interest (`gram.followers`, still). You should also uncomment the lines, of course, if you want them to run---remove the # marks.
+
+```{r ex14}
+# n <- nrow(DATA)
+# df <- n - 1
+# SS <- sum((DATA$COLUMN - mean(DATA$COLUMN))^2)
+# sd.estimate <- sqrt(SS / df)
+# s.m <- sd.estimate / sqrt(n)
+# 
+# # now, run the straightforward check:
+# sd.estimate2 <- sd(DATA$COLUMN)
+# s.m2 <- sd.estimate2 / sqrt(n)
+# 
+# # and are these equal?: these should both read TRUE
+# identical(s.m, s.m2)
+```
+
+```{r ex14-answers}
+n <- nrow(grammers)
+df <- n - 1
+SS <- sum((grammers$gram.followers - mean(grammers$gram.followers))^2)
+sd.estimate <- sqrt(SS / df)
+s.m <- sd.estimate / sqrt(n)
+
+# now, run the straightforward check:
+sd.estimate2 <- sd(grammers$gram.followers)
+s.m2 <- sd.estimate2 / sqrt(n)
+
+# and are these equal? use the identical() function to test that thing: these should both read TRUE
+identical(sd.estimate, sd.estimate2)
+identical(s.m, s.m2)
+```
+
+Take time and make you understand what is happening at every step---can you imagine what's happening if you were writing the equations out on paper instead of in R code? Any questions? Ask your classmates in your breakout room. If they don't know, ask a course assistant or the professor.
+
+We have now defined our comparison distribution! 
+
+It's the *t*-distribution with *df* of 66, a mean of 500, and a standard deviation (the standard error of the mean) of `r round(s.m, 2)`. 
+
+## Step 3
+
+We'll use *t*-tables in class like with the *z*-table, but in R we can do this much more easily. Remember the `qnorm()` function we used above? As we discussed, the "norm" bit was referring to the normal distribution. The q piece in the name meant "quantile." Well, we can get the quantiles of the *t* distribution the same way: with `qt()`. The only difference is that we need to specify the degrees of freedom, which we defined above in Q14.
+
+I'm going to write it below---you run the code. It should look almost identical to the `qnorm()` function above. But it will result in different cut-off values, because it's no longer using the normal distribution. They are quite similar, though, right? 
+
+```{r}
+qt(c(.025, .975), df = 66)
+```
+
+15. Once you get the `qt()` code working, copy it below, and assign it to a new variable called `cutoff`. (It should have two values: the upper and lower values.)
+
+```{r ex15}
+cutoff <- qt(c(.025, .975), df = df) # using the df variable from above---which is 66
+```
+
+## Step 4: Determine your sample's score
+
+Okay, now we can calculate *t*. It looks quite similar to *z*, with the exception (again) that the only thing we're claiming to "know" at this point is the population mean---the $S_M$ is coming from our *estimate* of the population standard deviation:
+
+$$t=\frac{M-\mu_M}{S_M}$$
+
+16. Create a new variable called `t.stat` which is assigned `<-` to the value of *t*---in parentheses, subtract the fake population mean (500) _from_ your mean number of followers (which you created way above in Q11 and named `follow.mean`, if you did as I suggested), and then divide that result by the `s.m` we saved in Q14---the standard error of the mean. Then just write the name (`t.stat`) on its own line so it prints. Don't forget to use parentheses for the numerator (the subtraction) so it happens first.
+
+```{r ex16}
+t.stat <- (follow.mean - 500) / s.m
+t.stat
+```
+
+Okay, so we can say that $t=$`r t.stat`. 
+
+## Step 5: Decide whether or not to reject the null hypothesis
+
+Is `t.stat` more extreme than the critical value? 
+
+17. Use one of the methods from Q13 to compare `t.stat` to the `cutoff` variable. You should also print them both and take a look---your eye may be better at deciding than code. If you saved both the lower and upper cutoffs (i.e., one negative and one positive), then it seems likely that you may want to either compare absolute values or use the subsetting square brackets, e.g., `cutoff[1]` and `cutoff[2]` for your comparison.
+
+```{r ex17}
+t.stat
+cutoff
+
+abs(t.stat) > abs(cutoff)
+# the most complete: is it lower than the low cutoff or higher than the high?
+t.stat < cutoff[1] | t.stat > cutoff[2]
+```
+
+18. Should you reject the null hypothesis for this test?
+
+> Yes, definitely! Our *t* is larger than the cut-off, so it is statistically significant and *p < .05*.
+
+Okay, one last thing: we can also calculate the *exact* *p*-value here using the `pt()` function. 
+
+This is essentially the same as `pnorm()`, which we used to find the percentile of the normal distribution. Here, we want the percentile of how rare this score is, but in the *t* distribution. As with the `qt()` function, we need to give a *df* (the degrees of freedom). You defined that above, so un-comment these lines and run them. 
+
+*Note:* What does `lower.tail` mean? Well, the first one is defining the probability that the true (population) mean is **more** than the value of your *t*-score; the second is the probability that the true (population) mean is **less** than the value of your *t*-score. Then we add them together to get the whole thing. The lower tail is looking all the way at the left---the extreme negative values. And the upper tail is looking all the way at the right---the extreme positive values. We use both of them to get a *p*-value because we're using a two-tailed test.
+
+```{r}
+upper.tail <- pt(t.stat, df = df, lower.tail = FALSE)
+lower.tail <- pt(-t.stat, df = df, lower.tail = TRUE)
+(p.value <- upper.tail + lower.tail)
+```
+
+So does your conclusion from #18 make sense? Remember: the comparison we make here is between the cut-off *t*-value and the actual *t*-value for our sample. **The _p_-value tells us in a glance whether that _t_ is larger than the cut-off, but the comparison is about the _t_-value.**
+
+> Yes, it does! The *p*-value is definitely smaller than .05, which makes sense, given that our *t* is larger than the cut-off. 
+
+19. Obviously, we don't normally do it this way. We use a *t*-test function! In fact, that's `t.test()`---the one function for today. For the one-sample *t*-test, you give the `t.test()` function two arguments: your x-values (here, `DATA$gram.followers` where DATA is your data frame), and your population mean (`mu`), which is here 500. Because this is not a `dplyr` function, you **do** need to explicitly name the data frame as well as the column, with the $ separating them. Uncomment the code below and replace the all caps with your variables / values.
+
+```{r ex19}
+# t.test(x = DATA$COLUMN, mu = POPULATIONMEAN)
+t.test(x = grammers$gram.followers, mu = 500)
+```
+
+20. Are the *t*-value, *df*, and *p*-value the same? Explain. (Also: note the confidence interval around the mean!)
+
+> Yes, they are identical. The confidence interval is an estimate of the true mean. 
+
+Okay, that's it! Go ahead and save, then knit the document. 

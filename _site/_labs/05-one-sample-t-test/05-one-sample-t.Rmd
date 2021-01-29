@@ -1,0 +1,59 @@
+---
+title: "05: One-Sample t-tests"
+description: |
+  Using R to perform one-sample t-tests.
+author:
+  - name: Justin Dainer-Best
+    url: {}
+date: 09-28-2020
+categories:
+  - rlanguage
+  - visualization
+  - ggplot
+  - dplyr
+  - t-tests
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+These are all of the instructions for Lab 5. [The list of labs is here](../../labs.html).
+
+This repository contains R labs for R package ([`{psychRstats}`](https://github.com/jdbest/psychRstats)) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.
+
+For each lab, you should expect to download the lab's files locally to your computer, and run them there. If you're using https://rstudio.cloud/ instead of running things locally, the same instructions should work today. 
+
+Below are instructions for Lab 5.
+
+## Objectives
+
+The following lab *builds* on your skills with `ggplot2`, using `filter()`, and helps you practice using *z*-scores and *t*-scores to test simple sample means. This lab anticipates that you have read or have a background on *t*-tests; however, most of the lab reviews material you have already covered in previous labs.
+
+## Make sure you're in the right working directory
+
+Set your working directory if necessary. Check that you're in the directory you expect by running `getwd()` in the Console. If you need more help, [look at the wiki page on setting a working directory](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory). 
+
+## Today's lab
+
+There is no tutorial today; you'll be focusing on an R Markdown file. 
+
+Check that you're in the directory you expect by running `getwd()` (the parentheses should have nothing in them). 
+
+## Exercise
+
+This exercise explores the commands you learned and lets you continue practicing the steps of hypothesis testing. 
+
+You may be able to open the file from the correct working directory by running the following code:
+
+```{r}
+library(psychRstats)
+run_exercise("05-exercise")
+```
+
+## Solutions
+
+A version of the document with solutions can be seen [here](../../answers/05-lab/).

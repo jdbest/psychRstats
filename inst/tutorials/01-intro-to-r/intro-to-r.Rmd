@@ -1,0 +1,597 @@
+---
+title: "Lab 01: Introduction to R"
+description: >
+  Learn the basics of R, how to comment, and about the major pieces we'll be using in these exercises.
+tutorial:
+  id: "PSY-203-F20"
+  version: 0.2
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(psychRstats)
+library(learnr)
+library(tidyverse)
+library(gradethis)
+library(flair)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(error = TRUE)
+
+# set up data for below
+voters <- data.frame(
+  party = c("Democrat", "Democrat", "Democrat", "Republican", "Republican", "Republican"),
+  race = c("Black", "White", "Latinx", "Black", "White", "Latinx"),
+  age = c(24, 18, 32, 54, 43, 40)
+)
+set.seed(12) # setting a seed -- and then running the whole chunk -- ensures that
+             # we all have the same data
+experiment <- tibble(
+	subject = rep(c(1:10), each=5), 
+	trial = rep(c(1:5), each=10), 
+	trialtype = rep(sample(c(rep("go", 1), rep("nogo", 4))), 10)
+	) %>% 
+  dplyr::mutate(rt = rnorm(n(), mean = 550, sd = 120))
+```
+
+## Introduction
+
+We'll be using this sort of web document in conjunction with R Markdown documents during the course of this class. Today, there is no R Markdown document---just this one.
+
+Much of the data we'll use in learning is what I would call "tame" data---cleaned up, easy to understand, and without complications. But we'll learn to process "messy" (real-world) data, too. 
+
+### Why R?
+
+Briefly, here's my argument for using R:
+
+It's:
+
+1. Free & Open Source (not proprietary)
+2. Flexible
+3. Widely used across disciplines (including outside of the Bard bubble!)
+4. Introduction to code and to programming
+5. Really fun!
+6. Tons of free online resources (and print books, if you prefer)
+7. Excellent visualization ability
+8. Integrating theory and practice
+9. R Notebooks and Markdown files are great ways to follow along!
+10. Packages and extensibility
+
+### Script vs. R Markdown vs. Console
+
+1. You can write code in an R Markdown or R Notebook document, which combines code with text. (e.g., go to File > New File > R Notebook.)
+2. You can also write in a "script" window (in R or R Markdown) where all text is treated as code. (e.g., go to File > New File > R Script.)
+3. You can just write code directly into the console. (e.g., just click on the Console tab in RStudio.)
+4. You can also write code in a text editor, and then paste it in. (e.g., open up Notepad or your favorite text editor like Atom, write there, and then copy it into the Console in RStudio.)
+
+I will usually use R Markdown in work that we do together---but all of these options make sense! I recommend against (3), as this results in you losing past code. I also recommend against hand-writing code in a notebook---it's no fun to retype your code, and it's easy to introduce minor errors! (But I won't stop you if you'd like to do that.)
+
+You have RStudio open on your computer (or through RStudio.Cloud); that's where you're reading this document. You might want to take notes *in RStudio* as you complete these exercises. You can alternate between windows (in RStudio) and open an R Notebook with *File > New File > R Notebook*. 
+
+## Starting to play around with R
+
+R does *not* always need you to enter all of your code on one line. Try running the next few lines all at once by clicking "Run code" at the top right of the box.
+
+Did you get your expected result for each sum? (Each answer will be in order, below.)
+
+```{r basicmath, exercise=TRUE}
+3 + 4
+
+3 +
+  4
+
+8 + 4
+
+8 
++ 4
+```
+
+<div id="basicmath-hint">
+**Hint:** Try putting 8 + 4 on the same line, if you'd like to see 8+4 rather than the results of 8, and then 4.
+</div>
+
+In essence, R "waits" for you to finish if and only if it is very obvious that you aren't done. White spaces (spaces, tabs, etc.) don't matter *unless* the line is obviously done---on the second-to-last line, R reads 8---a perfectly complete statement---and executes it. (Similarly, +4 is a positive 4.) On the other hand, 3 + is *not* a complete statement---there's something to be added, but it hasn't shown up yet---so R waits for you to continue it.
+
+What are some examples of characters that make it clear that the line isn't done? Try playing around in the above area, or do it in your own R console. (Some suggestions to test---which does which?: parentheses, mathematical operators, decimals.)
+
+### Exercise
+
+Use the below space to write R code to find the sum of 10 and 4, to subtract 8 from 10, and to multiply 3 by 7 (use the asterisk * for multiplication). Click submit answer (at the top right) when you're done.
+
+```{r add_subtract, exercise=TRUE, exercise.lines = 3}
+
+```
+
+```{r add_subtract-solution}
+10 + 4
+10 - 8
+3 * 7
+```
+
+<div id="add_subtract-hint">
+**Hint:** Make sure each of the operations is on a separate line. Additionally, the order matters. (e.g., I wrote "subtract 8 from 10", not "10 from 8")
+</div>
+
+```{r add_subtract-check}
+grade_code("Nicely done!")
+```
+
+## Commenting
+
+Any text written in the R Markdown document appears as regular text. However, when writing code, we frequently also write *comments* to remind us what happens. Those are done using a `#` in R code: 
+
+```{r comments, include=FALSE}
+# This is a comment
+
+# Comments above code: this is addition
+5 + 5
+
+exp(3) # This is a comment at the end of a line
+
+help(exp)
+# This comment follows the code -- I recommend against it (but you can do this if you choose)
+# help() can be very useful!
+# ?exp would do the same thing.
+```
+
+```{r comments-2, echo=FALSE}
+decorate("comments") %>% 
+  flair("#")
+```
+
+### Exercise
+
+Write R code to divide 144 by 12 (using the / for divide). Then **on the same line** add a comment that explains what you're doing. 
+
+```{r comment, exercise=TRUE, exercise.lines = 1}
+
+```
+
+```{r comment-solution}
+144/12 # this divides 144 by 12
+```
+
+## Variables and classes
+
+Any type of coding relies on **variables**---words/letters that represent values that are likely to change. This is the programming equivalent of "*x*" in an equation like $y=x^2$---the *x* can take on different values, right? The same is true in R. And in fact, we'll frequently use variables like *x* in R, too. The point of a variable is that it can be re-used. The example we'll use for a moment is just a number---but we can store much larger data in a single variable.
+
+*x* is a _variable_ that can hold a value. The most basic version is assigning it to a number like 5. We **assign** using what is called the assignment operation -- `<-` (a less than sign followed by a dash) -- think of that symbol as meaning "assign to". You assign the **value** on the right to the **variable** on the left. This is probably the most important thing in today's lesson! 
+
+* Also note: when you see text `that looks like this`, that should usually mean that it's code or the name of a variable.
+
+(You can read more about variables in R [on this website](https://intro-r.rsquaredacademy.com/variables.html).)
+
+You can also use an equal sign (=), but you'll see that when we are *creating a variable*, I will always use the assignment operator, like this:
+
+```{r definex, include=FALSE}
+x <- 5
+x = 5 # this does the same thing---but I recommend using the <- instead!
+```
+
+```{r definex-flair, echo=FALSE}
+decorate("definex") %>% 
+  flair("<-") %>%
+  flair("=")
+```
+
+In this case, the code has already run. Read it aloud as: "I assigned the value of 5 to the variable x" and "I set x to be equal to 5." 
+
+Try it yourself by running the following code:
+
+```{r definex_try, exercise=TRUE}
+x <- 5
+```
+
+You'll note that R doesn't print anything out when we assign this value. That's because you're not telling it to print anything---you're just recording a value. If you copy the code `x <- 5` into your R console and run it there, you'll see that it adds a variables called *x* into your global environment (at the rop right of RStudio). Its value should be 5. 
+
+To print it out, you can just write the *name* of the variable---*x*. Try that, below:
+
+```{r printx, exercise=TRUE, exercise.setup = "definex_try"}
+
+```
+
+```{r printx-solution}
+x
+```
+
+```{r printx-check}
+grade_code("Nicely done!")
+```
+
+<div id="printx-hint">
+**Hint:** You just need to put the name of the variable in the exercise area.
+</div>
+
+### Classes (types) of variables
+
+Each variable is a **class** or **type** of data. We'll learn about types of data in class, too---they're slightly different in R, because they're based on what data a computer can understand. 
+
+In class, we'll talk about the following kinds of data: nominal (categorical), rank order (ordinal), interval (numeric), ratio (interval with absolute zero). We'll also define data as discrete or continuous. In R, there are more data **classes**, because each class refers to how data is stored. 
+
+```{r datatypes, echo=FALSE}
+tibble::tribble(
+  ~`Data Type`, ~`R Class`,
+  "nominal", "factor or character",
+  "ordinal", "factor or numeric",
+  "interval", "numeric", 
+  "ratio", "numeric"
+) %>% knitr::kable()
+```
+
+
+We can use the word class followed by an opening parenthesis, the name of the variable, and a closing parenthesis to find out the class (or type) of variable x is---try running this code:
+
+```{r class_of_x, exercise=TRUE}
+class(x)
+```
+
+### More than one value
+
+Now, let's make this just a bit more complex: a variable can represent more than one number at a time. You can store a **combination** of numbers in a variable by using the combine command or `c()`. Let's try it with another variable still called *x*---run the following code:
+
+```{r c_of_x, exercise=TRUE, exercise.setup = "definex_try"}
+x <- c(4, 5, 7)
+```
+
+Now, you can again just write the *name* of the variable---*x*. Try that, below:
+
+```{r printx-2, exercise=TRUE, exercise.setup = "c_of_x"}
+
+```
+
+```{r printx-2-check}
+grade_result(
+  pass_if(~ identical(.result, c(4, 5, 7)), "Yes, you assigned c(4, 5, 7) to the variable x, so this is the expected output."),
+  fail_if(~ identical(.result, 4), "Did you assign x to the value immediately above? Make sure to run the code, and feel free to click the 'start over' in the box if you can't."),
+  fail_if(~ identical(.result, 5), "Did you assign x to the value immediately above? Make sure to run that code."),
+  fail_if(~ TRUE, "Not quite. All that should be in the window is the variable name -- and that variable name should be assigned to the values of 4, 5, and 7 as above.")
+)
+```
+
+And again use the `class()` function to determine the type of variable that *x* is:
+
+```{r class_x, exercise=TRUE, exercise.setup = "c_of_x"}
+
+```
+
+```{r class_x-solution}
+class(x)
+```
+
+```{r class_x-check}
+grade_code("Nicely done!")
+```
+
+Why is the class the same? These are both *vectors* of numbers---matrices with one row/column. Feel free to look up the terms *vector* and *matrix*, but I think the major point here is that a series of numbers are still numeric. (Shocking, right?) They have the same class while they exist in this way. 
+
+## Data frames
+
+Another useful type of variable is a structure called a *data frame*. These are where a lot of data will exist in R. A data frame is essentially a two-dimensional matrix of data---like the sort of spreadsheet you see in Excel or Google Sheets. In R, the data frame has one name (that's the main variable) and then all of the columns also have names (those are variables that exist within the data frame). 
+
+Think of it like this: you've collected data on experiences of stigma on a college campus. This is your data set, and you store it in a data frame called **stigma**. That's the main variable. Within the data frame are columns of the individual variables you collected, things like where the experience occurred (**where**), the age of the person experiencing stigma (**age**), and what kind of interaction there was (**interaction_type**). Imagine it looks something like this:
+
+```{r, echo=FALSE}
+tibble::tribble(
+  ~where, ~age, ~interaction_type,
+  "library", 19, "in-person",
+  "campus road", 20, "online"
+)
+```
+
+The column headers in a data frame are those variable names. You'll see below the name the `class()` of each variable, too. (You won't see that in every data frame, but I'm including it here since we're learning about these!)
+
+So how would we create a variable like this? There are a couple of ways. (That is often the case!---this is one of the nice/frustrating things about R.) The most basic command is `data.frame()` -- let's use that one now. Run this code:
+
+```{r df1, exercise = TRUE}
+data.frame(
+  age = c(18, 19, 20)
+  )
+```
+
+So what does that do? As you may remember, the extra space doesn't mean anything---it just makes it easier to read. That's because the open parenthesis means R *expects* a closing parenthesis, and keeps going until it hits it.
+
+Read the code aloud: "Create a data frame with a single column variable called age, and make age equal to the combination of 18, 19, and 20." 
+
+Note that we haven't "named" this new data frame---that's why it prints to the screen. Within the data frame, as we're naming the variables, we **don't** use the assignment operator (`<-`). That operator is only for the sort of "top-tier" assignment; it shouldn't usually appear within a command. You'll note that if you copy and paste the above code into the RStudio console and run it, nothing shows up in the "Environment" pane at the top right. Again, that's because we haven't created a variable as R understands it. 
+
+So, give this a try: at the beginning of the code below, write code to create a variable *named `ages`* which is assigned (using `<-`) to the data.frame() code I've written for you:
+
+```{r df2, exercise = TRUE, exercise.warn_invisible = FALSE}
+data.frame(
+  age = c(18:20)
+  )
+```
+
+```{r df2-solution}
+ages <- data.frame(
+  age = c(18:20)
+  )
+```
+
+```{r df2-check}
+grade_code("Nicely done!")
+```
+
+If we want to add a second column in that data frame, we just add a comma at the end of the `age` line, and hit enter:
+
+```{r df2_part2, exercise = TRUE}
+data.frame(
+  age = c(18:20),
+  gender = c("f", "nb", "f")
+  )
+```
+
+The quotation marks tell R that the "f" isn't a variable---it's character (text) input. You might also note that the colon between 18 and 20 says "18 THROUGH 20" to R---it's the same as saying c(18, 19, 20).
+
+### Exercise
+
+Okay, try it yourself. Do the following below:
+
+1. Create a variable called `votes`
+2. Its value will be a `data.frame()`
+3. Containing the following two variables:
+    a. `party` equal to the **combined** (`c()`) values of `"Democrat", "Republican", "Independent"`
+    b. `vote` equal to the **combined** (`c()`) values of `"Incumbent", "Challenger", "Incumbent"`
+
+Some important things to remember:
+
+1. Comment your code wherever it helps you.
+2. Close parentheses (but also note: RStudio might help you do that! So make sure there are the right number of opened/closed parentheses.)
+3. Spell things correctly, and don't capitalize except in the character (i.e., it's lowercase p `party`, but uppercase D "Democrat".)
+4. The assignment operator `<-` is used in the initial variable name, but NOT within the `data.frame()` command.
+5. You can absolutely copy and paste from above.
+6. You'll need a comma between each character input (as I inserted them above) **and also** between the `c()` commands---as above.
+7. If you're not getting the "right" answer, that's okay! You can click the Solution button---what was wrong? The checker is just trying to see if you got the same code I wrote---minor differences aren't a big deal.
+
+```{r df3, exercise = TRUE, exercise.warn_invisible = FALSE, exercise.lines = 5}
+
+```
+
+```{r df3-solution}
+votes <- data.frame(
+  party = c("Democrat", "Republican", "Independent"),
+  vote = c("Incumbent", "Challenger", "Incumbent")
+)
+```
+
+```{r df3-check}
+grade_code("Nicely done!")
+```
+
+When you write code like this, you'll see that R tries to highlight problems---like an un-closed parenthesis---at the left when it can. If you make any mistakes, you'll also see that the errors it gives might be a bit vague... you can always ask me when you have questions! 
+
+## Review
+
+Here are a few quiz questions to make sure you're following along. 
+
+```{r quiz, echo=FALSE}
+quiz(
+  question("When do we use the assignment operator `<-`?",
+    answer("When assigning the names of columns in a data frame"),
+    answer("To print the value of a variable"),
+    answer("When assigning a top-level variable, like the name of a data frame", correct = TRUE),
+    answer("Never")
+  ),
+  question("Which of the following are R data types (classes)?",
+    answer("numeric", correct = TRUE),
+    answer("interval"),
+    answer("categorical"),
+    answer("character", correct = TRUE)
+  )
+)
+```
+
+
+## Subsets of data
+
+When we work with data, we often want to use specific components of it---for example, pulling *just the* `age` *column* from the `ages` data frame. I'll call this **subsetting.** Think about it in an Excel/Google Sheets spreadsheet: there you could select the whole column of ages by clicking and dragging with your mouse. We can do the same thing in R, but we need to do it using code.
+
+I'll show you two ways to do this today, which are the most frequently used in R. One is using the dollar sign `$`. **You can use the dollar sign to select a column from a data-frame.** Remember how we named both the data frame variable and the column within it, but only the data frame showed up in the Global Environment? That's because the column is *inside of the data frame*. So you need to name both, like a phone number: first the general area code, then the specific part of it. (Obviously, we can get even more specific.)
+
+So, for example, suppose I've collected data on `voters` including their `party`, `race`, and `age`. I put the data into a data frame:
+
+```{r}
+voters <- data.frame(
+  party = c("Democrat", "Democrat", "Democrat", "Republican", "Republican", "Republican"),
+  race = c("Black", "White", "Latinx", "Black", "White", "Latinx"),
+  age = c(24, 18, 32, 54, 43, 40)
+)
+```
+
+Note that even though the text goes through party, race, and age on three lines, those are still the column headings once it's run. Does that make sense? 
+
+Try selecting *just the ages* by running the following code:
+
+```{r selectage, exercise=TRUE}
+voters$age
+```
+
+Now, you try: subset the `party` of the `voters`.
+
+```{r selectparty, exercise=TRUE}
+
+```
+
+```{r selectparty-solution}
+voters$party
+```
+
+```{r selectparty-check}
+grade_code("Well done!")
+```
+
+What happens if you just write `party`? There's an error ("Error in eval(expr, envir, enclos): object 'party' not found")---it only exists as a subset of the `voters` data frame.
+
+### Further subsets?
+
+You can also use square brackets [] to select individual elements---in a vector like `c(4, 5, 6)` using a `[2]` will select the second element:
+
+```{r}
+c(4, 5, 6)[2]
+```
+
+And the same is true if you assign that to a variable. For example, try writing code that (a) assigns the combined (`c()`) value of 7, 8, and 9 to the variable `numbers` and then, on a second line, selects the third number from that new variable with brackets.
+
+```{r subsetnum, exercise=TRUE}
+
+```
+
+```{r subsetnum-hint}
+# On the first line, define the variable numbers
+# On the second line, use square brackets to select the 3rd item.
+```
+
+```{r subsetnum-hint-2}
+numbers <- c(7, 8, 9)
+numbers[3]
+```
+
+```{r subsetnum-solution}
+numbers <- c(7, 8, 9)
+numbers[3]
+```
+
+```{r subsetnum-check}
+grade_code()
+```
+
+You can select columns and rows this way in data frames, too---read about it by running `help(Extract)`---but we'll move on for today.
+
+### The `dplyr` package
+
+We already installed this package when we installed the `tidyverse` package---it's part of that. This package (pronounced "D-plier") is about manipulating data (i.e., using pliers on data). 
+
+If you're following along with this tutorial in an R Notebook or the RStudio Console, you'll need to load the package by running this code in your console:
+
+```
+library(dplyr)
+```
+
+One of the most interesting (and useful) things in `dplyr` is its *chain* operator: `%>%`. It essentially pushes things forward into the next "statement". I'd usually read it aloud as "and then...", or maybe "and then take that and..." -- but you could also call it a *pipe*, if that means something to you. 
+
+So, using the `dplyr` chain `%>%`, we can take that `voters` data frame we were working with earlier and use commands designed to subset it: `select()` (which selects columns) and `slice()` (which slices rows). (These are also from `dplyr`.)
+
+```{r sliceselect, exercise=TRUE}
+voters %>% slice(2)
+voters %>% select(age)
+```
+
+This code will print each line one at a time. You might note that it's a little different from when you ran `voters$age`, but the outcome is more or less the same: a single row or column. 
+
+In particular, I like `dplyr` because it's "easy to read"---for example, I'd read the first line as "take the voters data frame and then slice the second row". Is that what happens when you ran the code? 
+
+```{r quiz2, echo=FALSE}
+quiz(
+  question("Which of the following is a correct way to read the second line?",
+    answer("Take the voters data frame and then select the age column", correct = TRUE),
+    answer("Take the voters column and select the age row"),
+    answer("Take the age data frame from the voters data frame"),
+    answer("Take the voters data frame and then select the age row")
+  )
+)
+```
+
+Try it yourself: write two lines of code. The first should `select` the `race` column from the `voters` data frame, and the second should `slice` the third row.
+
+```{r sliceselect2, exercise=TRUE}
+
+```
+
+```{r sliceselect2-hint}
+# Don't forget to use the chain command %>%
+# And first select() the race column on one line
+# and then slice() the third row on the second line
+# Click next hint for the solution
+```
+
+```{r sliceselect2-hint-2}
+voters %>% select(race)
+voters %>% slice(3)
+```
+
+```{r sliceselect2-solution}
+voters %>% select(race)
+voters %>% slice(3)
+```
+
+```{r sliceselect2-check}
+grade_code("Awesome!")
+```
+
+## One more exercise
+
+You've learned a lot today! Let's try one more thing to put it together.
+
+Imagine that we have the data from a simple experiment in a data frame named `experiment`. It has four variables. They're named `subject` (participant number: from 1--10), `trial` (trial number: from 1--26), `trialtype` (either "go" or "nogo"), and `rt` (reaction time). 
+
+Run the following line to see what the experiment data looks like by printing it out:
+
+```{r experimentdata, exercise=TRUE}
+experiment
+```
+
+What command could you run to find the class of the variable `experiment`? What class is it?
+
+```{r classexperiment, exercise=TRUE}
+
+```
+
+<div id="classexperiment-hint">
+**Hint:** Use the command `class()` and put the variable name inside the parentheses.
+</div>
+
+```{r classexperiment-solution}
+class(experiment)
+```
+
+```{r classexperiment-check}
+grade_code("Well done!")
+```
+
+How would you use the `$` operator to print just the `trialtype` column of the data frame? How about the `select()` function from the dplyr package? Try both:
+
+```{r extractprac, exercise=TRUE}
+
+```
+
+<div id="extractprac-hint">
+**Hint:** On the first line, use the `$` after the name of the data frame (called `experiment`). On the second line, first write the data frame name, then use the chain operator `%>%` (make sure it's a greater than sign in-between those percentage signs), and then use the `select()` command to select the column.
+</div>
+
+```{r extractprac-solution}
+experiment$trialtype
+experiment %>% select(trialtype)
+```
+
+```{r extractprac-check}
+grade_code("Making good progress!")
+```
+
+Lastly, and this might be slightly more tricky: what code will show only the first five rows of the data? Choose one method and use it in the below box:
+
+```{r sliceprac, exercise=TRUE}
+
+```
+
+<div id="sliceprac-hint">
+**Hint:** Consider using the `slice()` function with *more than one number inside the parentheses*, although other solutions are possible. 
+</div>
+
+```{r sliceprac-check}
+gradethis::grade_result(
+  pass_if(~ identical(.result, slice(experiment, 1:5)), "Yes, this seems to work quite well!"),
+  pass_if(~ identical(.result, experiment[1:5,]), "Yes, this seems to work quite well!"),
+  fail_if(~ TRUE, "Not quite. Use some method to select only the first five rows of the experiment data frame. ")
+)
+```
+
+## Next steps
+
+This is the entire introduction for today. If you'd like to review in a different way, I recommend the **learn R primer**: <https://rstudio.cloud/learn/primers/1.2>
+
+If you want to learn more about the `dplyr` package's basic functions, try this tutorial: <https://rstudio.cloud/learn/primers/2.2> -- we'll come back to many of these functions. 
