@@ -2,45 +2,45 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>psychRstats: Learning Statistics for Psychology in R</title>
-    <link>https://jdbest.github.io/r-psych-stats/</link>
-    <atom:link href="https://jdbest.github.io/r-psych-stats/answers.xml" rel="self" type="application/rss+xml"/>
+    <link>https://jdbest.github.io/psychRstats/</link>
+    <atom:link href="https://jdbest.github.io/psychRstats/answers.xml" rel="self" type="application/rss+xml"/>
     <description>psychRstats
 </description>
     <image>
       <title>psychRstats: Learning Statistics for Psychology in R</title>
-      <url>https://jdbest.github.io/r-psych-stats/images/favicon.png</url>
-      <link>https://jdbest.github.io/r-psych-stats/</link>
+      <url>https://jdbest.github.io/psychRstats/images/favicon.png</url>
+      <link>https://jdbest.github.io/psychRstats/</link>
     </image>
     <generator>Distill</generator>
     <lastBuildDate>Fri, 20 Nov 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Chi-square and factorial ANOVA (Lab 12) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/10-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/10-lab</link>
       <description>Completed exercises for the twelfth lab</description>
       <category>rlanguage</category>
       <category>chi-squared</category>
       <category>ANOVA</category>
       <category>dplyr</category>
       <category>effect-size</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/10-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/10-lab</guid>
       <pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/10-lab/chisq-and-factorial-ANOVA-lab-12-completed_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/10-lab/chisq-and-factorial-ANOVA-lab-12-completed_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Final Lab Project</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/13-test-yourself-II</link>
+      <link>https://jdbest.github.io/psychRstats/answers/13-test-yourself-II</link>
       <description>PSY 203: Group final project</description>
       <category>practice</category>
       <category>rlanguage</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/13-test-yourself-II</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/13-test-yourself-II</guid>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Correlation and Regression (Lab 10) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/09-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/09-lab</link>
       <description>Completed exercises for the tenth lab</description>
       <category>rlanguage</category>
       <category>visualization</category>
@@ -49,14 +49,14 @@
       <category>regression</category>
       <category>real-data</category>
       <category>effect-sizes</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/09-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/09-lab</guid>
       <pubDate>Fri, 06 Nov 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/09-lab/correg-lab-10-completed_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/09-lab/correg-lab-10-completed_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>One-way ANOVA (Lab 09) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/08-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/08-lab</link>
       <description>Completed exercises for the ninth lab</description>
       <category>rlanguage</category>
       <category>visualization</category>
@@ -64,96 +64,96 @@
       <category>ANOVA</category>
       <category>real-data</category>
       <category>effect-sizes</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/08-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/08-lab</guid>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/08-lab/anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/08-lab/anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Lab 08: The solo project</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/12-test-yourself-I</link>
+      <link>https://jdbest.github.io/psychRstats/answers/12-test-yourself-I</link>
       <description>PSY 203: Lab 8.</description>
       <category>practice</category>
       <category>rlanguage</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/12-test-yourself-I</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/12-test-yourself-I</guid>
       <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>t-tests (Lab 07) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/07-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/07-lab</link>
       <description>Completed exercises for the seventh lab</description>
       <category>rlanguage</category>
       <category>visualization</category>
       <category>ggplot</category>
       <category>t-tests</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/07-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/07-lab</guid>
       <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/07-lab/lab-7-completed_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/07-lab/lab-7-completed_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Visualizing Data II (Lab 06) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/06-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/06-lab</link>
       <description>Completed exercises for the sixth lab</description>
       <category>rlanguage</category>
       <category>visualization</category>
       <category>ggplot</category>
       <category>group_by</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/06-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/06-lab</guid>
       <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/06-lab/lab-6-completed_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/06-lab/lab-6-completed_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Refreshing and Reviewing (Lab 05) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/05-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/05-lab</link>
       <description>Completed exercises for the fifth lab</description>
       <category>rlanguage</category>
       <category>visualization</category>
       <category>ggplot</category>
       <category>dplyr</category>
       <category>t-tests</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/05-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/05-lab</guid>
       <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/05-lab/index_files/figure-html5/ex7-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/05-lab/index_files/figure-html5/ex7-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Hypothesis Testing (Lab 04) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/04-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/04-lab</link>
       <description>Completed exercises for the fourth lab</description>
       <category>rlanguage</category>
       <category>visualization</category>
       <category>ggplot</category>
       <category>dplyr</category>
       <category>distributions</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/04-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/04-lab</guid>
       <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/04-lab/lab-4-completed_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/04-lab/lab-4-completed_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Visualizing Data (Lab 03) Exercises, Completed</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/03-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/03-lab</link>
       <description>Completed exercises for the third lab</description>
       <category>rlanguage</category>
       <category>visualization</category>
       <category>ggplot</category>
       <category>dplyr</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/03-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/03-lab</guid>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jdbest.github.io/r-psych-stats/answers/03-lab/lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png" medium="image" type="image/png" width="1248" height="768"/>
+      <media:content url="https://jdbest.github.io/psychRstats/answers/03-lab/lab-3-completed_files/figure-html5/unnamed-chunk-7-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Introduction to R (Lab 02) Exercise Answers</title>
       <dc:creator>Justin Dainer-Best</dc:creator>
-      <link>https://jdbest.github.io/r-psych-stats/answers/02-lab</link>
+      <link>https://jdbest.github.io/psychRstats/answers/02-lab</link>
       <description>Completed exercises for the second lab</description>
       <category>rlanguage</category>
       <category>comments</category>
       <category>dplyr</category>
-      <guid>https://jdbest.github.io/r-psych-stats/answers/02-lab</guid>
+      <guid>https://jdbest.github.io/psychRstats/answers/02-lab</guid>
       <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
     </item>
   </channel>
