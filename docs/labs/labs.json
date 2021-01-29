@@ -1,5 +1,47 @@
 [
   {
+    "path": "labs/13-test-yourself-II/",
+    "title": "Test yourself: II",
+    "description": {},
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-12-18",
+    "categories": [
+      "practice",
+      "rlanguage"
+    ],
+    "contents": "\nThese are the instructions for the second of two projects that were intended to practice the work done by students during the course of the semester. The list of labs is here.\nThis website contains R lab code for labs in Bard College’s Fall 2020 for Statistics for Psychology, taught by Prof. Justin Dainer-Best.\nOverview\nThis project was intended to be done in groups—but if you’re interested, you can do it on your own.\nYou will perform a data analysis on real data, using the skills you’ve developed in the labs. This project is a semester-summarizing version of the first project—you will develop research questions, create visualizations, carry out analyses, and produce a final document that reports all of them.\nYou may use any resources you choose in this (e.g., textbook, web searches, stats study rooms), although of course the work must be your own groups’ work. Adapting others’ code (e.g., from a post you find online) is great! Using someone else’s code for the exact data you have is not.\nObjectives\nAs with the first project, the goals are:\nTo help you to practice the skills learned in lab\nTo help you understand what happens in the data analysis and reporting sections of a research project\nTo give you functional skills from the use of R and RStudio\nTo learn the process behind data anlysis in published research\nDon’t forget to (a) save and (b) knit the document frequently, so you’ll keep track of your work and also know where you run into errors.\nRequirements \nThe data \nYou get to choose your dataset! You must choose one of the following datasets (or another one you let me know about), and read about it. (If you’d like to find your own, you might try looking at https://www.icpsr.umich.edu/web/pages/ICPSR/index.html or https://dataverse.harvard.edu/ to find them.)\nHere are the datasets I suggest:\nClimate Change in the American Mind: National Survey Data on Public Opinion (2008-2017): https://osf.io/w36gn/\nCorrelates of War: https://correlatesofwar.org/data-sets\nWorld Values Survey: http://www.worldvaluessurvey.org/WVSContents.jsp\nPro Publica data on criminal justice: https://www.propublica.org/datastore/datasets/criminal-justice\nPro Publica data on health: https://www.propublica.org/datastore/datasets/health\nFBI Hate Crime Reports: https://github.com/emorisse/FBI-Hate-Crime-Statistics/tree/master/2013\nWhichever data you decide to use, you should (a) read about it in detail, (b) plan to cite the data in APA style, and (c) make sure that you can read the data into R. You can message me with questions on that topic. You may need to do some data processing. Any processing that you do before importing it into R (e.g., opening it up in Google Sheets or Excel and renaming columns) should be reported in your final document.\nSome of these datasets may require more processing than others.\nHypotheses, Preregistration, and Introduction\nYou should plan to frame testable hypotheses which involve some of the variables described in your dataset. Those should include both a research hypothesis (\\(H_1\\)) and a null hypothesis (\\(H_0\\)).\nYour statistical framing of the hypotheses (involving means) should assume two-tailed tests. However, your preregistration should also suggest the direction you anticipate. For example, will a correlation be positive or negative? Which group will have higher scores? Will the chi-squared test find independence? All tests (described further immediately below this section) should have a preregistered hypothesis.\nPlease refer to the bottom of this document for an abbreviated preregistration template.\nIn the final document, you should also include a brief introduction which describes the data and cites it, reports your directional hypotheses, and explains why you’ve made those hypotheses.\nAnalyses\nStatistical tests\nYou should use multiple statistical tests that provide evidence for or against your hypotheses. At minimum, you must conduct tests that fall into three of the following groups: (1) regression or correlation, (2) one-way or factorial ANOVA, (3) independent-samples or decedent-samples t-tests, (4) chi-squared test.\nIf you’re assigning the results of a test to a variable (e.g., model <- lm(DV ~ IV1 * IV2, data = data)), then you must also print the model (so that I can see what it looks like):\nmodel <- lm(DV ~ IV1 * IV2, data = data)\nmodel\nanova(model)\nAll tests must be interpreted immediately (in the document) after the code, with the results printed in the final document. Your interpretation should always include whether the test is significant or not. It frequently will be useful to include the group means. As always, you should generally round to two significant digits after the decimal.\nPlots \nYou should create at least four plots (figures). At least two of those should involve some sort of comparison between variables—i.e., not simply be histograms or boxplots. Several plots should help you interpret the results of the tests. The plots should be “in-line,” meaning that they follow the relevant section. For example, a bar graph might be useful immediately following your running a factorial ANOVA.\nBrief discussion\nAfter all tests, you should include a “discussion section” which explains what your tests found and why it matters (or does not). Null results are absolutely fine!\nThe documents\nFor both the preregistration and the final document, you should plan to create a new R Markdown document for your final project. Your document should include the following “code” at the top (replacing what is automatically generated), with your title after “title” and your names under the - marks following “author”. You should knit that document.\n---\ntitle: \nauthor: \n  - First name here\ndate: \noutput: \n  html_document:\n    self_contained: yes\n---\nPreregistration template\nUse the following for your preregistration in a new R Markdown document. Note that the language under the headers (i.e., the bits that don’t start with a #) should be deleted—they’re just explaining the section.\n# Variables\n## Independent Variables What are your independent / grouping / predictor variables (including mediators and moderators) ? Explain how you operationalize each variable\n## Dependent Variables What are your dependent / outcome variables? Explain how you operationalize each variable.\n# Hypotheses What are your primary study hypotheses / research questions?\n# Sampling What is the sample size?\n## Sample characteristics Who is the sample representing?\n# Analysis plan\n## Significance threshold What will be your criterion for determining statistical significance?\n## Exclusion criteria Will you exclude participants from data analysis based on any of the reasons listed below? Failed attention check; Failed manipulation check; Missing data\n## Outliers What criterion (if any) will you use to determine whether a participant is an outlier?\n## Statistical tests Which statistical tests will you use to conduct your data analyses? ANOVA; Correlation; t-test; Chi-square; Regression; Other/Additional\nIf relevant, describe what types of follow-up tests will you perform (e.g., post-hoc; simple main effects). If you will conduct planned comparisons, explain the nature of those comparisons\nNote that there are no “solutions” for this document.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-01-29T18:39:44-05:00",
+    "input_file": {}
+  },
+  {
+    "path": "labs/11-questions-and-knitting/",
+    "title": "11: Asking questions and knitting documents",
+    "description": "Asking questions about things you're confused about",
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-12-07",
+    "categories": [
+      "rlanguage",
+      "stackoverflow",
+      "errors",
+      "knitting"
+    ],
+    "contents": "\nThese are all of the instructions for Lab 11. The list of labs is here.\nThis repository contains R labs for R package ({psychRstats}) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.\nFor each lab, you should expect to download the lab’s files locally to your computer, and run them there. If you’re using https://rstudio.cloud/ instead of running things locally, the same instructions should work today.\nBelow are instructions for Lab 11.\nToday’s tutorial\nThis lab focuses on two important things:\nLearning to ask questions that help you resolve errors\nKnitting documents to PDF\nTo run the tutorial:\n\n\nlibrary(psychRstats)\npsychRstats::lab(\"11-questions-and-knitting\")\n\n\n\nOnce you’ve completed the tutorial, return here for the exercise that you will complete at the end of the lab. (If you’d like to keep the tutorial open, refer to this page on the wiki.)\nMake sure you’re in the right working directory\nIn the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don’t remember, look at the wiki page I’ve created on setting a working directory.\nCheck that you’re in the directory you expect by running getwd() (the parentheses should have nothing in them).\nExercise\nYou should have downloaded the exercise and data already; today’s file is called “11-exercise.Rmd”. Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file from the correct working directory by running the following code:\n\n\nlibrary(psychRstats)\nrun_exercise(\"11-exercise\")\n\n\n\nSolutions\nA version of the document with solutions can be seen here.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-01-29T18:05:55-05:00",
+    "input_file": {}
+  },
+  {
     "path": "labs/10-chi-square-factorial-ANOVA/",
     "title": "10: Chi-square and factorial ANOVA",
     "description": "Using R to perform chi-square analyses and basic factorial ANOVA",
@@ -69,6 +111,26 @@
     "contents": "\nThese are all of the instructions for Lab 8. The list of labs is here.\nThis repository contains R labs for R package ({psychRstats}) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.\nFor each lab, you should expect to download the lab’s files locally to your computer, and run them there. If you’re using https://rstudio.cloud/ instead of running things locally, the same instructions should work today.\nBelow are instructions for Lab 8.\nToday’s tutorial\nThis lab explores how to run one-way analyses of variance (ANOVAs) in R, using the lm() function to create a model and the anova() function to create ANOVA tables. The tutorial will also include instruction on how to calculate the components of the ANOVA in R code. It also practices using {ggplot2} to create bar graphs to visualize data from such a test, including error bars.\nTo run the tutorial:\n\n\nlibrary(psychRstats)\npsychRstats::lab(\"08-one-way-anova\")\n\n\n\nOnce you’ve completed the tutorial, return here for the exercise that you will complete at the end of the lab. (If you’d like to keep the tutorial open, refer to this page on the wiki.)\nMake sure you’re in the right working directory\nIn the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don’t remember, look at the wiki page I’ve created on setting a working directory.\nCheck that you’re in the directory you expect by running getwd() (the parentheses should have nothing in them).\nExercise\nYou should have downloaded the exercise and data already; today’s file is called “08-exercise.Rmd”. Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file from the correct working directory by running the following code:\n\n\nlibrary(psychRstats)\nrun_exercise(\"08-exercise\")\n\n\n\nSolutions\nA version of the document with solutions can be seen here.\n\n\n\n",
     "preview": {},
     "last_modified": "2021-01-29T17:11:56-05:00",
+    "input_file": {}
+  },
+  {
+    "path": "labs/12-test-yourself-I/",
+    "title": "Test yourself: I",
+    "description": {},
+    "author": [
+      {
+        "name": "Justin Dainer-Best",
+        "url": {}
+      }
+    ],
+    "date": "2020-10-19",
+    "categories": [
+      "practice",
+      "rlanguage"
+    ],
+    "contents": "\nThese are the instructions for the first of two projects that were intended to practice the work done by students during the course of the semester. The list of labs is here.\nThis website contains R lab code for labs in Bard College’s Fall 2020 for Statistics for Psychology, taught by Prof. Justin Dainer-Best.\nObjectives\nThis project asks you to practice the skills you have learned about running t-tests and visualizing the results, as well as reporting them. It also expects you to practice using filter() and otherwise subsetting data. This project helps you practice adapting code from previous work to a new question.\nMake sure you’re in the right working directory\nSet your working directory if necessary. Check that you’re in the directory you expect by running getwd() in the Console. If you need more help, look at the wiki page on setting a working directory.\nThe project\nYou should have downloaded the exercise and data already; today’s file is called “12-test-yourself-I.Rmd”. Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file from the correct working directory by running the following code:\n\n\nlibrary(psychRstats)\nrun_exercise(\"12-test-yourself-I\")\n\n\n\nNote that there are no “solutions” for this document.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-01-29T18:03:45-05:00",
     "input_file": {}
   },
   {

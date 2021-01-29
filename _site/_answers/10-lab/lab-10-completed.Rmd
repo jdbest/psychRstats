@@ -16,7 +16,7 @@ output:
     self_contained: false
 ---
 
-```{r setup}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -241,5 +241,3 @@ ggplot(penguin_means,
 14. Which of these better describes the data?
 
 > Both are useful! 
-
-Have any feedback about the exercises? Let me know at the [exit survey](https://bit.ly/psy203exit) and select Lab 12.

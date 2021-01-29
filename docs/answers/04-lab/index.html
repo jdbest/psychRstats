@@ -2059,6 +2059,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_distill-->
   <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2114,9 +2118,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
 <p>This document is meant to be used to practice after you have completed the tutorial for today’s lab. You can find a completed version of these exercises at <a href="https://jdbest.github.io/psychRstats/answers.html" class="uri">https://jdbest.github.io/psychRstats/answers.html</a></p>
 <p>If you would like to refer to the tutorial while also working on this document, there are instructions on the <a href="https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
 <p>You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="../../labs.html">labs website</a>.</p>
@@ -2127,7 +2128,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Run the following code chunk to load necessary packages for these exercises.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
 <span class='co'># tidyverse loads these:</span>
 <span class='co'># library(dplyr)</span>
 <span class='co'># library(ggplot2)</span>
@@ -2138,7 +2139,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>We’ll return to importing new data next week—for today, just run the following chunk to load the data.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>tvfriends</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>tvhours <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>5</span>, <span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>15</span>, <span class='fl'>8</span>, <span class='fl'>2</span>, 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tvfriends</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>tvhours <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>5</span>, <span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>15</span>, <span class='fl'>8</span>, <span class='fl'>2</span>, 
 <span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>5</span>, <span class='fl'>4</span>, <span class='fl'>3</span>, <span class='fl'>7</span>, <span class='fl'>5</span>, <span class='fl'>14</span>, <span class='fl'>0</span>, <span class='fl'>6</span>, <span class='fl'>3</span>, <span class='fl'>0</span>, <span class='fl'>8</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>10</span>, <span class='fl'>14</span>, <span class='fl'>15</span>, <span class='fl'>6</span>, 
 <span class='fl'>4.5</span>, <span class='fl'>17</span>, <span class='fl'>7</span>, <span class='fl'>10</span>, <span class='fl'>7</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>14</span>, <span class='fl'>5</span>, <span class='fl'>5</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>7</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>10</span>, <span class='fl'>3</span>, 
 <span class='fl'>5</span>, <span class='fl'>20</span>, <span class='fl'>14</span>, <span class='fl'>1</span>, <span class='fl'>8</span>, <span class='fl'>3</span>, <span class='fl'>7</span>, <span class='fl'>0.5</span>, <span class='fl'>8</span>, <span class='fl'>3</span>, <span class='fl'>1</span>, <span class='fl'>20</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>15</span>, <span class='fl'>14</span>, <span class='fl'>5</span>, <span class='fl'>1</span>, 
@@ -2162,7 +2163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Take a look at the structure of your data using the str() function or by clicking on the data in the Environment pane.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>tvfriends</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>tvfriends</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>tibble [69 × 2] (S3: tbl_df/tbl/data.frame)
@@ -2207,7 +2208,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Then, find the code from the tutorial. Run it here.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] -1.96  1.96</code></pre>
@@ -2218,14 +2219,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Plot a boxplot of the data, and a histogram.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>tvfriends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>tvhours</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>tvfriends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>tvhours</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="lab-4-completed_files/figure-html5/ex4-1.png" width="624" />
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>tvfriends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>tvhours</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>tvfriends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>tvhours</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_histogram</span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
@@ -2239,7 +2240,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Calculate the mean and standard deviation, and save them. Calculate your <code>z</code> for someone who watches 0 hours of TV a week. (<code>x = 0</code>)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>meantv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>tvfriends</span><span class='op'>$</span><span class='va'>tvhours</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>meantv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>tvfriends</span><span class='op'>$</span><span class='va'>tvhours</span><span class='op'>)</span>
 <span class='va'>sdtv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>tvfriends</span><span class='op'>$</span><span class='va'>tvhours</span><span class='op'>)</span>
 <span class='va'>z</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='fl'>0</span> <span class='op'>-</span> <span class='va'>meantv</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>sdtv</span>
 <span class='va'>z</span>
@@ -2261,7 +2262,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Try just running the <code>pnorm()</code> function on the <em>z</em>-value. Then, below the code chunk, explain what percentile this person is in.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 0.1348546</code></pre>
@@ -2272,7 +2273,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Their actual <em>p</em>-value:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 0.2697093</code></pre>
@@ -2310,7 +2311,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>.05</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fl'>.05</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] -1.64</code></pre>
@@ -2323,7 +2324,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>z</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>z</span>
 </code></pre>
 </div>
 <pre><code>[1] -1.103732</code></pre>
@@ -2336,7 +2337,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 0.1348546</code></pre>
@@ -2442,7 +2443,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.005</span>, <span class='fl'>.995</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.005</span>, <span class='fl'>.995</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] -2.575829  2.575829</code></pre>
@@ -2452,7 +2453,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>z</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='fl'>59.8</span> <span class='op'>-</span> <span class='fl'>316.98</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>867.3</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>z</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='fl'>59.8</span> <span class='op'>-</span> <span class='fl'>316.98</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>867.3</span>
 <span class='va'>z</span>
 </code></pre>
 </div>
@@ -2466,7 +2467,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>z</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 0.7668258</code></pre>

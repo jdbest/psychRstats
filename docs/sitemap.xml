@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers.html</loc>
-    <lastmod>2021-01-08T19:44:30-05:00</lastmod>
+    <lastmod>2021-01-29T18:29:21-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/</loc>
@@ -10,7 +10,15 @@
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/labs.html</loc>
-    <lastmod>2021-01-29T17:33:52-05:00</lastmod>
+    <lastmod>2021-01-29T17:56:37-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/psychRstats/labs/13-test-yourself-II/</loc>
+    <lastmod>2021-01-29T18:39:44-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/psychRstats/labs/11-questions-and-knitting/</loc>
+    <lastmod>2021-01-29T18:05:55-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/labs/10-chi-square-factorial-ANOVA/</loc>
@@ -23,6 +31,10 @@
   <url>
     <loc>https://jdbest.github.io/psychRstats/labs/08-one-way-anova/</loc>
     <lastmod>2021-01-29T17:11:56-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jdbest.github.io/psychRstats/labs/12-test-yourself-I/</loc>
+    <lastmod>2021-01-29T18:03:45-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/labs/06-visualizing-2/</loc>
@@ -53,47 +65,43 @@
     <lastmod>2021-01-29T12:19:42-05:00</lastmod>
   </url>
   <url>
-    <loc>https://jdbest.github.io/psychRstats/answers/10-lab/</loc>
-    <lastmod>2021-01-29T17:42:36-05:00</lastmod>
+    <loc>https://jdbest.github.io/psychRstats/answers/11-lab/</loc>
+    <lastmod>2021-01-29T18:31:05-05:00</lastmod>
   </url>
   <url>
-    <loc>https://jdbest.github.io/psychRstats/answers/12-test-yourself-II/</loc>
-    <lastmod>2020-11-19T16:25:50-05:00</lastmod>
+    <loc>https://jdbest.github.io/psychRstats/answers/10-lab/</loc>
+    <lastmod>2021-01-29T18:30:50-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/09-lab/</loc>
-    <lastmod>2021-01-29T17:31:37-05:00</lastmod>
+    <lastmod>2021-01-29T18:31:56-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/08-lab/</loc>
-    <lastmod>2021-01-29T17:14:41-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://jdbest.github.io/psychRstats/answers/11-test-yourself-I/</loc>
-    <lastmod>2020-11-19T16:21:58-05:00</lastmod>
+    <lastmod>2021-01-29T18:32:21-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/07-lab/</loc>
-    <lastmod>2021-01-29T16:07:45-05:00</lastmod>
+    <lastmod>2021-01-29T18:32:45-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/06-lab/</loc>
-    <lastmod>2021-01-29T15:01:52-05:00</lastmod>
+    <lastmod>2021-01-29T18:33:10-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/05-lab/</loc>
-    <lastmod>2021-01-29T16:11:13-05:00</lastmod>
+    <lastmod>2021-01-29T18:33:33-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/04-lab/</loc>
-    <lastmod>2021-01-29T12:19:56-05:00</lastmod>
+    <lastmod>2021-01-29T18:33:52-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/03-lab/</loc>
-    <lastmod>2021-01-29T12:20:30-05:00</lastmod>
+    <lastmod>2021-01-29T18:34:16-05:00</lastmod>
   </url>
   <url>
     <loc>https://jdbest.github.io/psychRstats/answers/02-lab/</loc>
-    <lastmod>2021-01-29T12:20:48-05:00</lastmod>
+    <lastmod>2021-01-29T18:34:37-05:00</lastmod>
   </url>
 </urlset>

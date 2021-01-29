@@ -1,0 +1,152 @@
+---
+title: "Test yourself: II"
+author:
+  - name: Justin Dainer-Best
+    url: {}
+date: 12-18-2020
+categories:
+  - practice
+  - rlanguage
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+These are the instructions for the second of two projects that were intended to practice the work done by students during the course of the semester. [The list of labs is here](../../labs.html).
+
+This website contains R lab code for labs in Bard College's Fall 2020 for Statistics for Psychology, taught by Prof. Justin Dainer-Best. 
+
+## Overview
+
+This project was intended to be done in groups---but if you're interested, you can do it on your own.
+
+You will perform a data analysis on real data, using the skills you've developed in the labs. This project is a semester-summarizing version of the first project---you will develop research questions, create visualizations, carry out analyses, and produce a final document that reports all of them. 
+
+You may use any resources you choose in this (e.g., textbook, web searches, stats study rooms), although of course the work must be your own groups' work. Adapting others' code (e.g., from a post you find online) is great! Using someone else's code *for the exact data you have* is not. 
+
+## Objectives
+
+As with the first project, the goals are:
+
+* To help you to practice the skills learned in lab
+* To help you understand what happens in the data analysis and reporting sections of a research project
+* To give you functional skills from the use of R and RStudio
+* To learn the process behind data anlysis in published research
+
+Don't forget to (a) save and (b) knit the document frequently, so you'll keep track of your work and also know where you run into errors. 
+
+## Requirements <i class="fa fa-th-list" aria-hidden="true"></i>
+
+### The data <i class="fa fa-table" aria-hidden="true"></i>
+
+You get to choose your dataset! You must choose one of the following datasets (or another one you let me know about), and read about it. (If you'd like to find your own, you might try looking at <https://www.icpsr.umich.edu/web/pages/ICPSR/index.html> or <https://dataverse.harvard.edu/> to find them.)
+
+Here are the datasets I suggest:
+
+* Climate Change in the American Mind: National Survey Data on Public Opinion (2008-2017): https://osf.io/w36gn/ 
+* Correlates of War: https://correlatesofwar.org/data-sets
+* World Values Survey: http://www.worldvaluessurvey.org/WVSContents.jsp
+* Pro Publica data on criminal justice: https://www.propublica.org/datastore/datasets/criminal-justice
+* Pro Publica data on health: https://www.propublica.org/datastore/datasets/health
+* FBI Hate Crime Reports: https://github.com/emorisse/FBI-Hate-Crime-Statistics/tree/master/2013
+
+Whichever data you decide to use, you should (a) read about it in detail, (b) plan to cite the data in APA style, and (c) make sure that you can read the data into R. You can message me with questions on that topic. You may need to do some data processing. Any processing that you do before importing it into R (e.g., opening it up in Google Sheets or Excel and renaming columns) should be reported in your final document. 
+
+Some of these datasets may require more processing than others. 
+
+### Hypotheses, Preregistration, and Introduction
+
+You should plan to frame _testable_ hypotheses which involve some of the variables described in your dataset. Those should include both a research hypothesis ($H_1$) and a null hypothesis ($H_0$). 
+
+Your statistical framing of the hypotheses (involving means) should assume two-tailed tests. However, your preregistration should also suggest the direction you anticipate. For example, will a correlation be positive or negative? Which group will have higher scores? Will the chi-squared test find independence? All tests (described further immediately below this section) should have a preregistered hypothesis. 
+
+Please refer to the bottom of this document for an [abbreviated preregistration template](#preregistration-template).
+
+In the final document, you should also include a brief introduction which describes the data and cites it, reports your directional hypotheses, and explains why you've made those hypotheses.
+
+### Analyses
+
+#### Statistical tests
+
+You should use **multiple statistical tests** that provide evidence for or against your hypotheses. At minimum, you must conduct tests that fall into three of the following groups: (1) regression or correlation, (2) one-way or factorial ANOVA, (3) independent-samples or decedent-samples *t*-tests, (4) chi-squared test. 
+
+If you're assigning the results of a test to a variable (e.g., `model <- lm(DV ~ IV1 * IV2, data = data)`), then you must also print the model (so that I can see what it looks like):
+
+```
+model <- lm(DV ~ IV1 * IV2, data = data)
+model
+anova(model)
+```
+
+All tests must be interpreted immediately (in the document) after the code, with the results printed in the final document. Your interpretation should always include whether the test is significant or not. It frequently will be useful to include the group means. As always, you should generally round to two significant digits after the decimal. 
+
+#### Plots <i class="fa fa-bar-chart" aria-hidden="true"></i>
+
+You should create at least four plots (figures). At least two of those should involve some sort of comparison between variables---i.e., not simply be histograms or boxplots. Several plots should help you interpret the results of the tests. The plots should be "in-line," meaning that they follow the relevant section. For example, a bar graph might be useful immediately following your running a factorial ANOVA.
+
+### Brief discussion
+
+After all tests, you should include a "discussion section" which explains what your tests found and why it matters (or does not). Null results are absolutely fine! 
+
+## The documents
+
+For both the preregistration and the final document, you should plan to create a new R Markdown document for your final project. Your document should include the following "code" at the top (replacing what is automatically generated), with your title after "title" and your names under the - marks following "author". You should knit that document.
+
+```
+---
+title: 
+author: 
+  - First name here
+date: 
+output: 
+  html_document:
+    self_contained: yes
+---
+```
+
+---
+
+# Preregistration template
+
+Use the following for your preregistration in a new R Markdown document. Note that the language under the headers (i.e., the bits that *don't* start with a #) should be deleted---they're just explaining the section.
+
+\# Variables
+
+\## Independent Variables
+What are your independent / grouping / predictor variables (including mediators and moderators) ? Explain how you operationalize each variable
+
+\## Dependent Variables
+What are your dependent / outcome variables? Explain how you operationalize each variable.
+
+\# Hypotheses
+What are your primary study hypotheses / research questions?
+
+\# Sampling
+What is the sample size? 
+
+\## Sample characteristics
+Who is the sample representing?
+
+\# Analysis plan
+
+\## Significance threshold
+What will be your criterion for determining statistical significance?
+
+\## Exclusion criteria
+Will you exclude participants from data analysis based on any of the reasons listed below? Failed attention check; Failed manipulation check; Missing data
+
+\## Outliers
+What criterion (if any) will you use to determine whether a participant is an outlier?
+
+\## Statistical tests
+Which statistical tests will you use to conduct your data analyses? ANOVA; Correlation; t-test; Chi-square; Regression; Other/Additional
+
+If relevant, describe what types of follow-up tests will you perform (e.g., post-hoc; simple main effects). If you will conduct planned comparisons, explain the nature of those comparisons
+
+---
+
+Note that there are no "solutions" for this document.

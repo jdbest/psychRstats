@@ -1,0 +1,116 @@
+---
+title: "Test yourself: I"
+author: ""
+date: ""
+output: 
+  html_document:
+    self_contained: true
+---
+
+This is the first of two projects that were intended to practice the work done by students during the course of the semester. It was _designed to be completed alone_, and allowed students to apply the code they had been learning in lab to a research question. This project helps practice adapting code from previous work to a new question. 
+
+If you run into questions like "why is this giving me an error?" However, I encourage you to first **triple-check** your spelling, and look at [the list of common errors](https://github.com/jdbest/psychRstats/wiki/common-mistakes-and-errors) before messaging me---are you spelling things correctly? Is the relevant package loaded? Is the data loading correctly? 
+
+## Loading packages
+
+As always, you _must_ load packages if you intend to use their functions. ("Turn on the lights.") Run the following code chunk to load necessary packages for these exercises. 
+
+```{r loadpackages, message=FALSE}
+library(tidyverse)
+```
+
+## Study description
+
+Today, your focus will be on data from the following source:
+
+> Axt, J. R., Landau, M. L., & Kay, A. C. (2020). The psychological appeal of fake-news attributions. *Psychological Science*, 31(*7*), 848--857.  https://doi.org/10.1177/0956797620922785
+
+Read the abstract from the article (edited to only discuss the first experiment):
+
+> The term *fake news* is increasingly used to discredit information from reputable news organizations. We tested the possibility that fake-news claims are appealing because they satisfy the need to see the world as structured. Believing that news organizations are involved in an orchestrated disinformation campaign implies a more orderly world than believing that the news is prone to random errors. ... individuals with dispositionally high or situationally increased need for structure were more likely to attribute contested news stories to intentional deception than to journalistic incompetence. 
+
+Participants were randomly assigned to a condition. In one condition, they read that the conservative news media were more likely to have to retract news stories; in the other, that it was liberal news media. After, they answered some questions which we'll describe below. 
+
+In one of the studies in this paper, the authors collected the following variables (all contained in the data frame `axt`, which you'll import below).
+
+* `id`: A unique ID for everyone
+* `party`: The respondents' political party; 1=Republican, 2=Democrat, 3=Neither
+* `condition`: Whether the participants were assigned to ideologically **consistent** or **inconsistent** conditions
+* `attentioncheck`: An attention check, where participants were not supposed to select a response (i.e., this **should be NA**)
+* `intentional`: From 1 (unlikely) to 7 (likely), do they think these are intentional attempts to spread false information?
+* `sloppy`: From 1 (unlikely) to 7 (likely), do they think these are simply sloppy reporting? 
+* `mistake.vs.intentional`: From 1 (honest mistakes) to 6 (intentionally misleading), which do they think it is?
+
+## Importing data
+
+Load the data that you downloaded with this file. This will load a data frame called `axt` which is described above. The code below doesn't work? Find the file in the folder with this document (in the Files pane) and click on it. Allow it to load. Then copy the code that it prints to the Console into the line below. Do _not_ use the `read_csv()` function; this is not a CSV.
+
+```{r importdata}
+load("axt.Rdata")
+```
+
+## Task
+
+### Preparing data
+
+Take a look at the `axt` data frame by clicking on it in the Environment pane or running `View(axt)`. I've mostly prepared the data for you---but I've left you three things to do. 
+
+Do the following in code chunks.
+
+1. Use `filter()` to make sure that **everyone** has an NA for `attentioncheck`. They were **not supposed to answer this question**. Make sure that you assign the results of the filtered data to either this data frame (e.g., `axt <- axt %>% filter(...)`) or to a new data frame.
+
+You should drop to 955 "observations" (rows) for the data frame.
+
+2. Use the `factor()` function to recode the `party` variable to "Republican", "Democrat", "Neither" using the fact that 1=Republican, 2=Democrat, 3=Neither. Don't remember how to use that function? We learned to do it in lab 5 (and a bit in lab 3). Make sure that you don't just print it to the Console, but actually assign it back to itself like we did in lab 5.
+
+3. Drop all respondents who didn't report being a member of either party---`filter()` out "Neither" responses.
+
+You should wind up with 870 responses.
+
+### Three t-tests
+
+Okay, now we can do some t-tests! 
+
+4. For each of the following, use the `t.test()` function. Note that these are _independent_ tests:
+
+    a. Did participants who were exposed to ideologically consistent vs. inconsistent information think the media were engaging in intentional deception? (Use variables `condition` and `intentional`)
+    
+    b. Did participants by condition think that the reporting was sloppy? (Variables `condition` and `sloppy`)
+    
+    c. Did participants who were Democrats think differently from Republicans in terms of whther the media were engaging in intentional deception? (Use variables `party` and `intentional`)
+
+
+5. Pick **one** of the tests you ran in question (4) which was statistically significant, and write up the results as we have been discussing. Be sure to include means per group and the direction of the effect, the *t* and *df*, and whether the results are significant. 
+
+6. For the statistically significant test you've described in (5), let's break it down further. Filter to just _one_ of the groups in the grouping variable (e.g., only "Consistent" or "Inconsistent"; or only "Republican" or "Democrat"), assigning that to a new named variable. Then, run a dependent-samples *t*-test to see whether levels of `intentional` and `sloppy` vary within participants. (I hope that they do!)
+
+### Plotting
+
+7. Use a box plot or violin plot to visualize one of the effects described in question (4). Don't forget to label the axes; make the plot look as much as possible like one that you might see in an article.
+
+8. Use either `ggplot() + geom_col()` or `ggplot() + geom_jitter()` to plot the same data in such a way that shows the effect you saw in your t-test. If you're using a `geom_col()`, you'll need to find the means (and should show the standard errors with error bars). If you're using `geom_jitter()`, include `alpha = .5` in the parentheses to help see all of the data. Don't forget to label axes; make the plot look as much as possible like one that you might see in an article.
+
+### One last thing
+
+9. There's one column we haven't touched in `axt`, which is `mistake.vs.intentional`. Take that column and run an independent-samples *t*-test with one of the "grouping" variables (`party` or `condition`). Then write up the results, making sure to include means per group and the direction of the effect, the *t* and *df*, and whether the results are significant.
+
+10. With the R code below, put either `party` or `condition` in the `group_by()` parentheses and then run the code (You should use the one that was in your test in question [9].) Should you interpret your Cohen's d? If so, how large of an effect is it? If not, why not? 
+
+```{r}
+axt %>%
+  group_by() %>%
+  summarize(means = mean(mistake.vs.intentional),
+            df    = n() - 1,
+            var   = var(mistake.vs.intentional),
+            combined = var * df,
+            .groups = "drop_last") %>%
+  ungroup() %>%
+  summarize(
+    sumdf = sum(df),
+    s.pooled = sqrt((sum(combined)/sumdf)),
+    `Cohen's d` = (means[1] - means[2]) / s.pooled)
+```
+
+Save the document and knit it. Resolve any errors. 
+
+Note that there are no "answers" for this document.

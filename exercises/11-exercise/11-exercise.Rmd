@@ -1,0 +1,92 @@
+---
+title: "Asking questions and knitting documents: Exercises"
+author: ""
+date: ""
+output: 
+  html_document:
+    self_contained: yes
+---
+
+This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
+
+If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://jdbest.github.io/psychRstats/labs.html).
+
+## Objectives
+
+In the tutorial, we learned about asking questions, and about knitting PDFs. Let's practice doing the latter, first. 
+
+Don't forget to (a) save and (b) knit the document frequently, so you'll keep track of your work and also know where you run into errors. 
+
+## Loading packages
+
+As always, you _must_ load packages if you intend to use their functions. Run the following code chunk to load necessary packages for these exercises. 
+
+```{r loadpackages, message=FALSE}
+library(tidyverse)
+```
+
+### Install {tinytex}
+
+Make sure to install the `{tinytex}` package and application so you can knit to PDF, by running the following code (once):
+
+```{r, eval=FALSE}
+install.packages('tinytex')
+tinytex::install_tinytex()
+```
+
+Once it's done, try the following.
+
+## Knit to PDF.
+
+At the top of this document, switch the code right under your name and the date from this:
+    
+```
+output: 
+  html_document:
+    self_contained: yes
+```
+
+to this:
+
+```
+output:
+  pdf_document
+```
+
+Now, try knitting the document. Does it create a PDF? You should be able to do this any time you want---for future classes, reports, senior project analyses, and so forth. 
+
+## Today's exercises
+
+### Search Stack Overflow
+
+Come up with a question you have---maybe something you struggled to figure out, or something you still don't know. Go to <https://stackoverflow.com/> and come up with a way to word the question. Add the [r] tag (including brackets) so that it searches other R-based questions. What do you learn? Do you find useful responses? How could you improve the wording of the question?
+
+### Minimal working example
+
+After looking through the tutorial, you should understand a bit about minimal working examples. Try creating one now:
+
+Imagine that you're trying to ask someone how to plot something with different colors for different levels of a variable. Write some code and text. Give the packages you're using. Give your operating system and R version number. Use the `dput()` function or a fake dataset to print out some of your data (which data is up to you) in a format that you can provide to others. Ask a clear question. (Feel free to intentionally do something wrong so that it's not working---and then give enough information that someone else will get the same error!) If you'd like, try using the `{reprex}` package, which is part of the tidyverse. (If you *do* use that: be sure to include your `library(ggplot2)` and so forth in the code you pass to it! Otherwise it will tell you that the function doesn't exist!)
+
+(Consider using the `data(penguins, package = "palmerpenguins")`, perhaps, or make up some data using the functions discussed in the tutorial.) 
+
+After you've come up with a question, exchange it with a classmate---and try writing a response to their version! 
+
+### Learn about a few new functions
+
+Choose two (or more---it's up to you) of the following functions. Answer the question and think about when you'd use the function (i.e., its "use case"). Read through the `?function` manual, especially being sure to scroll down to the examples at the bottom. Try using them on some data---again, I suggest the penguins dataset, or `data(mtcars)`. You could also play around with a new dataset (Star Wars: https://github.com/Ironholds/rwars; RuPaul's Drag Race: https://github.com/svmiller/dragracer; MoMA: https://raw.githubusercontent.com/apreshill/data-vis-labs-2018/master/data/artworks-cleaned.csv) or with your final lab project data. 
+
+(I list the package name and then two colons---which tells R that the function comes from that package. So long as you have loaded the relevant package, you can just use the function name. For example: the first is `dplyr::pull()`. Presuming you've run `library(dplyr)` or `library(tidyverse)`, you can just use `pull()`. Make sense?)
+
+* `dplyr::pull()`: how is this different from just using the `$` operator with a data frame?
+* `dplyr::arrange()`: how does this sort data?
+* `dplyr::n_distinct()`: what does "distinct" mean here?
+* How does `dplyr::tally()` differ from `dplyr::count()`?
+* Install the package "janitor": what does `janitor::clean_names()` do?
+  * Read more: <https://www.rdocumentation.org/packages/janitor/versions/2.0.1/topics/clean_names>
+* Install the package "janitor": what does `janitor::tabyl()` do?
+  * Read more: <http://sfirke.github.io/janitor/articles/tabyls.html>
+* Interested in more selection functions from `{dplyr}`? Consider doing this tutorial: <https://tladeras.shinyapps.io/learning_tidyselect/>
+
+## Solutions
+
+This is the final lab of the course. A version of this document, knitted as HTML, can be seen [here](https://jdbest.github.io/psychRstats/answers/11-lab/).

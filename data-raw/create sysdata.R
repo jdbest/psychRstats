@@ -1,8 +1,8 @@
 library(tibble)
 tutorials <- as.data.frame(tribble(
   ~number, ~name, 
-  1, "intro-to-r", 
-  2, "intro-to-r",
+  1, "01-intro-to-r", 
+  2, "01-intro-to-r",
   3, "03-visualizing", 
   4, "04-hypothesis-testing",
   5, "05-single-sample-t",
@@ -10,7 +10,8 @@ tutorials <- as.data.frame(tribble(
   7, "07-t-tests",
   8, "08-one-way-anova",
   9, "09-regression-correlation",
-  10, "10-chi-square-factorial-ANOVA"
+  10, "10-chi-square-factorial-ANOVA",
+  11, "11-questions-and-knitting"
 ))
 
 exercises <- as.data.frame(tribble(
@@ -25,8 +26,8 @@ exercises <- as.data.frame(tribble(
   8, "08-exercise",
   9, "09-exercise",
   10, "10-exercise",
-  11, "11-test-yourself-I",
-  12, "0-test-yourself-II",
+  11, "11-exercise",
+  12, "12-test-yourself-I"
 ))
 
 # change overwrite to TRUE to save over it

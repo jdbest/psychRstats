@@ -1,0 +1,206 @@
+---
+title: "Lab 11: Asking questions and knitting documents"
+author: Justin Dainer-Best
+tutorial:
+  id: "pRs-11"
+  version: 0.3
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(psychRstats)
+library(learnr)
+library(tidyverse)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(error = TRUE)
+
+
+```
+
+## Introduction
+
+Today's lab's objectives are to:
+
+* Learn how to ask for help when you're not sure what's wrong with your code
+* Practice writing a minimal working example (MWE)
+* Learn the basics of knitting to PDF (not HTML) in R Markdown
+
+## Asking questions
+###
+During the course of this lab, you've likely run into a number of times when you are in one of these situations:
+
+1. Your code doesn't work and you don't know why
+2. You want to figure something out, reorganize your data, or run a test---but you don't know how to do it
+
+We've already discussed the [list of common errors](https://github.com/jdbest/psychRstats/wiki/common-mistakes-and-errors) I compiled on the wiki. Feel free to take advantage of those any time. Beyond that, however, I've got a couple of suggestions for you in both of these circumstances, and we'll go through them today.
+
+### Look up the help function
+
+Remember that you can always look up how to use a function in R:
+
+```{r, eval=FALSE}
+?functionname
+help(functionname)
+```
+
+Either of those---starting the line with a `?` or using the `help()` function---will give you info on your function. For example, running `help(mean)` will tell you how to use the `mean()` function; running `?select` will give you info on `{dplyr}`'s `select()` function. If your package isn't loaded (i.e., you haven't run `library(dplyr)` yet), however, R won't find the function. In that case, try using a double question mark: 
+
+```{r, eval=FALSE}
+??explore
+```
+
+This will search other help pages, including from packages you don't currently have loaded. 
+
+### Rubber duck debugging
+
+When you *kind of* know what you want, the joke is that you should try explaining your code/problem to an inanimate object. (i.e., a rubber duck.) There's even a [wikipedia article on the topic](https://en.wikipedia.org/wiki/Rubber_duck_debugging). The basic idea is that **explaining your problem to someone else** (even when they can't respond) **helps you to figure it out**. 
+
+An alternative version of this: try writing a detailed description of what you're trying to do in an email---to a classmate, to an advisor, etc. The process of doing so can often help you figure things out! 
+
+### Think about other types of troubleshooting
+
+Generally speaking, you should troubleshoot in R code much as you would in any other domain. Imagine that you have got a flat tire, and it's not your own car: what do you do?
+
+Likely, you would do some number of the following: 
+
+* Consult the manual
+* Call a friend or family member for help
+* Search on the web for the car's make and model and some relevant phrase (e.g., VW jetta 2014 replace tire)
+* If needed, call a roadside aid service to help you out
+
+Much the same is the case with statistics! We already talked about checking the "manual"---the help functions. You might also ask a friend/collegue/family member (I know some of you already have!). You definitely don't need to pay a statistics consultant as an undergrad, but if you were working at a business, you might! 
+
+You should also strongly consider doing web searches---for example, "r dplyr filter multiple conditions" will help you find out how to use `filter()` with more than one condition. Get an error that you don't understand? Google that.
+
+Some suggestions for such searches:
+
+* Include the name of the program---much as with the car make---so always start with naming R. Otherwise, you could get information about another program! It doesn't matter how to run an ANOVA in SPSS if you're not using it.
+* Name the thing you're trying to do. "how to run an ANOVA in R" is a fine search! Don't know the name? Search for that, first; then learn how to do it in R
+* Is there an error you've run into? Copy and paste the error into your search website, in quotes. However, be careful that you don't include the names of your own variables. If you've gotten an error that reads "Error: object 'my_var_name' not found", the `my_var_name` is unique. Instead, you'd search fpr "R 'object not found'". 
+
+```{r quiz1, echo=FALSE}
+learnr::quiz(
+  learnr::question(
+    "Which of these would be the best Google search relating to running a chi-squared test in R?",
+    learnr::answer("R chi-square test for goodness of fit", correct = TRUE),
+    learnr::answer("chi-square test for independence"),
+    learnr::answer("R test categorical variable"),
+    learnr::answer("R 'Error in is.data.frame(x) : object 'thisvar' not found'"), 
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    message = "You'll want to include the name of the program (R), and the name of the specific test you want to perform. The error doesn't do as good of a job here, since it's not including the fact that it's *from* the chisq.test() function."
+  )
+)
+```
+
+## Minimal working example
+###
+A **minimal working example** provides enough code and data that someone else can replicate the problem. This is the kind of information you should provide when asking for help---especially on an online forum like Stack Overflow.
+
+These examples are:
+
+* **Minimal** -- Use as little code as possible that still produces the same problem, but is still readable
+* **Complete** –- Provide all parts needed to reproduce the problem (list the packages you're using, e.g.)
+* **Verifiable** -- Test the code you're about to provide to make sure it reproduces the problem
+
+Two things to include: 
+
+1. The `R.Version()` (that's a function!)
+2. Your operating system---PC? Mac OS? Linux? What version? 
+
+Two links readings on the subject (click through and then come back):
+
+* [Stack Overflow: How to create a Minimal, Reproducible Example ](https://stackoverflow.com/help/minimal-reproducible-example)
+* [RStudio: creating reproducible examples with {reprex}](https://reprex.tidyverse.org/)
+
+If you provide code, remove the `>` from the beginning of the R console window. If you use a package, provide the name. If something is meant to be run as code, it's always best to indicate it as such, e.g., the way we do in R, using the three ``` marks. It's also a good practice to _include what you've tried_: I tried doing X, but it didn't work. That sort of thing. 
+
+If you use data, try to either use `dput()` (described below) or make fake data that can re-create your problem. 
+
+### Using `dput()`
+
+The `dput()` function allows you to take any data you have and output it in a chunk **into the Console**---i.e., so you can provide it in an R-comprehensible format to someone else. Try it with the `mtcars` data that we haven't used much, but comes with `{ggplot2}`: 
+
+```{r}
+data("mtcars")
+```
+
+```{r mtcars, exercise=TRUE}
+dput(mtcars)
+```
+
+This type of coding isn't meant to be human-readable, but machine-readable. You could copy and paste this into a question, along the lines of: here's my data! 
+
+### Making fake data
+
+There are plenty of ways of making fake data. The most common is to figure out your variable _type_: is it a factor? numeric?, etc. And then use one of a few functions to create that. You've seen *me* do that quite often in these tutorials. 
+
+Three major relevant functions:
+
+* `rnorm()` and `runif()`: make random selections from the normal and uniform distributions
+* `rep()`: repeat something `times` number of times
+* `sample()`: randomly choose items from a list
+
+Later, I'll invite you to look at each of the help files for these functions.
+
+One last thing: `set.seed()` makes your analysis reproducible. Every time I run the following code, it will come up with the same two numbers:
+
+```{r}
+set.seed(4)
+rnorm(2, mean = 10, sd = 15)
+```
+
+It should print 13.251323 and 1.862611. This is because the "seed" forces a consistent type of randomness. You often don't need seeds in MWEs, but they may be useful. 
+
+## Outputting to PDF
+###
+We've frequently knit to HTML using the R Markdown knit functions, which technically live in a package called `{knitr}`. However, as you likely know, HTML files aren't the most common way of communicating material. *Usually*, you'll want to output to PDF. 
+
+Depending on your use case, this may be quite straightforward, but I want to give you some information about outputting to PDF. You can read more about output formats on the [RStudio website](https://rmarkdown.rstudio.com/lesson-9.html). 
+
+When converting to PDF, R Markdown uses a process/language called LaTeX, which is a more complicated version of the markdown language we use here. You don't need to learn to use LaTeX for the conversion to happen, though! In fact, if you're using RStudio Cloud, you may not need to do anything at all. 
+
+###
+
+The main things you'll need to do to be able to export to PDF follow; I'll go over them in the exercise as well. 
+
+1. Install a LaTeX application. Unless you know you've done this before, you likely have not. You can do that by running the following:
+
+```{r latex, exercise=TRUE}
+install.packages('tinytex')
+tinytex::install_tinytex()
+```
+
+2. Change the top code of the R Markdown document. 
+
+    In the exercises, switch the top-most code (right under your name and the date) from this:
+    
+```
+output: 
+  html_document:
+    self_contained: yes
+```
+
+to this:
+
+```
+output:
+  pdf_document
+```
+
+Then you'll try knitting the document. I'll walk you through it!
+
+## Wrap up
+
+Okay! That's the tutorial for today. 
+
+You should feel like you've learned something about how to ask better questions---especially if posting online---when you run into an error/problem, and like you're willing to give knitting to PDF a try! 
+
+Now, try out the exercises. 

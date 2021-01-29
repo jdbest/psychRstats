@@ -1,0 +1,40 @@
+---
+title: "Test yourself: I"
+author:
+  - name: Justin Dainer-Best
+    url: {}
+date: 10-19-2020
+categories:
+  - practice
+  - rlanguage
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+These are the instructions for the first of two projects that were intended to practice the work done by students during the course of the semester. [The list of labs is here](../../labs.html).
+
+This website contains R lab code for labs in Bard College's Fall 2020 for Statistics for Psychology, taught by Prof. Justin Dainer-Best. 
+
+## Objectives
+
+This project asks you to practice the skills you have learned about running *t*-tests and visualizing the results, as well as reporting them. It also expects you to practice using `filter()` and otherwise subsetting data. This project helps you practice adapting code from previous work to a new question. 
+
+## Make sure you're in the right working directory
+
+Set your working directory if necessary. Check that you're in the directory you expect by running `getwd()` in the Console. If you need more help, [look at the wiki page on setting a working directory](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory). 
+
+## The project
+
+You should have downloaded the exercise and data already; today's file is called "12-test-yourself-I.Rmd". Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file from the correct working directory by running the following code:
+
+```{r}
+library(psychRstats)
+run_exercise("12-test-yourself-I")
+```
+
+Note that there are no "solutions" for this document.

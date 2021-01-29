@@ -308,6 +308,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
 
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
   @media(min-width: 768px) {
 
   d-article pre,
@@ -462,6 +467,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -1129,7 +1145,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1244,6 +1260,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
 
       // clear polling timer
       clearInterval(tid);
@@ -1406,6 +1436,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_distill-->
   <script src="lab-3-completed_files/header-attrs-2.6/header-attrs.js"></script>
   <script src="lab-3-completed_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="lab-3-completed_files/popper-2.6.0/popper.min.js"></script>
+  <link href="lab-3-completed_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="lab-3-completed_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="lab-3-completed_files/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="lab-3-completed_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="lab-3-completed_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="lab-3-completed_files/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1450,9 +1484,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
 <p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> document. When you execute code within the notebook, the results appear beneath the code. You can find a completed version of these exercises at <a href="https://jdbest.github.io/psychRstats/answers.html" class="uri">https://jdbest.github.io/psychRstats/answers.html</a></p>
 <p>Feel free to change the top to have your name! You’re the person answering these exercises, now.</p>
 <p>If you would like to refer to the tutorial while also working on this document, there are instructions on the <a href="https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so.</p>
@@ -1465,7 +1496,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Run the following code chunk to load necessary packages for these exercises. If any don’t load, install them with the <code>install.packages("")</code> function.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
 <span class='co'># tidyverse loads these:</span>
 <span class='co'># library(dplyr)</span>
 <span class='co'># library(ggplot2)</span>
@@ -1477,7 +1508,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>(If the code below doesn’t work on its own, try adding <code>03-lab/</code> before the name <code>"friends.csv"</code>, and again in the code chunk below. Because of <em>where</em> it looks for the file when knitting vs. running interactively, you may well find that it needs no directory to knit, but needs the specific directory included to run right now.)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"friends.csv"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"friends.csv"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -1492,10 +1523,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>tibble [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>spec_tbl_df [84 × 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ duration           : num [1:84] 464 332 399 328 37 ...
  $ finished           : num [1:84] 1 1 1 1 0 1 1 0 0 1 ...
  $ whentook           : POSIXct[1:84], format: &quot;2020-08-27 13:05:27&quot; ...
@@ -1564,7 +1595,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   ..   handedness = col_double()
   .. )</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code> [1] &quot;duration&quot;            &quot;finished&quot;            &quot;whentook&quot;           
@@ -1579,7 +1610,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 [28] &quot;majordiv&quot;            &quot;hrs.sleep&quot;           &quot;height.unvalidated&quot; 
 [31] &quot;shootingdrills&quot;      &quot;handedness&quot;         </code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 6 x 32
@@ -1602,7 +1633,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   hrs.sleep &lt;dbl&gt;, height.unvalidated &lt;dbl&gt;, shootingdrills &lt;dbl&gt;,
 #   handedness &lt;dbl&gt;</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>gender</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>gender</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] &quot;character&quot;</code></pre>
@@ -1612,18 +1643,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Use the <code>count()</code> command from <code>library(dplyr)</code> to figure out how many respondents responded anonymously by running it on the <code>DistributionChannel</code> column of <code>friends</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>DistributionChannel</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>DistributionChannel</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 1 x 2
   DistributionChannel     n
-  &lt;chr&gt;               &lt;int&gt;
+* &lt;chr&gt;               &lt;int&gt;
 1 anonymous              84</code></pre>
 </div>
 <p>Then, create a <code>table()</code> of <code>siblings</code> from <code>friends</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>
@@ -1633,14 +1664,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Use a chain of <code>filter()</code> and <code>count()</code> to count how many classes (<code>numclasses</code>) the <code>friends</code> who have one sibling have. Said another way: <code>filter()</code> to people who have <code>siblings</code> of 1, then <code>count()</code> the number of classes.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>siblings</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>count</span><span class='op'>(</span><span class='va'>numclasses</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 5 x 2
   numclasses     n
-       &lt;dbl&gt; &lt;int&gt;
+*      &lt;dbl&gt; &lt;int&gt;
 1          3     3
 2          4    25
 3          5     3
@@ -1651,7 +1682,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Make a histogram of the <code>duration</code> it took people to finish the survey. Your choice if you use the <code>ggplot() + geom_histogram()</code> from <code>ggplot2</code> or just <code>hist()</code>. Label your axes either way.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Duration (s)"</span>, y <span class='op'>=</span> <span class='st'>"Frequency"</span>, title <span class='op'>=</span> <span class='st'>"How long people took to respond"</span><span class='op'>)</span>
@@ -1662,7 +1693,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>You may notice that this looks pretty bad because there’s an outlier. We can exclude them using <code>filter()</code>! Create a new variable called <code>friends2</code> which filters out any <code>duration</code> over 10000 (hint: you’ll want the &lt; sign, since we’re looking to keep in the new data frame any duration SHORTER than 10000). Then copy the code for the histogram to the space below, and re-run it (make sure to change to <code>friends2</code>, now).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends2</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>10000</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends2</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>10000</span><span class='op'>)</span>
 <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends2</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1676,7 +1707,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Create <strong>another</strong> data-frame variable called <code>friends3</code>, and this time filter out any <code>duration</code> over 600 s—seems like most people should have finished that in 10 minutes, barring them opening it and then getting distracted. Then, make a <code>geom_histogram()</code> of the data. (You can re-use your code, of course—just be sure to call it <code>friends3</code> in the <code>ggplot()</code> command.) You should find that the data looks MUCH more normally-distributed, right?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends3</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>600</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends3</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>duration</span> <span class='op'>&lt;</span> <span class='fl'>600</span><span class='op'>)</span>
 <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends3</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>duration</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1690,14 +1721,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>For this last visualization, we’re going to need to tell R that number of siblings is a <strong>factor</strong>, not a continuous variable. (No-one has 1.5 siblings.) Run the following code to do that. It literally tells R “this is a factor” with the <code>factor()</code> function.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>$</span><span class='va'>siblings</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>Use <code>friends</code> (rather than <code>friends2</code>) for this. Make both a <code>geom_boxplot()</code> and a <code>geom_violin()</code> of the data for <code>gram.followers</code> against <code>siblings</code>. (You can try doing them as two layers on the same plot, but it doesn’t look too good.) Up to you which is x and which is y; this is a case where it doesn’t matter. Do add on a theme, and <code>labs()</code>. Play around with colors if you like—this is a great time to start learning how to do that.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>siblings</span>, x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>friends</span>, <span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>siblings</span>, x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of instagram followers"</span>, y <span class='op'>=</span> <span class='st'>"Number of siblings"</span><span class='op'>)</span>
@@ -1751,7 +1782,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>graphdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Control"</span>, <span class='st'>"Preparation"</span>, <span class='st'>"Teaching"</span><span class='op'>)</span>,
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graphdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Control"</span>, <span class='st'>"Preparation"</span>, <span class='st'>"Teaching"</span><span class='op'>)</span>,
                         n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>31</span>, <span class='fl'>32</span>, <span class='fl'>30</span><span class='op'>)</span>,
                         score <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>6.2</span>, <span class='fl'>7.9</span>, <span class='fl'>8.7</span><span class='op'>)</span>,
                         sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3.3</span>, <span class='fl'>2.4</span>, <span class='fl'>2.8</span><span class='op'>)</span><span class='op'>)</span>
@@ -1763,7 +1794,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -1772,7 +1803,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>graphdata</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>group</span>, y <span class='op'>=</span> <span class='va'>score</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>graphdata</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>group</span>, y <span class='op'>=</span> <span class='va'>score</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Group"</span>, y <span class='op'>=</span> <span class='st'>"Mean Comprehension Score"</span>, title <span class='op'>=</span> <span class='st'>"Comprehension Scores by Group"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span>
@@ -1785,7 +1816,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>se</span> <span class='op'>&lt;-</span> <span class='va'>graphdata</span><span class='op'>$</span><span class='va'>sd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>n</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>se</span> <span class='op'>&lt;-</span> <span class='va'>graphdata</span><span class='op'>$</span><span class='va'>sd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>graphdata</span><span class='op'>$</span><span class='va'>n</span><span class='op'>)</span>
 <span class='va'>graphdata</span><span class='op'>$</span><span class='va'>se</span>
 </code></pre>
 </div>
@@ -1796,14 +1827,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>The data lives in the <code>HistData</code> package, which we installed earlier.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"HistData"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"HistData"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>Load this package here, and the data:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>HistData</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>HistData</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Nightingale</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1813,7 +1844,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Here’s a ggplot() version of the Nightingale coxcomb plot we saw in class—it’s also on wikipedia, <a href="https://en.wikipedia.org/wiki/Florence_Nightingale#/media/File:Nightingale-mortality.jpg">here</a>. For some more context, <a href="http://www.florence-nightingale-avenging-angel.co.uk/Nightingale_Hockey_Stick.pdf">read this</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>deaths</span> <span class='op'>&lt;-</span> <span class='va'>Nightingale</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>deaths</span> <span class='op'>&lt;-</span> <span class='va'>Nightingale</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>mutate</span><span class='op'>(</span>Month <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>Month</span>, 
                         levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>, <span class='st'>"Mar"</span>, <span class='st'>"Apr"</span>, <span class='st'>"May"</span>, 
                                    <span class='st'>"Jun"</span>, <span class='st'>"Jul"</span>, <span class='st'>"Aug"</span>, <span class='st'>"Sep"</span>, <span class='st'>"Oct"</span>, <span class='st'>"Nov"</span>, <span class='st'>"Dec"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
@@ -1861,7 +1892,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Extension 1. Create a histogram using the full Nightingale$Disease data. Note that this should <em>only</em> involve the disease data—a histogram shows frequencies of how often you get a certain response. Is the data normally distributed?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># in ggplot:</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># in ggplot:</span>
 <span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_histogram</span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>300</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1870,7 +1901,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <img src="lab-3-completed_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
 <div class="sourceCode">
-<pre><code><span class='co'># in base R:</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># in base R:</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>Nightingale</span><span class='op'>$</span><span class='va'>Disease</span>, 
      xlab <span class='op'>=</span> <span class='st'>"Number of Disease Deaths"</span>, ylab <span class='op'>=</span> <span class='st'>"Frequency"</span>, main <span class='op'>=</span> <span class='st'>"Frequency of Disease Deaths"</span><span class='op'>)</span>
 </code></pre>
@@ -1885,7 +1916,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Wounds</span>, y <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Wounds</span>, y <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>geom_point</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"red"</span>, alpha <span class='op'>=</span> <span class='fl'>.5</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># setting alpha as lower than 1 makes the points partially transparent</span>
   <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Deaths from Wounds"</span>, y <span class='op'>=</span> <span class='st'>"Deaths from Disease"</span>, 
@@ -1900,7 +1931,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>You’ll note that R is actually quite good at handling dates! It knows these dates are <code>class(Nightingale$Date) == "Date"</code>!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># in ggplot</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># in ggplot</span>
 <span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>Nightingale</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Date</span>, y <span class='op'>=</span> <span class='va'>Disease</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
