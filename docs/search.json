@@ -17,14 +17,14 @@
         }
       ],
       "contents": "\n\n\n\nWelcome\nThis is the website for an R package ({psychRstats}) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best. It is intended to be used alongside an undergraduate course in statistics, or an understanding of statistics based on such a course.\nInstalling the package (see below) will download vignettes and exercises which build on one another to develop skills while also exploring basic statistical concepts like t-tests, ANOVA, and null-hypothesis statistical testing.\nThe primary website for that course was https://faculty.bard.edu/~jdainerbest/psy-203 with all labs being listed on the lab website; the labs as used in the course are available at https://github.com/jdbest/psy-203/. This repository takes the {learnr} tutorials which were the basis of those labs and deploys them as package vignettes, meaning that you can use this page to go through all 13 labs. (See links above for the full labs and the answers to the exercises.)\nInstallation\nFor information on installing R and RStudio, visit the website.\nIn R, you can install directly from github:\ninstall.packages(\"devtools\")\ndevtools::install_github(\"jdbest/psychRstats\")\nlibrary(psychRstats)\nIf you’re prompted to update packages, you should respond as prompted – usually with a number (e.g., typing a 1 and then hitting enter). Alternatively, leave the line blank for “don’t update.”\nRunning tutorials\nOnce installed, tutorials can be used to learn basic concepts. The basic syntax is as follows:\npsychRstats::lab(\"01-intro-to-r\")\nOnce you’ve gotten through the first tutorial, you’ll want to download the exercises as well.\nDownloading exercises\nDownload all exercises and data in one go when you first get started. After running the above code and installing the {psychRstats} package, make sure you’re in the right working directory.\n(We discuss setting a working directory in the first lab, but there’s also an entry about it on the wiki.)\npsychRstats::download_exercises()\n\n\n\n",
-      "last_modified": "2021-01-29T17:15:44-05:00"
+      "last_modified": "2021-01-29T17:32:38-05:00"
     },
     {
       "path": "labs.html",
       "title": "psychRstats: Exercises",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-01-29T17:12:09-05:00"
+      "last_modified": "2021-01-29T17:33:30-05:00"
     }
   ],
   "collections": ["labs/labs.json", "answers/answers.json"]

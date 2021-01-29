@@ -11,6 +11,8 @@ listing:
     - 06-visualizing-2
     - 07-t-tests
     - 08-one-way-anova
+    - 09-regression-correlation
+    - 10-chi-square-factorial-ANOVA
 preview: images/marble.png
 ---
 

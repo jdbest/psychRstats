@@ -1,7 +1,7 @@
 ---
-title: "Correlation and Regression (Lab 10) Exercises, Completed"
+title: "Correlation and Regression (Lab 09) Exercises, Completed"
 description: |
-  Completed exercises for the tenth lab
+  Completed exercises for the ninth lab
 author:
   - name: Justin Dainer-Best
 date: 11-06-2020
@@ -24,15 +24,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
 
-If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html). 
-
-Important reminder: as with every time you open RStudio, don't forget to load the libraries, below.
+If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](../../labs.html).
 
 ## Objectives
 
 In the tutorial, we learned about using `lm()` and `summary()` for regressions, and `cor()` and `cor.test()` for correlations. You'll use those and the `library(ggplot2)` functions to plot them to make further sense of the `predictions` data, including adding regression lines. You'll also practice (briefly) `filter()` and a few other functions to clean up the data as provided. 
 
-As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html>
+You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
 
 Don't forget to (a) save and (b) knit the document frequently, so you'll keep track of your work and also know where you run into errors. 
 
@@ -52,7 +50,7 @@ As discussed in the tutorial, we're using data from Beall, Hofer, & Shaller (201
 
 Make sure you read the description of the study in the tutorial---it's important for thinking about what we're doing in these exercises. 
 
-In the tutorial, we used a "cleaned-up" version of the data. (It's in a folder called /www.) But let's actually use the raw data here: that one is called `beall_untidy.csv` and should be in the same folder as this document. 
+In the tutorial, we used a "cleaned-up" version of the data. But let's actually use the raw data here: that one is called `beall_untidy.csv` and should be in the same folder as this document. 
 
 The data was downloaded with this file. Load it using the `read_csv()` command---probably with the code below:
 
@@ -62,7 +60,7 @@ predictions <- read_csv("beall_untidy.csv")
 
 ## Today's task
 
-For the questions below, [create your own code chunks](https://github.com/jdbest/psy-203/wiki/Create-a-code-chunk) and insert all code into them.
+For the questions below, [create your own code chunks](https://github.com/jdbest/psychRstats/wiki/Create-a-code-chunk) and insert all code into them.
 
 1. Be sure to assign the resulting data to itself or to a new data frame, so you can use it in the subsequent questions. Filter the data using the `filter()` function: 
     a. Remove the two lines at the very top for which there are NAS even in the `Date` and `Month` column
@@ -131,5 +129,3 @@ ggplot(highanxtime,
   geom_smooth(method = "lm", se = FALSE, formula = "y ~ x") +
   labs(x = "Ebola-search-volume index", y = "LexisNexis index")
 ```
-
-Have any feedback about the exercises? Let me know at the [exit survey](https://bit.ly/psy203exit) and select Lab 9.
