@@ -363,7 +363,7 @@ votes <- data.frame(
 grade_code("Nicely done!")
 ```
 
-When you write code like this, you'll see that R tries to highlight problems---like an un-closed parenthesis---at the left when it can. If you make any mistakes, you'll also see that the errors it gives might be a bit vague... you can always ask me when you have questions! 
+When you write code like this, you'll see that R tries to highlight problems---like an un-closed parenthesis---at the left when it can. If you make any mistakes, you'll also see that the errors it gives might be a bit vague... these are sometimes helpful to put into a search engine! 
 
 ## Review
 
