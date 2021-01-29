@@ -19,8 +19,8 @@
     ],
     "contents": "\nThese are all of the instructions for Lab 5. The list of labs is here.\nThis repository contains R labs for R package ({psychRstats}) based on Bard College’s Statistics for Psychology (PSY 203, Fall 2020), taught by Assistant Professor of Psychology Justin Dainer-Best.\nFor each lab, you should expect to download the lab’s files locally to your computer, and run them there. If you’re using https://rstudio.cloud/ instead of running things locally, the same instructions should work today.\nBelow are instructions for Lab 5.\nObjectives\nThe following lab builds on your skills with ggplot2, using filter(), and helps you practice using z-scores and t-scores to test simple sample means. This lab anticipates that you have read or have a background on t-tests; however, most of the lab reviews material you have already covered in previous labs.\nMake sure you’re in the right working directory\nSet your working directory if necessary. Check that you’re in the directory you expect by running getwd() in the Console. If you need more help, look at the wiki page on setting a working directory.\nToday’s lab\nThere is no tutorial today; you’ll be focusing on an R Markdown file.\nCheck that you’re in the directory you expect by running getwd() (the parentheses should have nothing in them).\nExercise\nThis exercise explores the commands you learned and lets you continue practicing the steps of hypothesis testing.\nYou may be able to open the file from the correct working directory by running the following code:\n\n\nlibrary(psychRstats)\nrun_exercise(\"05-exercise\")\n\n\n\nSolutions\nA version of the document with solutions can be seen here.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-01-29T13:56:41-05:00",
-    "input_file": "05-one-sample-t.utf8.md"
+    "last_modified": "2021-01-29T13:56:42-05:00",
+    "input_file": {}
   },
   {
     "path": "labs/03-visualizing-data/",
@@ -84,8 +84,8 @@
     ],
     "contents": "\nFor each lab, you should expect to download the lab’s files locally to your computer, and run them there. If you’re using https://rstudio.cloud/ instead of running things locally, the same instructions should work today.\nPrevious labs\nFind the full list of labs here.\nFind Lab 1 here\nBelow are instructions for the exercise corresponding to that tutorial.\nMake sure you’re in the right working directory\nIn the first lab, we set the working directory to a specific folder where every lab for this class will live. If you don’t remember, look at the wiki page I’ve created on setting a working directory.\nCheck that you’re in the directory you expect by running getwd() (the parentheses should have nothing in them). Just copy and paste that into the console and hit return/enter.\nToday’s lab\nIf you haven’t already completed the tutorial, you can open it up by pasting the following lines to run in your RStudio console, which will open the tutorial.\n\n\nlibrary(psychRstats)\nlab(\"01-intro-to-r\")\n\n\n\nOnce you’ve completed the tutorial, return here for an exercise that you will turn in at the end of the lab. Make sure that you close the tutorial window. (If you’d like to keep it open, refer to this page on the wiki.)\nExercise\nThis exercise gives you the opportunity to do the following:\nPractice selecting subsets of data.\nUnderstand how to load a package.\nPractice writing your own code in an R Markdown document.\nYou should have downloaded the exercises already. If not, click here.\nToday’s file is called “02-lab.Rmd”. Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or (if in the correct working directory) you should be able to open the file by running the following code:\n\n\nlibrary(psychRstats)\nrun_exercise(\"02-exercise\")\n\n\n\nSolutions\nA version of the document with solutions can be seen here.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-01-29T14:28:02-05:00",
-    "input_file": "02-intro-exercises.utf8.md"
+    "last_modified": "2021-01-29T14:28:03-05:00",
+    "input_file": {}
   },
   {
     "path": "labs/01-intro-to-r/",

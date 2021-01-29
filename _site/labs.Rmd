@@ -7,6 +7,7 @@ listing:
     - 02-intro-exercises
     - 03-visualizing-data
     - 04-hypothesis-testing
+    - 05-one-sample-t-test
 preview: images/marble.png
 ---
 
