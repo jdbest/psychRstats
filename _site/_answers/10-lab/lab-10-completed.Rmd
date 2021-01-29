@@ -1,7 +1,7 @@
 ---
-title: "Chi-square and factorial ANOVA (Lab 12) Exercises, Completed"
+title: "Chi-square and factorial ANOVA (Lab 10) Exercises, Completed"
 description: |
-  Completed exercises for the twelfth lab
+  Completed exercises for the tenth lab
 author:
   - name: Justin Dainer-Best
 date: 11-20-2020
@@ -20,17 +20,15 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This document is meant to be used to practice after you have completed the tutorial for today's lab. 
+This document is meant to be used to practice after you have completed the tutorial for today's lab. Make sure to put your name as the author of the document, above! 
 
-If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html). 
-
-Important reminder: as with every time you open RStudio, don't forget to load the libraries, below.
+If you intend to work on these exercises while referring to the tutorial, there are instructions on the [wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously) on how to do so. You may also want to refer to past labs. Don't forget that previous labs are linked to on the main [labs website](https://jdbest.github.io/psychRstats/labs.html).
 
 ## Objectives
 
 In the tutorial, we learned about using `lm()` and `anova()` for factorial ANOVA, about plotting bars against one another using `geom_col()` with `position = position_dodge()` in the parentheses, and about using the `table()` function with `chisq.test()`. In the exercises, you'll use those to practice one of each kind of test.
 
-As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html>
+You can find a completed version of these exercises at <https://jdbest.github.io/psychRstats/answers.html>
 
 Don't forget to (a) save and (b) knit the document frequently, so you'll keep track of your work and also know where you run into errors. 
 
