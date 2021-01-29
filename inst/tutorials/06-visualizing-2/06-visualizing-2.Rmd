@@ -1,0 +1,549 @@
+---
+title: "Lab 06: Visualizing Data"
+author: Justin Dainer-Best
+tutorial:
+  id: "pRs-06"
+  version: 0.3
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: lumen
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(psychRstats)
+library(learnr)
+library(tidyverse)
+library(gradethis)
+library(flair)
+
+tutorial_options(exercise.timelimit = 200, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(error = TRUE)
+
+# load data and any we'll need
+newfriends <- structure(list(gender = c("female", "female", "male", "female", 
+NA, "female", "female", "female", "non-binary", "non-binary", 
+"male", "female", "non-binary", "female", "male", "male", "male", 
+"female", "female", "female", "agender", "male", "male", "female", 
+"female", "female", "female", "female", "female", "female", "male", 
+"male", "female", "male", "male", "female", "male", "female", 
+"male", "male", "female", "female", "female", "male", "female", 
+"male", "female", "female", "female", "non-binary", "male", "female", 
+"trans-masc", "male", "female", "male", "female", "female", "male", 
+"male", "female", "male", "female", "female", "female", "female", 
+"female", "female", "female", "female", "female", "female", "female", 
+"female", "female", "male", "female", "male", "female", "male", 
+"female", "female", "male", "male"), siblings = c(1, 3, 5, 1, 
+NA, 1, 3, 1, 2, 1, 1, 2, 1, 0, 1, 1, 2, 8, 3, 2, 2, 3, 1, 0, 
+2, 2, 3, 1, 2, 2, 1, 1, 1, 2, 1, 1, 3, 1, 3, 1, 2, 2, 4, 2, 1, 
+1, 2, 1, 1, 5, 1, 2, 1, 0, 1, 2, 3, 2, 2, 3, 3, 3, 2, 5, 1, 2, 
+0, 2, 0, 1, 1, 1, 1, 2, 4, 0, 1, 1, 2, 3, 1, 1, 2, 5), numclasses = c(5, 
+5, 4, 4, NA, 5, 4, NA, NA, 4, NA, 4, 4, 4, 4, 4, NA, 4, 4, 5, 
+4, 4, 4, 5, NA, 4, 5, 4, 4, 4, 4, 4, 4, 4, 5, 4, 5, 4, 3, 3, 
+4, 4, 4, 5, 4, 4, 5, 4, 4, 4, 4, 6, 4, 4, 8, 4, 5, 4, 4, 4, 4, 
+4, NA, 4, 4, NA, 6, NA, 5, 4, 4, 4, 3, 4, 4, 6, 3, 4, 4, 4, 4, 
+4, 5, 3), numclassesremote = c(0, 2, 0, 4, NA, 0, 1, NA, NA, 
+1, NA, 1, 0, 0, 1, 0, NA, 2, 1, 0, 1, 1, 1, 0, NA, 2, 2, 1, 2, 
+2, 1, 1, 0, 2, 1, 1, 5, 0, 0, 3, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 
+0, 3, 2, 2, 1, 1, 0, 1, 1, 0, 2, 2, NA, 2, 0, NA, 6, NA, 3, 3, 
+1, 1, 1, 0, 0, 3, 1, 2, 4, 4, 4, 1, 0, 1), eatmeat = structure(c(1L, 
+2L, 3L, 2L, NA, 2L, 1L, NA, NA, 3L, NA, 1L, 3L, 1L, 1L, 1L, NA, 
+1L, 1L, 1L, 1L, 1L, 1L, 2L, NA, 1L, 1L, 1L, 2L, 3L, 1L, 1L, 1L, 
+1L, 3L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 3L, 1L, 1L, 1L, 1L, 
+2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, NA, 3L, 3L, 
+NA, 1L, NA, 3L, 2L, 3L, 1L, 3L, 1L, 3L, 1L, 2L, 1L, 1L, 1L, 2L, 
+1L, 1L, 1L), .Label = c("Yes", "Rarely", "No"), class = "factor"), 
+    votefor = structure(c(1L, 5L, 1L, 2L, NA, 1L, 1L, NA, NA, 
+    1L, NA, 1L, 1L, 1L, 4L, 1L, NA, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+    NA, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 4L, 
+    1L, 1L, 5L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 5L, 1L, 1L, 1L, 1L, 
+    1L, 4L, 1L, 1L, 1L, 1L, 1L, 4L, NA, 1L, 1L, NA, 1L, NA, 1L, 
+    1L, 1L, 1L, 1L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 4L
+    ), .Label = c("Biden/Harris", "Trump/Pence", "Third-party", 
+    "Won't vote", "Can't vote"), class = "factor"), registeredtovote = structure(c(1L, 
+    4L, 1L, 1L, NA, 3L, 1L, NA, NA, 1L, NA, 1L, 1L, 1L, 1L, 1L, 
+    NA, 1L, 1L, 1L, 1L, 1L, 1L, 1L, NA, 1L, 1L, 1L, 1L, 1L, 1L, 
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 4L, 1L, 4L, 1L, 1L, 1L, 1L, 
+    1L, 1L, 1L, 4L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 3L, 1L, 1L, 
+    1L, NA, 1L, 1L, NA, 1L, NA, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 4L, 
+    1L, 1L, 1L, 1L, 1L, 1L, 4L, 1L), .Label = c("Yes", "No", 
+    "Unsure", "Can't vote"), class = "factor")), row.names = c(NA, 
+-84L), class = c("tbl_df", "tbl", "data.frame"))
+friends <- data.frame(gender = NA) # just so it exists to catch errors
+voting <- newfriends %>% 
+  na.omit() %>%
+  count(votefor, registeredtovote)
+
+data <- tibble(
+  group = c("group1", "group2", "group1", "group2", "group1", "group2", "group1", "group2"),
+  groupscore = c(17, 26, 24, 20, 21, 15, 16, 25)
+)
+graphdata <- data %>%
+  group_by(group) %>%
+  summarize(meanscore = mean(groupscore), 
+            sdscore   = sd(groupscore), 
+            sem       = sdscore/sqrt(n()))
+```
+
+## Introduction
+### 
+Today's lab's objectives are to:
+
+* Learn about responding to missing data
+* Explore common errors and how to resolve them
+* Learn how to use error bars in {ggplot2}
+* Work to create somewhat more complex plots in {ggplot2}
+
+Throughout today's lab, you'll be thinking about how to **process** and **integrate** data. We'll return to thinking about *t*-tests next week.
+
+### 
+
+We're using the `friends` data again today, but I've called it `newfriends` because it's only a subsection. Run the following exercise code chunk to take a look:
+
+```{r seedata, exercise=TRUE, exercise.lines=1}
+newfriends
+```
+
+As you can see, we've got several rows that are predominately missing data. Let's talk about dealing with missing data before we do anything else. 
+
+## Missing data
+###
+It turns out that missing data ("not available" or NA) is **very common**, and therefore worth planning for. Sometimes, for more complex statistics, we want to make use of missing data---e.g., interpolating data or using the last response we've recorded for a person. However, much of the time, we just want to not let it get in the way. Think about it like this: suppose I told you to find the average of the numbers 5, 3, 2, 4, 3, 5, NA, and 4. Well, plug it into your formula, right?:
+
+$$M=\frac{5+3+2+4+3+5+\mathit{NA}+4}{8}$$
+
+Only, well, it turns out that you can't easily calculate an average with a missing value. What do you do with it? It's not 0 but it's also not any specific number... and R has the same problem:
+
+```{r}
+x <- c(5, 3, 2, 4, 3, 5, NA, 4)
+mean(x)
+```
+
+That's not an error---the mean which includes an NA is itself NA. So, we resolve this by excluding the NA entirely---we remove it before calculating the mean. The formula becomes
+
+$$M=\frac{5+3+2+4+3+5+4}{7}$$
+
+and the R code can do one of two things: (1) we drop the NA; (2) we use the `na.rm` argument, and set it to `TRUE`---saying "yes, please remove the NA":
+
+```{r narm, include=FALSE}
+x <- c(5, 3, 2, 4, 3, 5, NA, 4)
+mean(x, na.rm = TRUE)
+```
+
+```{r, echo=FALSE, results="asis"}
+flair::decorate("narm") %>% 
+  flair::flair(", na.rm = TRUE")
+```
+
+I introduced the `is.na()` function last week, which asks: is the data not available? This results in a series of TRUE or FALSE values. For example:
+
+```{r, comment=NA}
+is.na(newfriends$gender)
+```
+
+You should see a list of **mostly** FALSE---because most folks provided a value for gender. One person did not---in fact, they provided no information whatsoever. Let's look at their data. You can do that with `filter()` to **only** include people who have `gender` NA. 
+
+In the exercise code chunk, add the code to filter out anyone who has NAs **for the `gender` column**. Then hit submit. **Note**: you don't need to give the name of the data frame again inside the `filter()` function.
+
+```{r filtergender, exercise=TRUE}
+newfriends %>% filter()
+```
+
+```{r filtergender-solution}
+newfriends %>% filter(is.na(gender))
+```
+
+```{r filtergender-check, echo=FALSE}
+grade_result(
+  pass_if(~ identical(.result, filter(newfriends, is.na(gender))), "Yes, there is one person for whom we have no data."),
+  fail_if(~ identical(.result, filter(friends, is.na(gender))), "We're using the newfriends data frame now, not friends... change that and you should be good."),
+  fail_if(~ identical(.result, newfriends %>% filter()), "Make sure to edit the code -- put is.na() inside the filter, and the variable name inside its parentheses."),
+  fail_if(~ TRUE, "Not quite. You'll just want to put the is.na() function inside the filter() parentheses, and then put the variable name (gender) inside the is.na() parentheses.")
+)
+```
+
+###
+
+There are other functions besides `is.na()` that do the same thing. I'll introduce you to two useful ones:
+
+1. `complete.cases()` and 
+2. `na.omit()`
+
+We'll focus on the latter, but just take a look at what each one does on a data frame by running the code chunks below.
+
+```{r testfunction1, exercise=TRUE}
+complete.cases(newfriends)
+```
+
+```{r testfunction2, exercise=TRUE}
+na.omit(newfriends)
+```
+
+As you can see, `complete.cases()` tells us **whether the rows are complete**---i.e., whether every single possible column is filled in for that row. We can use it with `filter()` to select only complete cases---try running this:
+
+```{r completefriends1, exercise=TRUE}
+newfriends %>% filter(complete.cases(newfriends))
+```
+
+But `na.omit()` skips that step---it just automatically creates a data frame without NAs.
+
+Of course, frequently you only want to exclude NAs from one column, rather than from the whole data frame! And for that, you can use the `dataframe %>% filter(is.na(column))` syntax, as we did above.
+
+###
+
+Go ahead, give `na.omit()` a try in context: Take the `newfriends` data frame, add a chain (`%>%`) and use `select()` to select the columns `siblings, gender`, and then use `na.omit()` **as the last part of the chain** (`%>%`). (You'll use three statements with a chain between each one.)
+
+```{r chain, exercise=TRUE}
+
+```
+
+```{r chain-solution}
+newfriends %>% 
+  select(siblings, gender) %>%
+  na.omit()
+```
+
+```{r chain-check, echo=FALSE}
+grade_result(
+  pass_if(~ identical(.result, na.omit(select(newfriends, siblings, gender))), "Exactly! You have the 83 rows for which responses were provided to those three columns."),
+  fail_if(~ identical(.result, select(newfriends, siblings, gender)), "Looks like you've selected the right columns -- but not removed NAs. Try adding on a chain and then the na.omit() function."),
+  fail_if(~ identical(.result, na.omit(newfriends)), "Looks like you've used the na.omit() function on newfriends, but not selected only the relevant columns. You'll wind up with too many rows cut out here!"),
+  fail_if(~ TRUE, "Not quite. Make sure to use the newfriends data frame, then a %>% chain, select the correct columns, then use a %>% chain, and then na.omit(). Don't forget to close all parentheses and place the chain with %, then a greater than sign >, and then another %")
+)
+```
+
+###
+
+```{r quiz1, echo=FALSE}
+quiz(
+  caption = "Quick check-in",
+  question("Why do we need to remove NA values? (Select all correct responses)",
+    answer("In order to create graphs with ggplot."),
+    answer("In order to accurately calculate averages and standard deviations.", correct = TRUE),
+    answer("Because incomplete rows can get in the way of analyses.", correct = TRUE),
+    answer("You don't need to remove NA values."),
+    post_message = "You can create ggplot() graphs with NAs, but you sometimes do need to remove them. Removing NAs lets you accurately calculate measures of centrality as well as carrying out more complex analyses. ",
+    random_answer_order = TRUE
+  ),
+  question("What is the difference between is.na() and na.omit()?",
+           answer("is.na() can be used on specific columns, but na.omit() works on the entire data frame.", correct = TRUE),
+           answer("is.na() is for when you want to graph things, but na.omit() is for when you want to run a t-test."),
+           answer("na.omit() should always be used before is.na()"),
+           answer("na.omit() checks whether NA values exist whereas is.na() filters them out. "),
+           post_message = "is.na() will frequently be used to filter() specific columns, whereas na.omit() is somewhat blunter and works on the whole data frame. Be careful in when you use it -- if any column has many NA values, running na.omit() on the whole data frame could drop most of the rows!",
+           random_answer_order = TRUE
+           )
+)
+```
+
+## Common errors
+###
+For several weeks now, I've mentioned that there is a document with common errors that I've been compiling; [find it here](https://github.com/jdbest/psychRstats/wiki/common-mistakes-and-errors). Feel free to refer to it as you try to "fix" the error in the following exercises.
+
+There is a minor error here:
+
+```{r error1, exercise=TRUE}
+newfriends %<%
+  filter(eatmeat == "Yes")
+```
+
+```{r error1-solution}
+newfriends %>%
+  filter(eatmeat == "Yes")
+```
+
+```{r error1-check, echo=FALSE}
+grade_code(correct = "Yes, exactly! Be cautious when you type chains and similar code.",
+           incorrect = "Look carefully at the code. Everything is spelled correctly, but does the chain look right?")
+```
+
+What about in this one?
+
+```{r error2, exercise=TRUE}
+newfrends %>% 
+  filter(eatmeat == "No")
+```
+
+```{r error2-solution}
+newfriends %>% 
+  filter(eatmeat == "No")
+```
+
+```{r error2-check, echo=FALSE}
+grade_code(correct = "Yes, exactly! Spelling errors can be a big problem in R!",
+           incorrect = "Look carefully at the code. Is everything spelled correctly this time?")
+```
+
+###
+
+This is supposed to print a table of how many people do/do not eat meat. It doesn't do that, however. What's getting in the way?
+
+```{r error3, exercise=TRUE}
+newfriends %>%
+  count("eatmeat")
+```
+
+```{r error3-solution}
+newfriends %>%
+  count(eatmeat)
+```
+
+```{r error3-check, echo=FALSE}
+grade_code(correct = "Yes, exactly! You shouldn't put quotation marks around variable names, for the most part.",
+           incorrect = "The problem is in the second line -- the first line looks good this time.")
+```
+
+What's wrong in this code? You'll have to uncomment it (remove the # marks) in order to check. Try running it once you've done so, and fix the error before clicking "Submit code".
+
+```{r error4, exercise=TRUE}
+#newfriends %>% 
+#  na.omit() %>%
+#  count(votefor, registeredtovote
+```
+
+```{r error4-solution}
+newfriends %>% 
+  na.omit() %>%
+  count(votefor, registeredtovote)
+```
+
+```{r error4-check, echo=FALSE}
+grade_code(correct = "It's important to close your parentheses!",
+           incorrect = "The problem is in the final line...")
+```
+
+###
+
+Okay, now that that code is working, let's use it. 
+
+```{r}
+voting <- newfriends %>% 
+  na.omit() %>%
+  count(votefor, registeredtovote)
+```
+
+What is wrong in the graph below? This is a slightly more-complex error in that it actually works... But why is the `fill` not making the bars different colors for who they intend to vote?
+
+```{r error5, exercise=TRUE}
+ggplot(voting, aes(x = registeredtovote, y = n), fill = votefor) +
+  geom_col() +
+  scale_fill_viridis_d() +
+  theme_minimal()
+```
+
+```{r error5-solution}
+ggplot(voting, aes(x = registeredtovote, y = n, fill = votefor)) +
+  geom_col() +
+  scale_fill_viridis_d() +
+  theme_minimal()
+```
+
+```{r error5-hint}
+# What should go inside the aes() and what should stay outside? 
+```
+
+```{r error5-check, echo=FALSE}
+grade_code(correct = "Right, the fill bit needs to be INSIDE the aes() parentheses.",
+           incorrect = paste0("I'd take a look at where the `fill = votefor` ",
+                              "text _is_... is that where you think it should be? "))
+```
+
+###
+
+Last one!
+
+We're calculating the sum of squared deviations here, but something isn't working out... fix the `mean.x` by resolving the missing data problem, and then identify what's causing the problem in the `sum_of_squares` calculation. (Yes, there are at least two things to fix here.)
+
+Some suggestions for trouble-shooting: print each variable after it is assigned, so you can see *what, exactly* you've created. Read the errors. Look closely at the code. 
+
+```{r error6, exercise=TRUE}
+x <- c(4, 5, 6, 3, 5, 6, 4, 2, 4, 2, NA, 4, 3, NA)
+mean.x <- mean(x)
+sum_of_squares <- sum((x-mean.x)^2,)
+sum_of_squares
+```
+
+```{r error6-hint-1}
+# What might you do in the calculation of the mean to make it get you
+# the result you expect? (How do you remove NAs?) 
+```
+
+```{r error6-hint-2}
+# What should go inside the parentheses of the sum() in the final line? 
+# And how does sum() deal with NAs? Are they still in the variable x?
+```
+
+```{r error6-hint-3}
+x <- c(4, 5, 6, 3, 5, 6, 4, 2, 4, 2, NA, 4, 3, NA)
+mean.x <- mean(x, ...) # what should go instead of the ...?
+sum_of_squares <- sum((x-mean.x)^2) # is that final comma necessary?
+sum_of_squares
+```
+
+```{r error6-solution}
+x <- c(4, 5, 6, 3, 5, 6, 4, 2, 4, 2, NA, 4, 3, NA)
+mean.x <- mean(x, na.rm = TRUE) # add na.rm = TRUE or use na.omit() on x
+sum_of_squares <- sum((x-mean.x)^2, na.rm = TRUE) # remove the extra comma
+sum_of_squares
+```
+
+```{r error6-check, echo=FALSE}
+grade_result(
+  pass_if(~ identical(.result, 20), "Well done!"),
+  fail_if(~ is.na(.result), "Looks like there are still NAs in your code.")
+)
+```
+
+## Error bars in {ggplot2}
+
+Several times recently, we've talked in class and lab about error bars. Error bars most frequently use the standard error of the mean to add an estimate of uncertainty---we're not sure if the mean we've plotted is "accurate". 
+
+Let's calculate some SEMs for our data, and then try plotting them. To do this, we'll introduce two new functions:
+
+1. `group_by()` is a {dplyr} function which chains onto a data frame and tells R that you're interested in how a grouping category changes something else.
+2. `summarize()` is another {dplyr} function which summarizes data (based on a grouping, if provided!) with functions like `mean()`, `sd()`, etc.
+
+You can see why they'd work together! See the below for a toy example:
+
+```{r}
+data <- data.frame(
+  participant = 1:8,
+  group = c("group1", "group2", "group1", "group2", "group1", "group2", "group1", "group2"),
+  groupscore = c(17, 26, 24, 20, 21, 15, 16, 25)
+)
+data
+```
+
+Basic participants, in groups, with some sort of score. 
+
+From this, we can then use `group_by()` and `summarize()` to get group summary scores. Run the code below: 
+
+```{r summarize, exercise=TRUE}
+data %>%
+  group_by(group) %>%
+  summarize(meanscore = mean(groupscore), 
+            sdscore   = sd(groupscore))
+```
+
+*Note*: You might see the text "`summarise()` ungrouping output (override with `.groups` argument)". This is what R calls a "message". It's not an error. You'll see it when you do this yourself, too. It's just R telling you what is happening.
+
+You'll see that we get, *per group*, the means and SDs. Why do we "name" the variables in `summarize()` with the names `meanscore` and `sdscore`? Well, try removing them and the = signs that follow them, and you'll see---if you don't name them, the names R chooses are hard to read. 
+
+Once you've created summary data like this, it's easy to use for plotting, as we've done before.
+
+Let's create our standard errors, first. It's actually pretty easy---just using the basic formula of $SEM=\frac{SD}{\sqrt{n}}$. **Inside of the `summarize()` function**, you can use the function `n()` to find out how many rows there are per group---your *n*.
+
+```{r summarize2, exercise=TRUE}
+data %>%
+  group_by(group) %>%
+  summarize(meanscore = mean(groupscore), 
+            sdscore   = sd(groupscore), 
+            sem       = sdscore / sqrt(n()))
+```
+
+Does that *sem* we've added make sense? We take the standard deviation from immediately above, and then divide by the square root of n.
+
+###
+
+Before graphing, save the summary to the Environment by assigning it to a variable:
+
+```{r summarizegroupflair, include=FALSE, eval=FALSE}
+graphdata <- data %>%
+  group_by(group) %>%
+  summarize(meanscore = mean(groupscore), 
+            sdscore   = sd(groupscore), 
+            sem       = sdscore / sqrt(n()))
+```
+
+```{r, echo=FALSE, results="asis"}
+flair::decorate("summarizegroupflair") %>% 
+  flair::flair("group_by") %>%
+  flair::flair("summarize")
+```
+
+Then, plot that:
+
+```{r}
+ggplot(graphdata, aes(x = group, y = meanscore)) +
+  geom_col() +
+  theme_minimal() +
+  labs(x = "Group", y = "Mean Score")
+```
+
+Now, let's add the error bars. It's easy---there's a `geom_errorbar()` and you tell it the `ymin` and `ymax` inside of its own mapping `aes()`. Run this and see:
+
+```{r errorbars1, exercise=TRUE}
+ggplot(graphdata, aes(x = group, y = meanscore)) +
+  geom_col() +
+  theme_minimal() +
+  labs(x = "Group", y = "Mean Score") +
+  geom_errorbar(aes(ymin = meanscore - sem, ymax = meanscore + sem))
+```
+
+I frequently add the line `, width = .4` outside of the `aes()` function (but inside the `geom_errorbar()`) because I find that the full-bar error lines are confusing. You can also do things like making the line thicker with `, size = 2`:
+
+```{r errorbarflair, include=FALSE}
+ggplot(graphdata, aes(x = group, y = meanscore)) +
+  geom_col() +
+  theme_minimal() +
+  labs(x = "Group", y = "Mean Score") +
+  geom_errorbar(aes(ymin = meanscore - sem, ymax = meanscore + sem),
+                width = .4, size = 2)
+```
+
+```{r, echo=FALSE, results="asis"}
+flair::decorate("errorbarflair") %>% 
+  flair::flair("aes(ymin = meanscore - sem, ymax = meanscore + sem)") %>%
+  flair::flair("width = .4, size = 2")
+```
+
+### Okay, you try it!
+
+Create a new variable from `newfriends` by grouping by `gender` and then summarizing the variable `numclassesremote`. Calculate the `mean()` and `sd()` and then the `sem`. Make sure to name each new variable you're creating in `summarize()`. Don't forget to consider whether there are missing values. Don't worry if the final data frame itself has *some* NAs---any columns with only one value by definition can't have a standard deviation. They just won't have error bars. (Up to you when you remove NAs.)
+
+Then, make a `ggplot()` with that new data. Plot `x = gender` and `y = numclassesremote` in the `aes()`. Then add on a `geom_col()` and `geom_errorbar()`. In the latter, use a mapping `aes()` to define the `ymin` and `ymax`. Add axis labels and a title.
+
+```{r errorbars2, exercise=TRUE}
+remoteclasses <- newfriends %>% 
+  # your code here
+
+# fill this out:
+ggplot(data = , aes()) +
+  geom_col() +
+  geom_errorbar() +
+  labs(x = "", y = "", title = "")
+```
+
+There is no "solution" here, because there's a bit too much for me to check. Instead, click "Continue" to see my version after you've finished yours.
+
+### 
+
+```{r}
+remoteclasses <- newfriends %>% 
+  select(gender, numclassesremote) %>% na.omit() %>% # remove NAs for only the two columns we need
+  group_by(gender) %>% # group by gender
+  summarize(meanclasses = mean(numclassesremote),
+            sdclasses   = sd(numclassesremote),
+            sem         = sdclasses / sqrt(n()))
+
+ggplot(remoteclasses, aes(x = gender, y = meanclasses)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = meanclasses - sem, ymax = meanclasses + sem),
+                width = .3, size = 1.5) +
+  theme_minimal() +
+  labs(x = "Gender", y = "Number of remote classes", title = "Number of remote classes taken by gender")
+```
+
+(Remember, there are no error bars on columns with only one participant.)
+
+## Wrap up
+
+This is where the tutorial ends.
+
+When you're ready, go back to the website for today's exercises, open the exercise directly, or run the following code (from your primary working directory):
+
+```{r, eval=FALSE}
+psychRstats::run_exercise("06-exercise")
+```
