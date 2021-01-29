@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["lab-05-completed_files/figure-html5/ex10-1.png","lab-05-completed_files/figure-html5/ex7-1.png","lab-05-completed_files/figure-html5/ex7-2.png","lab-05-completed_files/figure-html5/ex7-3.png","lab-05-completed_files/figure-html5/ex9-1.png"]}
+  {"type":"character","attributes":{},"value":["lab-05-completed_files/anchor-4.2.2/anchor.min.js","lab-05-completed_files/bowser-1.9.3/bowser.min.js","lab-05-completed_files/distill-2.2.21/template.v2.js","lab-05-completed_files/figure-html5/ex10-1.png","lab-05-completed_files/figure-html5/ex7-1.png","lab-05-completed_files/figure-html5/ex7-2.png","lab-05-completed_files/figure-html5/ex7-3.png","lab-05-completed_files/figure-html5/ex9-1.png","lab-05-completed_files/header-attrs-2.6/header-attrs.js","lab-05-completed_files/jquery-1.11.3/jquery.min.js","lab-05-completed_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -308,6 +308,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
 
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
   @media(min-width: 768px) {
 
   d-article pre,
@@ -462,6 +467,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -1129,7 +1145,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1244,6 +1260,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
 
       // clear polling timer
       clearInterval(tid);
@@ -1406,6 +1436,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_distill-->
   <script src="lab-05-completed_files/header-attrs-2.6/header-attrs.js"></script>
   <script src="lab-05-completed_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="lab-05-completed_files/popper-2.6.0/popper.min.js"></script>
+  <link href="lab-05-completed_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="lab-05-completed_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="lab-05-completed_files/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="lab-05-completed_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="lab-05-completed_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="lab-05-completed_files/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1452,7 +1486,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>There is no tutorial for today’s lab; this document is the primary focus. Don’t forget to put your name between the quotation marks following the word author: above.</p>
 <p>You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="../../labs.html">labs website</a>.</p>
@@ -1468,7 +1505,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Run the following code chunk to load necessary packages for these exercises. If you haven’t yet loaded the tidyverse documents for your file, you should do so now.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
 <span class='co'># tidyverse loads these:</span>
 <span class='co'># library(dplyr)</span>
 <span class='co'># library(ggplot2)</span>
@@ -1488,7 +1525,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><em>Note 2:</em> if you get an error when you try to use <code>read_csv()</code>, it’s either that your path is wrong or that you didn’t load the packages, above. The former error would be, e.g., “could not find function read_csv”—go load the packages!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># uncomment the line below if the file friends.csv is in the same folder as this document, </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># uncomment the line below if the file friends.csv is in the same folder as this document, </span>
 <span class='co'># or edit it so that it correctly points to the right path for the friends.csv file</span>
 <span class='va'>friends</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"../03-exercise/friends.csv"</span><span class='op'>)</span>
 </code></pre>
@@ -1499,7 +1536,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>friends</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code> [1] &quot;duration&quot;            &quot;finished&quot;            &quot;whentook&quot;           
@@ -1519,7 +1556,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># all of these work to do this:</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># all of these work to do this:</span>
 <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1538,7 +1575,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 10 2020-08-28 22:17:37
 # … with 74 more rows</code></pre>
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span><span class='op'>[</span>,<span class='fl'>3</span><span class='op'>]</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span><span class='op'>[</span>,<span class='fl'>3</span><span class='op'>]</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 84 x 1
@@ -1556,7 +1593,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 10 2020-08-28 22:17:37
 # … with 74 more rows</code></pre>
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span><span class='op'>$</span><span class='va'>whentook</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span><span class='op'>$</span><span class='va'>whentook</span>
 </code></pre>
 </div>
 <pre><code> [1] &quot;2020-08-27 13:05:27 UTC&quot; &quot;2020-08-27 14:58:31 UTC&quot;
@@ -1602,7 +1639,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 [81] &quot;2020-09-02 17:55:04 UTC&quot; &quot;2020-09-02 17:58:51 UTC&quot;
 [83] &quot;2020-09-02 21:15:58 UTC&quot; &quot;2020-09-06 20:48:51 UTC&quot;</code></pre>
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='va'>whentook</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'>select</span><span class='op'>(</span><span class='va'>whentook</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 84 x 1
@@ -1627,7 +1664,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><em>Note</em>: I’ve seen a few people use &lt;&gt; in their writing. This is totally fine as a note for yourself, but does not mean “not” in R.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>siblings</span> <span class='op'>!=</span> <span class='fl'>1</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>siblings</span> <span class='op'>!=</span> <span class='fl'>1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 49 x 32
@@ -1654,7 +1691,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   expectedoutcome_4 &lt;dbl&gt;, majordiv &lt;dbl&gt;, hrs.sleep &lt;dbl&gt;,
 #   height.unvalidated &lt;dbl&gt;, shootingdrills &lt;dbl&gt;, handedness &lt;dbl&gt;</code></pre>
 <div class="sourceCode">
-<pre><code><span class='co'># or</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># or</span>
 <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>siblings</span> <span class='op'>&lt;</span> <span class='fl'>1</span> <span class='op'>|</span> <span class='va'>siblings</span> <span class='op'>&gt;</span> <span class='fl'>1</span><span class='op'>)</span> <span class='co'># remember the | means OR</span>
 </code></pre>
 </div>
@@ -1687,7 +1724,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>siblings</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>siblings</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 1 x 32
@@ -1710,13 +1747,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>56</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>65</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>w</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>56</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>65</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>w</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 26</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>w</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>w</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 31.66228</code></pre>
@@ -1727,7 +1764,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Trying to say this a different way: make a new variable, named whatever you like, which is <em>assigned</em> with the <code>&lt;-</code> operator to the value of <code>friends</code>, and then chain on a <code>filter()</code> selecting only people who do NOT have NA for the <code>gram.followers</code> column. You will be using this NEW data-frame (without NAs in that column) for the rest of the lab.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>grammers</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span> <span class='op'>!</span> <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>grammers</span> <span class='op'>&lt;-</span> <span class='va'>friends</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span> <span class='op'>!</span> <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -1737,21 +1774,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_histogram</span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="lab-05-completed_files/figure-html5/ex7-1.png" width="624" />
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="lab-05-completed_files/figure-html5/ex7-2.png" width="624" />
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span>, breaks <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span>, breaks <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="lab-05-completed_files/figure-html5/ex7-3.png" width="624" /></p>
@@ -1761,33 +1798,33 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 685.6269</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 439.0476</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 600</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1]   57 2000</code></pre>
 <div class="sourceCode">
-<pre><code><span class='co'># and there actually is a function called range which does just that:</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># and there actually is a function called range which does just that:</span>
 <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1]   57 2000</code></pre>
 <div class="sourceCode">
-<pre><code><span class='co'># You can also do this with a `dplyr` function called `summarize()`---the benefit</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># You can also do this with a `dplyr` function called `summarize()`---the benefit</span>
 <span class='co'># being that you don't have to re-write the name of the data frame each time---</span>
 <span class='co'># and that it's all in one place:</span>
 <span class='va'>grammers</span> <span class='op'>%&gt;%</span>
@@ -1807,7 +1844,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>siblings</span>, y <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>siblings</span>, y <span class='op'>=</span> <span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_point</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of Siblings"</span>, y <span class='op'>=</span> <span class='st'>"Number of Instagram Followers"</span>, 
@@ -1822,7 +1859,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><em>Please note</em>: only run this once! If you run it a second time, it will turn the whole <code>haircolor</code> column to NAs. Want to check what it looks like? Just highlight the part after the assignment <code>&lt;-</code> operator and run that in the console.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>grammers</span><span class='op'>$</span><span class='va'>haircolor</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>haircolor</span>,
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>grammers</span><span class='op'>$</span><span class='va'>haircolor</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>haircolor</span>,
                              levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>,
                              labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Natural"</span>, <span class='st'>"Dyed"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
@@ -1831,7 +1868,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Copy the code for the plot from Q9 in the code chunk labeled ex10 below. If you added blue points, delete the <code>color = "blue"</code> in the parentheses of <code>geom_point()</code>. <strong>Into the parentheses of the <code>aes()</code></strong> mapping in the <code>ggplot()</code> call at the beginning of the code chunk below, set <code>color =</code> equal to the hair color variable (<code>haircolor</code>)—careful: neither gets quotation marks! Then, inside the <code>geom_point()</code> command’s parentheses, set <code>shape = "+"</code> and (with a comma after the closing quotation mark in “+”) set <code>size = 5</code>. You’re changing the points to + signs and making them larger.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>siblings</span>, y <span class='op'>=</span> <span class='va'>gram.followers</span>, color <span class='op'>=</span> <span class='va'>haircolor</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>grammers</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>siblings</span>, y <span class='op'>=</span> <span class='va'>gram.followers</span>, color <span class='op'>=</span> <span class='va'>haircolor</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_point</span><span class='op'>(</span>shape <span class='op'>=</span> <span class='st'>"+"</span>, size <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of Siblings"</span>, y <span class='op'>=</span> <span class='st'>"Number of Instagram Followers"</span>, 
@@ -1852,14 +1889,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>follow.mean</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>follow.mean</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>We don’t need to calculate the standard deviation—we’ve got it (even though it’s fake). Assign the number I gave you for the population standard deviation (300) as the variable<code>follow.sd</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>follow.sd</span> <span class='op'>&lt;-</span> <span class='fl'>300</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>follow.sd</span> <span class='op'>&lt;-</span> <span class='fl'>300</span>
 </code></pre>
 </div>
 </div>
@@ -1867,7 +1904,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>(<em>Note</em>: You can find the <code>n</code> by just looking at the length of the data frame—it’s actually the number of rows I told you way back in Q6. But if you’d like to use an R function for it, there’s <code>nrow()</code> which you can run on the data frame: <code>nrow(DATA)</code> will give you how many rows there are in your data frame if you replace DATA with its name—in this case, one per person.)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>follow.sem</span> <span class='op'>&lt;-</span> <span class='va'>follow.sd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>follow.sem</span> <span class='op'>&lt;-</span> <span class='va'>follow.sd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -1876,7 +1913,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>No changes yet! Still using the same cut-offs from last lab, with a significance level of <span class="math inline">\(p &lt; .05\)</span>. We’ll continue with <code>qnorm()</code> for this, which is the quantiles (i.e., you’re passing it the percentile and it’s giving you what number falls there) of the normal distribution.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] -1.96  1.96</code></pre>
@@ -1888,7 +1925,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><span class="math display">\[z=\frac{\mu_{sample}-\mu_{population}}{SEM}\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>follow.z</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>follow.mean</span> <span class='op'>-</span> <span class='fl'>500</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>follow.sem</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>follow.z</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>follow.mean</span> <span class='op'>-</span> <span class='fl'>500</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>follow.sem</span>
 <span class='va'>follow.z</span>
 </code></pre>
 </div>
@@ -1902,14 +1939,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>What are we doing here? We’re testing: does the sample mean for our sample differ from the (fake) population mean and SD that I gave you?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># check if follow.z is more than 1.96 OR less than -1.96; </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># check if follow.z is more than 1.96 OR less than -1.96; </span>
 <span class='co'># if it is either (it can't be both), return TRUE</span>
 <span class='va'>follow.z</span> <span class='op'>&gt;</span> <span class='fl'>1.96</span> <span class='op'>|</span> <span class='va'>follow.z</span> <span class='op'>&lt;</span> <span class='op'>-</span><span class='fl'>1.96</span>
 </code></pre>
 </div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode">
-<pre><code><span class='co'># alternatively, use the abs() function to check if the MAGNITUDE of z</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># alternatively, use the abs() function to check if the MAGNITUDE of z</span>
 <span class='co'># is more than 1.96</span>
 <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>follow.z</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>1.96</span>
 </code></pre>
@@ -1920,7 +1957,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>What percentile is it? Again, uncomment to see. Here, we’re using the <code>pnorm()</code> function we used last week, which is the reverse of <code>qnorm()</code>. Where <code>qnorm()</code> takes a percentile and gives a z-score, <code>pnorm()</code> takes a z-score and gives a percentile. (No, really—try running it on -1.96 and you’ll get just about .05, and on 1.96 where you’ll get just about .975.)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>follow.z</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>follow.z</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 0.9999998</code></pre>
@@ -1957,7 +1994,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>I’ll walk you through this with <em>dummy code</em> (code that doesn’t work because it has stand-ins for your variables); you replace the dummy code with the variable names from our data. Replace the text that says DATA with the name of your data frame—still using the one we created that doesn’t have NAs. Replace the text that says COLUMN with the name of the column of interest (<code>gram.followers</code>, still). You should also uncomment the lines, of course, if you want them to run—remove the # marks.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># n &lt;- nrow(DATA)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># n &lt;- nrow(DATA)</span>
 <span class='co'># df &lt;- n - 1</span>
 <span class='co'># SS &lt;- sum((DATA$COLUMN - mean(DATA$COLUMN))^2)</span>
 <span class='co'># sd.estimate &lt;- sqrt(SS / df)</span>
@@ -1974,7 +2011,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>)</span>
 <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>n</span> <span class='op'>-</span> <span class='fl'>1</span>
 <span class='va'>SS</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span><span class='op'>)</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
 <span class='va'>sd.estimate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>SS</span> <span class='op'>/</span> <span class='va'>df</span><span class='op'>)</span>
@@ -1990,12 +2027,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>s.m</span>, <span class='va'>s.m2</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>s.m</span>, <span class='va'>s.m2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] TRUE</code></pre>
 </div>
-<p>Take time and make you understand what is happening at every step—can you imagine what’s happening if you were writing the equations out on paper instead of in R code? Any questions? Ask your classmates in your breakout room. If they don’t know, ask a course assistant or the professor.</p>
+<p>Take time and make you understand what is happening at every step—can you imagine what’s happening if you were writing the equations out on paper instead of in R code? Any questions? Ask someone or search on the web!</p>
 <p>We have now defined our comparison distribution!</p>
 <p>It’s the <em>t</em>-distribution with <em>df</em> of 66, a mean of 500, and a standard deviation (the standard error of the mean) of 53.64.</p>
 <h2 id="step-3">Step 3</h2>
@@ -2003,7 +2040,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>I’m going to write it below—you run the code. It should look almost identical to the <code>qnorm()</code> function above. But it will result in different cut-off values, because it’s no longer using the normal distribution. They are quite similar, though, right?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>qt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span>, df <span class='op'>=</span> <span class='fl'>66</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>qt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span>, df <span class='op'>=</span> <span class='fl'>66</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] -1.996564  1.996564</code></pre>
@@ -2013,7 +2050,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>cutoff</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>qt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span>, df <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span> <span class='co'># using the df variable from above---which is 66</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cutoff</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>qt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.025</span>, <span class='fl'>.975</span><span class='op'>)</span>, df <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span> <span class='co'># using the df variable from above---which is 66</span>
 </code></pre>
 </div>
 </div>
@@ -2025,7 +2062,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>t.stat</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>follow.mean</span> <span class='op'>-</span> <span class='fl'>500</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>s.m</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>t.stat</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>follow.mean</span> <span class='op'>-</span> <span class='fl'>500</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>s.m</span>
 <span class='va'>t.stat</span>
 </code></pre>
 </div>
@@ -2039,22 +2076,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>t.stat</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>t.stat</span>
 </code></pre>
 </div>
 <pre><code>[1] 3.460721</code></pre>
 <div class="sourceCode">
-<pre><code><span class='va'>cutoff</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cutoff</span>
 </code></pre>
 </div>
 <pre><code>[1] -1.996564  1.996564</code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>t.stat</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>cutoff</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>t.stat</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span><span class='op'>(</span><span class='va'>cutoff</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] TRUE TRUE</code></pre>
 <div class="sourceCode">
-<pre><code><span class='co'># the most complete: is it lower than the low cutoff or higher than the high?</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the most complete: is it lower than the low cutoff or higher than the high?</span>
 <span class='va'>t.stat</span> <span class='op'>&lt;</span> <span class='va'>cutoff</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>|</span> <span class='va'>t.stat</span> <span class='op'>&gt;</span> <span class='va'>cutoff</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span>
 </code></pre>
 </div>
@@ -2071,7 +2108,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><em>Note:</em> What does <code>lower.tail</code> mean? Well, the first one is defining the probability that the true (population) mean is <strong>more</strong> than the value of your <em>t</em>-score; the second is the probability that the true (population) mean is <strong>less</strong> than the value of your <em>t</em>-score. Then we add them together to get the whole thing. The lower tail is looking all the way at the left—the extreme negative values. And the upper tail is looking all the way at the right—the extreme positive values. We use both of them to get a <em>p</em>-value because we’re using a two-tailed test.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>upper.tail</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>pt</a></span><span class='op'>(</span><span class='va'>t.stat</span>, df <span class='op'>=</span> <span class='va'>df</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>upper.tail</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>pt</a></span><span class='op'>(</span><span class='va'>t.stat</span>, df <span class='op'>=</span> <span class='va'>df</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='va'>lower.tail</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/TDist.html'>pt</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>t.stat</span>, df <span class='op'>=</span> <span class='va'>df</span>, lower.tail <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='op'>(</span><span class='va'>p.value</span> <span class='op'>&lt;-</span> <span class='va'>upper.tail</span> <span class='op'>+</span> <span class='va'>lower.tail</span><span class='op'>)</span>
 </code></pre>
@@ -2087,7 +2124,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># t.test(x = DATA$COLUMN, mu = POPULATIONMEAN)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># t.test(x = DATA$COLUMN, mu = POPULATIONMEAN)</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>grammers</span><span class='op'>$</span><span class='va'>gram.followers</span>, mu <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
 </code></pre>
 </div>

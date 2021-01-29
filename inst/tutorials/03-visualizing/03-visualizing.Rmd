@@ -204,7 +204,7 @@ Interested (or bored) parties should look into the `help(hist)` file, and see wh
 ###
 Remember how I've been talking about the chain operator (`%>%`)? Well, we can really chain things together with it. We introduced the `filter()` command last time. Let's make use of it.
 
-Imagine you want to `filter()` only the `penguins` from the `"Dream"` `island`, and then `count()` the number of penguins of each `species` on it. You could chain those statements together. Give it a try below. If you're struggling, please check in with me, a course assistant, or a classmate.
+Imagine you want to `filter()` only the `penguins` from the `"Dream"` `island`, and then `count()` the number of penguins of each `species` on it. You could chain those statements together. Give it a try below. If you're struggling, try to get some help by either searching online or looking at hints. 
 
 ```{r filterisland, exercise=TRUE}
 

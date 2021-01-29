@@ -509,7 +509,7 @@ pnorm(z, lower.tail = FALSE)
 
 So we can say that $p=$ `r round(pnorm(z, lower.tail = FALSE), 3)`, and again, confirm that in this case $p<.05$. 
 
-Any questions? Now's a great time to check in with your group, a course assistant, or the instructor. 
+Any questions? Now's a great time to check in and make sure you understand everything. 
 
 You'll answer questions 3 and 4 from above---about number of hours of TV---in the exercises. 
 

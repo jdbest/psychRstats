@@ -340,7 +340,7 @@ identical(sd.estimate, sd.estimate2)
 identical(s.m, s.m2)
 ```
 
-Take time and make you understand what is happening at every step---can you imagine what's happening if you were writing the equations out on paper instead of in R code? Any questions? Ask your classmates in your breakout room. If they don't know, ask a course assistant or the professor.
+Take time and make you understand what is happening at every step---can you imagine what's happening if you were writing the equations out on paper instead of in R code? Any questions? Ask someone or search on the web!
 
 We have now defined our comparison distribution! 
 
