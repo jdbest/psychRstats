@@ -18,10 +18,77 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
-  <!--radix_placeholder_meta_tags-->
-<title>psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 09) Exercises, Completed</title>
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
 
-<meta property="description" itemprop="description" content="Completed exercises for the ninth lab"/>
+  <!--radix_placeholder_meta_tags-->
+<title>psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 08) Exercises, Completed</title>
+
+<meta property="description" itemprop="description" content="Completed exercises for the eighth lab"/>
 
 <link rel="canonical" href="https://jdbest.github.io/psychRstats/answers/08-lab/"/>
 <link rel="icon" type="image/png" href="../../images/favicon.png"/>
@@ -32,11 +99,11 @@
 <meta name="article:author" content="Justin Dainer-Best"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 09) Exercises, Completed"/>
+<meta property="og:title" content="psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 08) Exercises, Completed"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Completed exercises for the ninth lab"/>
+<meta property="og:description" content="Completed exercises for the eighth lab"/>
 <meta property="og:url" content="https://jdbest.github.io/psychRstats/answers/08-lab/"/>
-<meta property="og:image" content="https://jdbest.github.io/psychRstats/answers/08-lab/anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png"/>
+<meta property="og:image" content="https://jdbest.github.io/psychRstats/answers/08-lab/lab-08-completed_files/figure-html5/unnamed-chunk-10-1.png"/>
 <meta property="og:image:width" content="1248"/>
 <meta property="og:image:height" content="768"/>
 <meta property="og:locale" content="en_US"/>
@@ -44,15 +111,15 @@
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:title" content="psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 09) Exercises, Completed"/>
-<meta property="twitter:description" content="Completed exercises for the ninth lab"/>
+<meta property="twitter:title" content="psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 08) Exercises, Completed"/>
+<meta property="twitter:description" content="Completed exercises for the eighth lab"/>
 <meta property="twitter:url" content="https://jdbest.github.io/psychRstats/answers/08-lab/"/>
-<meta property="twitter:image" content="https://jdbest.github.io/psychRstats/answers/08-lab/anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png"/>
+<meta property="twitter:image" content="https://jdbest.github.io/psychRstats/answers/08-lab/lab-08-completed_files/figure-html5/unnamed-chunk-10-1.png"/>
 <meta property="twitter:image:width" content="1248"/>
 <meta property="twitter:image:height" content="768"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-<meta name="citation_title" content="psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 09) Exercises, Completed"/>
+<meta name="citation_title" content="psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 08) Exercises, Completed"/>
 <meta name="citation_fulltext_html_url" content="https://jdbest.github.io/psychRstats/answers/08-lab/"/>
 <meta name="citation_online_date" content="2020/10/30"/>
 <meta name="citation_publication_date" content="2020/10/30"/>
@@ -61,12 +128,12 @@
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["One-way ANOVA (Lab 09) Exercises, Completed"]},{"type":"character","attributes":{},"value":["Completed exercises for the ninth lab"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Justin Dainer-Best"]}]}]},{"type":"character","attributes":{},"value":["10-30-2020"]},{"type":"character","attributes":{},"value":["rlanguage","visualization","ggplot","ANOVA","real-data","effect-sizes"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/psychRstats/answers/08-lab/"]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/psychRstats/answers/08-lab/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["One-way ANOVA (Lab 08) Exercises, Completed"]},{"type":"character","attributes":{},"value":["Completed exercises for the eighth lab"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Justin Dainer-Best"]}]}]},{"type":"character","attributes":{},"value":["10-30-2020"]},{"type":"character","attributes":{},"value":["rlanguage","visualization","ggplot","ANOVA","real-data","effect-sizes"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/psychRstats/answers/08-lab/"]},{"type":"character","attributes":{},"value":["https://jdbest.github.io/psychRstats/answers/08-lab/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["anova-lab-9-completed_files/bowser-1.9.3/bowser.min.js","anova-lab-9-completed_files/distill-2.2.21/template.v2.js","anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png","anova-lab-9-completed_files/figure-html5/unnamed-chunk-8-1.png","anova-lab-9-completed_files/jquery-1.11.3/jquery.min.js","anova-lab-9-completed_files/webcomponents-2.0.0/webcomponents.js","data/James.csv"]}
+  {"type":"character","attributes":{},"value":["data/James.csv","lab-08-completed_files/figure-html5/unnamed-chunk-10-1.png","lab-08-completed_files/figure-html5/unnamed-chunk-8-1.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -1990,8 +2057,13 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.3/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
@@ -2006,7 +2078,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"One-way ANOVA (Lab 09) Exercises, Completed","description":"Completed exercises for the ninth lab","authors":[{"author":"Justin Dainer-Best","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-10-30T00:00:00.000+00:00","citationText":"Dainer-Best, 2020"}
+{"title":"One-way ANOVA (Lab 08) Exercises, Completed","description":"Completed exercises for the eighth lab","authors":[{"author":"Justin Dainer-Best","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-10-30T00:00:00.000+00:00","citationText":"Dainer-Best, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2033,8 +2105,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>One-way ANOVA (Lab 09) Exercises, Completed</h1>
-<p><p>Completed exercises for the ninth lab</p></p>
+<h1>One-way ANOVA (Lab 08) Exercises, Completed</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Completed exercises for the eighth lab</p></p>
 </div>
 
 <div class="d-byline">
@@ -2045,26 +2119,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/knitr/man/opts_chunk.html'>opts_chunk</a></span><span class='op'>$</span><span class='fu'>set</span><span class='op'>(</span>echo <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>This document is meant to be used to practice after you have completed the tutorial for today’s lab. Make sure to put your name as the author of the document, above!</p>
-<p>If you intend to work on these exercises while referring to the tutorial, there are instructions on the <a href="https://github.com/jdbest/psy-203/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so. You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html">labs website</a>.</p>
-<p>Important reminder: as with every time you open RStudio, don’t forget to load the libraries, below.</p>
+<p>If you intend to work on these exercises while referring to the tutorial, there are instructions on the <a href="https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously">wiki</a> on how to do so. You may also want to refer to past labs. Don’t forget that previous labs are linked to on the main <a href="../../labs.html">labs website</a>.</p>
 <h2 id="objectives">Objectives</h2>
 <p>In the tutorial, we talked about how to run ANOVAs “manually” and how to do them using R’s built-in functions. Now, you’ll practice doing so in R, and learn to use <code>ggplot2</code> functions to plot it.</p>
-<p>As always, a version of these exercises with my answers will be posted at the end of the week to the lab website: <a href="https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html" class="uri">https://faculty.bard.edu/~jdainerbest/psy-203/labslist.html</a></p>
-<p>I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now—it’ll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document for me to review.</p>
-<p>If you would like feedback on your answers, you may also upload the final version of this document (knitted, ideally) to Brightspace.</p>
+<p>You can find a completed version of these exercises at <a href="https://jdbest.github.io/psychRstats/answers.html" class="uri">https://jdbest.github.io/psychRstats/answers.html</a></p>
+<p>I encourage you to do two things as you work through this document: (1) Save it frequently! Hit the disk image above to save, hit Command/Ctrl and s, or go to the File menu and click save. When the document is saved, the title of it will go from red to black. (2) Practice Knitting the document by hitting the Knit button. You can do it now—it’ll create an HTML file in the folder where this file lives. Knitting will both help to identify problems and provide a complete document.</p>
 <h2 id="loading-packages">Loading packages</h2>
 <p>As always, you <em>must</em> load packages if you intend to use their functions. (“Turn on the lights.”) Run the following code chunk to load necessary packages for these exercises.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(tidyverse)
-# tidyverse loads these that we&#39;ll use today: (you don&#39;t need to load them individually)
-# library(readr)
-# library(dplyr)
-# library(ggplot2)
-# library(tidyr)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='co'># tidyverse loads these that we'll use today: (you don't need to load them individually)</span>
+<span class='co'># library(readr)</span>
+<span class='co'># library(dplyr)</span>
+<span class='co'># library(ggplot2)</span>
+<span class='co'># library(tidyr)</span>
+</code></pre>
+</div>
 </div>
 <h2 id="importing-data">Importing data</h2>
 <p>As discussed in the tutorial, we’re using data from James and colleagues (2015).</p>
@@ -2072,35 +2149,40 @@ library(tidyverse)
 <p>James, E. L., Bonsall, M. B., Hoppitt, L., Tunbridge, E. M., Geddes, J. R., Milton, A. L., &amp; Holmes, E. A. (2015). Computer game play reduces intrusive memories of experimental trauma via reconsolidation-update mechanisms. <em>Psychological Science</em>, 26, 1201–1215. <a href="https://doi.org/10.1177%2F0956797615583071" class="uri">https://doi.org/10.1177%2F0956797615583071</a></p>
 </blockquote>
 <p>Make sure you read the description of the study in the tutorial—it’s important for thinking about what we’re doing in these exercises.</p>
-<p>The data was downloaded with this file. Load it using the <code>read_csv()</code> command:</p>
+<p>The data was downloaded with this file. Load it using the <code>read_csv()</code> command (by either uncommenting the line below or some other method):</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-tetris &lt;- read.csv(&quot;data/James.csv&quot;)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tetris</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"data/James.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <h2 id="todays-task">Today’s task</h2>
-<p>For the questions below, create your own code chunks (<a href="https://github.com/jdbest/psy-203/wiki/Create-a-code-chunk">how?: instructions here</a>) and insert all code into them.</p>
+<p>For the questions below, create your own code chunks (<a href="https://github.com/jdbest/psychRstats/wiki/Create-a-code-chunk">how?: instructions here</a>) and insert all code into them.</p>
 <p>We spent the tutorial talking about how to use the <code>anova()</code> function after creating a model with <code>lm()</code>. You’ll do the same thing with the <code>tetris</code> data here.</p>
 <ol type="1">
 <li>First, use <code>factor()</code> to do the same thing we did in the tutorial, renaming the levels of <code>Condition</code> from 1,2,3,4 to “Control”, etc.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-tetris$Condition &lt;- factor(tetris$Condition, 
-                           levels = 1:4,
-                           labels = c(&quot;Control&quot;, &quot;Reactivation+Tetris&quot;, 
-                                      &quot;Tetris&quot;, &quot;Reactivation&quot;))</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tetris</span><span class='op'>$</span><span class='va'>Condition</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>tetris</span><span class='op'>$</span><span class='va'>Condition</span>, 
+                           levels <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>,
+                           labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Control"</span>, <span class='st'>"Reactivation+Tetris"</span>, 
+                                      <span class='st'>"Tetris"</span>, <span class='st'>"Reactivation"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <ol start="2" type="1">
 <li><p>Then, run two ANOVAs: one asking whether <code>Condition</code> determines the number of intrusive thoughts in the days after the intervention (<code>Days_One_to_Seven_Number_of_Intrusions</code>), and the second asking whether <code>Condition</code> impacts the responses on the task that was designed to measure intrusive thoughts (<code>Number_of_Provocation_Task_Intrusions</code>).</p>
 <p>For each ANOVA, you should also plan to report the results as we did in the tutorial—complete with means and the F(df1,df2)=value,p&lt;.05 or p=value.</p></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-intrusions &lt;- lm(Days_One_to_Seven_Number_of_Intrusions ~ Condition,
-                 data = tetris)
-anova(intrusions)</code></pre>
-<pre><code>
-Analysis of Variance Table
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>intrusions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Days_One_to_Seven_Number_of_Intrusions</span> <span class='op'>~</span> <span class='va'>Condition</span>,
+                 data <span class='op'>=</span> <span class='va'>tetris</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>intrusions</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Analysis of Variance Table
 
 Response: Days_One_to_Seven_Number_of_Intrusions
           Df Sum Sq Mean Sq F value  Pr(&gt;F)  
@@ -2108,14 +2190,15 @@ Condition  3 114.82  38.273  3.7948 0.01409 *
 Residuals 68 685.83  10.086                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre class="r"><code>
-tetris %&gt;%
-  group_by(Condition) %&gt;%
-  summarize(mean_intrusions = mean(Days_One_to_Seven_Number_of_Intrusions))</code></pre>
-<pre><code>
-# A tibble: 4 x 2
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tetris</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>Condition</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarize</span><span class='op'>(</span>mean_intrusions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Days_One_to_Seven_Number_of_Intrusions</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 4 x 2
   Condition           mean_intrusions
-  &lt;fct&gt;                         &lt;dbl&gt;
+* &lt;fct&gt;                         &lt;dbl&gt;
 1 Control                        5.11
 2 Reactivation+Tetris            1.89
 3 Tetris                         3.89
@@ -2123,12 +2206,13 @@ tetris %&gt;%
 </div>
 <p>There was a significant effect of condition predicting the number of intrusions in the seven days following the intervention, <span class="math inline">\(F(3,68)=3.79,p&lt;.05,\eta^2=0.14\)</span>, a large effect. While the number of intrusions had significantly decreased in the Reactivation+Tetris condition (<span class="math inline">\(M=1.89\)</span>), they had not decreased to the same degree in the control condition (<span class="math inline">\(M=5.11\)</span>), Tetris-only condition (<span class="math inline">\(M=3.89\)</span>), or reactivation-only condition (<span class="math inline">\(M=4.83\)</span>).</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-prov.task &lt;- lm(Number_of_Provocation_Task_Intrusions ~ Condition,
-                 data = tetris)
-anova(prov.task)</code></pre>
-<pre><code>
-Analysis of Variance Table
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>prov.task</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Number_of_Provocation_Task_Intrusions</span> <span class='op'>~</span> <span class='va'>Condition</span>,
+                 data <span class='op'>=</span> <span class='va'>tetris</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>prov.task</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Analysis of Variance Table
 
 Response: Number_of_Provocation_Task_Intrusions
           Df Sum Sq Mean Sq F value   Pr(&gt;F)   
@@ -2136,14 +2220,15 @@ Condition  3  91.44 30.4815  5.5669 0.001782 **
 Residuals 68 372.33  5.4755                    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre class="r"><code>
-tetris %&gt;%
-  group_by(Condition) %&gt;%
-  summarize(mean_intrusions = mean(Number_of_Provocation_Task_Intrusions))</code></pre>
-<pre><code>
-# A tibble: 4 x 2
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tetris</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>Condition</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarize</span><span class='op'>(</span>mean_intrusions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Number_of_Provocation_Task_Intrusions</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 4 x 2
   Condition           mean_intrusions
-  &lt;fct&gt;                         &lt;dbl&gt;
+* &lt;fct&gt;                         &lt;dbl&gt;
 1 Control                        3.39
 2 Reactivation+Tetris            1.11
 3 Tetris                         3.11
@@ -2154,16 +2239,18 @@ tetris %&gt;%
 <li>When you find a significant result, you should also calculate the effect size, eta-squared. Do that either using <code>library(lsr)</code> and the <code>etaSquared()</code> function, or by hand. Your choice. Then edit the above paragraphs to include the effect size.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(lsr)
-etaSquared(intrusions)</code></pre>
-<pre><code>
-             eta.sq eta.sq.part
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/'>lsr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/lsr/man/etaSquared.html'>etaSquared</a></span><span class='op'>(</span><span class='va'>intrusions</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>             eta.sq eta.sq.part
 Condition 0.1434073   0.1434073</code></pre>
-<pre class="r"><code>
-etaSquared(prov.task)</code></pre>
-<pre><code>
-            eta.sq eta.sq.part
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/lsr/man/etaSquared.html'>etaSquared</a></span><span class='op'>(</span><span class='va'>prov.task</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>            eta.sq eta.sq.part
 Condition 0.197173    0.197173</code></pre>
 </div>
 <ol start="4" type="1">
@@ -2171,10 +2258,12 @@ Condition 0.197173    0.197173</code></pre>
 <p>R has a built-in function called <code>pairwise.t.test()</code> which takes three arguments: <code>x</code> (the dependent variable), <code>g</code> (the grouping variable), and <code>p.adj</code> (the kind of correction—here, “bonf” for Bonferroni). I’m giving you an example here for how we’d have done this with the day 0 data.</p></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-pairwise.t.test(x = tetris$Number_of_Provocation_Task_Intrusions, 
-                g = tetris$Condition,
-                p.adj = &quot;bonf&quot;)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/pairwise.t.test.html'>pairwise.t.test</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>tetris</span><span class='op'>$</span><span class='va'>Number_of_Provocation_Task_Intrusions</span>, 
+                g <span class='op'>=</span> <span class='va'>tetris</span><span class='op'>$</span><span class='va'>Condition</span>,
+                p.adj <span class='op'>=</span> <span class='st'>"bonf"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code>
     Pairwise comparisons using t tests with pooled SD 
 
@@ -2189,10 +2278,12 @@ P value adjustment method: bonferroni </code></pre>
 </div>
 <p>The numbers it lists are the <em>p</em>-values for independent-samples <em>t</em>-tests between separate groups—with a Bonferroni-Holms correction. You’ll see that it rates them all as 1—that’s a 100% likelihood that they came from the null hypothesis (there are no differences). Try running the <code>pairwise.t.test()</code> function on either of the two tests you ran in #2.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-pairwise.t.test(x = tetris$Days_One_to_Seven_Number_of_Intrusions, 
-                g = tetris$Condition,
-                p.adj = &quot;BH&quot;)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/pairwise.t.test.html'>pairwise.t.test</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>tetris</span><span class='op'>$</span><span class='va'>Days_One_to_Seven_Number_of_Intrusions</span>, 
+                g <span class='op'>=</span> <span class='va'>tetris</span><span class='op'>$</span><span class='va'>Condition</span>,
+                p.adj <span class='op'>=</span> <span class='st'>"BH"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code>
     Pairwise comparisons using t tests with pooled SD 
 
@@ -2209,11 +2300,13 @@ P value adjustment method: BH </code></pre>
 <li>For any significant results from your pairwise <em>t</em>-test, you should then run a t-test for independent samples by filtering to only Reactivation+Tetris and the groups it is different from. You’ll see that the p-value you received above is substantially closer to .05—that’s the correction!</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-crt &lt;- tetris %&gt;%
-  filter(Condition == &quot;Control&quot; | Condition == &quot;Reactivation+Tetris&quot;)
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>crt</span> <span class='op'>&lt;-</span> <span class='va'>tetris</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Condition</span> <span class='op'>==</span> <span class='st'>"Control"</span> <span class='op'>|</span> <span class='va'>Condition</span> <span class='op'>==</span> <span class='st'>"Reactivation+Tetris"</span><span class='op'>)</span>
 
-t.test(crt$Days_One_to_Seven_Number_of_Intrusions ~ crt$Condition)</code></pre>
+<span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>crt</span><span class='op'>$</span><span class='va'>Days_One_to_Seven_Number_of_Intrusions</span> <span class='op'>~</span> <span class='va'>crt</span><span class='op'>$</span><span class='va'>Condition</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code>
     Welch Two Sample t-test
 
@@ -2225,10 +2318,12 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
             mean in group Control mean in group Reactivation+Tetris 
                          5.111111                          1.888889 </code></pre>
-<pre class="r"><code>
-rrt &lt;- tetris %&gt;%
-  filter(Condition == &quot;Reactivation&quot; | Condition == &quot;Reactivation+Tetris&quot;)
-t.test(rrt$Days_One_to_Seven_Number_of_Intrusions ~ rrt$Condition)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rrt</span> <span class='op'>&lt;-</span> <span class='va'>tetris</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Condition</span> <span class='op'>==</span> <span class='st'>"Reactivation"</span> <span class='op'>|</span> <span class='va'>Condition</span> <span class='op'>==</span> <span class='st'>"Reactivation+Tetris"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>rrt</span><span class='op'>$</span><span class='va'>Days_One_to_Seven_Number_of_Intrusions</span> <span class='op'>~</span> <span class='va'>rrt</span><span class='op'>$</span><span class='va'>Condition</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code>
     Welch Two Sample t-test
 
@@ -2249,50 +2344,55 @@ mean in group Reactivation+Tetris        mean in group Reactivation
 <li>For the variable (<code>Days_One_to_Seven_Number_of_Intrusions</code> or <code>Number_of_Provocation_Task_Intrusions</code>) that you’ve been focused on, use <code>group_by()</code> and <code>summarize()</code> to calculated means and standard errors per <code>Condition</code> group, and then plot them using <code>geom_col()</code> and <code>geom_errorbar()</code>. Include labels and a theme.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graph &lt;- tetris %&gt;%
-  group_by(Condition) %&gt;%
-  summarize(
-    mean_intrusions = mean(Days_One_to_Seven_Number_of_Intrusions),
-    n = n(),
-    sd = sd(Days_One_to_Seven_Number_of_Intrusions),
-    sem = sd / sqrt(n)
-  )
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graph</span> <span class='op'>&lt;-</span> <span class='va'>tetris</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>Condition</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarize</span><span class='op'>(</span>
+    mean_intrusions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>Days_One_to_Seven_Number_of_Intrusions</span><span class='op'>)</span>,
+    n <span class='op'>=</span> <span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span>,
+    sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>Days_One_to_Seven_Number_of_Intrusions</span><span class='op'>)</span>,
+    sem <span class='op'>=</span> <span class='va'>sd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span>
+  <span class='op'>)</span>
 
-ggplot(graph, aes(x = Condition, y = mean_intrusions)) +
-  geom_col() +
-  geom_errorbar(aes(ymin = mean_intrusions - sem, 
-                    ymax = mean_intrusions + sem),
-                width = .4) +
-  theme_classic() +
-  labs(x = &quot;Condition&quot;, y = &quot;Mean Number of Intrusions,\nfrom Days 1 to 7&quot;,
-       title = &quot;Number of intrusions per condition after intervention&quot;)</code></pre>
-<p><img src="anova-lab-9-completed_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>graph</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Condition</span>, y <span class='op'>=</span> <span class='va'>mean_intrusions</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>mean_intrusions</span> <span class='op'>-</span> <span class='va'>sem</span>, 
+                    ymax <span class='op'>=</span> <span class='va'>mean_intrusions</span> <span class='op'>+</span> <span class='va'>sem</span><span class='op'>)</span>,
+                width <span class='op'>=</span> <span class='fl'>.4</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Condition"</span>, y <span class='op'>=</span> <span class='st'>"Mean Number of Intrusions,\nfrom Days 1 to 7"</span>,
+       title <span class='op'>=</span> <span class='st'>"Number of intrusions per condition after intervention"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="lab-08-completed_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
 <ol start="8" type="1">
 <li>If you’d like, try using the <em>F</em> cut-off value for our ANOVAs (provided below), and change the error bars from your plot in 7 to 95% Confidence Intervals. How do those look?</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-qf(.95, df1 = 3, df2 = 68)</code></pre>
-<pre><code>
-[1] 2.739502</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/Fdist.html'>qf</a></span><span class='op'>(</span><span class='fl'>.95</span>, df1 <span class='op'>=</span> <span class='fl'>3</span>, df2 <span class='op'>=</span> <span class='fl'>68</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 2.739502</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-graph &lt;- graph %&gt;%
-  mutate(ci = sem * qf(.95, df1 = 3, df2 = 68))
-ggplot(graph, aes(x = Condition, y = mean_intrusions)) +
-  geom_col() +
-  geom_errorbar(aes(ymin = mean_intrusions - ci, 
-                    ymax = mean_intrusions + ci),
-                width = .4) +
-  theme_classic() +
-  labs(x = &quot;Condition&quot;, y = &quot;Mean Number of Intrusions,\nfrom Days 1 to 7&quot;,
-       title = &quot;Number of intrusions per condition after intervention&quot;)</code></pre>
-<p><img src="anova-lab-9-completed_files/figure-html5/unnamed-chunk-10-1.png" width="624" data-distill-preview=1 /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>graph</span> <span class='op'>&lt;-</span> <span class='va'>graph</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>ci <span class='op'>=</span> <span class='va'>sem</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Fdist.html'>qf</a></span><span class='op'>(</span><span class='fl'>.95</span>, df1 <span class='op'>=</span> <span class='fl'>3</span>, df2 <span class='op'>=</span> <span class='fl'>68</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>graph</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Condition</span>, y <span class='op'>=</span> <span class='va'>mean_intrusions</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_errorbar</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>mean_intrusions</span> <span class='op'>-</span> <span class='va'>ci</span>, 
+                    ymax <span class='op'>=</span> <span class='va'>mean_intrusions</span> <span class='op'>+</span> <span class='va'>ci</span><span class='op'>)</span>,
+                width <span class='op'>=</span> <span class='fl'>.4</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_classic</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Condition"</span>, y <span class='op'>=</span> <span class='st'>"Mean Number of Intrusions,\nfrom Days 1 to 7"</span>,
+       title <span class='op'>=</span> <span class='st'>"Number of intrusions per condition after intervention"</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>Have any feedback about the exercises? Let me know at the <a href="https://bit.ly/psy203exit">exit survey</a> and select Lab 9.</p>
+<p><img src="lab-08-completed_files/figure-html5/unnamed-chunk-10-1.png" width="624" data-distill-preview=1 /></p>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2316,11 +2416,11 @@ ggplot(graph, aes(x = Condition, y = mean_intrusions)) +
 <div class="appendix-bottom">
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Dainer-Best (2020, Oct. 30). psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 09) Exercises, Completed. Retrieved from https://jdbest.github.io/psychRstats/answers/08-lab/</pre>
+  <pre class="citation-appendix short">Dainer-Best (2020, Oct. 30). psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 08) Exercises, Completed. Retrieved from https://jdbest.github.io/psychRstats/answers/08-lab/</pre>
   <p>BibTeX citation</p>
   <pre class="citation-appendix long">@misc{dainer-best2020one-way,
   author = {Dainer-Best, Justin},
-  title = {psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 09) Exercises, Completed},
+  title = {psychRstats: Learning Statistics for Psychology in R: One-way ANOVA (Lab 08) Exercises, Completed},
   url = {https://jdbest.github.io/psychRstats/answers/08-lab/},
   year = {2020}
 }</pre>
