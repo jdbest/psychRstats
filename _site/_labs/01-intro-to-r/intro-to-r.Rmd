@@ -73,12 +73,10 @@ If you want to download files from the Cloud to your own computer, [follow these
 
 ## Download exercises
 
-When you have decided on your working directory---even if you're sticking with `"~"` (your user folder), you can download the lab exercises. They will all download from a zip file, and all be R Markdown files designed to run in RStudio. You should have downloaded the package before this will work. If you're only planning to download the exercises but not this package, first run `install.packages("usethis")` to download the relevant package to make that download.
-
-Once all packages are installed, run the following:
+When you have decided on your working directory---even if you're sticking with `"~"` (your user folder), you can download the lab exercises. They will all download from a zip file, and all be R Markdown files designed to run in RStudio. You should have downloaded the package before this will work:
 
 ```{r}
-usethis::use_zip("https://github.com/jdbest/psychRstats/raw/main/exercises.zip", cleanup = TRUE)
+psychRstats::download_exercises()
 ```
 
 The lab documents will download to your computer in the directory (folder) you defined above---into your working directory. (If you didn't define it, it'll download into whatever working directory was the default, usually your user folder.) It may pop up a folder where the file lives.
@@ -86,3 +84,11 @@ The lab documents will download to your computer in the directory (folder) you d
 ## Errors and Problems
 
 If you run into any errors, consider looking to the [wiki page on troubleshooting](https://github.com/jdbest/psychRstats/wiki/Installation-Errors-and-Problems) for solutions. (You can also scroll up and click "Wiki".)
+
+## The first tutorial
+
+All right! Now that you've gotten everything installed, run the first tutorial:
+
+```{r}
+psychRstats::lab("01-intro-to-r")
+```

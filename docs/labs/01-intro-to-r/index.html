@@ -124,7 +124,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["intro-to-r_files/anchor-4.2.2/anchor.min.js","intro-to-r_files/bowser-1.9.3/bowser.min.js","intro-to-r_files/distill-2.2.21/template.v2.js","intro-to-r_files/figure-html5/unnamed-chunk-2-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-2.png","intro-to-r_files/figure-html5/unnamed-chunk-20-3.png","intro-to-r_files/figure-html5/unnamed-chunk-20-4.png","intro-to-r_files/figure-html5/unnamed-chunk-21-1.png","intro-to-r_files/figure-html5/unnamed-chunk-21-2.png","intro-to-r_files/figure-html5/unnamed-chunk-21-3.png","intro-to-r_files/header-attrs-2.6/header-attrs.js","intro-to-r_files/jquery-1.11.3/jquery.min.js","intro-to-r_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["intro-to-r_files/anchor-4.2.2/anchor.min.js","intro-to-r_files/bowser-1.9.3/bowser.min.js","intro-to-r_files/distill-2.2.21/template.v2.js","intro-to-r_files/figure-html5/unnamed-chunk-2-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-1.png","intro-to-r_files/figure-html5/unnamed-chunk-20-2.png","intro-to-r_files/figure-html5/unnamed-chunk-20-3.png","intro-to-r_files/figure-html5/unnamed-chunk-20-4.png","intro-to-r_files/figure-html5/unnamed-chunk-21-1.png","intro-to-r_files/figure-html5/unnamed-chunk-21-2.png","intro-to-r_files/figure-html5/unnamed-chunk-21-3.png","intro-to-r_files/header-attrs-2.6/header-attrs.js","intro-to-r_files/jquery-1.11.3/jquery.min.js","intro-to-r_files/popper-2.6.0/popper.min.js","intro-to-r_files/tippy-6.2.7/tippy-bundle.umd.min.js","intro-to-r_files/tippy-6.2.7/tippy-light-border.css","intro-to-r_files/tippy-6.2.7/tippy.css","intro-to-r_files/tippy-6.2.7/tippy.umd.min.js","intro-to-r_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2050,6 +2050,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_distill-->
   <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2121,7 +2125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Occasionally R may ask you questions like “These packages have more recent versions available. It is recommended to update all of them. Which would you like to update?” And you will need to select a response (e.g., type 1 and hit enter to download all updates).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"devtools"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"devtools"</span><span class='op'>)</span>
 <span class='fu'>devtools</span><span class='fu'>::</span><span class='fu'><a href='https://devtools.r-lib.org//reference/remote-reexports.html'>install_github</a></span><span class='op'>(</span><span class='st'>"jdbest/psychRstats"</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2139,7 +2143,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>To check that you’ve got the right working directory set up, run the following code in the RStudio console (just copy and paste it and then hit enter):</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2148,17 +2152,24 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Your files will download to “/home/rstudio-user” – if when you run <code>getwd()</code> you don’t get that, run the following code: <code>setwd("/home/rstudio-user")</code>.</p>
 <p>If you want to download files from the Cloud to your own computer, <a href="https://support.rstudio.com/hc/en-us/articles/200713893-Uploading-and-Downloading-Files">follow these instructions</a>.</p>
 <h2 id="download-exercises">Download exercises</h2>
-<p>When you have decided on your working directory—even if you’re sticking with <code>"~"</code> (your user folder), you can download the lab exercises. They will all download from a zip file, and all be R Markdown files designed to run in RStudio. You should have downloaded the package before this will work. If you’re only planning to download the exercises but not this package, first run <code>install.packages("usethis")</code> to download the relevant package to make that download.</p>
-<p>Once all packages are installed, run the following:</p>
+<p>When you have decided on your working directory—even if you’re sticking with <code>"~"</code> (your user folder), you can download the lab exercises. They will all download from a zip file, and all be R Markdown files designed to run in RStudio. You should have downloaded the package before this will work:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/zip-utils.html'>use_zip</a></span><span class='op'>(</span><span class='st'>"https://github.com/jdbest/psychRstats/raw/main/exercises.zip"</span>, cleanup <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>psychRstats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/download_exercises.html'>download_exercises</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>The lab documents will download to your computer in the directory (folder) you defined above—into your working directory. (If you didn’t define it, it’ll download into whatever working directory was the default, usually your user folder.) It may pop up a folder where the file lives.</p>
 <h2 id="errors-and-problems">Errors and Problems</h2>
 <p>If you run into any errors, consider looking to the <a href="https://github.com/jdbest/psychRstats/wiki/Installation-Errors-and-Problems">wiki page on troubleshooting</a> for solutions. (You can also scroll up and click “Wiki”.)</p>
+<h2 id="the-first-tutorial">The first tutorial</h2>
+<p>All right! Now that you’ve gotten everything installed, run the first tutorial:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>psychRstats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/lab.html'>lab</a></span><span class='op'>(</span><span class='st'>"01-intro-to-r"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
