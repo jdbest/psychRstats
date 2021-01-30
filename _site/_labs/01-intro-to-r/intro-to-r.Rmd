@@ -49,11 +49,11 @@ You'll need to make a decision about what will be your "working directory". The 
 
 [There's more info on this on the github wiki](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory). You can always return there with questions. 
 
-* Use the **Session > Set Working Directory** menu. Navigate to whatever folder you'll be using for this class. (You might want to use something like /yourusername/Bard/PSY 203/labs -- but anything is fine so long as you know where it is.) This is the sort of folder that when you go to Finder (*Mac*) or Windows Explorer (*PC*), you can find all of the files associated with this class in one place. (If you're on a shared computer, you may have limited choices. Documents folders are fine!)
+* Use the **Session > Set Working Directory** menu. Navigate to whatever folder you'll be using for this class. (You might want to use something like /yourusername/psychRstats/labs -- but anything is fine so long as you know where it is.) This is the sort of folder that when you go to Finder (*Mac*) or Windows Explorer (*PC*), you can find all of the files associated with this class in one place. (If you're on a shared computer, you may have limited choices. Documents folders are fine!)
 
 * Optional: You can permanently set your working directory using the Tools Menu. Go to Tools: Global Options, and then click the "Browse..." under Default working directory. Navigate to the same folder you just set.
 
-* If you're familiar with some coding, you can also set your working directory using the `setwd()` command---just be sure to enclose the path in quotation marks, e.g., `setwd("/yourusername/Bard/PSY 203/labs")`. 
+* If you're familiar with some coding, you can also set your working directory using the `setwd()` command---just be sure to enclose the path in quotation marks, e.g., `setwd("/yourusername/psychRstats/labs")`. 
 
 ([Read more about working directories in R and RStudio](https://support.rstudio.com/hc/en-us/articles/200711843-Working-Directories-and-Workspaces).)
 
