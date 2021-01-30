@@ -35,8 +35,12 @@ Once you've gotten through the first tutorial, you'll want to download the exerc
 
 Download all exercises and data in one go when you first get started. After running the above code and installing the `{psychRstats}` package, make sure you're in the right working directory.
 
-(We discuss setting a working directory [in the first lab](https://jdbest.github.io/psychRstats/exercises/01-intro-to-r/#set-a-working-directory), but there's also an entry about it [on the wiki](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory).)
+(We discuss setting a working directory [in the first lab](https://jdbest.github.io/psychRstats/labs/01-intro-to-r/#set-a-working-directory), but there's also an entry about it [on the wiki](https://github.com/jdbest/psychRstats/wiki/setting-a-working-directory).)
 
 ```
 psychRstats::download_exercises()
 ```
+
+## Get started
+
+I recommend following the [labs in order](https://jdbest.github.io/psychRstats/labs/). Following along through the web may be helpful for most individuals. (For example, there is no tutorial in labs 2 or 5.)
