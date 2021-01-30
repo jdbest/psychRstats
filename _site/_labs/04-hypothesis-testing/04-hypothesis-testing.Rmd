@@ -38,7 +38,7 @@ To run the tutorial:
 
 ```{r}
 library(psychRstats)
-psychRstats::lab("04-hypothesis-testing")
+psychRstats::lab("04-test-hypotheses")
 ```
 
 Once you've completed the tutorial, return here for the exercise that you will turn in at the end of the lab. (If you'd like to keep the tutorial open, refer to [this page on the wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously).)

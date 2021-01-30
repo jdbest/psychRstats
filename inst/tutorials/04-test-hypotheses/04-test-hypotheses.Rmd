@@ -144,7 +144,7 @@ R can actually determine that cutoff of 1.96 for us with a function called `qnor
 
 Remember how in class we discussed the fact that what we actually want to get the most extreme 5% of scores is the bottom 2.5% of scores and the top 2.5% of scores? Something like this: 
 
-```{r echo=FALSE}
+```{r p1, echo=FALSE}
 ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_area(stat = "function", fun = dnorm, 
             fill = "red", xlim = c(-3, -1.96)) +
@@ -167,7 +167,7 @@ ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
 
 Well, we can also think of those as cut-offs for the lowest 2.5% of scores and the highest 2.5% of scores---something like this. (The 97.5% is just $100\% - 2.5\%$.)
 
-```{r echo=FALSE}
+```{r p2, echo=FALSE}
 ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
   geom_area(stat = "function", fun = dnorm, 
             fill = "red", xlim = c(-3, -1.96)) +
@@ -212,11 +212,11 @@ Now, we haven't played with our data yet. The information on heights is saved in
 
 Plot a histogram of the data. It might be worth playing around with `ggplot2` (which is loaded), but you can do it with the base plot of `hist()` if you'd like. Your x-variable here will be `height`
 
-```{r hist1, exercise = TRUE}
+```{r h1, exercise = TRUE}
 
 ```
 
-```{r hist1-solution}
+```{r h1-solution}
 ggplot(friends, aes(x = height)) +
   geom_histogram(binwidth = 2) +
   theme_light()
@@ -228,16 +228,16 @@ What do you notice about this data? If you said "there are some obvious outliers
 
 Try using a boxplot plot to see the outliers better. (Remember, that's `geom_boxplot()`.) Make your `x` `height` and your `y` `gender.` No need for a theme or labels---just a quick plot. (*Note: I'm including gender here because you'd expect to see a height difference. We'll talk more about gender at a later date.*)
 
-```{r hist2, exercise = TRUE}
+```{r h2, exercise = TRUE}
 
 ```
 
-```{r hist2-solution}
+```{r h2-solution}
 ggplot(friends, aes(x = height, y = gender)) +
   geom_boxplot()
 ```
 
-```{r hist2-check, echo=FALSE}
+```{r h2-check, echo=FALSE}
 grade_code(correct = "Okay, seems pretty clear to me: some of your friends who responded to the survey seem to have misinterpreted the question. They gave their height in feet instead of inches.")
 ```
 
@@ -447,7 +447,7 @@ Remember, that it's not just LESS THAN---it's LESS THAN **OR EQUAL TO**.
 
 We're still using the *z*-distribution, but now we're only interested in scores that fall in the upper 5% of the distribution---where 95% of the scores fall below:
 
-```{r echo=FALSE}
+```{r p3, echo=FALSE}
 ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
     geom_area(stat = "function", fun = dnorm, 
             fill = "red", xlim = c(qnorm(.95), 3)) +

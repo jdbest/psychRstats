@@ -117,7 +117,7 @@ grade_code()
 
 As you can see, there were rare searches for the term "Ebola," then a significant increase in early October of 2014, and then a decline after the peak in mid-October:
 
-```{r}
+```{r, p9}
 ggplot(predictions, aes(x = time, y = Ebola.Search.Volume.Index)) +
   geom_point() +
   geom_line() +
@@ -129,7 +129,7 @@ ggplot(predictions, aes(x = time, y = Ebola.Search.Volume.Index)) +
 
 We can also look at voting intentions, an index of a variety of polls, which were conducted on several days. Only some days include such an index, so you'll see fewer dates:
 
-```{r}
+```{r p10}
 ggplot(polls, aes(x = time, y = Voter.Intention.Index)) +
   geom_point() +
   geom_line() +
@@ -187,7 +187,7 @@ The gray area represents the confidence interval---yep, like the 95% confidence 
 
 We can tell that there's probably some connection between these points, but one more thing we *could* do is plot them against each other **over time**. This isn't necessarily what a correlation is testing, but let's take a look. No worries about the details of the code---just wanted to share what this looks like. 
 
-```{r}
+```{r p11}
 predictions %>%
   filter(! is.na(Voter.Intention.Index)) %>%
   pivot_longer(cols = c(Ebola.Search.Volume.Index, Voter.Intention.Index),

@@ -4,13 +4,13 @@ tutorials <- as.data.frame(tribble(
   1, "01-intro-to-r", 
   2, "01-intro-to-r",
   3, "03-visualizing", 
-  4, "04-hypothesis-testing",
+  4, "04-test-hypotheses",
   5, "05-single-sample-t",
   6, "06-visualizing-2",
   7, "07-t-tests",
   8, "08-one-way-anova",
-  9, "09-regression-correlation",
-  10, "10-chi-square-factorial-ANOVA",
+  9, "09-cor-reg",
+  10, "10-X2-fANOVA",
   11, "11-questions-and-knitting"
 ))
 
@@ -33,4 +33,4 @@ exercises <- as.data.frame(tribble(
 # change overwrite to TRUE to save over it
 
 usethis::use_data(tutorials, exercises, 
-                  internal = TRUE, overwrite = FALSE)
+                  internal = TRUE, overwrite = TRUE)

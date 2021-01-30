@@ -465,7 +465,7 @@ flair::decorate("summarizegroupflair") %>%
 
 Then, plot that:
 
-```{r}
+```{r g9}
 ggplot(graphdata, aes(x = group, y = meanscore)) +
   geom_col() +
   theme_minimal() +
@@ -484,7 +484,7 @@ ggplot(graphdata, aes(x = group, y = meanscore)) +
 
 I frequently add the line `, width = .4` outside of the `aes()` function (but inside the `geom_errorbar()`) because I find that the full-bar error lines are confusing. You can also do things like making the line thicker with `, size = 2`:
 
-```{r errorbarflair, include=FALSE}
+```{r ebarflair, include=FALSE}
 ggplot(graphdata, aes(x = group, y = meanscore)) +
   geom_col() +
   theme_minimal() +
@@ -520,7 +520,7 @@ There is no "solution" here, because there's a bit too much for me to check. Ins
 
 ### 
 
-```{r}
+```{r plotremote}
 remoteclasses <- newfriends %>% 
   select(gender, numclassesremote) %>% na.omit() %>% # remove NAs for only the two columns we need
   group_by(gender) %>% # group by gender

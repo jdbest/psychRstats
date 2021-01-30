@@ -39,7 +39,7 @@ To run the tutorial:
 
 ```{r}
 library(psychRstats)
-psychRstats::lab("09-regression-correlation")
+psychRstats::lab("09-cor-reg")
 ```
 
 Once you've completed the tutorial, return here for the exercise that you will complete at the end of the lab. (If you'd like to keep the tutorial open, refer to [this page on the wiki](https://github.com/jdbest/psychRstats/wiki/Run-a-tutorial-and-exercise-simultaneously).)

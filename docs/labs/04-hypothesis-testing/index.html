@@ -2053,6 +2053,10 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_distill-->
   <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2118,8 +2122,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>To run the tutorial:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/psychRstats'>psychRstats</a></span><span class='op'>)</span>
-<span class='fu'>psychRstats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/lab.html'>lab</a></span><span class='op'>(</span><span class='st'>"04-hypothesis-testing"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/psychRstats'>psychRstats</a></span><span class='op'>)</span>
+<span class='fu'>psychRstats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/lab.html'>lab</a></span><span class='op'>(</span><span class='st'>"04-test-hypotheses"</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2132,7 +2136,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>You should have downloaded the exercise and data already; today’s file is called “04-exercise.Rmd”. Either open the file (in R through the Files pane, or by double-clicking on the file in your file browser), or you may be able to open the file from the correct working directory by running the following code:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/psychRstats'>psychRstats</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jdbest/psychRstats'>psychRstats</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/psychRstats/man/run_exercise.html'>run_exercise</a></span><span class='op'>(</span><span class='st'>"04-exercise"</span><span class='op'>)</span>
 </code></pre>
 </div>
