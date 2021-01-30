@@ -43,4 +43,4 @@ psychRstats::download_exercises()
 
 ## Get started
 
-I recommend following the [labs in order](https://jdbest.github.io/psychRstats/labs/). Following along through the web may be helpful for most individuals. (For example, there is no tutorial in labs 2 or 5.)
+I recommend following the [labs in order](https://jdbest.github.io/psychRstats/labs.html). Following along through the web may be helpful for most individuals. (For example, there is no tutorial in labs 2 or 5.)
