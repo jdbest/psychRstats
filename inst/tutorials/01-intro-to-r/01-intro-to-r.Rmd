@@ -3,7 +3,7 @@ title: "Lab 01: Introduction to R"
 description: >
   Learn the basics of R, how to comment, and about the major pieces we'll be using in these exercises.
 tutorial:
-  id: "PSY-203-F20"
+  id: "pRs-01"
   version: 0.2
 output: 
   learnr::tutorial:
