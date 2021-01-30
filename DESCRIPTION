@@ -7,8 +7,9 @@ Authors@R:
     person(given = "Justin",
            family = "Dainer-Best",
            role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-1868-0337"),
-           email = "jdainerbest@bard.edu")
+           email = "jdainerbest@bard.edu",
+           comment = c(ORCID = "0000-0002-1868-0337"))
+Maintainer: Justin Dainer-Best <jdainerbest@bard.edu>
 Description: Based on Bard College's Statistics for Psychology (PSY 203, Fall 
     2020, taught by Assistant Professor of Psychology Justin Dainer-Best), these
     vignettes and exercises are intended to be used alongside an undergraduate 
